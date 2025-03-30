@@ -18,7 +18,7 @@ export const educationData = [
     year: "2021 - 2023",
     degree: "Higher Secondary Education",
     field: "",
-    university: "International Indian School Jeddah",
+    university: "International Indian School Jeddah (KSA)",
     description:
       "Excelled in Mathematics and Computer Science subjects. Class representative and member of the coding club.",
     courses: ["Computer Science", "Mathematics", "Physics", "Chemistry"],
@@ -28,7 +28,7 @@ export const educationData = [
     year: "2011 - 2020",
     degree: "Secondary Education",
     field: "in General",
-    university: "International Indian School Jeddah",
+    university: "International Indian School Jeddah (KSA)",
     description:
       "Developed interest in programming and technology. Started learning programming basics and participated in science fairs.",
     courses: ["Basic Computing", "Science", "Mathematics", "English"],
