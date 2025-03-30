@@ -8,7 +8,7 @@ import {
   ShineCardHeader,
   ShineCardTitle,
 } from "../magicui/shine-card";
-import { GradientText } from "../magicui/gradient-text";    
+import { GradientText } from "../magicui/gradient-text";
 const projectsData = [
   {
     id: "carf-curacao",
@@ -50,6 +50,16 @@ const projectsData = [
 
 const Projects = ({ showOnHomePage = false }) => {
   const navigate = useNavigate();
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (!showOnHomePage) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [showOnHomePage]);
 
   const getShimmerColor = () => {
     return "rgba(54, 17, 158, 0.5)";
@@ -57,17 +67,25 @@ const Projects = ({ showOnHomePage = false }) => {
 
   const handleShowAllProjects = () => {
     navigate("/projects");
+    // Force scroll to top when clicking "View All Projects"
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }, 100);
   };
 
   return (
     <section
       id="projects"
+      ref={sectionRef}
       className={`py-16 md:py-24 ${
-        !showOnHomePage ? "transition-colors duration-700" : "bg-muted/50"
+        !showOnHomePage ? "transition-colors duration-700 font-cursive " : "bg-muted/50 font-cursive"
       }`}
     >
       <div className="container px-4 md:px-6 mx-auto">
-        <h2 className="text-3xl font-bold tracking-tighter text-center mb-12">
+        <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 font-cursive">
           <GradientText
             gradient={
               showOnHomePage
@@ -97,7 +115,7 @@ const Projects = ({ showOnHomePage = false }) => {
               >
                 <ShineCardHeader>
                   <ShineCardTitle
-                    className={showOnHomePage ? "" : "text-white"}
+                    className={`${showOnHomePage ? "" : "text-white"} font-cursive`}
                   >
                     {project.title}
                   </ShineCardTitle>
@@ -137,7 +155,7 @@ const Projects = ({ showOnHomePage = false }) => {
                 "via-purple-500",
                 "to-pink-500",
               ]}
-              className="px-6 py-2"
+              className="px-6 py-2 cursor-pointer hover:scale-105 transition-transform"
               onClick={handleShowAllProjects}
             >
               View All Projects

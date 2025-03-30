@@ -3,24 +3,72 @@ import { MagicCard, MagicCardContent, MagicCardHeader, MagicCardTitle } from "..
 import { ShineCard, ShineCardContent, ShineCardHeader, ShineCardTitle } from "../magicui/shine-card";
 import { GradientText } from "../magicui/gradient-text";
 import { useTheme } from "../ThemeProvider";
+import { useEffect, useRef, useState } from "react";
 
 const skillsData = [
   {
     title: "Frontend Development",
-    skills: ["React", "Next.js", "HTML/CSS", "JavaScript", "Tailwind CSS"]
+    skills: [
+      { name: "React", proficiency: 80 },
+      { name: "Next.js", proficiency: 75 },
+      { name: "HTML/CSS", proficiency: 90 },
+      { name: "JavaScript", proficiency: 85 },
+      { name: "Tailwind CSS", proficiency: 80 }
+    ]
   },
   {
     title: "Backend Development",
-    skills: ["Node.js", "Express", "RESTful APIs", "MongoDB", "SQL"]
+    skills: [
+      { name: "Node.js", proficiency: 75 },
+      { name: "Express", proficiency: 70 },
+      { name: "RESTful APIs", proficiency: 80 },
+      { name: "MongoDB", proficiency: 65 },
+      { name: "SQL", proficiency: 60 }
+    ]
   },
   {
     title: "Tools & Technologies",
-    skills: ["Git", "GitHub", "VS Code", "Agile", "CI/CD"]
+    skills: [
+      { name: "Git", proficiency: 85 },
+      { name: "GitHub", proficiency: 80 },
+      { name: "VS Code", proficiency: 90 },
+      { name: "Agile", proficiency: 70 },
+      { name: "CI/CD", proficiency: 65 }
+    ]
   },
 ];
 
 const Skills = () => {
   const { theme } = useTheme();
+  const [animated, setAnimated] = useState(false);
+  const sectionRef = useRef(null);
+  
+  useEffect(() => {
+    // Initialize animation state to false
+    setAnimated(false);
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Add a small delay before starting the animation
+          setTimeout(() => {
+            setAnimated(true);
+          }, 300);
+        }
+      },
+      { threshold: 0.3 } // Trigger when 30% of the section is visible
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
   
   const getShimmerColor = (index) => {
     const colors = [
@@ -32,9 +80,9 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-16 md:py-24 bg-muted/50">
+    <section id="skills" ref={sectionRef} className="py-16 md:py-24 bg-muted/50">
       <div className="container px-4 md:px-6 mx-auto">
-        <h2 className="text-3xl font-bold tracking-tighter text-center mb-12">
+        <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 font-cursive">
           <GradientText 
             gradient="from-indigo-500 via-purple-500 to-pink-500"
             animate={true}
@@ -52,14 +100,28 @@ const Skills = () => {
               shineHover={true}
             >
               <ShineCardHeader>
-                <ShineCardTitle>{category.title}</ShineCardTitle>
+                <ShineCardTitle className="font-cursive">{category.title}</ShineCardTitle>
               </ShineCardHeader>
               <ShineCardContent>
-                <ul className="space-y-2">
+                <ul className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
-                    <li key={skillIndex} className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 group-hover:scale-125 transition-transform duration-300"></div>
-                      <span>{skill}</span>
+                    <li key={skillIndex} className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 group-hover:scale-125 transition-transform duration-300"></div>
+                          <span>{skill.name}</span>
+                        </div>
+                        <span className="text-sm font-medium">{animated ? skill.proficiency : 0}%</span>
+                      </div>
+                      <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full transition-all duration-1000 ease-out"
+                          style={{ 
+                            width: animated ? `${skill.proficiency}%` : '0%',
+                            transitionDelay: `${skillIndex * 100}ms`
+                          }}
+                        ></div>
+                      </div>
                     </li>
                   ))}
                 </ul>
