@@ -3,7 +3,8 @@ export const projectsData = [
   {
     id: "bitebox",
     title: "BiteBox",
-    description: "A modern restaurant platform for seamless online food ordering",
+    description:
+      "A modern restaurant platform for seamless online food ordering",
     detailedDescription:
       "BiteBox is a comprehensive restaurant platform that revolutionizes the online food ordering experience. It features an intuitive user interface for browsing menus, customizing orders, and secure checkout through Stripe integration. The admin dashboard provides restaurant owners with real-time order tracking, inventory management, and sales analytics. Built with a modern tech stack including React.js for the frontend, Express and Node.js for the backend, and MySQL for database management. Real-time order updates are handled through Socket.io, while user authentication is secured with Clerk.",
     technologies: [
@@ -28,7 +29,8 @@ export const projectsData = [
   {
     id: "notes",
     title: "Notes",
-    description: "A sleek, minimalist note-taking application with rich text editing",
+    description:
+      "A sleek, minimalist note-taking application with rich text editing",
     detailedDescription:
       "Notes is a powerful yet intuitive note-taking application designed for productivity and organization. It features rich text editing capabilities, allowing users to format notes with headings, lists, code blocks, and more. The app includes categorization through tags and folders, search functionality, and automatic saving. The clean, minimalist interface ensures a distraction-free writing experience, while the responsive design makes it accessible across all devices. Built with React.js and styled with Tailwind CSS for a modern look and feel, with a Node.js/Express backend for secure data storage.",
     technologies: [
@@ -74,7 +76,8 @@ export const projectsData = [
   {
     id: "athena-ai",
     title: "Athena AI",
-    description: "An intelligent AI assistant with natural language processing capabilities",
+    description:
+      "An intelligent AI assistant with natural language processing capabilities",
     detailedDescription:
       "Athena AI is a sophisticated artificial intelligence assistant that leverages advanced natural language processing to provide intelligent responses and solutions. The platform offers conversational AI capabilities, allowing users to interact naturally through text or voice. Features include smart content generation, language translation, data analysis, and personalized recommendations. The application is built with a focus on accessibility and user experience, with a clean interface that makes complex AI interactions simple and intuitive. The technology stack includes React.js for the frontend, with a robust backend powered by Node.js and Express, integrated with various AI and machine learning services.",
     technologies: [
@@ -98,7 +101,8 @@ export const projectsData = [
   {
     id: "blog",
     title: "DevInsights Blog",
-    description: "A technical blog platform for developers to share knowledge and insights",
+    description:
+      "A technical blog platform for developers to share knowledge and insights",
     detailedDescription:
       "DevInsights is a comprehensive blogging platform designed specifically for developers and tech enthusiasts. The platform allows users to create, publish, and share technical articles with rich code formatting, syntax highlighting, and embedded media. Features include categorization by topics, interactive comments section, and social sharing capabilities. The platform also includes a recommendation system that suggests relevant articles based on reading history. The clean, responsive design ensures optimal readability across all devices, while the markdown support makes technical writing effortless. Built with React.js for the frontend and a Node.js/Express backend with MySQL database.",
     technologies: [
@@ -121,7 +125,8 @@ export const projectsData = [
   {
     id: "echomate",
     title: "EchoMate",
-    description: "A real-time messaging platform with voice and video capabilities",
+    description:
+      "A real-time messaging platform with voice and video capabilities",
     detailedDescription:
       "EchoMate is a feature-rich communication platform designed for seamless real-time messaging and collaboration. The application offers instant messaging with read receipts, file sharing, and emoji reactions. Users can create group chats, direct messages, and channels for organized communication. The platform also supports voice and video calls with screen sharing capabilities, making it perfect for remote teams and friends. The intuitive interface prioritizes user experience with customizable themes and notification settings. Built with React.js for the frontend and leveraging Socket.io for real-time communication, with a secure backend powered by Node.js, Express, and MySQL.",
     technologies: [
@@ -141,5 +146,29 @@ export const projectsData = [
     logo: "echomate",
     image: "/images/EchoMate.png",
     link: "https://echomate-chat.vercel.app",
+  },
+  {
+    id: "social-media",
+    title: "Social Media Platform",
+    description:
+      "A social media platform with user authentication, posting, and commenting features",
+    detailedDescription:
+      "A social media platform with user authentication, posting, and commenting features",
+    technologies: [
+      "React.js",
+      "Shadcn",
+      "Tailwind",
+      "MySQL",
+      "Express",
+      "Clerk",
+      "Markdown",
+      "Code Highlighting",
+      "NodeJS",
+    ],
+    gradientFrom: "#285E61", // Teal
+    gradientTo: "#38B2AC", // Light teal
+    logo: "social-media",
+    image: "/images/X.png",
+    link: "https://social-media-1-2enj.onrender.com",
   },
 ];

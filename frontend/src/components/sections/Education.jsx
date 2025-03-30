@@ -2,38 +2,7 @@ import { useState } from "react";
 import { GradientText } from "../magicui/gradient-text";
 import { Spotlight } from "../magicui/spotlight";
 
-const educationData = [
-  {
-    id: "btech",
-    year: "2019 - 2023",
-    degree: "Bachelor of Technology",
-    field: "Computer Science",
-    university: "Example University",
-    description:
-      "Graduated with honors. Focused on software development and artificial intelligence. Completed multiple research projects and participated in hackathons and coding competitions.",
-    courses: ["Data Structures", "Algorithms", "Machine Learning", "Web Development"],
-  },
-  {
-    id: "highschool",
-    year: "2017 - 2019",
-    degree: "Higher Secondary Education",
-    field: "Science",
-    university: "Example High School",
-    description:
-      "Excelled in mathematics and computer science subjects. Class representative and member of the coding club.",
-    courses: ["Computer Science", "Mathematics", "Physics", "Chemistry"],
-  },
-  {
-    id: "secondary",
-    year: "2015 - 2017",
-    degree: "Secondary Education",
-    field: "General",
-    university: "Example Middle School",
-    description:
-      "Developed interest in programming and technology. Started learning programming basics and participated in science fairs.",
-    courses: ["Basic Computing", "Science", "Mathematics", "English"],
-  },
-];
+import { educationData } from "../../config/educationData";
 
 export function Education() {
   const [activeTab, setActiveTab] = useState(educationData[0].id);
@@ -79,7 +48,8 @@ export function Education() {
                         : "bg-gray-300 dark:bg-gray-600"
                     }`}
                   ></div>
-                  {education.id !== educationData[educationData.length - 1].id && (
+                  {education.id !==
+                    educationData[educationData.length - 1].id && (
                     <div className="w-0.5 h-full bg-gray-200 dark:bg-gray-700 mt-1"></div>
                   )}
                 </div>
@@ -107,7 +77,7 @@ export function Education() {
             <div className="h-[300px] overflow-y-auto pr-2 custom-scrollbar">
               <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                 <h3 className="text-2xl font-bold mb-2 font-cursive">
-                  {activeEducation.degree} in {activeEducation.field}
+                  {activeEducation.degree} {activeEducation.field}
                 </h3>
                 <h4 className="text-xl text-primary/80 mb-4 font-cursive">
                   {activeEducation.university}
@@ -117,7 +87,9 @@ export function Education() {
                 </p>
 
                 <div>
-                  <h5 className="font-semibold mb-3 text-primary/90 font-cursive">Key Courses</h5>
+                  <h5 className="font-semibold mb-3 text-primary/90 font-cursive">
+                    Key Courses
+                  </h5>
                   <div className="flex flex-wrap gap-2">
                     {activeEducation.courses.map((course, idx) => (
                       <span

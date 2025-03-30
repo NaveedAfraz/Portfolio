@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="py-6 md:py-12 border-t">
@@ -7,15 +9,24 @@ const Footer = () => {
             © {new Date().getFullYear()} Naveed. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <Link
+              to="https://github.com/NaveedAfraz"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
               GitHub
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-300">
+            </Link>
+            <Link
+              to="https://www.linkedin.com/in/naveed-afraz-977a46310/"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
               LinkedIn
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-300">
+            </Link>
+            <Link
+              to="https://twitter.com/NaveedAfraz2"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
               Twitter
-            </a>
+            </Link>
           </div>
         </div>
       </div>

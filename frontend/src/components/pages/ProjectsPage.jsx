@@ -315,7 +315,6 @@ const ProjectsPage = () => {
           {/* Background pattern */}
           <div className="absolute inset-0 opacity-10 bg-grid-white/[0.2] -z-10"></div>
 
-          {/* Add a semi-transparent overlay for better text visibility in light mode */}
           {theme === "light" && (
             <div className="absolute inset-0 bg-black/30"></div>
           )}
