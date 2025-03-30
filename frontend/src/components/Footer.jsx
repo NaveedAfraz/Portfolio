@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
           <p className="text-center text-sm text-muted-foreground">
-            {new Date().getFullYear()} Naveed. All rights reserved.
+            {new Date().getFullYear()} Naveed . All rights reserved.
           </p>
 
           <div className="text-center">
