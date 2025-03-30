@@ -8,7 +8,7 @@ export function ShineCard({
   shineGradient = true,
   shineHover = true,
   shimmerColor = "white",
-  background = "bg-background/50",
+  background = "bg-background/60",
   children,
   ...props
 }) {
@@ -55,7 +55,7 @@ export function ShineCard({
             )}
           >
             <div
-              className="absolute inset-0 z-0 opacity-20 bg-gradient-to-r from-transparent via-white to-transparent -translate-x-full animate-[shine_2s_infinite]"
+              className="absolute inset-0 z-0 opacity-30 bg-gradient-to-r from-transparent via-white to-transparent -translate-x-full animate-[shine_2s_infinite]"
               style={{ "--shimmer-color": shimmerColor }}
             />
           </div>
@@ -77,7 +77,7 @@ export const ShineCardHeader = ({ className, ...props }) => (
 
 export const ShineCardTitle = ({ className, ...props }) => (
   <h3
-    className={cn("text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70", className)}
+    className={cn("text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80", className)}
     {...props}
   />
 );
