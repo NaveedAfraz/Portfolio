@@ -33,7 +33,6 @@ function App() {
           <Route path="/project/:id" element={<ProjectDetail />} />
         </Routes>
         <Footer />
-        
       </div>
     </Router>
   );

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Heart } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -6,8 +7,17 @@ const Footer = () => {
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Naveed. All rights reserved.
+            {new Date().getFullYear()} Naveed. All rights reserved.
           </p>
+
+          <div className="text-center">
+            <p className="animated-gradient-text text-center text-sm font-medium">
+              VibeCoded by me
+            </p>
+            <span className="text-foreground inline-flex text-xs items-center">
+              (ofc by <Heart className="w-4 h-4 text-red-500 mx-1" />)
+            </span>
+          </div>
           <div className="flex gap-4">
             <Link
               to="https://github.com/NaveedAfraz"
