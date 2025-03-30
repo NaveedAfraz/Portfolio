@@ -15,7 +15,7 @@ const Hero = () => {
 
       const rect = heroRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      const y = e.clientY - rect.top; 
 
       heroRef.current.style.setProperty("--x", `${x}px`);
       heroRef.current.style.setProperty("--y", `${y}px`);
