@@ -11,83 +11,12 @@ import {
 import { Button } from "../ui/button";
 import { useTheme } from "../ThemeProvider";
 import { FlickeringGrid } from "../magicui/flickering-grid";
-
-// Project data with vibrant color transitions
-const projectsData = [
-  {
-    id: "carf-curacao",
-    title: "CARF Curacao",
-    description:
-      "Transformed an outdated WordPress site into a modern dog-adoption funnel with a Tinder-style swiping mechanism.",
-    detailedDescription:
-      "Transformed an outdated WordPress site (with a clunky 1945-era ShelterManager API) into a modern dog-adoption funnel. Implemented filters for adoptable dogs, sanctuary dogs, and highly adoptable dogs. Introduced a Tinder-style swiping mechanism to match prospective adopters with dogs quickly, and a global WhatsApp CTA for immediate contact with the shelter. All built over a single weekend using Next.js, Tailwind, Shadcn, and Supabase for storing swipes.",
-    technologies: [
-      "Next.js",
-      "Shadcn",
-      "Tailwind",
-      "Supabase",
-      "Weekend Build",
-      "ShelterManager",
-    ],
-    gradientFrom: "#1E3B70", // Deep blue
-    gradientTo: "#1b2133", // Brighter blue
-    logo: "amigo",
-    image: "/images/carf-project.png",
-    link: "https://example.com/carf",
-  },
-  {
-    id: "watt-watt",
-    title: "WattWatt.nl",
-    description:
-      "Developed WattWatt.nl website based on Figma designs with form integrations for backend functionality.",
-    detailedDescription:
-      "Developed WattWatt.nl website based on Figma designs. Coded with Next.js and Tailwind, including form integrations with Zapier and Google Sheets for backend functionality.",
-    technologies: ["Next.js", "Tailwind CSS", "Figma Implementation"],
-    gradientFrom: "#2962FF", // Blue - continuing from previous
-    gradientTo: "#8E2DE2", // Purple - transition color
-    logo: "wattwatt",
-    image: "/images/watt-project.png",
-    link: "https://wattwatt.nl",
-  },
-  {
-    id: "daccs",
-    title: "Daccs",
-    description:
-      "UI Development and full-stack implementation with MySQL database integration on AWS.",
-    detailedDescription:
-      "UI Development and full-stack implementation with MySQL database integration. Built on AWS infrastructure for scalability and reliability.",
-    technologies: ["Node.js", "UI Development", "MySQL", "AWS"],
-    gradientFrom: "#8E2DE2", // Purple - continuing from previous
-    gradientTo: "#D50000", // Red
-    logo: "daccs",
-    image: "/images/daccs-project.png",
-    link: "https://example.com/daccs",
-  },
-  {
-    id: "perspectivity",
-    title: "Perspectivity",
-    description:
-      "Full software lifecycle implementation with Python and NLP capabilities on cloud infrastructure.",
-    detailedDescription:
-      "Full software lifecycle implementation with Python and NLP capabilities. Developed cloud infrastructure and extensive data processing pipelines.",
-    technologies: [
-      "Python",
-      "NLP",
-      "Cloud Infrastructure",
-      "Full Software Lifecycle",
-    ],
-    gradientFrom: "#D50000", // Red - continuing from previous
-    gradientTo: "#FF6D00", // Orange
-    logo: "perspectivity",
-    image: "/images/perspectivity-project.png",
-    link: "https://example.com/perspectivity",
-  },
-];
+import { projectsData } from "../../config/projectsData";
 
 const ProjectsPage = () => {
   const { theme } = useTheme();
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const projectRefs = useRef([]);
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const headerRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [nextProjectIndex, setNextProjectIndex] = useState(null);
@@ -107,7 +36,7 @@ const ProjectsPage = () => {
         const index = projectRefs.current.indexOf(entry.target);
         if (index !== -1) {
           if (entry.isIntersecting) {
-            // Calculate which project is next based on scroll direction
+            // When a project section comes into view
             const nextIndex =
               activeProjectIndex < index ? index : activeProjectIndex;
             const prevIndex =
@@ -181,7 +110,7 @@ const ProjectsPage = () => {
     projectSections.forEach((section, index) => {
       if (index === activeProjectIndex) {
         if (nextProjectIndex !== null) {
-          // Create a smooth transition between colors
+          // Blend between current and next project colors
           const blendedFrom = blendColors(
             currentProject.gradientFrom,
             nextProject.gradientFrom,
@@ -266,7 +195,7 @@ const ProjectsPage = () => {
                 animate={true}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold"
               >
-                My Work
+                My Projects
               </GradientText>
             </h1>
             <p className="text-xl text-gray-400 dark:text-gray-400 max-w-2xl mx-auto">
@@ -275,8 +204,8 @@ const ProjectsPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {projectsData.map((project, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {projectsData.slice(0, 6).map((project, index) => (
               <ShineCard
                 key={index}
                 className={`group bg-white/5 backdrop-blur-sm border-white/10 h-70 cursor-pointer transform transition-all duration-500 hover:scale-105 ${
@@ -285,7 +214,7 @@ const ProjectsPage = () => {
                 shimmerColor="rgba(255, 255, 255, 0.05)"
                 shineHover={true}
                 onClick={() => {
-                  // Scroll to the project section when clicking on a card
+                  // Scroll to the corresponding project section
                   if (projectRefs.current[index]) {
                     projectRefs.current[index].scrollIntoView({
                       behavior: "smooth",
@@ -384,7 +313,7 @@ const ProjectsPage = () => {
           }}
         >
           {/* Background pattern */}
-          <div className="absolute inset-0 bg-grid-white opacity-10"></div>
+          <div className="absolute inset-0 opacity-10 bg-grid-white/[0.2] -z-10"></div>
 
           {/* Add a semi-transparent overlay for better text visibility in light mode */}
           {theme === "light" && (
@@ -411,15 +340,17 @@ const ProjectsPage = () => {
                   <p className="text-white/90 text-lg mb-8 font-medium">
                     {project.detailedDescription}
                   </p>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button className="bg-white text-black hover:bg-white/90 transition-colors duration-300 transform hover:scale-105 font-semibold">
-                      Visit Project
-                    </Button>
-                  </a>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="bg-white text-black hover:bg-white/90 transition-colors duration-300 transform hover:scale-105 font-semibold">
+                        Visit Project
+                      </Button>
+                    </a>
+                  )}
                 </div>
                 <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm transform transition-all duration-1000 hover:scale-105">
                   <img
