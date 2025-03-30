@@ -19,7 +19,7 @@ const Hero = () => {
 
       heroRef.current.style.setProperty("--x", `${x}px`);
       heroRef.current.style.setProperty("--y", `${y}px`);
-    }; 
+    };  
 
     const heroElement = heroRef.current;
     if (heroElement) {
