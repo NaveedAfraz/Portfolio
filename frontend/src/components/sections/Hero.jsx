@@ -9,7 +9,6 @@ const Hero = () => {
   const { theme } = useTheme();
   const heroRef = useRef(null);
 
-  // Handle spotlight effect
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!heroRef.current) return;
@@ -20,7 +19,7 @@ const Hero = () => {
 
       heroRef.current.style.setProperty("--x", `${x}px`);
       heroRef.current.style.setProperty("--y", `${y}px`);
-    };
+    }; 
 
     const heroElement = heroRef.current;
     if (heroElement) {
@@ -118,7 +117,7 @@ const Hero = () => {
       <div className="absolute -bottom-40 -right-40 w-80 h-80 border border-primary/10 rounded-full"></div>
       <div className="absolute top-0 left-0 w-full h-full bg-grid-primary/[0.02] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
     </Spotlight>
-  );
+  ); 
 };
 
 export default Hero;
