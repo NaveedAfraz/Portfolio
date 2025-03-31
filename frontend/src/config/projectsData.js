@@ -121,7 +121,7 @@ export const projectsData = [
     gradientTo: "#ED8936", // Light orange
     logo: "blog",
     image: "/images/blog.png",
-    link: "https://social-media-1-2enj.onrender.com",
+    link: "https://blog-theta-three-48.vercel.app",
   },
   {
     id: "echomate",
