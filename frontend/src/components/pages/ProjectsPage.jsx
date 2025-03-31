@@ -164,16 +164,16 @@ const ProjectsPage = () => {
       .map((_, i) => projectRefs.current[i] || null);
   }
   const [dynamicList, setDynamicList] = useState();
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
     if (windowWidth < 800) {
-      // console.log("less");
+      console.log("less");
       setDynamicList(4);
     } else {
-      // console.log("more");
+      console.log("more");
       setDynamicList(6);
     }
 
