@@ -170,10 +170,10 @@ const ProjectsPage = () => {
       setWindowWidth(window.innerWidth);
     };
     if (windowWidth < 800) {
-      console.log("less");
+      // console.log("less");
       setDynamicList(4);
     } else {
-      console.log("more");
+      // console.log("more");
       setDynamicList(6);
     }
 
