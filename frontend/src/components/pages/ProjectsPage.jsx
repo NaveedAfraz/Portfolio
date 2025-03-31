@@ -163,16 +163,26 @@ const ProjectsPage = () => {
       .fill()
       .map((_, i) => projectRefs.current[i] || null);
   }
+  const [dynamicList, setDynamicList] = useState();
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    if (windowWidth < 800) {
+      console.log("less");
+      setDynamicList(4);
+    } else {
+      console.log("more");
+      setDynamicList(6);
+    }
 
-  // Determine proper text color based on theme
-  const getTextColor = () => {
-    return theme === "dark" ? "text-white" : "text-white";
-  };
-
-  const getTextColorWithOpacity = (opacity = 80) => {
-    return theme === "dark" ? `text-white/${opacity}` : `text-white/${opacity}`;
-  };
-
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [windowWidth]);
   return (
     <div className="min-h-screen ">
       {/* Header section with the title and project cards - no container, no background */}
@@ -205,7 +215,7 @@ const ProjectsPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {projectsData.slice(0, 6).map((project, index) => (
+            {projectsData.slice(0, dynamicList).map((project, index) => (
               <ShineCard
                 key={index}
                 className={`group bg-white/5 backdrop-blur-sm border-white/10 h-70 cursor-pointer transform transition-all duration-500 hover:scale-105 ${
