@@ -51,7 +51,7 @@ const skillsData = [
       { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
       { name: "Shadcn", icon: SiShadcnui, color: "#000000" },
     ],
-  },
+  },  
   {
     title: "Backend Development",
     skills: [
