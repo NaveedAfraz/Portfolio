@@ -8,7 +8,7 @@ export const projectsData = [
     detailedDescription:
       "BiteBox is a comprehensive restaurant platform that revolutionizes the online food ordering experience. It features an intuitive user interface for browsing menus, customizing orders, and secure checkout through Stripe integration. The admin dashboard provides restaurant owners with real-time order tracking, inventory management, and sales analytics. Built with a modern tech stack including React.js for the frontend, Express and Node.js for the backend, and MySQL for database management. Real-time order updates are handled through Socket.io, while user authentication is secured with Clerk.",
     technologies: [
-      "React.js",
+      "ReactJS",
       "Shadcn",
       "Tailwind",
       "MySQL",
@@ -34,7 +34,7 @@ export const projectsData = [
     detailedDescription:
       "Notes is a powerful yet intuitive note-taking application designed for productivity and organization. It features rich text editing capabilities, allowing users to format notes with headings, lists, code blocks, and more. The app includes categorization through tags and folders, search functionality, and automatic saving. The clean, minimalist interface ensures a distraction-free writing experience, while the responsive design makes it accessible across all devices. Built with React.js and styled with Tailwind CSS for a modern look and feel, with a Node.js/Express backend for secure data storage.",
     technologies: [
-      "React.js",
+      "ReactJS",
       "Tailwind CSS",
       "Moosge",
       "Shadcn",
@@ -56,13 +56,13 @@ export const projectsData = [
     detailedDescription:
       "Elite Wardrobe is a sophisticated e-commerce platform designed for fashion enthusiasts. The application features a visually stunning product showcase with detailed views, size guides, and related item suggestions. Users can easily filter products by category, price range, and popularity, while the wishlist functionality allows them to save favorites for later. The checkout process is streamlined with Stripe integration for secure payments. The admin panel provides comprehensive inventory management, sales analytics, and customer insights. Built with React.js for the frontend, Express and Node.js for the backend, with MySQL handling the database operations.",
     technologies: [
-      "React.js",
+      "ReactJS",
       "Shadcn",
       "Tailwind",
       "MySQL",
       "Express",
       "Stripe",
-      "react-redux",
+      "React-Redux",
       "NodeJS",
       "Product Filtering",
       "Wishlist",
@@ -81,13 +81,13 @@ export const projectsData = [
     detailedDescription:
       "Athena AI is a sophisticated artificial intelligence assistant that leverages advanced natural language processing to provide intelligent responses and solutions. The platform offers conversational AI capabilities, allowing users to interact naturally through text or voice. Features include smart content generation, language translation, data analysis, and personalized recommendations. The application is built with a focus on accessibility and user experience, with a clean interface that makes complex AI interactions simple and intuitive. The technology stack includes React.js for the frontend, with a robust backend powered by Node.js and Express, integrated with various AI and machine learning services.",
     technologies: [
-      "React.js",
+      "ReactJS",
       "Shadcn",
       "Tailwind",
       "MySQL",
       "Express",
       "Clerk",
-      "react-redux",
+      "React-Redux",
       "NodeJS",
       "AI Integration",
       "Natural Language Processing",
@@ -106,13 +106,14 @@ export const projectsData = [
     detailedDescription:
       "DevInsights is a comprehensive blogging platform designed specifically for developers and tech enthusiasts. The platform allows users to create, publish, and share technical articles with rich code formatting, syntax highlighting, and embedded media. Features include categorization by topics, interactive comments section, and social sharing capabilities. The platform also includes a recommendation system that suggests relevant articles based on reading history. The clean, responsive design ensures optimal readability across all devices, while the markdown support makes technical writing effortless. Built with React.js for the frontend and a Node.js/Express backend with MySQL database.",
     technologies: [
-      "React.js",
+      "ReactJS",
       "Shadcn",
       "Tailwind",
       "MySQL",
       "Express",
       "Clerk",
       "Markdown",
+      "React-Redux",
       "Code Highlighting",
       "NodeJS",
     ],
@@ -130,7 +131,7 @@ export const projectsData = [
     detailedDescription:
       "EchoMate is a feature-rich communication platform designed for seamless real-time messaging and collaboration. The application offers instant messaging with read receipts, file sharing, and emoji reactions. Users can create group chats, direct messages, and channels for organized communication. The platform also supports voice and video calls with screen sharing capabilities, making it perfect for remote teams and friends. The intuitive interface prioritizes user experience with customizable themes and notification settings. Built with React.js for the frontend and leveraging Socket.io for real-time communication, with a secure backend powered by Node.js, Express, and MySQL.",
     technologies: [
-      "React.js",
+      "ReactJS",
       "Shadcn",
       "Tailwind",
       "MySQL",
@@ -138,7 +139,7 @@ export const projectsData = [
       "Clerk",
       "Socket.io",
       "WebRTC",
-      "react-redux",
+      "React-Redux",
       "NodeJS",
     ],
     gradientFrom: "#285E61", // Teal
@@ -155,12 +156,13 @@ export const projectsData = [
     detailedDescription:
       "A social media platform with user authentication, posting, and commenting features",
     technologies: [
-      "React.js",
+      "ReactJS",
       "Shadcn",
       "Tailwind",
       "MySQL",
       "Express",
       "Clerk",
+      "React-Redux",
       "Markdown",
       "Code Highlighting",
       "NodeJS",
