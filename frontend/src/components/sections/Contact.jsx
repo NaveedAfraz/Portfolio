@@ -94,7 +94,7 @@ const Contact = () => {
                 <h4 className="font-medium">Email</h4>
                 <p className="text-muted-foreground">
                   <a
-                    href="mailto:your.email@example.com"
+                    href="mailto:naveedAfraz2003@gmail.com"
                     className="text-indigo-500 hover:underline"
                   >
                     NaveedAfraz2003@gmail.com
@@ -129,7 +129,7 @@ const Contact = () => {
               <div className="pt-4">
                 <Button
                   onClick={() =>
-                    (window.location.href = "mailto:your.email@example.com")
+                    (window.location.href = "mailto:naveedAfraz2003@gmail.com")
                   }
                   className="w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white"
                 >
