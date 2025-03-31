@@ -14,39 +14,61 @@ import {
 import { GradientText } from "../magicui/gradient-text";
 import { useTheme } from "../ThemeProvider";
 import { useEffect, useRef, useState } from "react";
+import {
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaNodeJs,
+  FaGitAlt,
+  FaGithub,
+  FaDatabase,
+  FaCode,
+} from "react-icons/fa";
+import {
+  SiRedux,
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb,
+  SiPostman,
+  SiSocketdotio,
+  SiGithubactions,
+  SiShadcnui,
+} from "react-icons/si";
+import { VscCode } from "react-icons/vsc";
 
 const skillsData = [
   {
     title: "Frontend Development",
     skills: [
-      { name: "React", proficiency: 80 },
-      { name: "Redux", proficiency: 85 },
-      { name: "HTML/CSS", proficiency: 90 },
-      { name: "JavaScript", proficiency: 70 },
-      { name: "Tailwind CSS", proficiency: 70 },
-      { name: "Shadcn", proficiency: 80 },
+      { name: "React", icon: FaReact, color: "#61DAFB" },
+      { name: "Redux", icon: SiRedux, color: "#764ABC" },
+      { name: "HTML/CSS", icon: FaHtml5, color: "#E34F26" },
+      { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
+      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "Shadcn", icon: FaCode, color: "#000000" },
     ],
   },
   {
     title: "Backend Development",
     skills: [
-      { name: "Node.js", proficiency: 70 },
-      { name: "Express", proficiency: 70 },
-      { name: "RESTful APIs", proficiency: 90 },
-      { name: "MongoDB", proficiency: 40 },
-      { name: "SQL", proficiency: 65 },
-      { name: "Socket", proficiency: 65 },
+      { name: "Node.js", icon: FaNodeJs, color: "#339933" },
+      { name: "Express", icon: SiExpress, color: "#000000" },
+      { name: "RESTful APIs", icon: FaDatabase, color: "#FF5722" },
+      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+      { name: "SQL", icon: FaDatabase, color: "#4479A1" },
+      { name: "Socket", icon: SiSocketdotio, color: "#010101" },
     ],
   },
   {
     title: "Tools & Technologies",
     skills: [
-      { name: "Git", proficiency: 85 },
-      { name: "GitHub", proficiency: 70 },
-      { name: "VS Code", proficiency: 85 },
-      { name: "Postman", proficiency: 80 },
-      { name: "TanStack Query", proficiency: 65 },
-      { name: "GitHub Actions", proficiency: 30 },
+      { name: "Git", icon: FaGitAlt, color: "#F05032" },
+      { name: "GitHub", icon: FaGithub, color: "#181717" },
+      { name: "VS Code", icon: VscCode, color: "#007ACC" },
+      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+      { name: "TanStack Query", icon: FaDatabase, color: "#FF4154" },
+      { name: "GitHub Actions", icon: SiGithubactions, color: "#2088FF" },
     ],
   },
 ];
@@ -122,35 +144,75 @@ const Skills = () => {
                 </ShineCardTitle>
               </ShineCardHeader>
               <ShineCardContent>
-                <ul className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <li key={skillIndex} className="space-y-1">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <div className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 group-hover:scale-125 transition-transform duration-300"></div>
-                          <span>{skill.name}</span>
-                        </div>
-                        <span className="text-sm font-medium">
-                          {animated ? skill.proficiency : 0}%
-                        </span>
-                      </div>
-                      <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
+                <ul className="grid grid-cols-2 gap-4">
+                  {category.skills.map((skill, skillIndex) => {
+                    const IconComponent = skill.icon;
+                    return (
+                      <li
+                        key={skillIndex}
+                        className="flex flex-col items-center gap-2 p-2 transition-all duration-300 hover:scale-110"
+                      >
                         <div
-                          className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full transition-all duration-1000 ease-out"
+                          className={`flex items-center justify-center w-12 h-12 rounded-xl bg-muted/80 
+                            ${animated ? "animate-bounce-in" : "opacity-0"}`}
                           style={{
-                            width: animated ? `${skill.proficiency}%` : "0%",
                             transitionDelay: `${skillIndex * 100}ms`,
+                            animation: animated
+                              ? `pulse 2s infinite ${skillIndex * 100}ms`
+                              : "none",
                           }}
-                        ></div>
-                      </div>
-                    </li>
-                  ))}
+                        >
+                          <IconComponent
+                            size={30}
+                            color={theme === "dark" ? skill.color : skill.color}
+                            className={`transform transition-all duration-500 hover:rotate-12 
+                              ${animated ? "scale-100" : "scale-0"}`}
+                            style={{ transitionDelay: `${skillIndex * 150}ms` }}
+                          />
+                        </div>
+                        <span className="text-sm font-medium text-center">
+                          {skill.name}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </ShineCardContent>
             </ShineCard>
           ))}
         </div>
       </div>
+      <style jsx>{`
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.05);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        @keyframes bounce-in {
+          0% {
+            opacity: 0;
+            transform: scale(0);
+          }
+          60% {
+            opacity: 1;
+            transform: scale(1.1);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        .animate-bounce-in {
+          animation: bounce-in 0.6s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 };
