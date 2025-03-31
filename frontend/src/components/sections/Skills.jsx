@@ -25,6 +25,7 @@ import {
   FaDatabase,
   FaCode,
 } from "react-icons/fa";
+
 import {
   SiRedux,
   SiTailwindcss,
@@ -34,6 +35,8 @@ import {
   SiSocketdotio,
   SiGithubactions,
   SiShadcnui,
+  SiReactquery,
+  SiMysql,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 
@@ -46,7 +49,7 @@ const skillsData = [
       { name: "HTML/CSS", icon: FaHtml5, color: "#E34F26" },
       { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
       { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
-      { name: "Shadcn", icon: FaCode, color: "#000000" },
+      { name: "Shadcn", icon: SiShadcnui, color: "#000000" },
     ],
   },
   {
@@ -56,7 +59,7 @@ const skillsData = [
       { name: "Express", icon: SiExpress, color: "#000000" },
       { name: "RESTful APIs", icon: FaDatabase, color: "#FF5722" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-      { name: "SQL", icon: FaDatabase, color: "#4479A1" },
+      { name: "SQL", icon: SiMysql, color: "#4479A1" },
       { name: "Socket", icon: SiSocketdotio, color: "#010101" },
     ],
   },
@@ -67,7 +70,7 @@ const skillsData = [
       { name: "GitHub", icon: FaGithub, color: "#181717" },
       { name: "VS Code", icon: VscCode, color: "#007ACC" },
       { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-      { name: "TanStack Query", icon: FaDatabase, color: "#FF4154" },
+      { name: "TanStack Query", icon: SiReactquery, color: "#FF4154" },
       { name: "GitHub Actions", icon: SiGithubactions, color: "#2088FF" },
     ],
   },
