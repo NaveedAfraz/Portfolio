@@ -20,7 +20,7 @@ export const educationData = [
     field: "",
     university: "International Indian School Jeddah (KSA)",
     description:
-      "Excelled in Mathematics and Computer Science subjects. Class representative and member of the coding club.",
+      "Completed Higher Secondary Education with a focus on Science and Mathematics.",
     courses: ["Computer Science", "Mathematics", "Physics", "Chemistry"],
   },
   {
@@ -30,7 +30,7 @@ export const educationData = [
     field: "in General",
     university: "International Indian School Jeddah (KSA)",
     description:
-      "Developed interest in programming and technology. Started learning programming basics and participated in science fairs.",
+      "Developed interest in programming and technology. Started learning programming basics.",
     courses: ["Basic Computing", "Science", "Mathematics", "English"],
   },
 ];
