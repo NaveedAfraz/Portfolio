@@ -100,12 +100,11 @@ const Hero = () => {
           >
             View My Work
           </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="cursor-pointer px-6 py-3 hover:scale-105 transition-transform rounded-md border border-gray-300 dark:border-gray-700 font-medium"
-          >
-            Contact Me
-          </button>
+          <a href="/NaveedAfrazResume.pdf" download="NaveedAfrazResume.pdf">
+            <button className="cursor-pointer px-6 py-3 hover:scale-105 transition-transform rounded-md border border-gray-300 dark:border-gray-700 font-medium">
+              Download Resume
+            </button>
+          </a>
         </div>
       </div>
 
