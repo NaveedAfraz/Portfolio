@@ -24,7 +24,7 @@ export const projectsData = [
     gradientTo: "#2C5282", // Brighter blue
     logo: "bitebox",
     image: "/images/BIteBox.png",
-    link: "https://bitebox-demo.vercel.app",
+    link: "https://bite-box-three.vercel.app",
   },
   {
     id: "notes",
