@@ -142,8 +142,14 @@ const Contact = () => {
       )}
 
       {/* MagicUI floating elements */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5 rounded-full mix-blend-multiply filter blur-xl opacity-100 animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-indigo-500/5 rounded-full mix-blend-multiply filter blur-xl opacity-100 animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-indigo-500/15 via-purple-500/15 to-pink-500/15 rounded-full mix-blend-multiply filter blur-xl opacity-80 animate-blob"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-gradient-to-r from-purple-500/15 via-pink-500/15 to-indigo-500/15 rounded-full mix-blend-multiply filter blur-xl opacity-80 animate-blob animation-delay-2000"></div>
+      
+      {/* Additional bubbles for better mobile appearance */}
+      <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-r from-pink-500/15 to-indigo-500/15 rounded-full mix-blend-multiply filter blur-xl opacity-80 animate-blob animation-delay-1000"></div>
+      <div className="absolute bottom-10 left-20 w-40 h-40 bg-gradient-to-r from-indigo-500/15 to-purple-500/15 rounded-full mix-blend-multiply filter blur-xl opacity-80 animate-blob animation-delay-3000"></div>
+      <div className="absolute top-20 left-10 w-28 h-28 bg-gradient-to-r from-purple-500/15 to-pink-500/15 rounded-full mix-blend-multiply filter blur-xl opacity-80 animate-blob animation-delay-5000"></div>
+      <div className="absolute bottom-40 right-20 w-36 h-36 bg-gradient-to-r from-indigo-400/15 to-pink-400/15 rounded-full mix-blend-multiply filter blur-xl opacity-80 animate-blob animation-delay-7000"></div>
     </Spotlight>
   );
 };

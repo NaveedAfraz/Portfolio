@@ -109,11 +109,18 @@ const Hero = () => {
       </div>
 
       {/* Floating elements for visual interest */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-      <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-secondary/5 rounded-full mix-blend-multiply filter blur-xl opacity-100 animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-1/2 right-1/2 w-72 h-72 bg-accent/5 rounded-full mix-blend-multiply filter blur-xl opacity-100 animate-blob animation-delay-4000"></div>
-      <div className="absolute bottom-1/2 right-1/2 w-72 h-72 bg-accent/5 rounded-full mix-blend-multiply filter blur-xl opacity-100 animate-blob animation-delay-6000"></div>
-      <div className="absolute bottom-1/2 right-1/2 w-72 h-72 bg-accent/5 rounded-full mix-blend-multiply filter blur-xl opacity-100 animate-blob animation-delay-8000"></div>
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+      <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-secondary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-1/2 right-1/2 w-56 h-56 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-48 h-48 bg-indigo-500/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-6000"></div>
+      <div className="absolute top-1/2 right-1/3 w-40 h-40 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-8000"></div>
+      
+      {/* Additional smaller bubbles that look good on mobile */}
+      <div className="absolute top-10 right-10 w-28 h-28 bg-pink-500/10 rounded-full mix-blend-multiply filter blur-xl opacity-90 animate-blob animation-delay-1000"></div>
+      <div className="absolute bottom-10 left-20 w-32 h-32 bg-indigo-400/10 rounded-full mix-blend-multiply filter blur-xl opacity-90 animate-blob animation-delay-3000"></div>
+      <div className="absolute top-20 left-10 w-24 h-24 bg-purple-400/15 rounded-full mix-blend-multiply filter blur-xl opacity-90 animate-blob animation-delay-5000"></div>
+      <div className="absolute bottom-40 right-20 w-36 h-36 bg-pink-400/15 rounded-full mix-blend-multiply filter blur-xl opacity-90 animate-blob animation-delay-7000"></div>
+      
       {/* Decorative elements */}
       <div className="absolute -top-40 -left-40 w-80 h-80 border border-primary/10 rounded-full"></div>
       <div className="absolute top-60 left-10 w-80 h-80 border border-primary/10 rounded-full"></div>
