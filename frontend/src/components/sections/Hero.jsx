@@ -63,15 +63,15 @@ const Hero = () => {
       <div className="flex flex-col items-center justify-center text-center space-y-6 w-full max-w-5xl px-4 md:px-8 mx-auto z-10">
         <div className="space-y-4 overflow-hidden">
           <h1
-            className={`text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl transform transition-transform duration-1000 ease-out font-cursive ${
+            className={`text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl transform transition-transform duration-1000 ease-out  ${
               isLoaded ? "translate-y-0" : "translate-y-full"
             }`}
           >
             <GradientText
               gradient={
                 theme === "dark"
-                  ? "from-indigo-400 via-purple-400 to-pink-400"
-                  : "from-indigo-600 via-purple-600 to-pink-600"
+                  ? "from-indigo-400 via-purple-400 to-pink-400 sour-gummy"
+                  : "from-indigo-600 via-purple-600 to-pink-600 sour-gummy"
               }
               animate={true}
             >
