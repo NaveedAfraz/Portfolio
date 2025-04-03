@@ -67,7 +67,7 @@ const Navbar = () => {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Link className="flex items-center space-x-2" to="/">
-            <span className="font-bold font-cursive text-xl ml-12">Naveed</span>
+            <span className="font-bold sour-gummy text-xl ml-12">Naveed</span>
           </Link>
         </div>
          

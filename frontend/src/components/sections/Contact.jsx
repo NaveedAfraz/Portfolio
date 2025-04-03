@@ -32,7 +32,7 @@ const Contact = () => {
     >
       <div className="container px-4 md:px-6 mx-auto">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold tracking-tighter font-cursive">
+          <h2 className="text-3xl font-bold tracking-tighter sour-gummy">
             <GradientText
               gradient="from-indigo-500 via-purple-500 to-pink-500"
               animate={true}

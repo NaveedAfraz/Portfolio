@@ -194,7 +194,7 @@ const ProjectsPage = () => {
           <div className="absolute inset-0 w-full h-screen overflow-hidden b">
             <FlickeringGrid />
           </div>
-          <div className="text-center mb-16 font-cursive z-20">
+          <div className="text-center mb-16 sour-gummy z-20">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6  ">
               <GradientText
                 gradient={
@@ -236,8 +236,8 @@ const ProjectsPage = () => {
                   <ShineCardTitle
                     className={
                       theme === "light"
-                        ? "text-primary font-cursive"
-                        : "text-white font-cursive"
+                        ? "text-primary sour-gummy"
+                        : "text-white sour-gummy"
                     }
                   >
                     {project.title}
@@ -257,7 +257,7 @@ const ProjectsPage = () => {
                     {project.technologies.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className={`px-2 py-1 font-cursive ${
+                        className={`px-2 py-1 sour-gummy ${
                           theme === "light"
                             ? "bg-primary/10 text-primary"
                             : "bg-white/10 text-white/80"
@@ -330,7 +330,7 @@ const ProjectsPage = () => {
           )}
 
           <Spotlight className="w-full" spotlightClassName="bg-white/5">
-            <div className="w-full max-w-7xl mx-auto px-4 md:px-6 relative z-10 font-cursive">
+            <div className="w-full max-w-7xl mx-auto px-4 md:px-6 relative z-10 sour-gummy">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="transform transition-all duration-1000">
                   <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white ">

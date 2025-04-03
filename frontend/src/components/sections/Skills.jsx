@@ -124,7 +124,7 @@ const Skills = () => {
       className="py-16 md:py-24 bg-muted/50"
     >
       <div className="container px-4 md:px-6 mx-auto">
-        <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 font-cursive">
+        <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 sour-gummy">
           <GradientText
             gradient="from-indigo-500 via-purple-500 to-pink-500"
             animate={true}
@@ -142,7 +142,7 @@ const Skills = () => {
               shineHover={true}
             >
               <ShineCardHeader>
-                <ShineCardTitle className="font-cursive">
+                <ShineCardTitle className="sour-gummy">
                   {category.title}
                 </ShineCardTitle>
               </ShineCardHeader>

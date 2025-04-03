@@ -44,11 +44,11 @@ const Projects = ({ showOnHomePage = false }) => {
       id="projects"
       ref={sectionRef}
       className={`py-16 md:py-24 ${
-        !showOnHomePage ? "transition-colors duration-700 font-cursive " : "bg-muted/50 font-cursive"
+        !showOnHomePage ? "transition-colors duration-700 sour-gummy " : "bg-muted/50 sour-gummy"
       }`}
     >
       <div className="container px-4 md:px-6 mx-auto">
-        <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 font-cursive">
+        <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 sour-gummy">
           <GradientText
             gradient={
               showOnHomePage
@@ -78,7 +78,7 @@ const Projects = ({ showOnHomePage = false }) => {
               >
                 <ShineCardHeader>
                   <ShineCardTitle
-                    className={`${showOnHomePage ? "" : "text-white"} font-cursive`}
+                    className={`${showOnHomePage ? "" : "text-white"} sour-gummy`}
                   >
                     {project.title}
                   </ShineCardTitle>

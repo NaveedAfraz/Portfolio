@@ -17,7 +17,7 @@ export function Education() {
         spotlightClassName="opacity-20"
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        <h2 className="text-3xl font-bold tracking-tighter text-center mb-16 font-cursive">
+        <h2 className="text-3xl font-bold tracking-tighter text-center mb-16 sour-gummy">
           <GradientText
             gradient="from-indigo-500 via-purple-500 to-pink-500"
             animate={true}
@@ -76,10 +76,10 @@ export function Education() {
             {/* Use a fixed height container with overflow auto */}
             <div className="h-[300px] overflow-y-auto pr-2 custom-scrollbar">
               <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-                <h3 className="text-2xl font-bold mb-2 font-cursive">
+                <h3 className="text-2xl font-bold mb-2 sour-gummy">
                   {activeEducation.degree} {activeEducation.field}
                 </h3>
-                <h4 className="text-xl text-primary/80 mb-4 font-cursive">
+                <h4 className="text-xl text-primary/80 mb-4 sour-gummy">
                   {activeEducation.university}
                 </h4>
                 <p className="mb-6 text-muted-foreground">
@@ -87,7 +87,7 @@ export function Education() {
                 </p>
 
                 <div>
-                  <h5 className="font-semibold mb-3 text-primary/90 font-cursive">
+                  <h5 className="font-semibold mb-3 text-primary/90 sour-gummy">
                     Key Courses
                   </h5>
                   <div className="flex flex-wrap gap-2">
