@@ -4,8 +4,8 @@ import { cn } from "../../lib/utils";
 export function Spotlight({
   className,
   children,
-  spotlightColor = "rgba(120, 119, 198, 0.15)",
-  size = 800,
+  spotlightColor = "rgba(255, 0, 0, 0.15)",
+  size = 100,
   ...props
 }) {
   const containerRef = useRef(null);
@@ -47,7 +47,6 @@ export function Spotlight({
       }}
       {...props}
     >
-      {/* Spotlight effect */}
       <div 
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
@@ -55,7 +54,6 @@ export function Spotlight({
         }}
       />
       
-      {/* Content */}
       <div className="relative z-10">
         {children}
       </div>

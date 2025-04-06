@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Hero from "./components/sections/Hero";
 import Skills from "./components/sections/Skills";
@@ -8,14 +8,12 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import ProjectDetail from "./components/sections/ProjectDetail";
 import ProjectsPage from "./components/pages/ProjectsPage";
-import { ScrollProgress } from "./components/magicui/scroll-progress";
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-background text-foreground">
-        <Navbar />
-        <ScrollProgress />
+        <NavBar />
         <Routes>
           <Route
             path="/"
