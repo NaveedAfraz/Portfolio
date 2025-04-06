@@ -211,14 +211,6 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
           )}
         >
           <div className="flex flex-col h-full">
-            {/* <div className="flex justify-between items-center mb-4">
-              <span className="text-white text-lg font-medium">Menu</span>
-              <MobileNavToggle
-                isOpen={isOpen}
-                onClick={onClose}
-                className="text-white"
-              />
-            </div> */}
             <div className="flex-1 overflow-y-auto">{children}</div>
           </div>
         </motion.div>
@@ -291,7 +283,6 @@ export const NavbarButton = ({
       "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
   };
 
-  // For React Router, use Link component for navigation
   if (to && Tag === "a") {
     return (
       <Link

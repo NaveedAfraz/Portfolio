@@ -22,6 +22,7 @@ const NavBar = () => {
   const isHomePage = location.pathname === "/";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [bodyOverflow, setBodyOverflow] = useState('auto');
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -36,6 +37,20 @@ const NavBar = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      setBodyOverflow('hidden');
+      document.body.style.overflow = 'hidden';
+    } else {
+      setBodyOverflow('auto');
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
 
   const handleNavigation = (sectionId) => {
     setIsMenuOpen(false);
@@ -146,50 +161,74 @@ const NavBar = () => {
                   className="md:hidden cursor-pointer w-7 h-7 transition-all duration-300"
                 />
               </MobileNavHeader>
-              <MobileNavMenu isOpen={isMenuOpen}>
+              <MobileNavMenu
+                isOpen={isMenuOpen}
+                onClose={() => setIsMenuOpen(false)}
+                className={`fixed top-0 right-0 z-50 h-[100vh] w-full backdrop-blur p-4 ${
+                  theme === "dark"
+                    ? "bg-neutral-900"
+                    : "bg-neutral-100"
+                }`}
+              >
                 <div className="flex items-center h-20 justify-end">
                   <span
-                    className="mx-2 bg-amber-50 text-black rounded-lg transition-all duration-300"
+                    className={`mx-2 rounded-lg cursor-pointer transition-all duration-300 ${
+                      theme === "dark"
+                        ? "bg-amber-50 text-black"
+                        : "bg-black text-white"
+                    }`}
                   >
                     <ThemeToggle className="md:hidden transition-colors duration-300" />
                   </span>
                   <MobileNavToggle
                     isOpen={isMenuOpen}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="md:hidden cursor-pointer w-7 h-7 transition-all duration-300"
+                    className={`md:hidden cursor-pointer w-7 h-7 transition-all duration-300 ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    }`}
                   />
                 </div>
                 <NavbarButton
                   onClick={() => handleNavigation("hero")}
-                  className="w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
+                  className={`w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md ${
+                    theme === "dark" ? "dark:bg-gradient-to-r" : ""
+                  }`}
                   mobile
                 >
                   Home
                 </NavbarButton>
                 <NavbarButton
                   onClick={() => handleNavigation("skills")}
-                  className="w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
+                  className={`w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md ${
+                    theme === "dark" ? "dark:bg-gradient-to-r" : ""
+                  }`}
                   mobile
                 >
                   Skills
                 </NavbarButton>
                 <NavbarButton
                   onClick={() => handleNavigation("education")}
-                  className="w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
+                  className={`w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md ${
+                    theme === "dark" ? "dark:bg-gradient-to-r" : ""
+                  }`}
                   mobile
                 >
                   Education
                 </NavbarButton>
                 <NavbarButton
                   onClick={() => handleNavigation("projects")}
-                  className="w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
+                  className={`w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md ${
+                    theme === "dark" ? "dark:bg-gradient-to-r" : ""
+                  }`}
                   mobile
                 >
                   Projects
                 </NavbarButton>
                 <NavbarButton
                   onClick={() => handleNavigation("contact")}
-                  className="w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
+                  className={`w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md ${
+                    theme === "dark" ? "dark:bg-gradient-to-r" : ""
+                  }`}
                   mobile
                 >
                   Contact
