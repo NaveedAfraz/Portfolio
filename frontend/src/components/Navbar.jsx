@@ -23,36 +23,32 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme } = useTheme();
-  // Handle scroll effect for navbar
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavigation = (sectionId) => {
-    // Close mobile menu when navigating
     setIsMenuOpen(false);
 
     if (sectionId === "projects") {
-      // If we're already on the projects page, don't do anything
       if (location.pathname === "/projects") return;
 
-      // If we're on the home page, just scroll to the projects section
       if (isHomePage) {
         const section = document.getElementById(sectionId);
         if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       } else {
-        // If we're on another page, navigate to the projects page
         navigate("/projects");
       }
     } else {
@@ -61,29 +57,32 @@ const NavBar = () => {
         setTimeout(() => {
           const section = document.getElementById(sectionId);
           if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
+            section.scrollIntoView({ behavior: "smooth", block: "start" });
           }
-        }, 100);
+        }, 200);
       } else {
         const section = document.getElementById(sectionId);
         if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
     }
   };
 
   return (
-    <div className=" w-full fixed z-40">
+    <div className="w-full fixed z-40">
       <Navbar>
         <NavBody
-          className={`sticky top-0 z-50 w-full border-b backdrop-blur transition-all duration-300 ${
-            scrolled ? "bg-background/95 shadow-sm" : "bg-background/80"
+          className={`sticky top-0 z-50 w-full border-b backdrop-blur transition-all duration-500 ease-in-out ${
+            scrolled ? "bg-background/95 shadow-lg" : "bg-background/80"
           }`}
         >
           <div className="container flex h-16 items-center">
             <NavbarLogo>
-              <Link className="flex items-center space-x-2" to="/">
+              <Link
+                className="flex items-center space-x-2 transition-all duration-300 hover:scale-105"
+                to="/"
+              >
                 <GradientText
                   gradient={
                     theme === "dark"
@@ -91,7 +90,7 @@ const NavBar = () => {
                       : "from-indigo-600 via-purple-600 to-pink-600 sour-gummy"
                   }
                   animate={true}
-                  className="font-bold sour-gummy text-xl"
+                  className="font-bold sour-gummy text-xl transition-all duration-300"
                 >
                   Naveed
                 </GradientText>
@@ -99,97 +98,98 @@ const NavBar = () => {
             </NavbarLogo>
 
             {/* Desktop Navigation */}
-            <NavItems className="hidden md:flex items-center space-x-4 ml-auto ">
+            <NavItems className="hidden md:flex items-center space-x-4 ml-auto">
               <NavbarButton
                 onClick={() => handleNavigation("hero")}
-                className="cursor-pointer z-30 px-4 py-2 hover:scale-105 transition-transform rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium"
+                className="cursor-pointer z-30 px-4 py-2 hover:scale-105 transition-all duration-300 transform rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
               >
                 Home
               </NavbarButton>
               <NavbarButton
                 onClick={() => handleNavigation("skills")}
-                className="cursor-pointer z-30 px-4 py-2 hover:scale-105 transition-transform rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium"
+                className="cursor-pointer z-30 px-4 py-2 hover:scale-105 transition-all duration-300 transform rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
               >
                 Skills
               </NavbarButton>
               <NavbarButton
                 onClick={() => handleNavigation("education")}
-                className="cursor-pointer z-30 px-4 py-2 hover:scale-105 transition-transform rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium"
+                className="cursor-pointer z-30 px-4 py-2 hover:scale-105 transition-all duration-300 transform rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
               >
                 Education
               </NavbarButton>
               <NavbarButton
                 onClick={() => handleNavigation("projects")}
-                className="cursor-pointer z-30 px-4 py-2 hover:scale-105 transition-transform rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium"
+                className="cursor-pointer z-30 px-4 py-2 hover:scale-105 transition-all duration-300 transform rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
               >
                 Projects
               </NavbarButton>
               <NavbarButton
                 onClick={() => handleNavigation("contact")}
-                className="cursor-pointer z-30 px-4 py-2 hover:scale-105 transition-transform rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium"
+                className="cursor-pointer z-30 px-4 py-2 hover:scale-105 transition-all duration-300 transform rounded-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
               >
                 Contact
               </NavbarButton>
-              <ThemeToggle className="hidden md:flex" />
+              <ThemeToggle className="hidden md:flex transition-colors duration-300" />
             </NavItems>
 
             {/* Mobile Navigation */}
             <MobileNav className="md:hidden flex items-center space-x-2">
               <MobileNavHeader>
-                <span className="mx-2 bg-amber-50 text-black rounded-lg cursor-pointer">
-                  <ThemeToggle className="md:hidden" />
+                <span
+                  className="mx-2 rounded-lg cursor-pointer transition-all duration-300"
+                >
+                  <ThemeToggle className="md:hidden transition-colors duration-300" />
                 </span>
                 <MobileNavToggle
                   isOpen={isMenuOpen}
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="md:hidden cursor-pointer w-7 h-7 text-black"
+                  className="md:hidden cursor-pointer w-7 h-7 transition-all duration-300"
                 />
               </MobileNavHeader>
               <MobileNavMenu isOpen={isMenuOpen}>
                 <div className="flex items-center h-20 justify-end">
                   <span
-                    className="mx-2 bg-amber-50 text-black rounded-lg"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="mx-2 bg-amber-50 text-black rounded-lg transition-all duration-300"
                   >
-                    <ThemeToggle className="md:hidden" />
+                    <ThemeToggle className="md:hidden transition-colors duration-300" />
                   </span>
                   <MobileNavToggle
                     isOpen={isMenuOpen}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="md:hidden cursor-pointer bg-black"
+                    className="md:hidden cursor-pointer w-7 h-7 transition-all duration-300"
                   />
                 </div>
                 <NavbarButton
                   onClick={() => handleNavigation("hero")}
-                  className="w-full justify-start my-4"
+                  className="w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
                   mobile
                 >
                   Home
                 </NavbarButton>
                 <NavbarButton
                   onClick={() => handleNavigation("skills")}
-                  className="w-full justify-start my-4"
+                  className="w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
                   mobile
                 >
                   Skills
                 </NavbarButton>
                 <NavbarButton
                   onClick={() => handleNavigation("education")}
-                  className="w-full justify-start my-4"
+                  className="w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
                   mobile
                 >
                   Education
                 </NavbarButton>
                 <NavbarButton
                   onClick={() => handleNavigation("projects")}
-                  className="w-full justify-start my-4"
+                  className="w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
                   mobile
                 >
                   Projects
                 </NavbarButton>
                 <NavbarButton
                   onClick={() => handleNavigation("contact")}
-                  className="w-full justify-start my-4"
+                  className="w-full justify-start my-4 px-4 py-3 rounded-md hover:scale-105 transition-all duration-300 transform bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium shadow-sm hover:shadow-md"
                   mobile
                 >
                   Contact

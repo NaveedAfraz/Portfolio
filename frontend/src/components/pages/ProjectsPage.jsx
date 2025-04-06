@@ -184,11 +184,11 @@ const ProjectsPage = () => {
     };
   }, [windowWidth]);
   return (
-    <div className="min-h-screen ">
+    <div className="h-[100%]">
       {/* Header section with the title and project cards - no container, no background */}
       <section
         ref={headerRef}
-        className="min-h-screen flex flex-col justify-center items-center py-20"
+        className="min-h-screen flex flex-col justify-center items-center py-40"
       >
         <div className="w-full px-4 md:px-6 max-w-7xl mx-auto">
           <div className="absolute inset-0 w-full h-screen overflow-hidden b">

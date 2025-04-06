@@ -211,17 +211,15 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
           )}
         >
           <div className="flex flex-col h-full">
-            <div className="flex justify-between items-center mb-4">
+            {/* <div className="flex justify-between items-center mb-4">
               <span className="text-white text-lg font-medium">Menu</span>
               <MobileNavToggle
                 isOpen={isOpen}
                 onClick={onClose}
                 className="text-white"
               />
-            </div>
-            <div className="flex-1 overflow-y-auto">
-              {children}
-            </div>
+            </div> */}
+            <div className="flex-1 overflow-y-auto">{children}</div>
           </div>
         </motion.div>
       )}
@@ -232,10 +230,7 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
 export const MobileNavToggle = ({ isOpen, onClick, className }) => {
   return isOpen ? (
     <IconX
-      className={cn(
-        "cursor-pointer w-6 h-6 text-black dark:text-white",
-        className
-      )}
+      className={cn("cursor-pointer w-6 h-6 text-white", className)}
       onClick={onClick}
     />
   ) : (

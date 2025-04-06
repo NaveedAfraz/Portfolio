@@ -1,19 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import {
-  MagicCard,
-  MagicCardContent,
-  MagicCardHeader,
-  MagicCardTitle,
-} from "../ui/magic-card";
-import {
-  ShineCard,
-  ShineCardContent,
-  ShineCardHeader,
-  ShineCardTitle,
-} from "../magicui/shine-card";
-import { GradientText } from "../magicui/gradient-text";
 import { useTheme } from "../ThemeProvider";
 import { useEffect, useRef, useState } from "react";
+import { GradientText } from "../magicui/gradient-text";
+import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 import {
   FaReact,
   FaHtml5,
@@ -51,7 +39,7 @@ const skillsData = [
       { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
       { name: "Shadcn", icon: SiShadcnui, color: "#000000" },
     ],
-  },  
+  },
   {
     title: "Backend Development",
     skills: [
@@ -108,15 +96,6 @@ const Skills = () => {
     };
   }, []);
 
-  const getShimmerColor = (index) => {
-    const colors = [
-      theme === "dark" ? "rgba(129, 140, 248, 0.6)" : "rgba(99, 102, 241, 0.6)", // Indigo
-      theme === "dark" ? "rgba(192, 132, 252, 0.6)" : "rgba(168, 85, 247, 0.6)", // Purple
-      theme === "dark" ? "rgba(244, 114, 182, 0.6)" : "rgba(236, 72, 153, 0.6)", // Pink
-    ];
-    return colors[index % colors.length];
-  };
-
   return (
     <section
       id="skills"
@@ -135,53 +114,65 @@ const Skills = () => {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
           {skillsData.map((category, index) => (
-            <ShineCard
-              key={index}
-              className="group"
-              shimmerColor={getShimmerColor(index)}
-              shineHover={true}
-            >
-              <ShineCardHeader>
-                <ShineCardTitle className="sour-gummy">
+            <CardContainer key={index} className="inter-var w-full">
+              <CardBody className="bg-background relative group/card border-black/[0.1] dark:border-white/[0.2] border w-full h-full rounded-xl p-6">
+                <CardItem
+                  translateZ="50"
+                  className="text-xl font-bold sour-gummy"
+                >
                   {category.title}
-                </ShineCardTitle>
-              </ShineCardHeader>
-              <ShineCardContent>
-                <ul className="grid grid-cols-2 gap-4">
-                  {category.skills.map((skill, skillIndex) => {
-                    const IconComponent = skill.icon;
-                    return (
-                      <li
-                        key={skillIndex}
-                        className="flex flex-col items-center gap-2 p-2 transition-all duration-300 hover:scale-110"
-                      >
-                        <div
-                          className={`flex items-center justify-center w-12 h-12 rounded-xl bg-muted/80 
-                            ${animated ? "animate-bounce-in" : "opacity-0"}`}
-                          style={{
-                            transitionDelay: `${skillIndex * 100}ms`,
-                            animation: animated
-                              ? `pulse 2s infinite ${skillIndex * 100}ms`
-                              : "none",
-                          }}
+                </CardItem>
+                <CardItem translateZ="60" className="mt-4 w-full">
+                  <ul className="grid grid-cols-2 gap-4">
+                    {category.skills.map((skill, skillIndex) => {
+                      const IconComponent = skill.icon;
+                      return (
+                        <li
+                          key={skillIndex}
+                          className="flex flex-col items-center gap-2 p-2 transition-all duration-300"
                         >
-                          <IconComponent
-                            size={30}
-                            color={theme === "dark" ? skill.color : skill.color}
-                            className={`transform transition-all duration-500 hover:rotate-12 
-                              ${animated ? "scale-100" : "scale-0"}`}
-                            style={{ transitionDelay: `${skillIndex * 150}ms` }}
-                          />
-                        </div>
-                        <span className="text-sm font-medium text-center">
-                          {skill.name}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </ShineCardContent>
-            </ShineCard>
+                          <CardItem
+                            translateZ={80 + skillIndex * 5}
+                            rotateX={skillIndex % 2 === 0 ? 5 : -5}
+                          >
+                            <div
+                              className={`flex items-center justify-center w-12 h-12 rounded-xl bg-muted/80 
+                                ${
+                                  animated ? "animate-bounce-in" : "opacity-0"
+                                }`}
+                              style={{
+                                transitionDelay: `${skillIndex * 100}ms`,
+                                animation: animated
+                                  ? `pulse 2s infinite ${skillIndex * 100}ms`
+                                  : "none",
+                              }}
+                            >
+                              <IconComponent
+                                size={30}
+                                color={
+                                  theme === "dark" ? skill.color : skill.color
+                                }
+                                className={`transform transition-all duration-500 hover:rotate-12 
+                                  ${animated ? "scale-100" : "scale-0"}`}
+                                style={{
+                                  transitionDelay: `${skillIndex * 150}ms`,
+                                }}
+                              />
+                            </div>
+                          </CardItem>
+                          <CardItem
+                            translateZ={40}
+                            className="text-sm font-medium text-center"
+                          >
+                            {skill.name}
+                          </CardItem>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </CardItem>
+              </CardBody>
+            </CardContainer>
           ))}
         </div>
       </div>

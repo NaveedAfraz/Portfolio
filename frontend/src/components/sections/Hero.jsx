@@ -54,7 +54,7 @@ const Hero = () => {
       <Spotlight
         id="hero"
         ref={heroRef}
-        className="min-h-[90vh] relative flex items-center justify-center group overflow-hidden"
+        className="min-h-[100vh] relative flex items-center justify-center group overflow-hidden"
         spotlightColor={
           theme === "dark"
             ? "rgba(45, 43, 176, 0.25)"
@@ -62,7 +62,7 @@ const Hero = () => {
         }
         size={1200}
       >
-        <div className="flex flex-col items-center justify-center text-center space-y-6 w-full max-w-5xl px-4 md:px-8 mx-auto z-10">
+        <div className="flex flex-col items-center justify-center h-[100vh] text-center space-y-6 w-full max-w-5xl px-4 md:px-8 mx-auto z-10">
           <div className="space-y-4 overflow-hidden">
             <h1
               className={`text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl transform transition-transform duration-1000 ease-out  ${
