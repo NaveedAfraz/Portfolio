@@ -22,7 +22,7 @@ const NavBar = () => {
   const isHomePage = location.pathname === "/";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [bodyOverflow, setBodyOverflow] = useState('auto');
+  const [bodyOverflow, setBodyOverflow] = useState("auto");
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -40,15 +40,15 @@ const NavBar = () => {
 
   useEffect(() => {
     if (isMenuOpen) {
-      setBodyOverflow('hidden');
-      document.body.style.overflow = 'hidden';
+      setBodyOverflow("hidden");
+      document.body.style.overflow = "hidden";
     } else {
-      setBodyOverflow('auto');
-      document.body.style.overflow = 'auto';
+      setBodyOverflow("auto");
+      document.body.style.overflow = "auto";
     }
 
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [isMenuOpen]);
 
@@ -112,7 +112,6 @@ const NavBar = () => {
               </Link>
             </NavbarLogo>
 
-            {/* Desktop Navigation */}
             <NavItems className="hidden md:flex items-center space-x-4 ml-auto">
               <NavbarButton
                 onClick={() => handleNavigation("hero")}
@@ -144,16 +143,13 @@ const NavBar = () => {
               >
                 Contact
               </NavbarButton>
-              <ThemeToggle className="hidden md:flex transition-colors duration-300" />
+              <ThemeToggle className="hidden md:flex transition-colors duration-300 cursor-pointer" />
             </NavItems>
 
-            {/* Mobile Navigation */}
             <MobileNav className="md:hidden flex items-center space-x-2">
               <MobileNavHeader>
-                <span
-                  className="mx-2 rounded-lg cursor-pointer transition-all duration-300"
-                >
-                  <ThemeToggle className="md:hidden transition-colors duration-300" />
+                <span className="mx-2 rounded-lg cursor-pointer transition-all duration-300">
+                  <ThemeToggle className="md:hidden transition-colors duration-300 cursor-pointer" />
                 </span>
                 <MobileNavToggle
                   isOpen={isMenuOpen}
@@ -164,10 +160,8 @@ const NavBar = () => {
               <MobileNavMenu
                 isOpen={isMenuOpen}
                 onClose={() => setIsMenuOpen(false)}
-                className={`fixed top-0 right-0 z-50 h-[100vh] w-full backdrop-blur p-4 ${
-                  theme === "dark"
-                    ? "bg-neutral-900"
-                    : "bg-neutral-100"
+                className={`fixed top-[-20px] right-0 z-50 h-[100vh] w-full backdrop-blur p-4 ${
+                  theme === "dark" ? "bg-neutral-900" : "bg-neutral-100"
                 }`}
               >
                 <div className="flex items-center h-20 justify-end">
@@ -178,7 +172,7 @@ const NavBar = () => {
                         : "bg-black text-white"
                     }`}
                   >
-                    <ThemeToggle className="md:hidden transition-colors duration-300" />
+                    <ThemeToggle className="md:hidden transition-colors duration-300 cursor-pointer" />
                   </span>
                   <MobileNavToggle
                     isOpen={isMenuOpen}

@@ -70,20 +70,15 @@ const Skills = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Initialize animation state to false
     setAnimated(false);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // Add a small delay before starting the animation
-          setTimeout(() => {
-            setAnimated(true);
-          }, 300);
-        }
-      },
-      { threshold: 0.3 } // Trigger when 30% of the section is visible
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          setAnimated(true);
+        }, 300);
+      }
+    }, { threshold: 0.3 });
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
@@ -97,18 +92,10 @@ const Skills = () => {
   }, []);
 
   return (
-    <section
-      id="skills"
-      ref={sectionRef}
-      className="py-16 md:py-24 bg-muted/50"
-    >
+    <section id="skills" ref={sectionRef} className="py-16 md:py-24 bg-muted/50">
       <div className="container px-4 md:px-6 mx-auto">
         <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 sour-gummy">
-          <GradientText
-            gradient="from-indigo-500 via-purple-500 to-pink-500"
-            animate={true}
-            className="text-4xl font-bold"
-          >
+          <GradientText gradient="from-indigo-500 via-purple-500 to-pink-500" animate={true} className="text-4xl font-bold">
             My Skills
           </GradientText>
         </h2>
@@ -116,10 +103,7 @@ const Skills = () => {
           {skillsData.map((category, index) => (
             <CardContainer key={index} className="inter-var w-full">
               <CardBody className="bg-background relative group/card border-black/[0.1] dark:border-white/[0.2] border w-full h-full rounded-xl p-6">
-                <CardItem
-                  translateZ="50"
-                  className="text-xl font-bold sour-gummy"
-                >
+                <CardItem translateZ="50" className="text-xl font-bold sour-gummy">
                   {category.title}
                 </CardItem>
                 <CardItem translateZ="60" className="mt-4 w-full">
@@ -127,43 +111,13 @@ const Skills = () => {
                     {category.skills.map((skill, skillIndex) => {
                       const IconComponent = skill.icon;
                       return (
-                        <li
-                          key={skillIndex}
-                          className="flex flex-col items-center gap-2 p-2 transition-all duration-300"
-                        >
-                          <CardItem
-                            translateZ={80 + skillIndex * 5}
-                            rotateX={skillIndex % 2 === 0 ? 5 : -5}
-                          >
-                            <div
-                              className={`flex items-center justify-center w-12 h-12 rounded-xl bg-muted/80 
-                                ${
-                                  animated ? "animate-bounce-in" : "opacity-0"
-                                }`}
-                              style={{
-                                transitionDelay: `${skillIndex * 100}ms`,
-                                animation: animated
-                                  ? `pulse 2s infinite ${skillIndex * 100}ms`
-                                  : "none",
-                              }}
-                            >
-                              <IconComponent
-                                size={30}
-                                color={
-                                  theme === "dark" ? skill.color : skill.color
-                                }
-                                className={`transform transition-all duration-500 hover:rotate-12 
-                                  ${animated ? "scale-100" : "scale-0"}`}
-                                style={{
-                                  transitionDelay: `${skillIndex * 150}ms`,
-                                }}
-                              />
+                        <li key={skillIndex} className="flex flex-col items-center gap-2 p-2 transition-all duration-300">
+                          <CardItem translateZ={80 + skillIndex * 5} rotateX={skillIndex % 2 === 0 ? 5 : -5}>
+                            <div className={`flex items-center justify-center w-12 h-12 rounded-xl bg-muted/80 ${animated ? "animate-bounce-in" : "opacity-0"}`} style={{ transitionDelay: `${skillIndex * 100}ms`, animation: animated ? `pulse 2s infinite ${skillIndex * 100}ms` : "none" }}>
+                              <IconComponent size={30} color={theme === "dark" ? skill.color : skill.color} className={`transform transition-all duration-500 hover:rotate-12 ${animated ? "scale-100" : "scale-0"}`} style={{ transitionDelay: `${skillIndex * 150}ms` }} />
                             </div>
                           </CardItem>
-                          <CardItem
-                            translateZ={40}
-                            className="text-sm font-medium text-center"
-                          >
+                          <CardItem translateZ={40} className="text-sm font-medium text-center">
                             {skill.name}
                           </CardItem>
                         </li>

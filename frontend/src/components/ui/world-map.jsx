@@ -1,24 +1,32 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import DottedMap from "dotted-map"; // Ensure this package is installed
 // Import your theme hook from your chosen theme provider or remove if not needed
-// import { useTheme } from "your-theme-library"; 
+// import { useTheme } from "your-theme-library";
 
 export default function WorldMap({ dots = [], lineColor = "#0ea5e9" }) {
-  const svgRef = useRef(null);
-  const map = new DottedMap({ height: 100, grid: "diagonal" });
+  const [svgMap, setSvgMap] = useState(null);
+  const theme = "light";
 
+  const map = new DottedMap({ height: 100, grid: "diagonal" });
+  useEffect(() => {
+    const generateMap = async () => {
+      const map = new DottedMap({ height: 100, grid: "diagonal" });
+      const svg = map.getSVG({
+        radius: 0.22,
+        color: theme === "dark" ? "#FFFFFF40" : "#00000040",
+        shape: "circle",
+        backgroundColor: theme === "dark" ? "black" : "white",
+      });
+      setSvgMap(svg);
+    };
+
+    // Slight delay to let modal appear before heavy work
+    requestAnimationFrame(generateMap);
+  }, [theme]);
   // If you have a theme provider, you could use it here:
   // const { theme } = useTheme();
   // For simplicity, we'll assume light theme:
-  const theme = "light";
-
-  const svgMap = map.getSVG({
-    radius: 0.22,
-    color: theme === "dark" ? "#FFFFFF40" : "#00000040",
-    shape: "circle",
-    backgroundColor: theme === "dark" ? "black" : "white",
-  });
 
   const projectPoint = (lat, lng) => {
     const x = (lng + 180) * (800 / 360);
@@ -43,7 +51,7 @@ export default function WorldMap({ dots = [], lineColor = "#0ea5e9" }) {
         draggable={false}
       />
       <svg
-        ref={svgRef}
+        ref={svgMap}
         viewBox="0 0 800 400"
         className="w-full h-full absolute inset-0 pointer-events-none select-none"
       >

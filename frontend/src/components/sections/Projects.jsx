@@ -20,7 +20,6 @@ const Projects = ({ showOnHomePage = false }) => {
 
   const handleShowAllProjects = () => {
     navigate("/projects");
-    // Force scroll to top when clicking "View All Projects"
     setTimeout(() => {
       window.scrollTo({
         top: 0,

@@ -39,7 +39,6 @@ const Hero = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    console.log("Scrolling to section:", sectionId);
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
@@ -111,8 +110,7 @@ const Hero = () => {
             </a>
           </div>
         </div>
-
-        {/* Floating elements for visual interest */}
+ 
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
         <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-secondary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-1/2 right-1/2 w-56 h-56 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>

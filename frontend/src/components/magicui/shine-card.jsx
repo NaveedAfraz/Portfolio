@@ -19,7 +19,6 @@ export function ShineCard({
         containerClassName
       )}
     >
-      {/* Shine border */}
       {shineBorder && (
         <div className="absolute inset-0 rounded-xl z-0">
           <div
@@ -35,8 +34,6 @@ export function ShineCard({
           </div>
         </div>
       )}
-
-      {/* Content container */}
       <div
         className={cn(
           "relative z-10 p-6 rounded-xl border backdrop-blur-md",
@@ -45,7 +42,6 @@ export function ShineCard({
         )}
         {...props}
       >
-        {/* Shine gradient */}
         {shineGradient && (
           <div
             className={cn(
@@ -60,8 +56,6 @@ export function ShineCard({
             />
           </div>
         )}
-
-        {/* Actual content */}
         <div className="relative z-10">{children}</div>
       </div>
     </div>

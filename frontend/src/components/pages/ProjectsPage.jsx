@@ -22,7 +22,6 @@ const ProjectsPage = () => {
   const [nextProjectIndex, setNextProjectIndex] = useState(null);
 
   useEffect(() => {
-    // Set up intersection observer for each project section
     const observerOptions = {
       rootMargin: "-40% 0px -40% 0px",
       threshold: [0, 0.25, 0.5, 0.75, 1],
@@ -30,28 +29,23 @@ const ProjectsPage = () => {
 
     const handleIntersect = (entries) => {
       entries.forEach((entry) => {
-        // Skip the header section
         if (entry.target === headerRef.current) return;
 
         const index = projectRefs.current.indexOf(entry.target);
         if (index !== -1) {
           if (entry.isIntersecting) {
-            // When a project section comes into view
             const nextIndex =
               activeProjectIndex < index ? index : activeProjectIndex;
             const prevIndex =
               activeProjectIndex > index ? index : activeProjectIndex;
 
-            // Set the next project that we're transitioning to
             if (activeProjectIndex !== index) {
               setNextProjectIndex(index);
             }
 
-            // Calculate transition progress based on intersection ratio
             const progress = entry.intersectionRatio;
             setScrollProgress(progress);
 
-            // Once we've crossed a threshold, fully transition to the new project
             if (progress > 0.5) {
               setActiveProjectIndex(index);
               setNextProjectIndex(null);
@@ -63,21 +57,17 @@ const ProjectsPage = () => {
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
 
-    // Observe header
     if (headerRef.current) {
       observer.observe(headerRef.current);
     }
 
-    // Observe all project sections
     projectRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
-    // Add scroll listener for parallax effects
     const handleScroll = () => {
       const scrollY = window.scrollY;
 
-      // Apply parallax effects to elements with the parallax class
       document.querySelectorAll(".parallax").forEach((element) => {
         const speed = element.dataset.speed || 0.2;
         element.style.transform = `translateY(${scrollY * speed}px)`;
@@ -99,9 +89,7 @@ const ProjectsPage = () => {
     };
   }, [activeProjectIndex]);
 
-  // Update background color with smooth transitions when active project changes
   useEffect(() => {
-    // Only apply color transitions to project sections, not the hero
     const projectSections = document.querySelectorAll(".project-section-bg");
     const currentProject = projectsData[activeProjectIndex];
     const nextProject =
@@ -110,7 +98,6 @@ const ProjectsPage = () => {
     projectSections.forEach((section, index) => {
       if (index === activeProjectIndex) {
         if (nextProjectIndex !== null) {
-          // Blend between current and next project colors
           const blendedFrom = blendColors(
             currentProject.gradientFrom,
             nextProject.gradientFrom,
@@ -124,16 +111,13 @@ const ProjectsPage = () => {
 
           section.style.background = `linear-gradient(135deg, ${blendedFrom}, ${blendedTo})`;
         } else {
-          // Set the solid gradient for the current active project
           section.style.background = `linear-gradient(135deg, ${currentProject.gradientFrom}, ${currentProject.gradientTo})`;
         }
       }
     });
   }, [activeProjectIndex, nextProjectIndex, scrollProgress]);
 
-  // Helper function to blend colors
   const blendColors = (color1, color2, ratio) => {
-    // Convert hex to RGB
     const parseColor = (color) => {
       const hex = color.charAt(0) === "#" ? color.substring(1) : color;
       return {
@@ -146,18 +130,15 @@ const ProjectsPage = () => {
     const rgb1 = parseColor(color1);
     const rgb2 = parseColor(color2);
 
-    // Blend colors
     const r = Math.round(rgb1.r * (1 - ratio) + rgb2.r * ratio);
     const g = Math.round(rgb1.g * (1 - ratio) + rgb2.g * ratio);
     const b = Math.round(rgb1.b * (1 - ratio) + rgb2.b * ratio);
 
-    // Convert back to hex
     return `#${(r < 16 ? "0" : "") + r.toString(16)}${
       (g < 16 ? "0" : "") + g.toString(16)
     }${(b < 16 ? "0" : "") + b.toString(16)}`;
   };
 
-  // Initialize project refs
   if (projectRefs.current.length !== projectsData.length) {
     projectRefs.current = Array(projectsData.length)
       .fill()
@@ -170,22 +151,19 @@ const ProjectsPage = () => {
       setWindowWidth(window.innerWidth);
     };
     if (windowWidth < 800) {
-      console.log("less");
       setDynamicList(4);
     } else {
-      console.log("more");
       setDynamicList(6);
     }
 
-    // Add event listener
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [windowWidth]);
+
   return (
     <div className="h-[100%]">
-      {/* Header section with the title and project cards - no container, no background */}
       <section
         ref={headerRef}
         className="min-h-screen flex flex-col justify-center items-center py-40"
@@ -209,8 +187,7 @@ const ProjectsPage = () => {
               </GradientText>
             </h1>
             <p className="text-xl text-gray-400 dark:text-gray-400 max-w-2xl mx-auto">
-              A comprehensive showcase of my projects. Scroll down to explore
-              each project in detail.
+              A comprehensive showcase of my projects. Scroll down to explore each project in detail.
             </p>
           </div>
 
@@ -224,7 +201,6 @@ const ProjectsPage = () => {
                 shimmerColor="rgba(255, 255, 255, 0.05)"
                 shineHover={true}
                 onClick={() => {
-                  // Scroll to the corresponding project section
                   if (projectRefs.current[index]) {
                     projectRefs.current[index].scrollIntoView({
                       behavior: "smooth",
@@ -311,7 +287,6 @@ const ProjectsPage = () => {
         </div>
       </section>
 
-      {/* Individual project sections with color changing backgrounds */}
       {projectsData.map((project, index) => (
         <section
           key={index}
@@ -322,7 +297,6 @@ const ProjectsPage = () => {
             background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})`,
           }}
         >
-          {/* Background pattern */}
           <div className="absolute inset-0 opacity-10 bg-grid-white/[0.2] -z-10"></div>
 
           {theme === "light" && (

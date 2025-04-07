@@ -152,7 +152,7 @@ export const NavItems = ({ items, className, onItemClick, children }) => {
   );
 };
 
-export const MobileNav = ({ children, className, visible, onClose }) => {
+export const MobileNav = ({ children, className, visible }) => {
   return (
     <motion.div
       animate={{

@@ -12,7 +12,6 @@ const ProjectDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Find the project with the matching ID
     const foundProject = projectsData.find(p => p.id === id);
     
     if (foundProject) {
@@ -40,7 +39,6 @@ const ProjectDetail = () => {
     );
   }
 
-  // Use gradientFrom and gradientTo for background if available, otherwise fallback to color
   const bgStyle = project.gradientFrom && project.gradientTo
     ? { background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})` }
     : { backgroundColor: project.color || '#333' };

@@ -7,12 +7,12 @@ const Footer = () => {
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
           {/* <p className="text-center text-sm text-muted-foreground">
-            {new Date().getFullYear()}
+              {new Date().getFullYear()}
           </p> */}
 
           <div className="text-center">
             <p className="animated-gradient-text text-center text-sm font-medium">
-              VibeCoded by me
+              HandCrafted by me
             </p>
             <span className="text-foreground inline-flex text-xs items-center">
               (ofc by <Heart className="w-4 h-4 text-red-500 mx-1" />)

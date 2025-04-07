@@ -28,7 +28,6 @@ export function Education() {
         </h2>
 
         <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-          {/* Timeline/Years (Left Side) */}
           <div className="md:w-1/3 space-y-1">
             {educationData.map((education) => (
               <button
@@ -71,9 +70,7 @@ export function Education() {
             ))}
           </div>
 
-          {/* Content (Right Side) - Fixed Height Container */}
           <div className="md:w-2/3 bg-gradient-to-br from-background/80 via-background/60 to-background/80 backdrop-blur-sm p-8 rounded-2xl border border-primary/10">
-            {/* Use a fixed height container with overflow auto */}
             <div className="h-[300px] overflow-y-auto pr-2 custom-scrollbar">
               <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                 <h3 className="text-2xl font-bold mb-2 sour-gummy">
@@ -107,7 +104,6 @@ export function Education() {
         </div>
       </div>
 
-      {/* Add custom scrollbar styles */}
       <style jsx global>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
