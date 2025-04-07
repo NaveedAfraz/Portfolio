@@ -8,7 +8,8 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import ProjectDetail from "./components/sections/ProjectDetail";
 import ProjectsPage from "./components/pages/ProjectsPage";
-
+// import { inject } from "@vercel/analytics";
+// inject();
 function App() {
   return (
     <Router>
