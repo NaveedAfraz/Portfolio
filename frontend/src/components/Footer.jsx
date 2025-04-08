@@ -32,7 +32,7 @@ const Footer = () => {
               LinkedIn
             </Link>
             <Link
-              to="https://twitter.com/NaveedAfraz2"
+              to="https://twitter.com/NaveedAfrazX"
               className="text-muted-foreground hover:text-foreground transition-colors duration-300"
             >
               Twitter
