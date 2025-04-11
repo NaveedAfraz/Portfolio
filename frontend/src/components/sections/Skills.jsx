@@ -10,8 +10,7 @@ import {
   FaNodeJs,
   FaGitAlt,
   FaGithub,
-  FaDatabase,
-  FaCode,
+
 } from "react-icons/fa";
 
 import {
@@ -25,6 +24,7 @@ import {
   SiShadcnui,
   SiReactquery,
   SiMysql,
+  SiRedis,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 
@@ -45,7 +45,7 @@ const skillsData = [
     skills: [
       { name: "Node.js", icon: FaNodeJs, color: "#339933" },
       { name: "Express", icon: SiExpress, color: "#000000" },
-      { name: "RESTful APIs", icon: FaDatabase, color: "#FF5722" },
+      { name: "Redis", icon: SiRedis, color: "#D82C20" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "SQL", icon: SiMysql, color: "#4479A1" },
       { name: "Socket", icon: SiSocketdotio, color: "#010101" },
