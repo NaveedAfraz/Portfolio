@@ -34,7 +34,7 @@ const skillsData = [
     skills: [
       { name: "React", icon: FaReact, color: "#61DAFB" },
       { name: "Redux", icon: SiRedux, color: "#764ABC" },
-      { name: "HTML/CSS", icon: FaHtml5, color: "#E34F26" },
+      { name: "HTML/CSS", icon: FaHtml5, color: "#d14721" },
       { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
       { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
       { name: "Shadcn", icon: SiShadcnui, color: "#000000" },
