@@ -168,9 +168,9 @@ export const projectsData = [
       "NodeJS",
     ],
     gradientFrom: "#285E61", // Teal
-    gradientTo: "#38B2AC", // Light teal
+    gradientTo: "#38B2AC",
     logo: "social-media",
     image: "/images/X.png",
-    link: "https://social-media-1-2enj.onrender.com",
+    link: "https://social-media-1-2enj.onrender.com/home",
   },
 ];
