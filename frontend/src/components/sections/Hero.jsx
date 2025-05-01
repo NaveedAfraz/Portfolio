@@ -51,7 +51,7 @@ const Hero = () => {
     <>
       <AuroraBackground className="absolute inset-0" />
       <Spotlight
-        id="hero"
+        id="Home"
         ref={heroRef}
         className="min-h-[100vh] relative flex items-center justify-center group overflow-hidden"
         spotlightColor={
@@ -64,9 +64,8 @@ const Hero = () => {
         <div className="flex flex-col items-center justify-center h-[100vh] text-center space-y-6 w-full max-w-5xl px-4 md:px-8 mx-auto z-10">
           <div className="space-y-4 overflow-hidden">
             <h1
-              className={`text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl transform transition-transform duration-1000 ease-out  ${
-                isLoaded ? "translate-y-0" : "translate-y-full"
-              }`}
+              className={`text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl transform transition-transform duration-1000 ease-out  ${isLoaded ? "translate-y-0" : "translate-y-full"
+                }`}
             >
               <GradientText
                 gradient={
@@ -80,22 +79,19 @@ const Hero = () => {
               </GradientText>
             </h1>
             <p
-              className={`max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 transform transition-all duration-1000 delay-300 ease-out ${
-                isLoaded
+              className={`max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 transform transition-all duration-1000 delay-300 ease-out ${isLoaded
                   ? "translate-y-0 opacity-100"
                   : "translate-y-20 opacity-0"
-              }`}
+                }`}
             >
-              A passionate developer focused on creating elegant solutions to
-              complex problems.
+              Crafting innovative digital experiences with clean code and creative problem-solving.
             </p>
           </div>
           <div
-            className={`flex z-20 flex-col sm:flex-row gap-4 mt-8 transform transition-all duration-1000 delay-500 ease-out ${
-              isLoaded
+            className={`flex z-20 flex-col sm:flex-row gap-4 mt-8 transform transition-all duration-1000 delay-500 ease-out ${isLoaded
                 ? "translate-y-0 opacity-100"
                 : "translate-y-20 opacity-0"
-            }`}
+              }`}
           >
             <button
               onClick={() => scrollToSection("projects")}
@@ -110,7 +106,7 @@ const Hero = () => {
             </a>
           </div>
         </div>
- 
+
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
         <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-secondary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-1/2 right-1/2 w-56 h-56 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>

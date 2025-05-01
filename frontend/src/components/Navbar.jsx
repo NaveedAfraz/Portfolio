@@ -87,7 +87,7 @@ const NavBar = () => {
       if (disableScrollDetection) return;
 
       // Check which section is currently in view
-      const sections = ["Home", "Skills", "Education", "Projects", "Contact"];
+      const sections = ["Home", "skills", "education", "projects", "contact"];
       const sectionPositions = sections.map((id) => {
         const element = document.getElementById(id);
         if (element) {
@@ -139,6 +139,7 @@ const NavBar = () => {
 
   const handleNavigation = (sectionId) => {
     setIsMenuOpen(false);
+    console.log(sectionId);
 
     // Always update the active section immediately for button highlight
     setActiveSection(sectionId);
@@ -147,7 +148,7 @@ const NavBar = () => {
     setDisableScrollDetection(true);
 
     // Special handling for Projects button
-    if (sectionId === "projects") {
+    if (sectionId === "Projects") {
       // If we're already on the projects page, do nothing
       if (location.pathname === "/projects") {
         return;
@@ -156,6 +157,7 @@ const NavBar = () => {
       // If on home page, just scroll to projects section
       if (isHomePage) {
         const section = document.getElementById(sectionId);
+        console.log(section)
         if (section) {
           section.scrollIntoView({ behavior: "smooth", block: "start" });
         }
@@ -172,6 +174,8 @@ const NavBar = () => {
     // If on home page, just scroll to the section
     if (isHomePage) {
       const section = document.getElementById(sectionId);
+      console.log(section);
+
       if (section) {
         section.scrollIntoView({ behavior: "smooth", block: "start" });
       }
@@ -194,9 +198,8 @@ const NavBar = () => {
     <div className="w-full fixed z-40">
       <Navbar>
         <NavBody
-          className={`sticky top-0 z-50 w-full border-b backdrop-blur transition-all duration-500 ease-in-out ${
-            scrolled ? "bg-background/95 shadow-lg" : "bg-background/80"
-          }`}
+          className={`sticky top-0 z-50 w-full border-b backdrop-blur transition-all duration-500 ease-in-out ${scrolled ? "bg-background/95 shadow-lg" : "bg-background/80"
+            }`}
         >
           <div className="container flex h-16 items-center">
             <NavbarLogo>
@@ -219,19 +222,17 @@ const NavBar = () => {
             </NavbarLogo>
 
             <NavItems className="hidden md:flex items-center space-x-4 ml-auto">
-              {["Home", "Skills", "Education", "Projects", "Contact"].map(
+              {["Home", "skills", "education", "projects", "contact"].map(
                 (section) => (
                   <NavbarButton
                     key={section}
                     onClick={() => handleNavigation(section)}
                     className={`cursor-pointer z-30 px-4 py-2 transition-all duration-300 transform rounded-lg 
-                    ${
-                      activeSection === section
+                    ${activeSection === section
                         ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white scale-105 shadow-md"
-                        : `bg-transparent hover:bg-gradient-to-r hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 hover:text-white border border-transparent hover:border-pink-300 hover:scale-105 hover:shadow-md ${
-                            theme === "dark" ? "text-gray-200" : "text-gray-700"
-                          }`
-                    }
+                        : `bg-transparent hover:bg-gradient-to-r hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 hover:text-white border border-transparent hover:border-pink-300 hover:scale-105 hover:shadow-md ${theme === "dark" ? "text-gray-200" : "text-gray-700"
+                        }`
+                      }
                     relative overflow-hidden group font-medium`}
                   >
                     <span className="relative z-10">
@@ -258,70 +259,63 @@ const NavBar = () => {
               <MobileNavMenu
                 isOpen={isMenuOpen}
                 onClose={() => setIsMenuOpen(false)}
-                className={`fixed top-[-20px] right-0 z-50 h-[100vh] w-full backdrop-blur p-6 ${
-                  theme === "dark" ? "bg-neutral-900/95" : "bg-neutral-100/95"
-                }`}
+                className={`fixed top-[-20px] right-0 z-50 h-[100vh] w-full backdrop-blur p-6 ${theme === "dark" ? "bg-neutral-900/95" : "bg-neutral-100/95"
+                  }`}
               >
                 <div className="flex items-center h-20 justify-end">
                   <span
-                    className={`mx-2 rounded-lg cursor-pointer transition-all duration-300 hover:scale-110 ${
-                      theme === "dark"
-                        ? "bg-amber-50 text-black"
-                        : "bg-black text-white"
-                    }`}
+                    className={`mx-2 rounded-lg cursor-pointer transition-all duration-300 hover:scale-110 ${theme === "dark"
+                      ? "bg-amber-50 text-black"
+                      : "bg-black text-white"
+                      }`}
                   >
                     <ThemeToggle className="md:hidden transition-colors duration-300 cursor-pointer" />
                   </span>
                   <MobileNavToggle
                     isOpen={isMenuOpen}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className={`md:hidden cursor-pointer w-7 h-7 transition-all duration-300 hover:scale-110 ${
-                      theme === "dark" ? "text-white" : "text-black"
-                    }`}
+                    className={`md:hidden cursor-pointer w-7 h-7 transition-all duration-300 hover:scale-110 ${theme === "dark" ? "text-white" : "text-black"
+                      }`}
                   />
                 </div>
-                {["Home", "Skills", "Education", "Projects", "Contact"].map(
+                {["Home", "skills", "education", "projects", "contact"].map(
                   (section) => (
                     <NavbarButton
                       key={section}
                       onClick={() => handleNavigation(section)}
                       className={`w-full justify-start my-4 px-6 py-4 rounded-xl
                     transition-all duration-300 transform
-                    ${
-                      activeSection === section
-                        ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white scale-[1.02] rounded-2xl shadow-lg"
-                        : `hover:bg-gradient-to-r hover:from-indigo-500/90 hover:via-purple-500/90 rounded-2xl hover:to-pink-500/90 hover:text-white ${
-                            theme === "dark" ? "text-gray-700" : "text-gray-700"
+                    ${activeSection === section
+                          ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white scale-[1.02] rounded-2xl shadow-lg"
+                          : `hover:bg-gradient-to-r hover:from-indigo-500/90 hover:via-purple-500/90 rounded-2xl hover:to-pink-500/90 hover:text-white ${theme === "dark" ? "text-gray-700" : "text-gray-700"
                           }`
-                    }
+                        }
                     relative overflow-hidden font-medium border-l-4
-                    ${
-                      activeSection === section
-                        ? "border-pink-400"
-                        : "border-transparent"
-                    }
+                    ${activeSection === section
+                          ? "border-pink-400"
+                          : "border-transparent"
+                        }
                     hover:shadow-md hover:translate-x-1`}
                       mobile
                     >
                       <div className="flex items-center">
                         <span
-                          className={`mr-3 text-xl ${
-                            activeSection === section
-                              ? "text-white"
-                              : theme === "dark"
+                          className={`mr-3 text-xl ${activeSection === section
+                            ? "text-white"
+                            : theme === "dark"
                               ? "text-gray-100"
                               : "text-gray-600"
-                          }`}
+                            }`}
                         >
                           {section === "hero"
                             ? "🏠"
                             : section === "skills"
-                            ? "🛠️"
-                            : section === "education"
-                            ? "🎓"
-                            : section === "projects"
-                            ? "💼"
-                            : "📞"}
+                              ? "🛠️"
+                              : section === "education"
+                                ? "🎓"
+                                : section === "projects"
+                                  ? "💼"
+                                  : "📞"}
                         </span>
                         <span className="text-lg">
                           {section.charAt(0).toUpperCase() + section.slice(1)}
