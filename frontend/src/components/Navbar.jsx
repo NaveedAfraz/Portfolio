@@ -87,7 +87,7 @@ const NavBar = () => {
       if (disableScrollDetection) return;
 
       // Check which section is currently in view
-      const sections = ["hero", "skills", "education", "projects", "contact"];
+      const sections = ["Home", "skills", "education", "projects", "contact"];
       const sectionPositions = sections.map((id) => {
         const element = document.getElementById(id);
         if (element) {
