@@ -87,7 +87,7 @@ const NavBar = () => {
       if (disableScrollDetection) return;
 
       // Check which section is currently in view
-      const sections = ["Home", "skills", "education", "projects", "contact"];
+      const sections = ["Home", "Skills", "Education", "Projects", "Contact"];
       const sectionPositions = sections.map((id) => {
         const element = document.getElementById(id);
         if (element) {
@@ -219,7 +219,7 @@ const NavBar = () => {
             </NavbarLogo>
 
             <NavItems className="hidden md:flex items-center space-x-4 ml-auto">
-              {["hero", "skills", "education", "projects", "contact"].map(
+              {["Home", "Skills", "Education", "Projects", "Contact"].map(
                 (section) => (
                   <NavbarButton
                     key={section}
@@ -280,7 +280,7 @@ const NavBar = () => {
                     }`}
                   />
                 </div>
-                {["hero", "skills", "education", "projects", "contact"].map(
+                {["Home", "Skills", "Education", "Projects", "Contact"].map(
                   (section) => (
                     <NavbarButton
                       key={section}
