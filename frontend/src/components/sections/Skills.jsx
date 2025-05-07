@@ -27,6 +27,7 @@ import {
   SiRedis,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
+import { Cpu } from "lucide-react";
 
 const skillsData = [
   {
@@ -48,7 +49,7 @@ const skillsData = [
       { name: "Redis", icon: SiRedis, color: "#D82C20" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "SQL", icon: SiMysql, color: "#4479A1" },
-      { name: "Socket", icon: SiSocketdotio, color: "#010101" },
+      { name: "MicroServices", icon: Cpu , color: "#d22121" }
     ],
   },
   {
@@ -56,7 +57,7 @@ const skillsData = [
     skills: [
       { name: "Git", icon: FaGitAlt, color: "#F05032" },
       { name: "GitHub", icon: FaGithub, color: "#181717" },
-      { name: "VS Code", icon: VscCode, color: "#007ACC" },
+      { name: "Socket", icon: SiSocketdotio, color: "#010101" },
       { name: "Postman", icon: SiPostman, color: "#FF6C37" },
       { name: "TanStack Query", icon: SiReactquery, color: "#FF4154" },
       { name: "GitHub Actions", icon: SiGithubactions, color: "#2088FF" },
@@ -100,6 +101,7 @@ const Skills = () => {
           </GradientText>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
+
           {skillsData.map((category, index) => (
             <CardContainer key={index} className="inter-var w-full">
               <CardBody className="bg-background relative group/card border-black/[0.1] dark:border-white/[0.2] border w-full h-full rounded-xl p-6">
