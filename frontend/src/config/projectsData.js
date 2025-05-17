@@ -71,7 +71,7 @@ export const projectsData = [
     gradientTo: "#805AD5", // Light purple
     logo: "elite-wardrobe",
     image: "/images/EliteWardorbe.png",
-    link: "https://e-commerce-psi-inky-93.vercel.app",
+    link: "https://e-commerce-psi-inky-93.vercel.app/auth/login",
   },
   {
     id: "athena-ai",
