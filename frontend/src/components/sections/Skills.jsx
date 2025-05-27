@@ -25,6 +25,8 @@ import {
   SiReactquery,
   SiMysql,
   SiRedis,
+  SiTypescript,
+  SiRabbitmq
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 import { Cpu } from "lucide-react";
@@ -35,7 +37,7 @@ const skillsData = [
     skills: [
       { name: "React", icon: FaReact, color: "#61DAFB" },
       { name: "Redux", icon: SiRedux, color: "#764ABC" },
-      { name: "HTML/CSS", icon: FaHtml5, color: "#d14721" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
       { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
       { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
       { name: "Shadcn", icon: SiShadcnui, color: "#000000" },
@@ -49,14 +51,14 @@ const skillsData = [
       { name: "Redis", icon: SiRedis, color: "#D82C20" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "SQL", icon: SiMysql, color: "#4479A1" },
-      { name: "MicroServices", icon: Cpu , color: "#d22121" }
+      { name: "MicroServices", icon: Cpu, color: "#d22121" }
     ],
   },
   {
     title: "Tools & Technologies",
     skills: [
       { name: "Git", icon: FaGitAlt, color: "#F05032" },
-      { name: "GitHub", icon: FaGithub, color: "#181717" },
+      { name: "RabbitMQ", icon: SiRabbitmq, color: "#FF6600" },
       { name: "Socket", icon: SiSocketdotio, color: "#010101" },
       { name: "Postman", icon: SiPostman, color: "#FF6C37" },
       { name: "TanStack Query", icon: SiReactquery, color: "#FF4154" },
