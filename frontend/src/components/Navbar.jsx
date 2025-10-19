@@ -247,66 +247,66 @@ const NavBar = () => {
 
             <MobileNav className="md:hidden flex items-center space-x-2">
               <MobileNavHeader>
-                <span className="mx-2 rounded-lg cursor-pointer transition-all duration-300 hover:scale-110">
+                <span className={`mx-2 rounded-lg cursor-pointer transition-all duration-300 hover:scale-110 ${theme === "dark" ? "bg-amber-50 text-black" : "bg-black text-white"}`}>
                   <ThemeToggle className="md:hidden transition-colors duration-300 cursor-pointer" />
                 </span>
                 <MobileNavToggle
                   isOpen={isMenuOpen}
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="md:hidden cursor-pointer w-7 h-7 transition-all duration-300 hover:scale-110"
+                  className={`md:hidden cursor-pointer w-7 h-7 transition-all duration-300 hover:scale-110 ${theme === "dark" ? "text-white" : "text-black"}`}
                 />
               </MobileNavHeader>
+
               <MobileNavMenu
                 isOpen={isMenuOpen}
                 onClose={() => setIsMenuOpen(false)}
-                className={`fixed top-[-20px] right-0 z-50 h-[100vh] w-full backdrop-blur p-6 ${theme === "dark" ? "bg-neutral-900/95" : "bg-neutral-100/95"
+                className={`fixed top-0   right-0 z-50 h-[100vh] w-80 backdrop-blur-3xl shadow-2xl overflow-y-auto rounded-l-3xl border-l transition-all duration-500 ${theme === "dark"
+                    ? "bg-gradient-to-b from-neutral-950/99 via-neutral-900/98 to-neutral-950/99 border-l-2 border-purple-500/40 shadow-purple-900/50"
+                    : "bg-gradient-to-b from-neutral-50/99 via-neutral-100/98 to-neutral-50/99 border-l-2 border-purple-300/50 shadow-purple-300/20"
                   }`}
               >
-                <div className="flex items-center h-20 justify-end">
-                  <span
-                    className={`mx-2 rounded-lg cursor-pointer transition-all duration-300 hover:scale-110 ${theme === "dark"
-                      ? "bg-amber-50 text-black"
-                      : "bg-black text-white"
-                      }`}
-                  >
-                    <ThemeToggle className="md:hidden transition-colors duration-300 cursor-pointer" />
+                {/* Header Section */}
+                <div className={`flex items-center h-20 justify-end pr-6 border-b sticky top-0 backdrop-blur-2xl transition-all duration-300 ${theme === "dark"
+                    ? "bg-neutral-950/80 border-b-purple-500/20"
+                    : "bg-neutral-50/80 border-b-purple-300/30"
+                  }`}>
+                  <span className={`mx-2 rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 p-2 ${theme === "dark"
+                      ? "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 shadow-lg shadow-purple-600/50"
+                      : "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 shadow-md shadow-purple-400/40"
+                    }`}>
+                    <ThemeToggle className="transition-colors duration-300 cursor-pointer" />
                   </span>
                   <MobileNavToggle
                     isOpen={isMenuOpen}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className={`md:hidden cursor-pointer w-7 h-7 transition-all duration-300 hover:scale-110 ${theme === "dark" ? "text-white" : "text-black"
+                    className={`cursor-pointer w-7 h-7 transition-all duration-300 hover:scale-110 ${theme === "dark" ? "text-white" : "text-black"
                       }`}
                   />
                 </div>
-                {["Home", "skills", "experience", "education", "projects", "contact"].map(
-                  (section) => (
-                    <NavbarButton
-                      key={section}
-                      onClick={() => handleNavigation(section)}
-                      className={`w-full justify-start my-4 px-6 py-4 rounded-xl
-                    transition-all duration-300 transform
-                    ${activeSection === section
-                          ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white scale-[1.02] rounded-2xl shadow-lg"
-                          : `hover:bg-gradient-to-r hover:from-indigo-500/90 hover:via-purple-500/90 rounded-2xl hover:to-pink-500/90 hover:text-white ${theme === "dark" ? "text-gray-700" : "text-gray-700"
-                          }`
-                        }
-                    relative overflow-hidden font-medium border-l-4
-                    ${activeSection === section
-                          ? "border-pink-400"
-                          : "border-transparent"
-                        }
-                    hover:shadow-md hover:translate-x-1`}
-                      mobile
-                    >
-                      <div className="flex items-center">
-                        <span
-                          className={`mr-3 text-xl ${activeSection === section
-                            ? "text-white"
-                            : theme === "dark"
-                              ? "text-gray-100"
-                              : "text-gray-600"
-                            }`}
-                        >
+
+                {/* Menu Items Section */}
+                <div className={`px-4 py-8 space-y-3 ${theme === "dark" ? "bg-neutral-900/40" : "bg-neutral-100/30"
+                  }`}>
+                  {["Home", "skills", "experience", "education", "projects", "contact"].map(
+                    (section) => (
+                      <NavbarButton
+                        key={section}
+                        onClick={() => handleNavigation(section)}
+                        className={`w-full justify-start px-6 py-4 rounded-2xl transition-all duration-300 transform flex items-center gap-3 group relative overflow-hidden font-semibold ${activeSection === section
+                            ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white shadow-xl shadow-purple-500/60 scale-105"
+                            : `${theme === "dark"
+                              ? "text-gray-300 bg-neutral-800/40 hover:bg-gradient-to-r hover:from-indigo-600/60 hover:via-purple-600/60 hover:to-pink-600/60 hover:text-white hover:shadow-lg hover:shadow-purple-500/40"
+                              : "text-gray-700 bg-neutral-200/40 hover:bg-gradient-to-r hover:from-indigo-500/70 hover:via-purple-500/70 hover:to-pink-500/70 hover:text-white hover:shadow-md hover:shadow-purple-400/30"
+                            }`
+                          }
+          `}
+                        mobile
+                      >
+                        {/* Animated background blur on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-indigo-500/10 group-hover:via-purple-500/10 group-hover:to-pink-500/10 transition-all duration-300"></div>
+
+                        <span className={`text-2xl group-hover:scale-125 transition-transform duration-300 relative z-10 ${activeSection === section ? "text-white" : ""
+                          }`}>
                           {section === "hero"
                             ? "🏠"
                             : section === "skills"
@@ -314,18 +314,24 @@ const NavBar = () => {
                               : section === "experience"
                                 ? "💼"
                                 : section === "education"
-                                ? "🎓"
-                                : section === "projects"
-                                  ? "💼"
-                                  : "📞"}
+                                  ? "🎓"
+                                  : section === "projects"
+                                    ? "📁"
+                                    : "📞"}
                         </span>
-                        <span className="text-lg">
+
+                        <span className="text-base relative z-10">
                           {section.charAt(0).toUpperCase() + section.slice(1)}
                         </span>
-                      </div>
-                    </NavbarButton>
-                  )
-                )}
+
+                        {/* Active indicator */}
+                        {activeSection === section && (
+                          <div className="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-indigo-300 via-purple-300 to-pink-300 rounded-l-full"></div>
+                        )}
+                      </NavbarButton>
+                    )
+                  )}
+                </div>
               </MobileNavMenu>
             </MobileNav>
           </div>

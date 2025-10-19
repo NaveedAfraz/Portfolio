@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { GradientText } from "../magicui/gradient-text";
 import { Spotlight } from "../magicui/spotlight";
 import { AuroraBackground } from "../ui/aurora-background";
+import resume from "../../assets/NaveedAfrazResume(Latest) (1).pdf";
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -80,8 +81,8 @@ const Hero = () => {
             </h1>
             <p
               className={`max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 transform transition-all duration-1000 delay-300 ease-out ${isLoaded
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-20 opacity-0"
+                ? "translate-y-0 opacity-100"
+                : "translate-y-20 opacity-0"
                 }`}
             >
               Crafting innovative digital experiences with clean code and creative problem-solving.
@@ -89,8 +90,8 @@ const Hero = () => {
           </div>
           <div
             className={`flex z-20 flex-col sm:flex-row gap-4 mt-8 transform transition-all duration-1000 delay-500 ease-out ${isLoaded
-                ? "translate-y-0 opacity-100"
-                : "translate-y-20 opacity-0"
+              ? "translate-y-0 opacity-100"
+              : "translate-y-20 opacity-0"
               }`}
           >
             <button
@@ -99,7 +100,7 @@ const Hero = () => {
             >
               View My Work
             </button>
-            <a href="/Naveed Resume.pdf" download="Naveed Resume.pdf">
+            <a href={resume} download="NaveedAfrazResume(Latest) (1).pdf">
               <button className="cursor-pointer px-6 py-3 hover:scale-105 transition-transform rounded-md border border-gray-300 dark:border-gray-700 font-medium">
                 Download Resume
               </button>
