@@ -95,12 +95,14 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-16 md:py-24 bg-muted/50">
+    <section id="skills" ref={sectionRef} className="py-16 md:py-24 bg-background">
       <div className="container px-4 md:px-6 mx-auto">
-        <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 sour-gummy">
+        <h2 className="text-3xl font-bold tracking-tighter text-center mb-3 sour-gummy">
           <GradientText gradient="from-indigo-500 via-purple-500 to-pink-500" animate={true} className="text-4xl font-bold">
             My Skills
           </GradientText>
+          <div className="h-1 w-20 mt-2 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
+
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
 

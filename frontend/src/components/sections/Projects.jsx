@@ -32,9 +32,8 @@ const Projects = ({ showOnHomePage = false }) => {
     <section
       id="projects"
       ref={sectionRef}
-      className={`py-16 md:py-24 ${
-        !showOnHomePage ? "transition-colors duration-700 sour-gummy " : "bg-muted/50 sour-gummy"
-      }`}
+      className={`py-16 md:py-24 ${!showOnHomePage ? "transition-colors duration-700 sour-gummy " : "bg-background sour-gummy"
+        }`}
     >
       <div className="container px-4 md:px-6 mx-auto">
         <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 sour-gummy">
@@ -49,52 +48,51 @@ const Projects = ({ showOnHomePage = false }) => {
           >
             {showOnHomePage ? "Featured Projects" : "My Work"}
           </GradientText>
+          <div className="h-1 w-20 mt-2 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
+
         </h2>
-        
+
         <FocusedCardContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
           {projectsData
             .slice(0, showOnHomePage ? 4 : projectsData.length)
             .map((project, index) => (
               <FocusedCard key={index} className="h-full">
-                <div 
-                  className={`rounded-xl p-6 h-full ${
-                    showOnHomePage
-                      ? "bg-card backdrop-blur-sm"
-                      : "bg-white/10 backdrop-blur-sm border border-white/20"
-                  }`}
+                <div
+                  className={`rounded-xl p-6 h-full ${showOnHomePage
+                    ? "bg-card backdrop-blur-sm"
+                    : "bg-white/10 backdrop-blur-sm border border-white/20"
+                    }`}
                 >
                   <div className="space-y-4">
-                    <h3 
+                    <h3
                       className={`text-xl font-bold ${showOnHomePage ? "" : "text-white"} sour-gummy`}
                     >
                       {project.title}
                     </h3>
-                    <p 
+                    <p
                       className={`${showOnHomePage ? "" : "text-white/70"}`}
                     >
                       {project.description}
                     </p>
-                  
+
                     <div className="flex flex-wrap gap-2 mt-2">
                       {project.technologies.slice(0, 3).map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className={`px-2 py-1 ${
-                            showOnHomePage
-                              ? "bg-muted text-primary text-xs rounded-md"
-                              : "bg-white/10 text-white text-xs rounded-md"
-                          }`}
+                          className={`px-2 py-1 ${showOnHomePage
+                            ? "bg-muted text-primary text-xs rounded-md"
+                            : "bg-white/10 text-white text-xs rounded-md"
+                            }`}
                         >
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 3 && (
                         <span
-                          className={`px-2 py-1 ${
-                            showOnHomePage
-                              ? "bg-muted text-primary text-xs rounded-md"
-                              : "bg-white/10 text-white text-xs rounded-md"
-                          }`}
+                          className={`px-2 py-1 ${showOnHomePage
+                            ? "bg-muted text-primary text-xs rounded-md"
+                            : "bg-white/10 text-white text-xs rounded-md"
+                            }`}
                         >
                           +{project.technologies.length - 3} more
                         </span>

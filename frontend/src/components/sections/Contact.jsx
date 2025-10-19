@@ -41,7 +41,7 @@ const Contact = () => {
   return (
     <Spotlight
       id="contact"
-      className="py-16 md:py-24 group"
+      className="py-16 md:py-24 group bg-background"
       spotlightColor={
         theme === "dark"
           ? "rgba(120, 119, 198, 0.25)"
@@ -60,6 +60,7 @@ const Contact = () => {
               Let's Work Together
             </GradientText>
           </h2>
+          <div className="h-1 w-20 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
           <p className="text-muted-foreground">
             I'm currently available for freelance work or full-time positions.
           </p>

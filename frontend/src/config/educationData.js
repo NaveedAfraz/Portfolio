@@ -7,11 +7,7 @@ export const educationData = [
     university: "Osmania University",
     description:
       "Studying Computer Science with a focus on software development and Full Stack Development. Completed multiple projects and participated in coding competitions.",
-    courses: [
-      "Web Development",
-      "Database Management System (DBMS)",
-      "Computer Networks",
-    ],
+    courses: ["Web Development", "Database Management System (DBMS)"],
   },
   {
     id: "highschool",

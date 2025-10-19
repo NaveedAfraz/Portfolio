@@ -1,134 +1,72 @@
-import { useState } from "react";
+import { motion } from "motion/react";
 import { GradientText } from "../magicui/gradient-text";
 import { Spotlight } from "../magicui/spotlight";
+import { StickyScroll } from "../ui/sticky-scroll-reveal";
 
 import { educationData } from "../../config/educationData";
 
 export function Education() {
-  const [activeTab, setActiveTab] = useState(educationData[0].id);
-
-  const activeEducation = educationData.find((edu) => edu.id === activeTab);
-
-  return (
-    <section id="education" className="py-16 md:py-24 relative overflow-hidden">
-      <Spotlight
-        className="hidden md:block"
-        size={1000}
-        spotlightClassName="opacity-20"
-      />
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        <h2 className="text-3xl font-bold tracking-tighter text-center mb-16 sour-gummy">
-          <GradientText
-            gradient="from-indigo-500 via-purple-500 to-pink-500"
-            animate={true}
-            className="text-4xl font-bold"
-          >
-            Education
-          </GradientText>
-        </h2>
-
-        <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-          <div className="md:w-1/3 space-y-1">
-            {educationData.map((education) => (
-              <button
-                key={education.id}
-                onClick={() => setActiveTab(education.id)}
-                className={`w-full text-left py-4 px-6 rounded-lg transition-all duration-300 flex items-center ${
-                  activeTab === education.id
-                    ? "bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 border-l-4 border-indigo-500"
-                    : "hover:bg-gradient-to-r hover:from-indigo-500/10 hover:via-purple-500/10 hover:to-pink-500/10"
-                }`}
-              >
-                <div className="mr-4 flex flex-col items-center justify-center">
-                  <div
-                    className={`w-4 h-4 rounded-full ${
-                      activeTab === education.id
-                        ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                        : "bg-gray-300 dark:bg-gray-600"
-                    }`}
-                  ></div>
-                  {education.id !==
-                    educationData[educationData.length - 1].id && (
-                    <div className="w-0.5 h-full bg-gray-200 dark:bg-gray-700 mt-1"></div>
-                  )}
-                </div>
-                <div>
-                  <p
-                    className={`font-semibold ${
-                      activeTab === education.id
-                        ? "text-indigo-500 dark:text-indigo-400"
-                        : ""
-                    }`}
-                  >
-                    {education.year}
-                  </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {education.degree}
-                  </p>
-                </div>
-              </button>
-            ))}
-          </div>
-
-          <div className="md:w-2/3 bg-gradient-to-br from-background/80 via-background/60 to-background/80 backdrop-blur-sm p-8 rounded-2xl border border-primary/10">
-            <div className="h-[300px] overflow-y-auto pr-2 custom-scrollbar">
-              <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-                <h3 className="text-2xl font-bold mb-2 sour-gummy">
-                  {activeEducation.degree} {activeEducation.field}
-                </h3>
-                <h4 className="text-xl text-primary/80 mb-4 sour-gummy">
-                  {activeEducation.university}
-                </h4>
-                <p className="mb-6 text-muted-foreground">
-                  {activeEducation.description}
-                </p>
-
-                <div>
-                  <h5 className="font-semibold mb-3 text-primary/90 sour-gummy">
-                    Key Courses
-                  </h5>
-                  <div className="flex flex-wrap gap-2">
-                    {activeEducation.courses.map((course, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
-                      >
-                        {course}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+  const stickyContent = educationData.map((edu) => ({
+    title: `${edu.degree} ${edu.field}`,
+    description: `${edu.university} - ${edu.year}`,
+    content: (
+      <div className="h-full w-full bg-card text-card-foreground backdrop-blur-2xl p-8 rounded-2xl border border-border shadow-inner">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ staggerChildren: 0.1 }}>
+          <h3 className="text-2xl font-bold mb-2 sour-gummy bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
+            {edu.degree} {edu.field}
+          </h3>
+          <h4 className="text-lg text-muted-foreground mb-4 font-semibold">
+            {edu.university}
+          </h4>
+          <p className="mb-6 text-muted-foreground text-sm leading-relaxed">
+            {edu.description}
+          </p>
+          <div>
+            <h5 className="font-semibold mb-3 text-foreground text-sm uppercase tracking-wider">
+              Key Courses
+            </h5>
+            <div className="flex flex-wrap gap-2">
+              {edu.courses.map((course, idx) => (
+                <motion.span
+                  key={idx}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                  className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium border border-border hover:border-primary/50 transition-colors cursor-default"
+                >
+                  {course}
+                </motion.span>
+              ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
+    ),
+  }));
 
-      <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background-color: rgba(0, 0, 0, 0.1);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background-color: rgba(0, 0, 0, 0.2);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background-color: rgba(0, 0, 0, 0.3);
-        }
-        .dark .custom-scrollbar::-webkit-scrollbar-track {
-          background-color: rgba(255, 255, 255, 0.1);
-        }
-        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
-          background-color: rgba(255, 255, 255, 0.2);
-        }
-        .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background-color: rgba(255, 255, 255, 0.3);
-        }
-      `}</style>
+  return (
+    <section id="education" className="py-20 md:py-32 relative overflow-hidden bg-background">
+
+      <div className="max-w-full mx-auto px-4 sm:px-6 relative z-10 w-full">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10">
+          <h2 className="text-3xl font-bold tracking-tighter text-center mb-3 sour-gummy">
+            <GradientText gradient="from-indigo-500 via-purple-500 to-pink-500" className="text-4xl font-bold" animate={true}
+
+            >
+               Education
+            </GradientText>
+          </h2>
+          <div className="h-1 w-20 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
+        </motion.div>
+
+        <StickyScroll content={stickyContent} />
+      </div>
     </section>
   );
 }
