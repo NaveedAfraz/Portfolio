@@ -5,8 +5,15 @@ import { Timeline } from "../ui/timeline";
 import { experienceData } from "../../config/experienceData";
 
 export function Experience() {
+    // Sort experience data: internships first, then freelance
+    const sortedExperienceData = [...experienceData].sort((a, b) => {
+        if (a.category === "Internships" && b.category !== "Internships") return -1;
+        if (a.category !== "Internships" && b.category === "Internships") return 1;
+        return 0;
+    });
+
     // Structure data for Timeline component
-    const timelineData = experienceData.map((exp) => ({
+    const timelineData = sortedExperienceData.map((exp) => ({
         title: exp.year,
         content: (
             <div className="text-white">

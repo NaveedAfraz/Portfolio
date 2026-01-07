@@ -1,7 +1,7 @@
 export const experienceData = [
   {
     id: "infipost",
-    year: "May 2025 – Present",
+    year: "May 2025 – Nov 2025",
     degree: "Full Stack Developer Intern",
     field: "",
     university: "Infiposts Private Limited, Bengaluru, India",
@@ -21,8 +21,8 @@ export const experienceData = [
   },
   {
     id: "techstudents",
-    year: "Aug 2025 – Present",
-    degree: "Full Stack Web Developer",
+    year: "Aug 2025 – Jan 2026",
+    degree: "Product Developer",
     field: "",
     university: "Tech Students, Hyderabad, India",
     description:
@@ -67,7 +67,7 @@ export const experienceData = [
 
   {
     id: "alprophysio",
-    year: "Sep 2025 – Oct 2025",
+    year: "Oct 2025 – Dec 2025",
     degree: "Full Stack Web Developer",
     field: "",
     university: "Alpro Physio Clinic, India",

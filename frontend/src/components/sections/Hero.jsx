@@ -3,12 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import { GradientText } from "../magicui/gradient-text";
 import { Spotlight } from "../magicui/spotlight";
 import { AuroraBackground } from "../ui/aurora-background";
-import resume from "../../assets/NaveedAfrazResume(Latest) (1).pdf";
+import QuickViewModal from "../ui/quick-view-modal";
+import resume from "../../assets/Naveed_Resume.pdf";
 
 const Hero = () => {
   const { theme } = useTheme();
   const heroRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -106,6 +108,21 @@ const Hero = () => {
               </button>
             </a>
           </div>
+          
+          {/* Quick View Badge */}
+          <div
+            className={`absolute top-22  z-40 transform transition-all duration-1000 delay-700 ease-out ${isLoaded
+              ? "translate-y-0 opacity-100"
+              : "translate-y-20 opacity-0"
+              }`}
+          >
+            <button
+              onClick={() => setIsQuickViewOpen(true)}
+              className="cursor-pointer px-3 py-1.5 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors shadow-sm"
+            >
+              Quick View
+            </button>
+          </div>
         </div>
 
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
@@ -124,6 +141,8 @@ const Hero = () => {
         <div className="absolute -bottom-40 -right-40 w-80 h-80 border border-primary/10 rounded-full"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-grid-primary/[0.02] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       </Spotlight>
+      
+      <QuickViewModal isOpen={isQuickViewOpen} onClose={() => setIsQuickViewOpen(false)} />
     </>
   );
 };

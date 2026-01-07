@@ -26,7 +26,13 @@ import {
   SiMysql,
   SiRedis,
   SiTypescript,
-  SiRabbitmq
+  SiRabbitmq,
+  SiReact,
+  SiNextdotjs,
+  SiDjango,
+  SiPython,
+  SiJest,
+  SiCypress
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 import { Cpu } from "lucide-react";
@@ -36,6 +42,8 @@ const skillsData = [
     title: "Frontend Development",
     skills: [
       { name: "React", icon: FaReact, color: "#61DAFB" },
+      { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+      { name: "React Native", icon: SiReact, color: "#61DAFB" },
       { name: "Redux", icon: SiRedux, color: "#764ABC" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
       { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
@@ -46,6 +54,8 @@ const skillsData = [
   {
     title: "Backend Development",
     skills: [
+      { name: "Python", icon: SiPython, color: "#3776AB" },
+      { name: "Django", icon: SiDjango, color: "#092E20" },
       { name: "Node.js", icon: FaNodeJs, color: "#339933" },
       { name: "Express", icon: SiExpress, color: "#000000" },
       { name: "Redis", icon: SiRedis, color: "#D82C20" },
@@ -58,6 +68,8 @@ const skillsData = [
     title: "Tools & Technologies",
     skills: [
       { name: "Git", icon: FaGitAlt, color: "#F05032" },
+      { name: "Jest", icon: SiJest, color: "#C21325" },
+      { name: "Cypress", icon: SiCypress, color: "#17202C" },
       { name: "RabbitMQ", icon: SiRabbitmq, color: "#FF6600" },
       { name: "Socket", icon: SiSocketdotio, color: "#010101" },
       { name: "Postman", icon: SiPostman, color: "#FF6C37" },
@@ -117,15 +129,13 @@ const Skills = () => {
                     {category.skills.map((skill, skillIndex) => {
                       const IconComponent = skill.icon;
                       return (
-                        <li key={skillIndex} className="flex flex-col items-center gap-2 p-2 transition-all duration-300">
-                          <CardItem translateZ={80 + skillIndex * 5} rotateX={skillIndex % 2 === 0 ? 5 : -5}>
-                            <div className={`flex items-center justify-center w-12 h-12 rounded-xl bg-muted/80 ${animated ? "animate-bounce-in" : "opacity-0"}`} style={{ transitionDelay: `${skillIndex * 100}ms`, animation: animated ? `pulse 2s infinite ${skillIndex * 100}ms` : "none" }}>
-                              <IconComponent size={30} color={theme === "dark" ? skill.color : skill.color} className={`transform transition-all duration-500 hover:rotate-12 ${animated ? "scale-100" : "scale-0"}`} style={{ transitionDelay: `${skillIndex * 150}ms` }} />
-                            </div>
-                          </CardItem>
-                          <CardItem translateZ={40} className="text-sm font-medium text-center">
+                        <li key={skillIndex} className="flex flex-col items-center gap-2 p-2">
+                          <div className={`flex items-center justify-center w-12 h-12 rounded-xl bg-muted/80 transition-all duration-500 ${animated ? "opacity-100 scale-100" : "opacity-0 scale-0"}`} style={{ transitionDelay: `${skillIndex * 50}ms` }}>
+                            <IconComponent size={30} color={skill.color} className="transform transition-all duration-300 hover:rotate-12" />
+                          </div>
+                          <span className="text-sm font-medium text-center">
                             {skill.name}
-                          </CardItem>
+                          </span>
                         </li>
                       );
                     })}
@@ -136,37 +146,6 @@ const Skills = () => {
           ))}
         </div>
       </div>
-      <style jsx>{`
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.05);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-
-        @keyframes bounce-in {
-          0% {
-            opacity: 0;
-            transform: scale(0);
-          }
-          60% {
-            opacity: 1;
-            transform: scale(1.1);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-
-        .animate-bounce-in {
-          animation: bounce-in 0.6s ease-out forwards;
-        }
-      `}</style>
     </section>
   );
 };
