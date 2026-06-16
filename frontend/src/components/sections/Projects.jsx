@@ -28,6 +28,14 @@ const Projects = ({ showOnHomePage = false }) => {
     }, 100);
   };
 
+  const clientProjects = projectsData.filter(p =>
+    ["mseorg", "auramiingo", "techstudents", "alprophysio", "quwwahealth", "carekov"].includes(p.id)
+  );
+
+  const displayedProjects = showOnHomePage
+    ? clientProjects.slice(0, 4)
+    : projectsData;
+
   return (
     <section
       id="projects"
@@ -46,16 +54,14 @@ const Projects = ({ showOnHomePage = false }) => {
             animate={true}
             className="text-4xl font-bold"
           >
-            {showOnHomePage ? "Featured Projects" : "My Work"}
+            {showOnHomePage ? "Client & Freelance Projects" : "My Work"}
           </GradientText>
           <div className="h-1 w-20 mt-2 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
 
         </h2>
 
         <FocusedCardContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
-          {projectsData
-            .slice(0, showOnHomePage ? 4 : projectsData.length)
-            .map((project, index) => (
+          {displayedProjects.map((project, index) => (
               <FocusedCard key={index} className="h-full">
                 <div
                   className={`rounded-xl p-6 h-full ${showOnHomePage

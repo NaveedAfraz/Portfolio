@@ -118,10 +118,10 @@ const Contact = () => {
                   <h4 className="text-gray-600 font-bold">Email</h4>
                   <p className="text-muted-foreground">
                     <a
-                      href="mailto:naveedAfraz2003@gmail.com"
+                      href="mailto:naveedafraz123@gmail.com"
                       className="text-white hover:text-indigo-700"
                     >
-                      NaveedAfraz2003@gmail.com
+                      naveedafraz123@gmail.com
                     </a>
                   </p>
                 </div>
@@ -154,7 +154,7 @@ const Contact = () => {
                   <Button
                     onClick={() =>
                       (window.location.href =
-                        "mailto:naveedAfraz2003@gmail.com")
+                        "mailto:naveedafraz123@gmail.com")
                     }
                     className="w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white"
                   >

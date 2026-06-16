@@ -12,8 +12,8 @@ const QuickViewModal = ({ isOpen, onClose }) => {
   // Extract important skills from Skills component
   const importantSkills = [
     "React", "Next.js", "React Native", "TypeScript", "JavaScript", "Tailwind CSS",
-    "Python", "Django", "Node.js", "Express", "MongoDB", "SQL", "Redis",
-    "Git", "Jest", "Cypress", "Postman", "GitHub Actions"
+    "Python", "Django", "Node.js", "Express", "MongoDB", "SQL", "Redis", "Docker",
+    "scikit-learn", "NumPy", "Pandas", "Git", "Jest", "Cypress", "Postman", "GitHub Actions"
   ];
 
   return (
@@ -32,7 +32,7 @@ const QuickViewModal = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold mb-4 text-primary">Profile Overview</h3>
             <div className="bg-muted/30 rounded-lg p-4">
               <p className="text-muted-foreground leading-relaxed">
-                Third-year BCA student with 8+ months of hands-on experience, including 1 paid internship and 3–4 freelance projects, building full-stack apps using MERN/PERN and React Native. Comfortable working with React, Next.js, TypeScript, Node.js, real-time features, authentication, and SQL/NoSQL databases. Exploring AI/ML while building and deploying modern, production-ready applications.
+                3rd-year BCA student and full-stack developer with 10+ months of hands-on experience, including two paid internships (Tech Students, MS Hygiene Industries) and freelance projects, building web & mobile systems, AI/ML applications, and microservices. Proficient in React, React Native, Next.js, TypeScript, Node.js, Express, Django, FastAPI, and MySQL. Exploring AI/ML applications in real products.
               </p>
             </div>
           </section>
@@ -86,15 +86,15 @@ const QuickViewModal = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold mb-4 text-primary">Quick Stats</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center p-4 bg-muted/30 rounded-lg">
-                <div className="text-2xl font-bold text-primary">8+</div>
+                <div className="text-2xl font-bold text-primary">10+</div>
                 <div className="text-sm text-muted-foreground">Months Experience</div>
               </div>
               <div className="text-center p-4 bg-muted/30 rounded-lg">
-                <div className="text-2xl font-bold text-primary">4</div>
-                <div className="text-sm text-muted-foreground">Professional Projects</div>
+                <div className="text-2xl font-bold text-primary">6</div>
+                <div className="text-sm text-muted-foreground">Professional Roles</div>
               </div>
               <div className="text-center p-4 bg-muted/30 rounded-lg">
-                <div className="text-2xl font-bold text-primary">18+</div>
+                <div className="text-2xl font-bold text-primary">22+</div>
                 <div className="text-sm text-muted-foreground">Technologies</div>
               </div>
               <div className="text-center p-4 bg-muted/30 rounded-lg">

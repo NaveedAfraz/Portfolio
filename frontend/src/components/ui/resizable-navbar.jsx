@@ -200,20 +200,31 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
-          initial={{ x: "100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "100%" }}
-          transition={{ type: "tween", duration: 0.3 }}
-          className={cn(
-            "fixed top-0 right-0 z-50 h-[100vh] w-full bg-black backdrop-blur p-4",
-            className
-          )}
-        >
-          <div className="flex flex-col h-full">
-            <div className="flex-1 overflow-y-auto">{children}</div>
-          </div>
-        </motion.div>
+        <>
+          {/* Backdrop Blur Overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 z-40 bg-black/65 backdrop-blur-sm"
+          />
+          {/* Sidebar Drawer */}
+          <motion.div
+            initial={{ x: "100%", opacity: 0.95 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "100%", opacity: 0.95 }}
+            transition={{ type: "spring", damping: 28, stiffness: 260 }}
+            className={cn(
+              "fixed top-0 right-0 z-50 h-[100vh] w-80 shadow-2xl flex flex-col",
+              className
+            )}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex-1 overflow-y-auto">{children}</div>
+            </div>
+          </motion.div>
+        </>
       )}
     </AnimatePresence>
   );

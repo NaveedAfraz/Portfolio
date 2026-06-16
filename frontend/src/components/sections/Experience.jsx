@@ -5,12 +5,8 @@ import { Timeline } from "../ui/timeline";
 import { experienceData } from "../../config/experienceData";
 
 export function Experience() {
-    // Sort experience data: internships first, then freelance
-    const sortedExperienceData = [...experienceData].sort((a, b) => {
-        if (a.category === "Internships" && b.category !== "Internships") return -1;
-        if (a.category !== "Internships" && b.category === "Internships") return 1;
-        return 0;
-    });
+    // Keep chronological order (newest/Present first)
+    const sortedExperienceData = [...experienceData];
 
     // Structure data for Timeline component
     const timelineData = sortedExperienceData.map((exp) => ({
@@ -47,6 +43,33 @@ export function Experience() {
                     <p className="mb-4 text-green-400 text-sm font-medium">🌐 Remote</p>
                 )}
                 <p className="mb-6 text-muted-foreground">{exp.description}</p>
+                {exp.projectsList && (
+                    <div className="mb-6 bg-white/5 rounded-lg p-4 border border-white/10">
+                        <h5 className="font-semibold mb-3 text-white/90 sour-gummy text-base">Delivered Projects & Live Links</h5>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            {exp.projectsList.map((proj, pIdx) => (
+                                <div key={pIdx} className="flex justify-between items-center bg-white/5 px-3 py-2 rounded border border-white/5 text-sm">
+                                    <span className="font-medium text-white/80">{proj.name}</span>
+                                    <div className="flex gap-2 text-xs">
+                                        {proj.demo && (
+                                            <a href={proj.demo} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 hover:underline">
+                                                {proj.demoLabel || "Demo"}
+                                            </a>
+                                        )}
+                                        {proj.demo && proj.github && (
+                                            <span className="text-white/20">|</span>
+                                        )}
+                                        {proj.github && (
+                                            <a href={proj.github} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 hover:underline">
+                                                GitHub
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
                 <div>
                     <h5 className="font-semibold mb-3 text-primary/90 sour-gummy">Tech Stack</h5>
                     <div className="flex flex-wrap gap-2">
@@ -76,12 +99,15 @@ export function Experience() {
                         Experience
                     </GradientText>
                     <div className="h-1 w-20 mt-3 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
+                    <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto mt-4 font-normal tracking-normal normal-case font-sans">
+                        10+ Months in Full Stack Development • Featuring 6+ Professional Projects and Remote Collaborations
+                    </p>
                 </h2>
                 <Timeline
                     data={timelineData}
                     showHeader={true}
-                    customTitle="8+ Months in Full Stack Development"
-                    customDescription="Featuring 4 Professional Projects and Remote Collaborations"
+                    customTitle="10+ Months in Full Stack Development"
+                    customDescription="Featuring 6+ Professional Projects and Remote Collaborations"
                 />
             </div>
         </section>

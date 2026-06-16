@@ -8,6 +8,8 @@ import {
   ShineCardHeader,
   ShineCardTitle,
 } from "../magicui/shine-card";
+import { CardSpotlight } from "../ui/card-spotlight";
+import { HeroParallax } from "../ui/hero-parallax";
 import { Button } from "../ui/button";
 import { useTheme } from "../ThemeProvider";
 import { FlickeringGrid } from "../magicui/flickering-grid";
@@ -20,6 +22,20 @@ const ProjectsPage = () => {
   const headerRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [nextProjectIndex, setNextProjectIndex] = useState(null);
+  const [activeTab, setActiveTab] = useState("freelance"); // Default to freelance as they are superior
+
+  const personalProjects = projectsData.slice(0, 7);
+  const freelanceProjects = projectsData.slice(7);
+  const activeProjects = activeTab === "personal" ? personalProjects : freelanceProjects;
+
+  const handleTabChange = (tab) => {
+    projectRefs.current = [];
+    setActiveTab(tab);
+    setActiveProjectIndex(0);
+    setScrollProgress(0);
+    setNextProjectIndex(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     const observerOptions = {
@@ -87,17 +103,17 @@ const ProjectsPage = () => {
 
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [activeProjectIndex]);
+  }, [activeProjectIndex, activeProjects]);
 
   useEffect(() => {
     const projectSections = document.querySelectorAll(".project-section-bg");
-    const currentProject = projectsData[activeProjectIndex];
+    const currentProject = activeProjects[activeProjectIndex];
     const nextProject =
-      nextProjectIndex !== null ? projectsData[nextProjectIndex] : null;
+      nextProjectIndex !== null ? activeProjects[nextProjectIndex] : null;
 
     projectSections.forEach((section, index) => {
       if (index === activeProjectIndex) {
-        if (nextProjectIndex !== null) {
+        if (nextProjectIndex !== null && currentProject && nextProject) {
           const blendedFrom = blendColors(
             currentProject.gradientFrom,
             nextProject.gradientFrom,
@@ -110,12 +126,12 @@ const ProjectsPage = () => {
           );
 
           section.style.background = `linear-gradient(135deg, ${blendedFrom}, ${blendedTo})`;
-        } else {
+        } else if (currentProject) {
           section.style.background = `linear-gradient(135deg, ${currentProject.gradientFrom}, ${currentProject.gradientTo})`;
         }
       }
     });
-  }, [activeProjectIndex, nextProjectIndex, scrollProgress]);
+  }, [activeProjectIndex, nextProjectIndex, scrollProgress, activeProjects]);
 
   const blendColors = (color1, color2, ratio) => {
     const parseColor = (color) => {
@@ -139,8 +155,8 @@ const ProjectsPage = () => {
     }${(b < 16 ? "0" : "") + b.toString(16)}`;
   };
 
-  if (projectRefs.current.length !== projectsData.length) {
-    projectRefs.current = Array(projectsData.length)
+  if (projectRefs.current.length !== activeProjects.length) {
+    projectRefs.current = Array(activeProjects.length)
       .fill()
       .map((_, i) => projectRefs.current[i] || null);
   }
@@ -162,44 +178,67 @@ const ProjectsPage = () => {
     };
   }, [windowWidth]);
 
+  const parallaxProducts = [
+    // First Row (5 - Primary Client Screenshots)
+    { title: "MSE Org", link: "https://mseorg.com", thumbnail: "/images/mseorg.png" },
+    { title: "Auramiingo", link: "https://auramiingo.com", thumbnail: "/images/auramiingo.png" },
+    { title: "Tech Students", link: "https://tech-students-beta.vercel.app", thumbnail: "/images/techstudents.png" },
+    { title: "Alpro Physio Clinic", link: "https://alprophysioclinic.com", thumbnail: "/images/alprophysio.png" },
+    { title: "Quwwa Health", link: "https://quwwahealth.com", thumbnail: "/images/quwwahealth.png" },
+    // Second Row (5 - Secondary Client Screenshots)
+    { title: "CareKov", link: "https://carekov.com", thumbnail: "/images/carekov2.png" },
+    { title: "Tech Students Portal", link: "https://tech-students-beta.vercel.app", thumbnail: "/images/techstudents2.png" },
+    { title: "MSE Org Platform", link: "https://mseorg.com", thumbnail: "/images/mseorg2.png" },
+    { title: "Auramiingo Social", link: "https://auramiingo.com", thumbnail: "/images/auramiingo2.png" },
+    { title: "Alpro Physio Portal", link: "https://alprophysioclinic.com", thumbnail: "/images/alprophysio2.png" },
+    // Third Row (5 - Personal Projects)
+    { title: "BiteBox", link: "https://bite-box-three.vercel.app", thumbnail: "/images/BIteBox.png" },
+    { title: "Notes", link: "https://notes-dt72.onrender.com", thumbnail: "/images/Notes.png" },
+    { title: "Elite Wardrobe", link: "https://e-commerce-psi-inky-93.vercel.app/auth/login", thumbnail: "/images/EliteWardorbe.png" },
+    { title: "Athena AI", link: "https://athena-ai-five.vercel.app", thumbnail: "/images/AthenaBot.png" },
+    { title: "DevInsights Blog", link: "https://blog-theta-three-48.vercel.app/home", thumbnail: "/images/blog.png" },
+  ];
+
   return (
     <div className="h-[100%]">
+      <HeroParallax products={parallaxProducts} />
+
       <section
         ref={headerRef}
-        className="min-h-screen flex flex-col justify-center items-center py-40"
+        className="py-20 bg-background relative z-30 md:-mt-12 -mt-6"
       >
         <div className="w-full px-4 md:px-6 max-w-7xl mx-auto">
-          <div className="absolute inset-0 w-full h-screen overflow-hidden b">
-            <FlickeringGrid />
-          </div>
-          <div className="text-center mb-16 sour-gummy z-20">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6  ">
-              <GradientText
-                gradient={
-                  theme === "dark"
-                    ? "from-white via-gray-300 to-white"
-                    : "from-indigo-600 via-purple-600 to-pink-600"
-                }
-                animate={true}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold"
+          <div className="flex justify-center mb-12 relative z-30">
+            <div className="bg-white/5 border border-white/10 p-1.5 rounded-full flex gap-2 backdrop-blur-md">
+              <button
+                onClick={() => handleTabChange("freelance")}
+                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  activeTab === "freelance"
+                    ? "bg-white text-black shadow-lg scale-105"
+                    : "text-white/60 hover:text-white"
+                }`}
               >
-                My Projects
-              </GradientText>
-            </h1>
-            <p className="text-xl text-gray-400 dark:text-gray-400 max-w-2xl mx-auto">
-              A comprehensive showcase of my projects. Scroll down to explore each project in detail.
-            </p>
+                Client & Freelance ({freelanceProjects.length})
+              </button>
+              <button
+                onClick={() => handleTabChange("personal")}
+                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  activeTab === "personal"
+                    ? "bg-white text-black shadow-lg scale-105"
+                    : "text-white/60 hover:text-white"
+                }`}
+              >
+                Academic & Personal ({personalProjects.length})
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {projectsData.slice(0, dynamicList).map((project, index) => (
-              <ShineCard
+            {activeProjects.slice(0, dynamicList).map((project, index) => (
+              <CardSpotlight
                 key={index}
-                className={`group bg-white/5 backdrop-blur-sm border-white/10 h-70 cursor-pointer transform transition-all duration-500 hover:scale-105 ${
-                  activeProjectIndex === index ? "ring-2 ring-white/30" : ""
-                } ${theme === "light" ? "border-gray-200 shadow-md" : ""}`}
-                shimmerColor="rgba(255, 255, 255, 0.05)"
-                shineHover={true}
+                radius={150}
+                className={`group/card bg-white/5 backdrop-blur-sm border-white/10 h-72 cursor-pointer transform transition-all duration-500 hover:scale-105 p-6 flex flex-col justify-between ${theme === "light" ? "border-gray-200 shadow-md bg-white text-black" : "text-white"}`}
                 onClick={() => {
                   if (projectRefs.current[index]) {
                     projectRefs.current[index].scrollIntoView({
@@ -208,28 +247,25 @@ const ProjectsPage = () => {
                   }
                 }}
               >
-                <ShineCardHeader className="mb-4 ">
-                  <ShineCardTitle
-                    className={
-                      theme === "light"
-                        ? "text-primary sour-gummy"
-                        : "text-white sour-gummy"
-                    }
-                  >
-                    {project.title}
-                  </ShineCardTitle>
-                  <ShineCardDescription
-                    className={
-                      theme === "light"
-                        ? "text-muted-foreground"
-                        : "text-white/70"
-                    }
-                  >
-                    {project.description}
-                  </ShineCardDescription>
-                </ShineCardHeader>
-                <ShineCardContent>
-                  <div className="flex flex-wrap gap-2">
+                <div className="relative z-20 flex flex-col h-full justify-between">
+                  <div className="space-y-2">
+                    <h3
+                      className={`text-xl font-bold sour-gummy ${
+                        theme === "light" ? "text-primary" : "text-white"
+                      }`}
+                    >
+                      {project.title}
+                    </h3>
+                    <p
+                      className={`text-sm sour-gummy line-clamp-3 ${
+                        theme === "light" ? "text-muted-foreground" : "text-white/70"
+                      }`}
+                    >
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mt-4">
                     {project.technologies.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
@@ -244,7 +280,7 @@ const ProjectsPage = () => {
                     ))}
                     {project.technologies.length > 3 && (
                       <span
-                        className={`px-2 py-1 ${
+                        className={`px-2 py-1 sour-gummy ${
                           theme === "light"
                             ? "bg-primary/10 text-primary"
                             : "bg-white/10 text-white/80"
@@ -254,8 +290,8 @@ const ProjectsPage = () => {
                       </span>
                     )}
                   </div>
-                </ShineCardContent>
-              </ShineCard>
+                </div>
+              </CardSpotlight>
             ))}
           </div>
 
@@ -287,9 +323,9 @@ const ProjectsPage = () => {
         </div>
       </section>
 
-      {projectsData.map((project, index) => (
+      {activeProjects.map((project, index) => (
         <section
-          key={index}
+          key={`${activeTab}-${index}`}
           ref={(el) => (projectRefs.current[index] = el)}
           className="project-section-bg min-h-screen flex items-center py-20 transition-all duration-1000 relative"
           style={{
@@ -335,15 +371,29 @@ const ProjectsPage = () => {
                     </a>
                   )}
                 </div>
-                <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm transform transition-all duration-1000 hover:scale-105">
+                <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm transform transition-all duration-1000 hover:scale-105 aspect-video flex items-center justify-center overflow-hidden">
                   <img
-                    src={project.image}
+                    src={project.image || "/images/placeholder-project.png"}
                     alt={project.title}
-                    className="w-full h-auto rounded-lg"
+                    className="w-full h-full object-cover rounded-lg"
+                    style={{ display: project.image ? 'block' : 'none' }}
                     onError={(e) => {
-                      e.target.src = "/images/placeholder-project.png";
+                      e.target.style.display = 'none';
+                      const fallback = e.target.nextSibling;
+                      if (fallback) fallback.style.display = 'flex';
                     }}
                   />
+                  <div
+                    className="w-full h-full rounded-lg flex flex-col items-center justify-center p-6 text-center select-none"
+                    style={{
+                      background: `linear-gradient(135deg, ${project.gradientFrom}cc, ${project.gradientTo}cc)`,
+                      display: project.image ? 'none' : 'flex'
+                    }}
+                  >
+                    <span className="text-4xl mb-2">💻</span>
+                    <span className="text-xl font-bold text-white tracking-wide">{project.title}</span>
+                    <span className="text-xs text-white/60 mt-1">Live Demo & Code Available</span>
+                  </div>
                 </div>
               </div>
             </div>
