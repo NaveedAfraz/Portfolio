@@ -53,6 +53,8 @@ export const HeroParallax = ({
           ))}
         </motion.div>
       </motion.div>
+      {/* Smooth bottom transition fade so HeroParallax blends into project grid seamlessly */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-slate-50/60 dark:via-[#07090e]/60 to-slate-50 dark:to-[#07090e] pointer-events-none z-20" />
     </div>
   );
 };

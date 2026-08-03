@@ -39,48 +39,31 @@ const Contact = () => {
   }, [showModal]);
 
   return (
-    <Spotlight
+    <section
       id="contact"
-      className="py-16 md:py-24 group bg-background"
-      spotlightColor={
-        theme === "dark"
-          ? "rgba(120, 119, 198, 0.25)"
-          : "rgba(120, 119, 198, 0.15)"
-      }
-      size={1000}
+      className="py-16 md:py-24 bg-transparent"
     >
       <div className="container px-4 md:px-6 mx-auto">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold tracking-tighter sour-gummy">
             <GradientText
-              gradient="from-cyan-500 via-sky-500 to-blue-600"
+              gradient="from-cyan-400 to-cyan-200"
               animate={true}
               className="text-4xl font-bold"
             >
               Let's Work Together
             </GradientText>
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
+          <div className="h-1 w-20 bg-cyan-500 mx-auto rounded-full" />
           <p className="text-muted-foreground">
             I'm currently available for freelance work or full-time positions.
           </p>
-          <GlowButton
-            variant="default"
-            glowColor={
-              theme === "dark"
-                ? "rgba(6, 182, 212, 0.6)"
-                : "rgba(6, 182, 212, 0.4)"
-            }
-            gradientColors={[
-              "from-cyan-500",
-              "via-sky-500",
-              "to-blue-600",
-            ]}
-            className="mt-6 cursor-pointer "
+          <button
+            className="mt-6 cursor-pointer px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold text-sm shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-95 transition-all"
             onClick={handleContactClick}
           >
             Contact Me
-          </GlowButton>
+          </button>
         </div>
       </div>
 
@@ -177,7 +160,7 @@ const Contact = () => {
       <div className="absolute bottom-10 left-20 w-40 h-40 bg-gradient-to-r from-cyan-500/15 to-sky-500/15 rounded-full mix-blend-multiply filter blur-xl opacity-80 animate-blob animation-delay-3000"></div>
       <div className="absolute top-20 left-10 w-28 h-28 bg-gradient-to-r from-sky-500/15 to-blue-500/15 rounded-full mix-blend-multiply filter blur-xl opacity-80 animate-blob animation-delay-5000"></div>
       <div className="absolute bottom-40 right-20 w-36 h-36 bg-gradient-to-r from-cyan-400/15 to-blue-400/15 rounded-full mix-blend-multiply filter blur-xl opacity-80 animate-blob animation-delay-7000"></div>
-    </Spotlight>
+    </section>
   );
 };
 

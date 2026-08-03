@@ -85,29 +85,31 @@ export function Experience() {
     }));
 
     return (
-        <section id="experience" className="py-16 md:py-24 relative overflow-hidden">
+        <section id="experience" className="py-16 md:py-24 relative overflow-hidden bg-transparent">
+            {/* Ambient background glow & tech dot grid */}
+            <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/6 rounded-full blur-[160px] pointer-events-none" />
+
             <Spotlight
                 className="hidden md:block"
                 size={1000}
                 spotlightClassName="opacity-20"
             />
             <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-                <h2 className="text-3xl font-bold tracking-tighter text-center mb-10 sour-gummy">
-                    <GradientText gradient="from-cyan-500 via-sky-500 to-blue-600" className="text-4xl font-bold" animate={true}
-
-                    >
+                <h2 className="text-3xl font-bold tracking-tighter text-center mb-6 sour-gummy">
+                    <GradientText gradient="from-cyan-400 to-cyan-200" className="text-4xl font-bold" animate={true}>
                         Experience
                     </GradientText>
-                    <div className="h-1 w-20 mt-3 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
-                    <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto mt-4 font-normal tracking-normal normal-case font-sans">
-                        10+ Months in Full Stack Development • Featuring 6+ Professional Projects and Remote Collaborations
+                    <div className="h-1 w-20 mt-3 bg-gradient-to-r from-cyan-400 to-cyan-600 mx-auto rounded-full" />
+                    <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto mt-4 font-normal tracking-normal normal-case sour-gummy">
+                        1 Year in Full Stack Development • Featuring 19+ Paid Startup &amp; Academic Projects
                     </p>
                 </h2>
                 <Timeline
                     data={timelineData}
                     showHeader={true}
                     customTitle="10+ Months in Full Stack Development"
-                    customDescription="Featuring 6+ Professional Projects and Remote Collaborations"
+                    customDescription="Featuring 16+ Production & Client Projects"
                 />
             </div>
         </section>

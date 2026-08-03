@@ -108,14 +108,17 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-16 md:py-24 bg-background">
-      <div className="container px-4 md:px-6 mx-auto">
+    <section id="skills" ref={sectionRef} className="pt-8 md:pt-12 pb-12 md:pb-16 relative overflow-hidden bg-transparent">
+      {/* Ambient background glow & tech dot grid */}
+      <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/4 rounded-full blur-[160px] pointer-events-none" />
+
+      <div className="container px-4 md:px-6 mx-auto relative z-10">
         <h2 className="text-3xl font-bold tracking-tighter text-center mb-3 sour-gummy">
-          <GradientText gradient="from-cyan-500 via-sky-500 to-blue-600" animate={true} className="text-4xl font-bold">
+          <GradientText gradient="from-cyan-400 to-cyan-200" animate={true} className="text-4xl font-bold">
             My Skills
           </GradientText>
-          <div className="h-1 w-20 mt-2 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
-
+          <div className="h-1 w-20 mt-2 bg-gradient-to-r from-cyan-400 to-cyan-600 mx-auto rounded-full" />
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
 

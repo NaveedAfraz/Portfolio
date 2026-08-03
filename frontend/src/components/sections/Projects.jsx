@@ -40,23 +40,19 @@ const Projects = ({ showOnHomePage = false }) => {
     <section
       id="projects"
       ref={sectionRef}
-      className={`py-16 md:py-24 ${!showOnHomePage ? "transition-colors duration-700 sour-gummy " : "bg-background sour-gummy"
+      className={`py-16 md:py-24 ${!showOnHomePage ? "transition-colors duration-700 sour-gummy " : "bg-transparent sour-gummy"
         }`}
     >
       <div className="container px-4 md:px-6 mx-auto">
         <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 sour-gummy">
           <GradientText
-            gradient={
-              showOnHomePage
-                ? "from-cyan-500 via-sky-500 to-blue-600"
-                : "from-cyan-600 via-sky-600 to-blue-700 dark:from-white dark:to-white/70"
-            }
+            gradient="from-cyan-400 to-cyan-200"
             animate={true}
             className="text-4xl font-bold"
           >
             {showOnHomePage ? "Client & Freelance Projects" : "My Work"}
           </GradientText>
-          <div className="h-1 w-20 mt-2 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
+          <div className="h-1 w-20 mt-2 bg-gradient-to-r from-cyan-400 to-cyan-600 mx-auto rounded-full" />
 
         </h2>
 

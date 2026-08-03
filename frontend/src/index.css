@@ -310,6 +310,10 @@ section:has(.MagicSpotlight):hover .MagicSpotlight {
   font-variation-settings: "wdth" 100;
 }
 
+.font-signature {
+  font-family: "Dancing Script", cursive;
+}
+
 @theme inline {
   --animate-aurora: aurora 60s linear infinite;
   @keyframes aurora {
@@ -320,4 +324,9 @@ section:has(.MagicSpotlight):hover .MagicSpotlight {
       background-position: 350% 50%, 350% 50%;
     }
   }
+}
+
+/* Hide default browser arrow cursor globally on all elements */
+*, *::before, *::after, a, button, input, select, textarea {
+  cursor: none !important;
 }

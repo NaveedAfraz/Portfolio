@@ -184,67 +184,45 @@ const NavBar = () => {
 
   const handleNavigation = (sectionId) => {
     setIsMenuOpen(false);
-    console.log(sectionId);
 
     // Always update the active section immediately for button highlight
     setActiveSection(sectionId);
-
-    // Disable auto-detection of sections for 2 seconds
     setDisableScrollDetection(true);
 
     // Special handling for Projects button
     if (sectionId === "Projects") {
-      // If we're already on the projects page, do nothing
-      if (location.pathname === "/projects") {
-        return;
-      }
-
-      // If on home page, just scroll to projects section
+      if (location.pathname === "/projects") return;
       if (isHomePage) {
         const section = document.getElementById(sectionId);
-        console.log(section)
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+        if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
         return;
       }
-
-      // If on any other page, navigate to /projects
       navigate("/projects");
       return;
     }
 
-    // For other section buttons (not projects)
-
-    // If on home page, just scroll to the section
+    // On home page — just scroll directly
     if (isHomePage) {
       const section = document.getElementById(sectionId);
-      console.log(section);
-
       if (section) {
         section.scrollIntoView({ behavior: "smooth", block: "start" });
       }
       return;
     }
 
-    // Navigate to home, preserving the active section
-    navigate("/");
-
-    // After navigation, scroll to the target section
-    setTimeout(() => {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 500);
+    // On other pages — navigate home and pass section via state
+    navigate("/", { state: { activeSection: sectionId } });
   };
 
   return (
-    <div className="w-full fixed z-40">
+    <div className="w-full fixed z-50">
       <Navbar>
         <NavBody
-          className={`sticky top-0 z-50 w-full border-b backdrop-blur transition-all duration-500 ease-in-out ${scrolled ? "bg-background/95 shadow-lg" : "bg-background/80"
-            }`}
+          className={`sticky top-0 z-50 w-full transition-all duration-500 ease-in-out ${
+            scrolled
+              ? "bg-background/90 backdrop-blur-md border-b border-neutral-200/50 dark:border-neutral-800/50 shadow-lg"
+              : "bg-transparent border-transparent shadow-none"
+          }`}
         >
           <div className="container flex h-16 items-center">
             <NavbarLogo>
@@ -255,11 +233,11 @@ const NavBar = () => {
                 <GradientText
                   gradient={
                     theme === "dark"
-                      ? "from-cyan-400 via-sky-400 to-blue-500 sour-gummy"
-                      : "from-cyan-600 via-sky-600 to-blue-700 sour-gummy"
+                      ? "from-cyan-400 via-sky-400 to-blue-500 font-signature"
+                      : "from-cyan-600 via-sky-600 to-blue-700 font-signature"
                   }
                   animate={true}
-                  className="font-bold sour-gummy text-xl transition-all duration-300"
+                  className="font-bold font-signature text-2xl tracking-wide transition-all duration-300"
                 >
                   Naveed
                 </GradientText>

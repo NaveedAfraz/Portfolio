@@ -30,7 +30,7 @@ export const Timeline = ({
 
   return (
     <div
-      className="w-full bg-background dark:bg-neutral-950 font-sans md:px-10"
+      className="w-full bg-transparent font-sans md:px-10"
       ref={containerRef}>
       {/* <div className="max-w-7xl mx-auto pt-10 px-4 md:px-8 lg:px-10">
         {showHeader && (
@@ -50,7 +50,7 @@ export const Timeline = ({
       </div>*/}
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
-          <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
+          <div key={index} className="flex justify-start pt-6 md:pt-10 md:gap-10">
             <div
               className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div

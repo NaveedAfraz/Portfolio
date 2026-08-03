@@ -52,12 +52,12 @@ export const StickyScroll = ({
         // Removed backgroundColor animation to allow theme-aware background
       }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="relative flex h-[35rem] justify-center space-x-4 md:space-x-6 lg:space-x-10 overflow-y-auto rounded-2xl py-16 md:py-24   w-full bg-background   [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:none [overflow-y-style]:none"
+      className="relative flex h-[35rem] justify-center space-x-4 md:space-x-6 lg:space-x-10 overflow-y-auto rounded-2xl py-16 md:py-24 w-full bg-transparent [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:none [overflow-y-style]:none"
       ref={ref}>
       <div className="relative sour-gummy flex items-start px-4 md:px-0 lg:px-20 flex-1">
         <div className="max-w-3xl">
           {content.map((item, index) => (
-            <div key={item.title + index} className={`my-20 p-4 rounded-lg transition-all duration-300 ${activeCard === index ? "bg-gradient-to-r from-cyan-500/20 via-sky-500/20 to-blue-500/20 border-l-4 border-cyan-500" : "hover:bg-muted/50"
+            <div key={item.title + index} className={`my-20 p-4 rounded-xl transition-all duration-300 ${activeCard === index ? "bg-cyan-500/10 border-l-4 border-cyan-500" : "hover:bg-muted/30"
               }`}>
               <motion.h2
                 initial={{ opacity: 0, x: -20 }}
@@ -85,17 +85,8 @@ export const StickyScroll = ({
       </div>
 
       <motion.div
-        style={{ background: backgroundGradient }}
-        animate={{
-          boxShadow: [
-            "0 0 20px rgba(6, 182, 212, 0.3)",
-            "0 0 40px rgba(14, 165, 233, 0.4)",
-            "0 0 20px rgba(6, 182, 212, 0.3)",
-          ]
-        }}
-        transition={{ duration: 3, repeat: Infinity }}
         className={cn(
-          "sticky top-10 mr-10 hidden h-60 md:h-72 lg:h-80 w-80 md:w-96 lg:w-[28rem] overflow-hidden rounded-2xl bg-card lg:block border border-border backdrop-blur-xl shadow-2xl",
+          "sticky top-10 mr-10 hidden h-auto min-h-[22rem] lg:min-h-[25rem] w-80 md:w-96 lg:w-[28rem] overflow-hidden rounded-2xl bg-neutral-900/90 dark:bg-[#0c1017]/90 lg:block border border-neutral-800 backdrop-blur-xl shadow-xl",
           contentClassName
         )}>
         <motion.div
