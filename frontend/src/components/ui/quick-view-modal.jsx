@@ -32,7 +32,7 @@ const QuickViewModal = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold mb-4 text-primary">Profile Overview</h3>
             <div className="bg-muted/30 rounded-lg p-4">
               <p className="text-muted-foreground leading-relaxed">
-                3rd-year BCA student and full-stack developer with 10+ months of hands-on experience, including two paid internships (Tech Students, MS Hygiene Industries) and freelance projects, building web & mobile systems, AI/ML applications, and microservices. Proficient in React, React Native, Next.js, TypeScript, Node.js, Express, Django, FastAPI, and MySQL. Exploring AI/ML applications in real products.
+                Full-Stack Software Engineer with 1+ year of hands-on experience across web, mobile apps, microservices, and end-to-end system architecture. Delivered 19+ production applications, including Klipp (AI AE Plugin), Tech Students EdTech platform, and custom client solutions. Proficient in React, Next.js, React Native, Node.js, Express, Python, Django, FastAPI, Docker, and MySQL (complex 80+ table schema architecture).
               </p>
             </div>
           </section>
@@ -86,12 +86,12 @@ const QuickViewModal = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold mb-4 text-primary">Quick Stats</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center p-4 bg-muted/30 rounded-lg">
-                <div className="text-2xl font-bold text-primary">10+</div>
-                <div className="text-sm text-muted-foreground">Months Experience</div>
+                <div className="text-2xl font-bold text-primary">1+ Yr</div>
+                <div className="text-sm text-muted-foreground">Experience</div>
               </div>
               <div className="text-center p-4 bg-muted/30 rounded-lg">
-                <div className="text-2xl font-bold text-primary">6</div>
-                <div className="text-sm text-muted-foreground">Professional Roles</div>
+                <div className="text-2xl font-bold text-primary">19+</div>
+                <div className="text-sm text-muted-foreground">Projects Delivered</div>
               </div>
               <div className="text-center p-4 bg-muted/30 rounded-lg">
                 <div className="text-2xl font-bold text-primary">22+</div>
