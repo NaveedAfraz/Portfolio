@@ -8,7 +8,7 @@ export function MagicGradient({ className, variant = "default", ...props }) {
         variant === "default" && "light:bg-white light:[background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)] dark:bg-black dark:[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]",
         variant === "purple" && "light:bg-white light:[background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#a855f7_100%)] dark:bg-black dark:[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#a855f7_100%)]",
         variant === "blue" && "light:bg-white light:[background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#3b82f6_100%)] dark:bg-black dark:[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#3b82f6_100%)]",
-        variant === "pink" && "light:bg-white light:[background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#ec4899_100%)] dark:bg-black dark:[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#ec4899_100%)]",
+        variant === "pink" && "light:bg-white light:[background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#06b6d4_100%)] dark:bg-black dark:[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#06b6d4_100%)]",
         className
       )}
       {...props}

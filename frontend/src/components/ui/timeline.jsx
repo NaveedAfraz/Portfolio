@@ -36,7 +36,7 @@ export const Timeline = ({
         {showHeader && (
           <>
             <GradientText
-              gradient="from-indigo-500 via-purple-500 to-pink-500"
+              gradient="from-cyan-500 via-sky-500 to-blue-600"
               animate={true}
               className="text-lg md:text-4xl mb-4 max-w-4xl"
             >
@@ -56,7 +56,7 @@ export const Timeline = ({
               <div
                 className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-background dark:bg-neutral-900 flex items-center justify-center shadow-lg">
                 <div
-                  className="h-4 w-4 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 border-2 border-white dark:border-neutral-800" />
+                  className="h-4 w-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 border-2 border-white dark:border-neutral-800" />
               </div>
               <h3
                 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-muted-foreground dark:text-neutral-400">
@@ -83,7 +83,7 @@ export const Timeline = ({
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-indigo-500 via-purple-500 to-pink-500 rounded-full" />
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-cyan-500 via-sky-500 to-blue-600 rounded-full" />
         </div>
       </div>
     </div>

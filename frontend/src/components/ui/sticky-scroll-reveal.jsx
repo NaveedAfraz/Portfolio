@@ -35,9 +35,9 @@ export const StickyScroll = ({
   ];
 
   const linearGradients = [
-    "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-    "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)",
+    "linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)",
+    "linear-gradient(135deg, #14b8a6 0%, #0284c7 100%)",
   ];
 
   const [backgroundGradient, setBackgroundGradient] = useState(linearGradients[0]);
@@ -57,7 +57,7 @@ export const StickyScroll = ({
       <div className="relative sour-gummy flex items-start px-4 md:px-0 lg:px-20 flex-1">
         <div className="max-w-3xl">
           {content.map((item, index) => (
-            <div key={item.title + index} className={`my-20 p-4 rounded-lg transition-all duration-300 ${activeCard === index ? "bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 border-l-4 border-indigo-500" : "hover:bg-muted/50"
+            <div key={item.title + index} className={`my-20 p-4 rounded-lg transition-all duration-300 ${activeCard === index ? "bg-gradient-to-r from-cyan-500/20 via-sky-500/20 to-blue-500/20 border-l-4 border-cyan-500" : "hover:bg-muted/50"
               }`}>
               <motion.h2
                 initial={{ opacity: 0, x: -20 }}
@@ -88,9 +88,9 @@ export const StickyScroll = ({
         style={{ background: backgroundGradient }}
         animate={{
           boxShadow: [
-            "0 0 20px rgba(99, 102, 241, 0.3)",
-            "0 0 40px rgba(168, 85, 247, 0.4)",
-            "0 0 20px rgba(99, 102, 241, 0.3)",
+            "0 0 20px rgba(6, 182, 212, 0.3)",
+            "0 0 40px rgba(14, 165, 233, 0.4)",
+            "0 0 20px rgba(6, 182, 212, 0.3)",
           ]
         }}
         transition={{ duration: 3, repeat: Infinity }}

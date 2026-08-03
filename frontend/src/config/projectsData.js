@@ -174,6 +174,18 @@ export const projectsData = [
     link: "https://social-media-1-2enj.onrender.com/home",
   },
   {
+    id: "klipp",
+    title: "Klipp – AI-Powered After Effects Plugin & Web Platform",
+    description: "Built a commercial Adobe After Effects CEP plugin with a companion web platform for licensing, payments, and user management.",
+    detailedDescription: "Built a commercial Adobe After Effects CEP plugin with a companion web platform for licensing, payments, and user management. Developed AI-powered caption generation using Whisper.cpp, multilingual translation with IndicTrans2, secure native licensing with HWID binding, encrypted model delivery, and an admin dashboard for managing licenses, pricing, releases, and users. Integrated Razorpay and Whop for payments, Better Auth for authentication, and designed a secure licensing engine communicating with the React panel via IPC.",
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Node.js", "Express", "Better Auth", "MySQL", "Drizzle ORM", "Whisper.cpp", "IndicTrans2", "Cloudflare R2", "Razorpay", "Whop", "Adobe CEP", "ExtendScript"],
+    gradientFrom: "#0F172A",
+    gradientTo: "#0284C7",
+    logo: "klipp",
+    image: "",
+    link: "https://klipp.in",
+  },
+  {
     id: "techstudents",
     title: "Tech Students",
     description: "A production-grade microservices EdTech platform with 6 role-based dashboards, secure assessments, analytics, and admin controls.",

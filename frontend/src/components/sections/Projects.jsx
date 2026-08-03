@@ -29,7 +29,7 @@ const Projects = ({ showOnHomePage = false }) => {
   };
 
   const clientProjects = projectsData.filter(p =>
-    ["mseorg", "auramiingo", "techstudents", "alprophysio", "quwwahealth", "carekov"].includes(p.id)
+    ["klipp", "techstudents", "mseorg", "auramiingo", "alprophysio", "quwwahealth", "carekov"].includes(p.id)
   );
 
   const displayedProjects = showOnHomePage
@@ -48,15 +48,15 @@ const Projects = ({ showOnHomePage = false }) => {
           <GradientText
             gradient={
               showOnHomePage
-                ? "from-indigo-500 via-purple-500 to-pink-500"
-                : "from-white to-white/70"
+                ? "from-cyan-500 via-sky-500 to-blue-600"
+                : "from-cyan-600 via-sky-600 to-blue-700 dark:from-white dark:to-white/70"
             }
             animate={true}
             className="text-4xl font-bold"
           >
             {showOnHomePage ? "Client & Freelance Projects" : "My Work"}
           </GradientText>
-          <div className="h-1 w-20 mt-2 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
+          <div className="h-1 w-20 mt-2 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
 
         </h2>
 
@@ -65,18 +65,18 @@ const Projects = ({ showOnHomePage = false }) => {
               <FocusedCard key={index} className="h-full">
                 <div
                   className={`rounded-xl p-6 h-full ${showOnHomePage
-                    ? "bg-card backdrop-blur-sm"
-                    : "bg-white/10 backdrop-blur-sm border border-white/20"
+                    ? "bg-card backdrop-blur-sm border border-border"
+                    : "bg-black/5 dark:bg-white/10 backdrop-blur-sm border border-black/10 dark:border-white/20"
                     }`}
                 >
                   <div className="space-y-4">
                     <h3
-                      className={`text-xl font-bold ${showOnHomePage ? "" : "text-white"} sour-gummy`}
+                      className={`text-xl font-bold ${showOnHomePage ? "text-foreground" : "text-foreground dark:text-white"} sour-gummy`}
                     >
                       {project.title}
                     </h3>
                     <p
-                      className={`${showOnHomePage ? "" : "text-white/70"}`}
+                      className={`${showOnHomePage ? "text-muted-foreground" : "text-muted-foreground dark:text-white/70"}`}
                     >
                       {project.description}
                     </p>
@@ -86,8 +86,8 @@ const Projects = ({ showOnHomePage = false }) => {
                         <span
                           key={techIndex}
                           className={`px-2 py-1 ${showOnHomePage
-                            ? "bg-muted text-primary text-xs rounded-md"
-                            : "bg-white/10 text-white text-xs rounded-md"
+                            ? "bg-muted text-primary text-xs rounded-md font-medium"
+                            : "bg-black/10 dark:bg-white/10 text-foreground dark:text-white text-xs rounded-md font-medium"
                             }`}
                         >
                           {tech}
@@ -96,8 +96,8 @@ const Projects = ({ showOnHomePage = false }) => {
                       {project.technologies.length > 3 && (
                         <span
                           className={`px-2 py-1 ${showOnHomePage
-                            ? "bg-muted text-primary text-xs rounded-md"
-                            : "bg-white/10 text-white text-xs rounded-md"
+                            ? "bg-muted text-primary text-xs rounded-md font-medium"
+                            : "bg-black/10 dark:bg-white/10 text-foreground dark:text-white text-xs rounded-md font-medium"
                             }`}
                         >
                           +{project.technologies.length - 3} more
@@ -114,11 +114,11 @@ const Projects = ({ showOnHomePage = false }) => {
           <div className="flex justify-center mt-10">
             <GlowButton
               variant="default"
-              glowColor="rgba(129, 140, 248, 0.5)"
+              glowColor="rgba(6, 182, 212, 0.5)"
               gradientColors={[
-                "from-indigo-500",
-                "via-purple-500",
-                "to-pink-500",
+                "from-cyan-500",
+                "via-sky-500",
+                "to-blue-600",
               ]}
               className="px-6 py-2 cursor-pointer hover:scale-105 transition-transform"
               onClick={handleShowAllProjects}

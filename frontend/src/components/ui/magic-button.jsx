@@ -6,7 +6,7 @@ const MagicButton = forwardRef(({ className, variant, size, children, ...props }
     <button
       className={cn(
         "relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-medium transition-all rounded-md group",
-        variant === "primary" && "bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white shadow-md hover:shadow-lg",
+        variant === "primary" && "bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-600 text-white shadow-md hover:shadow-lg",
         variant === "secondary" && "border border-primary/20 bg-background hover:bg-primary/10 text-foreground",
         variant === "outline" && "border border-primary/20 bg-transparent hover:bg-primary/5 text-foreground",
         size === "sm" && "text-sm px-4 py-2",

@@ -17,7 +17,7 @@ export function ThemeToggle() {
         <Sun
           className={`absolute transition-all duration-300 ${
             theme === "light"
-              ? "scale-100 rotate-0 opacity-100 text-pink-500 cursor-pointer"
+              ? "scale-100 rotate-0 opacity-100 text-amber-500 cursor-pointer"
               : "scale-0 -rotate-90 opacity-0 cursor-pointer"
           }`}
         />

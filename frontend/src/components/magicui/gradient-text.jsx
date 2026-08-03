@@ -4,7 +4,7 @@ import { cn } from "../../lib/utils";
 export function GradientText({
   className,
   children,
-  gradient = "from-primary via-purple-500 to-indigo-500",
+  gradient = "from-cyan-500 via-sky-500 to-blue-600",
   animate = false,
   ...props
 }) {

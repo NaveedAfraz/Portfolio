@@ -4,8 +4,8 @@ import { cn } from "../../lib/utils";
 export function GlowButton({
   className,
   children,
-  glowColor = "rgba(120, 119, 198, 0.4)",
-  gradientColors = ["from-indigo-500", "via-purple-500", "to-pink-500"],
+  glowColor = "rgba(6, 182, 212, 0.4)",
+  gradientColors = ["from-cyan-500", "via-sky-500", "to-blue-600"],
   variant = "default",
   size = "default",
   ...props

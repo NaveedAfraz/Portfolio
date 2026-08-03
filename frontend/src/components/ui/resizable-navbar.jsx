@@ -92,7 +92,7 @@ export const NavBody = ({ children, className, visible }) => {
         damping: 50,
       }}
       className={cn(
-        "fixed inset-x-0 top-0 text-white z-[60] mx-auto w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
+        "fixed inset-x-0 top-0 text-foreground z-[60] mx-auto w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
         visible && "bg-white/80 dark:bg-neutral-950/80",
         className
       )}
@@ -233,7 +233,7 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
 export const MobileNavToggle = ({ isOpen, onClick, className }) => {
   return isOpen ? (
     <IconX
-      className={cn("cursor-pointer w-6 h-6 text-white", className)}
+      className={cn("cursor-pointer w-6 h-6 text-black dark:text-white", className)}
       onClick={onClick}
     />
   ) : (

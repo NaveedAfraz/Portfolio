@@ -257,8 +257,8 @@ const NavBar = () => {
                 <GradientText
                   gradient={
                     theme === "dark"
-                      ? "from-indigo-400 via-purple-400 to-pink-400 sour-gummy"
-                      : "from-indigo-600 via-purple-600 to-pink-600 sour-gummy"
+                      ? "from-cyan-400 via-sky-400 to-blue-500 sour-gummy"
+                      : "from-cyan-600 via-sky-600 to-blue-700 sour-gummy"
                   }
                   animate={true}
                   className="font-bold sour-gummy text-xl transition-all duration-300"
@@ -276,8 +276,8 @@ const NavBar = () => {
                     onClick={() => handleNavigation(section)}
                     className={`cursor-pointer z-30 px-4 py-2 transition-all duration-300 transform rounded-lg 
                     ${activeSection === section
-                        ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white scale-105 shadow-md"
-                        : `bg-transparent hover:bg-gradient-to-r hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 hover:text-white border border-transparent hover:border-pink-300 hover:scale-105 hover:shadow-md ${theme === "dark" ? "text-gray-200" : "text-gray-700"
+                        ? "bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 text-white scale-105 shadow-md"
+                        : `bg-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-sky-500 hover:to-blue-500 hover:text-white border border-transparent hover:border-cyan-300 hover:scale-105 hover:shadow-md ${theme === "dark" ? "text-gray-200" : "text-gray-700"
                         }`
                       }
                     relative overflow-hidden group font-medium`}
@@ -285,7 +285,7 @@ const NavBar = () => {
                     <span className="relative z-10">
                       {section.charAt(0).toUpperCase() + section.slice(1)}
                     </span>
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                   </NavbarButton>
                 )
               )}
@@ -308,8 +308,8 @@ const NavBar = () => {
                 isOpen={isMenuOpen}
                 onClose={() => setIsMenuOpen(false)}
                 className={`backdrop-blur-3xl shadow-2xl overflow-y-auto rounded-l-3xl border-l transition-all duration-500 ${theme === "dark"
-                    ? "bg-gradient-to-b from-neutral-950/95 via-neutral-900/95 to-neutral-950/95 border-l border-purple-500/20 shadow-purple-950/30"
-                    : "bg-gradient-to-b from-neutral-50/95 via-neutral-100/95 to-neutral-50/95 border-l border-purple-300/30 shadow-purple-300/10"
+                    ? "bg-gradient-to-b from-neutral-950/95 via-neutral-900/95 to-neutral-950/95 border-l border-cyan-500/20 shadow-cyan-950/30"
+                    : "bg-gradient-to-b from-neutral-50/95 via-neutral-100/95 to-neutral-50/95 border-l border-cyan-300/30 shadow-cyan-300/10"
                   }`}
               >
                 {/* Header Section */}
@@ -317,7 +317,7 @@ const NavBar = () => {
                     ? "bg-neutral-950/80 border-b-neutral-800"
                     : "bg-neutral-50/80 border-b-neutral-200"
                   }`}>
-                  <span className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+                  <span className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500">
                     Naveed
                   </span>
                   <div className="flex items-center space-x-2">
@@ -349,19 +349,19 @@ const NavBar = () => {
                         <NavbarButton
                           onClick={() => handleNavigation(section)}
                           className={`w-full justify-start px-6 py-4 rounded-2xl transition-all duration-300 transform flex items-center gap-3 group relative overflow-hidden font-semibold border ${activeSection === section
-                              ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white shadow-xl shadow-purple-500/30 scale-102 border-transparent"
+                              ? "bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 text-white shadow-xl shadow-cyan-500/30 scale-102 border-transparent"
                               : `${theme === "dark"
-                                ? "text-gray-300 bg-neutral-900/60 border-neutral-800/80 hover:border-purple-500/30 hover:bg-neutral-800/50 hover:text-white"
-                                : "text-gray-700 bg-white border-neutral-200 hover:border-purple-300/30 hover:bg-neutral-50 hover:text-black"
+                                ? "text-gray-300 bg-neutral-900/60 border-neutral-800/80 hover:border-cyan-500/30 hover:bg-neutral-800/50 hover:text-white"
+                                : "text-gray-700 bg-white border-neutral-200 hover:border-cyan-300/30 hover:bg-neutral-50 hover:text-black"
                               }`
                             }
                           `}
                           mobile
                         >
                           {/* Left Glow Element on Hover */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-indigo-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 transition-all duration-300"></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-sky-500/0 to-blue-500/0 group-hover:from-cyan-500/5 group-hover:via-sky-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
 
-                          <span className={`relative z-10 flex items-center justify-center ${activeSection === section ? "text-white" : theme === "dark" ? "text-neutral-400 group-hover:text-purple-400" : "text-neutral-500 group-hover:text-purple-500"
+                          <span className={`relative z-10 flex items-center justify-center ${activeSection === section ? "text-white" : theme === "dark" ? "text-neutral-400 group-hover:text-cyan-400" : "text-neutral-500 group-hover:text-cyan-500"
                             }`}>
                             {getSectionIcon(section)}
                           </span>
@@ -372,7 +372,7 @@ const NavBar = () => {
 
                           {/* Active indicator */}
                           {activeSection === section && (
-                            <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-300 via-purple-300 to-pink-300 rounded-l-full"></div>
+                            <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-300 via-sky-300 to-blue-400 rounded-l-full"></div>
                           )}
                         </NavbarButton>
                       </motion.div>

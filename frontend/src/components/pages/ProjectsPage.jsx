@@ -209,13 +209,13 @@ const ProjectsPage = () => {
       >
         <div className="w-full px-4 md:px-6 max-w-7xl mx-auto">
           <div className="flex justify-center mb-12 relative z-30">
-            <div className="bg-white/5 border border-white/10 p-1.5 rounded-full flex gap-2 backdrop-blur-md">
+            <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 p-1.5 rounded-full flex gap-2 backdrop-blur-md">
               <button
                 onClick={() => handleTabChange("freelance")}
                 className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
                   activeTab === "freelance"
-                    ? "bg-white text-black shadow-lg scale-105"
-                    : "text-white/60 hover:text-white"
+                    ? "bg-slate-900 text-white dark:bg-white dark:text-black shadow-lg scale-105"
+                    : "text-slate-700 hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
                 }`}
               >
                 Client & Freelance ({freelanceProjects.length})
@@ -224,8 +224,8 @@ const ProjectsPage = () => {
                 onClick={() => handleTabChange("personal")}
                 className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
                   activeTab === "personal"
-                    ? "bg-white text-black shadow-lg scale-105"
-                    : "text-white/60 hover:text-white"
+                    ? "bg-slate-900 text-white dark:bg-white dark:text-black shadow-lg scale-105"
+                    : "text-slate-700 hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
                 }`}
               >
                 Academic & Personal ({personalProjects.length})

@@ -15,7 +15,7 @@ export function Education() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ staggerChildren: 0.1 }}>
-          <h3 className="text-2xl font-bold mb-2 sour-gummy bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
+          <h3 className="text-2xl font-bold mb-2 sour-gummy bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">
             {edu.degree} {edu.field}
           </h3>
           <h4 className="text-lg text-muted-foreground mb-4 font-semibold">
@@ -56,13 +56,13 @@ export function Education() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10">
           <h2 className="text-3xl font-bold tracking-tighter text-center mb-3 sour-gummy">
-            <GradientText gradient="from-indigo-500 via-purple-500 to-pink-500" className="text-4xl font-bold" animate={true}
+            <GradientText gradient="from-cyan-500 via-sky-500 to-blue-600" className="text-4xl font-bold" animate={true}
 
             >
                Education
             </GradientText>
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
+          <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
         </motion.div>
 
         <StickyScroll content={stickyContent} />
