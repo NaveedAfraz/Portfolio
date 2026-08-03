@@ -195,7 +195,7 @@ export const projectsData = [
     gradientTo: "#475569",
     logo: "techstudents",
     image: "/images/techstudents.png",
-    link: "https://tech-students-beta.vercel.app",
+    link: "https://techstudents.in",
   },
   {
     id: "mseorg",

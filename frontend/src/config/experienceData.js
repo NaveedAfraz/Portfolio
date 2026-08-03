@@ -50,7 +50,7 @@ export const experienceData = [
     ],
     category: "Freelance",
     remote: false,
-    link: "https://tech-students-beta.vercel.app",
+    link: "https://techstudents.in",
   },
   {
     id: "freelance",

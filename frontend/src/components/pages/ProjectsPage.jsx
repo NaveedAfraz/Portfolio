@@ -182,12 +182,12 @@ const ProjectsPage = () => {
     // First Row (5 - Primary Client Screenshots)
     { title: "MSE Org", link: "https://mseorg.com", thumbnail: "/images/mseorg.png" },
     { title: "Auramiingo", link: "https://auramiingo.com", thumbnail: "/images/auramiingo.png" },
-    { title: "Tech Students", link: "https://tech-students-beta.vercel.app", thumbnail: "/images/techstudents.png" },
+    { title: "Tech Students", link: "https://techstudents.in", thumbnail: "/images/techstudents.png" },
     { title: "Alpro Physio Clinic", link: "https://alprophysioclinic.com", thumbnail: "/images/alprophysio.png" },
     { title: "Quwwa Health", link: "https://quwwahealth.com", thumbnail: "/images/quwwahealth.png" },
     // Second Row (5 - Secondary Client Screenshots)
     { title: "CareKov", link: "https://carekov.com", thumbnail: "/images/carekov2.png" },
-    { title: "Tech Students Portal", link: "https://tech-students-beta.vercel.app", thumbnail: "/images/techstudents2.png" },
+    { title: "Tech Students Portal", link: "https://techstudents.in", thumbnail: "/images/techstudents2.png" },
     { title: "MSE Org Platform", link: "https://mseorg.com", thumbnail: "/images/mseorg2.png" },
     { title: "Auramiingo Social", link: "https://auramiingo.com", thumbnail: "/images/auramiingo2.png" },
     { title: "Alpro Physio Portal", link: "https://alprophysioclinic.com", thumbnail: "/images/alprophysio2.png" },

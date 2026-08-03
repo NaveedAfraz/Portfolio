@@ -346,10 +346,10 @@ const NavBar = () => {
                       <motion.div key={section} variants={itemVariants}>
                         <NavbarButton
                           onClick={() => handleNavigation(section)}
-                          className={`w-full justify-start px-6 py-4 rounded-2xl transition-all duration-300 transform flex items-center gap-3 group relative overflow-hidden font-semibold border ${activeSection === section
-                              ? "bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 text-white shadow-xl shadow-cyan-500/30 scale-102 border-transparent"
+                          className={`w-full justify-start px-6 py-4 rounded-2xl transition-colors duration-200 flex items-center gap-3 group relative overflow-hidden font-semibold border ${activeSection === section
+                              ? "bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 text-white shadow-xl shadow-cyan-500/30 border-transparent"
                               : `${theme === "dark"
-                                ? "text-gray-300 bg-neutral-900/60 border-neutral-800/80 hover:border-cyan-500/30 hover:bg-neutral-800/50 hover:text-white"
+                                ? "text-gray-300 bg-neutral-900/80 border-neutral-800/80 hover:border-cyan-500/30 hover:bg-neutral-800/50 hover:text-white"
                                 : "text-gray-700 bg-white border-neutral-200 hover:border-cyan-300/30 hover:bg-neutral-50 hover:text-black"
                               }`
                             }

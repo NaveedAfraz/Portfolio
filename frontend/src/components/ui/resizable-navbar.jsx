@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils"; // Make sure this utility exists in your project
 import { Link } from "react-router-dom";
 import {
@@ -197,37 +198,40 @@ export const MobileNavHeader = ({ children, className, visible }) => {
 };
 
 export const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
-  return (
+  if (typeof window === "undefined") return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop Blur Overlay */}
+          {/* Backdrop Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: "linear" }}
             onClick={onClose}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[99] bg-black/60 backdrop-blur-sm"
           />
           {/* Sidebar Drawer */}
           <motion.div
             initial={{ x: "100%" }}
-            animate={{ x: "0%" }}
+            animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 30, stiffness: 320, mass: 0.8 }}
+            transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
             className={cn(
-              "fixed top-0 right-0 z-50 h-[100vh] w-80 shadow-2xl flex flex-col will-change-transform",
+              "fixed top-0 right-0 z-[100] h-[100dvh] w-80 shadow-2xl flex flex-col will-change-transform",
               className
             )}
           >
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-full overflow-hidden">
               <div className="flex-1 overflow-y-auto">{children}</div>
             </div>
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 
