@@ -42,7 +42,7 @@ export function Experience() {
                 {exp.remote && (
                     <p className="mb-4 text-emerald-600 dark:text-emerald-400 text-sm font-medium">🌐 Remote</p>
                 )}
-                <p className="mb-6 text-muted-foreground">{exp.description}</p>
+                <p className="mb-6 text-neutral-700 dark:text-neutral-300 leading-relaxed">{exp.description}</p>
                 {exp.projectsList && (
                     <div className="mb-6 bg-black/5 dark:bg-white/5 rounded-lg p-4 border border-black/10 dark:border-white/10">
                         <h5 className="font-semibold mb-3 text-foreground sour-gummy text-base">Delivered Projects & Live Links</h5>
