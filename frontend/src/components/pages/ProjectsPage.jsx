@@ -205,7 +205,7 @@ const ProjectsPage = () => {
 
       <section
         ref={headerRef}
-        className="py-20 bg-background relative z-30 md:-mt-12 -mt-6"
+        className="py-10 md:py-20 bg-background relative z-30 md:-mt-12 -mt-10"
       >
         <div className="w-full px-4 md:px-6 max-w-7xl mx-auto">
           <div className="flex justify-center mb-12 relative z-30">

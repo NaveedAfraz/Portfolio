@@ -206,17 +206,18 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
             onClick={onClose}
-            className="fixed inset-0 z-40 bg-black/65 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
           />
           {/* Sidebar Drawer */}
           <motion.div
-            initial={{ x: "100%", opacity: 0.95 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "100%", opacity: 0.95 }}
-            transition={{ type: "spring", damping: 28, stiffness: 260 }}
+            initial={{ x: "100%" }}
+            animate={{ x: "0%" }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 30, stiffness: 320, mass: 0.8 }}
             className={cn(
-              "fixed top-0 right-0 z-50 h-[100vh] w-80 shadow-2xl flex flex-col",
+              "fixed top-0 right-0 z-50 h-[100vh] w-80 shadow-2xl flex flex-col will-change-transform",
               className
             )}
           >

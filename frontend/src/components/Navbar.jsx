@@ -26,22 +26,20 @@ const containerVariants = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.03,
       delayChildren: 0.05,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 15, scale: 0.95 },
+  hidden: { opacity: 0, x: 12 },
   show: { 
     opacity: 1, 
-    y: 0, 
-    scale: 1,
+    x: 0,
     transition: { 
-      type: "spring", 
-      stiffness: 300, 
-      damping: 24 
+      duration: 0.2, 
+      ease: "easeOut" 
     } 
   },
 };
@@ -307,9 +305,9 @@ const NavBar = () => {
               <MobileNavMenu
                 isOpen={isMenuOpen}
                 onClose={() => setIsMenuOpen(false)}
-                className={`backdrop-blur-3xl shadow-2xl overflow-y-auto rounded-l-3xl border-l transition-all duration-500 ${theme === "dark"
-                    ? "bg-gradient-to-b from-neutral-950/95 via-neutral-900/95 to-neutral-950/95 border-l border-cyan-500/20 shadow-cyan-950/30"
-                    : "bg-gradient-to-b from-neutral-50/95 via-neutral-100/95 to-neutral-50/95 border-l border-cyan-300/30 shadow-cyan-300/10"
+                className={`shadow-2xl overflow-y-auto rounded-l-3xl border-l ${theme === "dark"
+                    ? "bg-neutral-950 border-l border-cyan-500/20 shadow-cyan-950/30 text-white"
+                    : "bg-neutral-50 border-l border-cyan-300/30 shadow-cyan-300/10 text-black"
                   }`}
               >
                 {/* Header Section */}
