@@ -34,7 +34,6 @@ const ProjectsPage = () => {
     setActiveProjectIndex(0);
     setScrollProgress(0);
     setNextProjectIndex(null);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {

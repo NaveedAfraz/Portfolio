@@ -108,8 +108,8 @@ export function Experience() {
                 <Timeline
                     data={timelineData}
                     showHeader={true}
-                    customTitle="10+ Months in Full Stack Development"
-                    customDescription="Featuring 16+ Production & Client Projects"
+                    customTitle="1+ Years in Full Stack Development"
+                    customDescription="Featuring 19+ Production & Client Projects"
                 />
             </div>
         </section>

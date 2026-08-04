@@ -31,7 +31,7 @@ export const experienceData = [
   },
   {
     id: "techstudents",
-    year: "August 2025 - Present (11 months)",
+    year: "August 2025 - Present (1 year)",
     degree: "Product Developer",
     field: "",
     university: "Tech Students, Nizamabad, India",

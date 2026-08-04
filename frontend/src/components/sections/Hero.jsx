@@ -51,13 +51,13 @@ const Hero = () => {
 
   const techRow1 = [
     { name: "React.js", icon: "⚛️" },
+    { name: "React Native", icon: "📱" },
     { name: "Next.js", icon: "▲" },
     { name: "TypeScript", icon: "📘" },
     { name: "Node.js", icon: "🟢" },
     { name: "Express.js", icon: "⚙️" },
     { name: "MySQL", icon: "🐬" },
     { name: "MongoDB", icon: "🍃" },
-    { name: "PostgreSQL", icon: "🐘" },
   ];
 
   const techRow2 = [
@@ -142,11 +142,11 @@ const Hero = () => {
               >
                 I build{" "}
                 <span className="font-serif italic text-cyan-500 dark:text-cyan-400 font-normal pr-1">
-                  Websites
+                  Web Apps
                 </span>{" "}
                 &{" "}
                 <span className="font-serif italic text-amber-500 dark:text-amber-400 font-normal">
-                  Full-Stack Apps
+                  Mobile Apps
                 </span>
                 <span className="animate-pulse text-cyan-500 font-bold ml-0.5">|</span>
               </h2>
@@ -159,7 +159,7 @@ const Hero = () => {
               }`}
             >
               <p className="text-base sm:text-lg text-neutral-700 dark:text-neutral-300 max-w-2xl mt-4 sm:mt-6 leading-relaxed sm:leading-loose">
-                I help businesses & students turn ideas into real, working software web applications, marketplaces, and modern platforms. Deeply passionate about coding (1+ year daily GitHub streak), debugging both with AI & manual precision. 1 yr exp · 19+ projects delivered.
+                I enjoy building things that didn't exist yesterday. Every project begins with an idea and ends with something people can use. That's the part I never get tired of.
               </p>
             </div>
 
@@ -280,7 +280,7 @@ const Hero = () => {
                 theme === "dark" ? "bg-neutral-900/60 border-neutral-800/80" : "bg-white border-neutral-200 shadow-sm"
               }`}>
                 <div className="flex items-center gap-2 text-cyan-500 font-extrabold text-xl sour-gummy">
-                  <span>📅</span> 1 yr
+                  <span>📅</span> 1+ Yr
                 </div>
                 <p className="text-xs font-bold text-slate-900 dark:text-white mt-1 sour-gummy">Experience</p>
                 <p className="text-[11px] text-neutral-500 dark:text-neutral-400">Full Stack Development</p>
@@ -344,15 +344,17 @@ const Hero = () => {
 
           {/* Subtitle */}
           <h2 className="text-xl font-medium text-neutral-300 sour-gummy">
-            Full-Stack{" "}
-            <span className="font-serif italic text-cyan-400 font-normal">Developer</span>{" "}
-            · React · Node.js · Django<span className="animate-pulse text-cyan-500 font-bold ml-0.5">|</span>
+            I build{" "}
+            <span className="font-serif italic text-cyan-400 font-normal">Web Apps</span>{" "}
+            &amp;{" "}
+            <span className="font-serif italic text-amber-400 font-normal">Mobile Apps</span>
+            <span className="animate-pulse text-cyan-500 font-bold ml-0.5">|</span>
           </h2>
 
           {/* Bio */}
           <div className="border-l-2 border-cyan-500/50 pl-4 py-1">
             <p className="text-sm text-neutral-300 leading-relaxed">
-              Full-Stack Developer with 1 year of experience building production-ready web &amp; mobile apps using React, React Native, Node.js, Django, and FastAPI. Delivered 19+ apps across healthcare, EdTech, and marketplaces.
+              I enjoy building things that didn't exist yesterday. Every project begins with an idea and ends with something people can use. That's the part I never get tired of.
             </p>
           </div>
 
@@ -413,7 +415,7 @@ const Hero = () => {
           {/* Metric cards */}
           <div className="grid grid-cols-2 gap-3 pt-2">
             {[
-              { icon: "📅", value: "1 yr", label: "Experience", sub: "Full Stack Development" },
+              { icon: "📅", value: "1+ Yr", label: "Experience", sub: "Full Stack Development" },
               { icon: "💻", value: "19+", label: "Projects Delivered", sub: "9 Clients + 10 Final Year Projects" },
               { icon: "🎓", value: "BCA", label: "Degree", sub: "St. Joseph Degree College" },
               { icon: "🏢", value: "7+", label: "Engagements", sub: "Internships & Freelance" },
