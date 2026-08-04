@@ -1,23 +1,20 @@
 export const educationData = [
   {
     id: "stjosephs",
-    year: "August 2023 - August 2026",
-    degree: "Bachelor of Computer Application",
-    field: "Computer Science",
-    university: "St. Joseph's Degree College",
-    description:
-      "Affiliated with Osmania University. Focuses on full-stack web and mobile systems, databases, and practical application building.",
-    courses: ["Web Development", "Database Management System (DBMS)", "Software Engineering"],
-  },
-  {
-    id: "osmania",
     year: "August 2023 - May 2026",
-    degree: "Bachelor's Degree",
+    degree: "Bachelor of Computer Applications (BCA)",
     field: "Computer Science",
-    university: "Osmania University",
+    university: "St. Joseph's Degree College (Affiliated with Osmania University)",
     description:
-      "Completed degree program in Computer Science covering core computing systems and methodologies.",
-    courses: ["Data Structures & Algorithms", "Operating Systems", "Computer Networks"],
+      "Full-time degree program in Computer Science covering core computing systems, full-stack web and mobile development, databases, and software engineering methodologies.",
+    courses: [
+      "Data Structures & Algorithms",
+      "Web Development",
+      "Database Management System (DBMS)",
+      "Operating Systems",
+      "Computer Networks",
+      "Software Engineering",
+    ],
   },
   {
     id: "highschool",

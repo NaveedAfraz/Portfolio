@@ -326,7 +326,11 @@ section:has(.MagicSpotlight):hover .MagicSpotlight {
   }
 }
 
-/* Hide default browser arrow cursor globally on all elements */
-*, *::before, *::after, a, button, input, select, textarea {
+/* Hide default browser arrow cursor globally on interactive elements, but restore on input fields */
+*, *::before, *::after, a, button {
   cursor: none !important;
+}
+
+input, textarea, select, [contenteditable="true"] {
+  cursor: text !important;
 }

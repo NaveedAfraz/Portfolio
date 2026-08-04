@@ -10,6 +10,8 @@ export const StickyScroll = ({
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
   const ref = useRef(null);
+  const itemRefs = useRef([]);
+
   const { scrollYProgress } = useScroll({
     container: ref,
     offset: ["start start", "end end"],
@@ -17,7 +19,8 @@ export const StickyScroll = ({
   const cardLength = content.length;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / (cardLength - 1));
+    const divisor = cardLength > 1 ? cardLength - 1 : 1;
+    const cardsBreakpoints = content.map((_, index) => index / divisor);
     const closestBreakpointIndex = cardsBreakpoints.reduce((acc, breakpoint, index) => {
       const distance = Math.abs(latest - breakpoint);
       if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
@@ -28,11 +31,16 @@ export const StickyScroll = ({
     setActiveCard(closestBreakpointIndex);
   });
 
-  const backgroundColors = [
-    "rgba(0, 0, 0, 0.8)", // Dark mode
-    "rgba(0, 0, 0, 0.8)",
-    "rgba(0, 0, 0, 0.8)",
-  ];
+  const handleCardClick = (index) => {
+    setActiveCard(index);
+    const targetElement = itemRefs.current[index];
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
 
   const linearGradients = [
     "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)",
@@ -48,37 +56,44 @@ export const StickyScroll = ({
 
   return (
     <motion.div
-      animate={{
-        // Removed backgroundColor animation to allow theme-aware background
-      }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="relative flex h-[35rem] justify-center space-x-4 md:space-x-6 lg:space-x-10 overflow-y-auto rounded-2xl py-16 md:py-24 w-full bg-transparent [&::-webkit-scrollbar]:hidden [-ms-overflow-style]:none [overflow-y-style]:none"
       ref={ref}>
       <div className="relative sour-gummy flex items-start px-4 md:px-0 lg:px-20 flex-1">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl w-full">
           {content.map((item, index) => (
-            <div key={item.title + index} className={`my-20 p-4 rounded-xl transition-all duration-300 ${activeCard === index ? "bg-cyan-500/10 border-l-4 border-cyan-500" : "hover:bg-muted/30"
+            <div
+              key={item.title + index}
+              ref={(el) => (itemRefs.current[index] = el)}
+              onClick={() => handleCardClick(index)}
+              className={`my-12 md:my-20 p-5 rounded-xl transition-all duration-300 cursor-pointer ${
+                activeCard === index
+                  ? "bg-cyan-500/10 border-l-4 border-cyan-500 shadow-lg shadow-cyan-500/5"
+                  : "hover:bg-neutral-800/40 opacity-60 hover:opacity-100 border-l-4 border-transparent"
               }`}>
               <motion.h2
                 initial={{ opacity: 0, x: -20 }}
                 animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                  x: activeCard === index ? 0 : -10,
+                  opacity: activeCard === index ? 1 : 0.6,
+                  x: activeCard === index ? 0 : -5,
                 }}
-                transition={{ duration: 0.4 }}
-                className="text-3xl md:text-4xl font-bold text-foreground">
+                transition={{ duration: 0.3 }}
+                className="text-2xl md:text-4xl font-bold text-foreground">
                 {item.title}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, x: -20 }}
                 animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                  x: activeCard === index ? 0 : -10,
+                  opacity: activeCard === index ? 1 : 0.6,
+                  x: activeCard === index ? 0 : -5,
                 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                className="text-base md:text-lg mt-6 max-w-sm text-muted-foreground leading-relaxed font-light">
+                transition={{ duration: 0.3, delay: 0.05 }}
+                className="text-sm md:text-lg mt-3 md:mt-6 max-w-sm text-muted-foreground leading-relaxed font-light">
                 {item.description}
               </motion.p>
+              <div className="mt-4 lg:hidden">
+                {activeCard === index && item.content}
+              </div>
             </div>
           ))}
         </div>
@@ -90,11 +105,12 @@ export const StickyScroll = ({
           contentClassName
         )}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          key={activeCard}
+          initial={{ opacity: 0, y: 15, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="h-full w-full">
-          {content[activeCard].content ?? null}
+          {content[activeCard]?.content ?? null}
         </motion.div>
       </motion.div>
     </motion.div>
