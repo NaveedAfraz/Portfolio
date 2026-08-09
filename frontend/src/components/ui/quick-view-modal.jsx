@@ -61,6 +61,28 @@ const QuickViewModal = ({ isOpen, onClose }) => {
                       🔗 View Project
                     </a>
                   )}
+                  {exp.projectsList && (
+                    <div className="mt-3">
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                        Projects Delivered ({exp.projectsList.length}):
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.projectsList.map((project, i) => (
+                          <a
+                            key={i}
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-2 py-1 bg-primary/5 hover:bg-primary/10 border border-primary/10 rounded text-xs text-primary transition-colors"
+                            title={project.demoLabel || "View Live"}
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-500/80 animate-pulse"></span>
+                            {project.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

@@ -27,7 +27,9 @@ export const experienceData = [
     ],
     category: "Freelance",
     remote: true,
-    link: "https://klipp.in",
+    projectsList: [
+      { name: "Klipp Platform", demo: "https://klipp.in", demoLabel: "Live Site" }
+    ],
   },
   {
     id: "techstudents",
@@ -50,7 +52,9 @@ export const experienceData = [
     ],
     category: "Freelance",
     remote: false,
-    link: "https://techstudents.in",
+    projectsList: [
+      { name: "Tech Students Platform", demo: "https://techstudents.in", demoLabel: "Live Site" }
+    ],
   },
   {
     id: "freelance",
@@ -139,7 +143,9 @@ export const experienceData = [
     ],
     category: "Freelance",
     remote: true,
-    link: "https://alprophysioclinic.com",
+    projectsList: [
+      { name: "Alpro Physio Clinic", demo: "https://alprophysioclinic.com", demoLabel: "Live Site" }
+    ],
   },
   {
     id: "infipost",
@@ -161,6 +167,9 @@ export const experienceData = [
     ],
     category: "Internships",
     remote: true,
+    projectsList: [
+      { name: "Infipost Platform", demo: "https://infipost.in/", demoLabel: "Live Site" }
+    ],
   },
   {
     id: "quwwahealth",
@@ -182,6 +191,8 @@ export const experienceData = [
     ],
     category: "Freelance",
     remote: true,
-    link: "https://quwwahealth.com",
+    projectsList: [
+      { name: "Quwwa Health", demo: "https://quwwahealth.com", demoLabel: "Live Site" }
+    ],
   },
 ];
