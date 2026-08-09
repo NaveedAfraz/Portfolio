@@ -1,7 +1,7 @@
 export const educationData = [
   {
     id: "stjosephs",
-    year: "August 2023 - May 2026",
+    year: "August 2023 - August 2026",
     degree: "Bachelor of Computer Applications (BCA)",
     field: "Computer Science",
     university: "St. Joseph's Degree College (Affiliated with Osmania University)",

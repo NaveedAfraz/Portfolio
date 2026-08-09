@@ -2,22 +2,7 @@
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      try {
-        var theme = localStorage.getItem('theme');
-        if (!theme) {
-          localStorage.setItem('theme', 'dark');
-          theme = 'dark';
-        }
-        if (theme === 'light') {
-          document.documentElement.classList.remove('dark');
-          document.documentElement.classList.add('light');
-        } else {
-          document.documentElement.classList.remove('light');
-          document.documentElement.classList.add('dark');
-        }
-      } catch (e) {}
-    </script>
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="I enjoy building things that didn't exist yesterday. Every project begins with an idea and ends with something people can use. That's the part I never get tired of. Naveed Afraz | Full Stack Developer." />
@@ -25,6 +10,49 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Custom cursor elements -->
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-ring"></div>
+
+    <script>
+      (function() {
+        var dot  = document.getElementById('custom-cursor');
+        var ring = document.getElementById('custom-cursor-ring');
+        var rx = 0, ry = 0; // ring position (lagged)
+        var mx = 0, my = 0; // mouse position
+
+        document.addEventListener('mousemove', function(e) {
+          mx = e.clientX; my = e.clientY;
+          dot.style.left = mx + 'px';
+          dot.style.top  = my + 'px';
+        });
+
+        // Ring follows with spring lag
+        function animateRing() {
+          rx += (mx - rx) * 0.12;
+          ry += (my - ry) * 0.12;
+          ring.style.left = rx + 'px';
+          ring.style.top  = ry + 'px';
+          requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        // Grow on hover over interactive elements
+        document.addEventListener('mouseover', function(e) {
+          var el = e.target;
+          var interactive = el.closest('a, button, input, textarea, select, [role="button"], label');
+          if (interactive) {
+            dot.classList.add('hovering');
+            ring.classList.add('hovering');
+          } else {
+            dot.classList.remove('hovering');
+            ring.classList.remove('hovering');
+          }
+        });
+      })();
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
     <script>
       window.va =

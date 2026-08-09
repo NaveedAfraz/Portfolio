@@ -46,13 +46,13 @@ const Projects = ({ showOnHomePage = false }) => {
       <div className="container px-4 md:px-6 mx-auto">
         <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 sour-gummy">
           <GradientText
-            gradient="from-cyan-400 to-cyan-200"
+            gradient="from-cyan-600 to-cyan-400 dark:from-cyan-400 dark:to-cyan-200"
             animate={true}
             className="text-4xl font-bold"
           >
             {showOnHomePage ? "Client & Freelance Projects" : "My Work"}
           </GradientText>
-          <div className="h-1 w-20 mt-2 bg-gradient-to-r from-cyan-400 to-cyan-600 mx-auto rounded-full" />
+          <div className="h-1 w-20 mt-2 bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-400 dark:to-cyan-600 mx-auto rounded-full" />
 
         </h2>
 

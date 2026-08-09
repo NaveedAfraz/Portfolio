@@ -22,11 +22,28 @@ const ProjectsPage = () => {
   const headerRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [nextProjectIndex, setNextProjectIndex] = useState(null);
-  const [activeTab, setActiveTab] = useState("freelance"); // Default to freelance as they are superior
+  const [activeTab, setActiveTab] = useState("production");
 
-  const personalProjects = projectsData.slice(0, 7);
-  const freelanceProjects = projectsData.slice(7);
-  const activeProjects = activeTab === "personal" ? personalProjects : freelanceProjects;
+  const productionIds = [
+    "klipp", "techstudents", "mseorg", "auramiingo", "carekov", "alprophysio", "quwwahealth"
+  ];
+  
+  const academicIds = [
+    "marketscope", "editflowpro", "securenet", "smartstudy", "incometracker", "passguard", "securevault", "bookdrop", "tournaforge", "placementpro", "tutornear", "estatevalue", "certchain"
+  ];
+  
+  const personalIds = [
+    "bitebox", "echomate", "notes", "elite-wardrobe", "athena-ai", "blog", "social-media"
+  ];
+
+  const productionProjects = projectsData.filter(p => productionIds.includes(p.id));
+  const academicProjects = projectsData.filter(p => academicIds.includes(p.id));
+  const personalProjects = projectsData.filter(p => personalIds.includes(p.id));
+  
+  const activeProjects = 
+    activeTab === "production" ? productionProjects : 
+    activeTab === "academic" ? academicProjects : 
+    personalProjects;
 
   const handleTabChange = (tab) => {
     projectRefs.current = [];
@@ -210,14 +227,24 @@ const ProjectsPage = () => {
           <div className="flex justify-center mb-12 relative z-30">
             <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 p-1.5 rounded-full flex gap-2 backdrop-blur-md">
               <button
-                onClick={() => handleTabChange("freelance")}
+                onClick={() => handleTabChange("production")}
                 className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                  activeTab === "freelance"
+                  activeTab === "production"
                     ? "bg-slate-900 text-white dark:bg-white dark:text-black shadow-lg scale-105"
                     : "text-slate-700 hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
                 }`}
               >
-                Client & Freelance ({freelanceProjects.length})
+                Client & Production ({productionProjects.length})
+              </button>
+              <button
+                onClick={() => handleTabChange("academic")}
+                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  activeTab === "academic"
+                    ? "bg-slate-900 text-white dark:bg-white dark:text-black shadow-lg scale-105"
+                    : "text-slate-700 hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
+                }`}
+              >
+                Academic (Freelance) ({academicProjects.length})
               </button>
               <button
                 onClick={() => handleTabChange("personal")}
@@ -227,7 +254,7 @@ const ProjectsPage = () => {
                     : "text-slate-700 hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
                 }`}
               >
-                Academic & Personal ({personalProjects.length})
+                Personal & Mini ({personalProjects.length})
               </button>
             </div>
           </div>
@@ -248,13 +275,25 @@ const ProjectsPage = () => {
               >
                 <div className="relative z-20 flex flex-col h-full justify-between">
                   <div className="space-y-2">
-                    <h3
-                      className={`text-xl font-bold sour-gummy ${
-                        theme === "light" ? "text-primary" : "text-white"
-                      }`}
-                    >
-                      {project.title}
-                    </h3>
+                    <div className="flex flex-col gap-1">
+                      <h3
+                        className={`text-xl font-bold sour-gummy ${
+                          theme === "light" ? "text-primary" : "text-white"
+                        }`}
+                      >
+                        {project.title}
+                      </h3>
+                      {project.category && (
+                        <span className={`text-[10px] w-max font-semibold px-2 py-0.5 rounded-full border shadow-sm
+                          ${project.category.includes("Paid") 
+                            ? (theme === "light" ? "bg-green-100 border-green-200 text-green-700" : "bg-green-500/20 border-green-500/30 text-green-100")
+                            : (theme === "light" ? "bg-slate-100 border-slate-200 text-slate-600" : "bg-white/10 border-white/20 text-white")
+                          }
+                        `}>
+                          {project.category.includes("Paid") ? "💰 " : ""}{project.category}
+                        </span>
+                      )}
+                    </div>
                     <p
                       className={`text-sm sour-gummy line-clamp-3 ${
                         theme === "light" ? "text-muted-foreground" : "text-white/70"
@@ -342,9 +381,18 @@ const ProjectsPage = () => {
             <div className="w-full max-w-7xl mx-auto px-4 md:px-6 relative z-10 sour-gummy">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="transform transition-all duration-1000">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white ">
-                    {project.title}
-                  </h2>
+                  <div className="flex items-center gap-3 mb-4 flex-wrap">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white">
+                      {project.title}
+                    </h2>
+                    {project.category && (
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-full text-white border whitespace-nowrap shadow-sm
+                        ${project.category.includes("Paid") ? "bg-green-500/20 border-green-500/30 text-green-100" : "bg-white/10 border-white/20"}
+                      `}>
+                        {project.category.includes("Paid") ? "💰 " : ""}{project.category}
+                      </span>
+                    )}
+                  </div>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech, techIndex) => (
                       <span

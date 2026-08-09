@@ -2,6 +2,7 @@
 export const projectsData = [
   {
     id: "bitebox",
+    category: "Personal & Mini",
     title: "BiteBox",
     description:
       "A modern restaurant platform for seamless online food ordering",
@@ -28,6 +29,7 @@ export const projectsData = [
   },
   {
     id: "notes",
+    category: "Personal & Mini",
     title: "Notes",
     description:
       "A sleek, minimalist note-taking application with rich text editing",
@@ -51,6 +53,7 @@ export const projectsData = [
   },
   {
     id: "elite-wardrobe",
+    category: "Personal & Mini",
     title: "Elite Wardrobe",
     description: "A premium e-commerce platform for fashion and accessories",
     detailedDescription:
@@ -75,6 +78,7 @@ export const projectsData = [
   },
   {
     id: "athena-ai",
+    category: "Personal & Mini",
     title: "Athena AI",
     description:
       "An intelligent AI assistant with natural language processing capabilities",
@@ -100,6 +104,7 @@ export const projectsData = [
   },
   {
     id: "blog",
+    category: "Personal & Mini",
     title: "DevInsights Blog",
     description:
       "A technical blog platform for developers to share knowledge and insights",
@@ -125,6 +130,7 @@ export const projectsData = [
   },
   {
     id: "echomate",
+    category: "Personal & Mini",
     title: "EchoMate",
     description:
       "A real-time messaging platform with voice and video capabilities",
@@ -150,6 +156,7 @@ export const projectsData = [
   },
   {
     id: "social-media",
+    category: "Personal & Mini",
     title: "Social Media Platform",
     description:
       "A social media platform with user authentication, posting, and commenting features",
@@ -175,6 +182,7 @@ export const projectsData = [
   },
   {
     id: "klipp",
+    category: "Client & Production",
     title: "Klipp – AI-Powered After Effects Plugin & Web Platform",
     description: "Built a commercial Adobe After Effects CEP plugin with a companion web platform for licensing, payments, and user management.",
     detailedDescription: "Built a commercial Adobe After Effects CEP plugin with a companion web platform for licensing, payments, and user management. Developed AI-powered caption generation using Whisper.cpp, multilingual translation with IndicTrans2, secure native licensing with HWID binding, encrypted model delivery, and an admin dashboard for managing licenses, pricing, releases, and users. Integrated Razorpay and Whop for payments, Better Auth for authentication, and designed a secure licensing engine communicating with the React panel via IPC.",
@@ -187,6 +195,7 @@ export const projectsData = [
   },
   {
     id: "techstudents",
+    category: "Client & Production",
     title: "Tech Students",
     description: "A production-grade microservices EdTech platform with 6 role-based dashboards, secure assessments, analytics, and admin controls.",
     detailedDescription: "Tech Students is a production-grade educational platform built on a scalable microservices architecture. It includes 6 distinct role-based dashboards and over 13 advanced features including secure authentication, real-time analytics, assessment modules, and administrative controls, containerized using Docker.",
@@ -199,6 +208,7 @@ export const projectsData = [
   },
   {
     id: "mseorg",
+    category: "Client & Production",
     title: "MSE Org",
     description: "A premium enterprise e-commerce platform for MS Hygiene featuring dynamic catalogs, search systems, shopping carts, and Stripe payment integration.",
     detailedDescription: "MSE Org is a premium, high-traffic e-commerce platform developed for MS Hygiene Industries. It features complete product catalogs, advanced sorting and search mechanisms, secure shopping carts, and a robust Stripe payment gateway integration. The back-end is optimized to handle high concurrent user traffic and manage inventory updates seamlessly.",
@@ -211,6 +221,7 @@ export const projectsData = [
   },
   {
     id: "auramiingo",
+    category: "Client & Production",
     title: "Auramiingo",
     description: "A social networking platform merged with modern e-commerce, enabling real-time user chat, post sharing, product reviews, and online purchases.",
     detailedDescription: "Auramiingo merges social networking with modern e-commerce. Users can interact in real-time, share posts, leave reviews, and purchase products from integrated online storefronts. Built using React and Node.js with PostgreSQL database management to ensure consistent performance under heavy data loads.",
@@ -223,6 +234,7 @@ export const projectsData = [
   },
   {
     id: "alprophysio",
+    category: "Client & Production",
     title: "Alpro Physio Clinic",
     description: "A modern patient booking and clinic management portal featuring automated online scheduling, inquiry pipelines, and notifications via Resend.",
     detailedDescription: "Developed for Alpro Physio Clinic, this platform features patient service listings, automated online scheduling, inquiry channels, and integrated notifications via Resend. Fully optimized for search engines (SEO) and mobile accessibility.",
@@ -235,6 +247,7 @@ export const projectsData = [
   },
   {
     id: "quwwahealth",
+    category: "Client & Production",
     title: "Quwwa Health",
     description: "An end-to-end medical wellness system equipped with diagnostic tracking trackers, health inquiries, and patient consulting dashboards.",
     detailedDescription: "Quwwa Health is a modern web application dedicated to medical wellness. It features a secure database to track patient diagnostics, health inquiries, and interactive patient consulting boards, integrated with email notifications.",
@@ -247,6 +260,7 @@ export const projectsData = [
   },
   {
     id: "carekov",
+    category: "Client & Production",
     title: "CareKov",
     description: "A comprehensive digital clinic management portal facilitating doctor-patient communication, digital prescriptions, and scheduling.",
     detailedDescription: "CareKov is a full-featured clinical management and digital healthcare portal. It facilitates patient record management, online appointment scheduling, digital prescriptions, and doctor-patient communication workflows, adhering to real-world healthcare security standards.",
@@ -259,6 +273,7 @@ export const projectsData = [
   },
   {
     id: "marketscope",
+    category: "Academic Freelance (Paid)",
     title: "Market Scope",
     description:
       "An advanced market analytics and scanning platform for business insights",
@@ -272,6 +287,7 @@ export const projectsData = [
   },
   {
     id: "editflowpro",
+    category: "Academic Freelance (Paid)",
     title: "Edit Flow Pro",
     description:
       "A collaborative team workflow management system for content editors",
@@ -285,6 +301,7 @@ export const projectsData = [
   },
   {
     id: "securenet",
+    category: "Academic Freelance (Paid)",
     title: "Secure Net",
     description:
       "A network monitoring portal showcasing logs and security metrics",
@@ -298,6 +315,7 @@ export const projectsData = [
   },
   {
     id: "smartstudy",
+    category: "Academic Freelance (Paid)",
     title: "Smart Study",
     description:
       "An interactive student portal for assessments, tracking, and resources",
@@ -311,6 +329,7 @@ export const projectsData = [
   },
   {
     id: "incometracker",
+    category: "Academic Freelance (Paid)",
     title: "Income Tracker",
     description:
       "A personal finance tracker for organizing expenses, budgets, and savings",
@@ -324,6 +343,7 @@ export const projectsData = [
   },
   {
     id: "passguard",
+    category: "Academic Freelance (Paid)",
     title: "Pass Guard",
     description:
       "A secure local credentials safe with password generation utilities",
@@ -337,6 +357,7 @@ export const projectsData = [
   },
   {
     id: "securevault",
+    category: "Academic Freelance (Paid)",
     title: "Secure Vault",
     description:
       "An encrypted web cabinet for file storage and secure sharing workflows",
@@ -350,6 +371,7 @@ export const projectsData = [
   },
   {
     id: "bookdrop",
+    category: "Academic Freelance (Paid)",
     title: "BookDrop",
     description:
       "A lightweight book reservation and library inventory platform",
@@ -363,6 +385,7 @@ export const projectsData = [
   },
   {
     id: "tournaforge",
+    category: "Academic Freelance (Paid)",
     title: "TournaForge",
     description:
       "A tournament structure designer and live matches bracket generator",
@@ -376,6 +399,7 @@ export const projectsData = [
   },
   {
     id: "tutornear",
+    category: "Academic Freelance (Paid)",
     title: "Tutor Near",
     description:
       "A local tutor marketplace for matches, scheduling, and learning tasks",
@@ -389,6 +413,7 @@ export const projectsData = [
   },
   {
     id: "estatevalue",
+    category: "Academic Freelance (Paid)",
     title: "Estate Value",
     description:
       "A real estate pricing estimator and property listings platform",
@@ -402,6 +427,7 @@ export const projectsData = [
   },
   {
     id: "certchain",
+    category: "Academic Freelance (Paid)",
     title: "Cert Chain",
     description:
       "A cryptographically verified credentials and PDF certificate generator",
@@ -415,6 +441,7 @@ export const projectsData = [
   },
   {
     id: "placementpro",
+    category: "Academic Freelance (Paid)",
     title: "Placement Pro",
     description:
       "A university placement dashboard for job posts and resume submissions",
