@@ -120,7 +120,7 @@ const Skills = () => {
           </GradientText>
           <div className="h-1 w-20 mt-2 bg-gradient-to-r from-cyan-400 to-cyan-600 mx-auto rounded-full" />
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 
           {skillsData.map((category, index) => (
             <CardContainer key={index} className="inter-var w-full">

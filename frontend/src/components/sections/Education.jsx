@@ -117,7 +117,7 @@ export function Education() {
     <section
       id="education"
       ref={sectionRef}
-      className="relative bg-transparent py-16 lg:min-h-screen lg:flex lg:flex-col lg:items-center lg:justify-center lg:py-20 overflow-hidden"
+      className="relative bg-transparent py-12 xl:min-h-screen xl:flex xl:flex-col xl:items-center xl:justify-center xl:py-20 overflow-hidden"
     >
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -145,10 +145,10 @@ export function Education() {
       </motion.div>
 
       {/* Main content */}
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start relative z-10">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 flex flex-col xl:flex-row gap-6 xl:gap-12 items-start relative z-10">
 
         {/* Left — vertical step nav */}
-        <div className="flex-shrink-0 w-full lg:w-64 flex flex-row lg:flex-col gap-3">
+        <div className="flex-shrink-0 w-full xl:w-64 flex flex-row xl:flex-col gap-3">
           {educationData.map((item, i) => (
             <button
               key={item.id}
@@ -187,7 +187,7 @@ export function Education() {
           ))}
 
           {/* Progress dots */}
-          <div className="hidden lg:flex flex-row lg:flex-col items-center gap-2 mt-4 pl-6">
+          <div className="hidden xl:flex flex-row xl:flex-col items-center gap-2 mt-4 pl-6">
             {educationData.map((_, i) => (
               <button
                 key={i}
