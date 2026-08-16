@@ -77,9 +77,9 @@ const Hero = () => {
       {/* ── DESKTOP Hero: min-h-screen, clean tight padding ─────── */}
       <div className="hidden md:block relative min-h-screen overflow-hidden">
 
-        {/* Portrait — desktop only: touches top and bottom of section */}
+        {/* Portrait — only on actual desktops (lg+), hidden at md (desktop-site mode on phones) */}
         <div
-          className={`absolute top-0 right-0 h-full w-[48%] pointer-events-none z-[1] overflow-hidden transition-all duration-700 ease-in-out ${
+          className={`hidden lg:block absolute top-0 right-0 h-full w-[48%] pointer-events-none z-[1] overflow-hidden transition-all duration-700 ease-in-out ${
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -110,8 +110,8 @@ const Hero = () => {
           ref={heroRef}
           className="relative w-full flex items-center justify-center pt-20 pb-4"
         >
-          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 z-10 grid md:grid-cols-12 gap-8 items-center pt-8 pb-0">
-          <div className="md:col-span-7 z-10 relative space-y-4 text-left pb-0">
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 z-10 grid lg:grid-cols-12 gap-8 items-center pt-8 pb-0">
+          <div className="lg:col-span-7 z-10 relative space-y-4 text-left pb-0">
             
             {/* Cursive Greeting */}
             <div
