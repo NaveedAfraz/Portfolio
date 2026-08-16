@@ -74,10 +74,10 @@ const Hero = () => {
 
   return (
     <>
-      {/* ── DESKTOP Hero: min-h-screen, clean tight padding ─────── */}
-      <div className="hidden md:block relative min-h-screen overflow-hidden">
+      {/* ── DESKTOP / TABLET Hero: normal flow on mobile/tablet, min-h-screen on laptop ─────── */}
+      <div className="hidden md:block relative min-h-[auto] lg:min-h-screen overflow-hidden py-10 lg:py-0 flex flex-col justify-center">
 
-        {/* Portrait — only on actual desktops (lg+), hidden at md (desktop-site mode on phones) */}
+        {/* Portrait — full-bleed overlay only on laptops/desktops (lg+) */}
         <div
           className={`hidden lg:block absolute top-0 right-0 h-full w-[48%] pointer-events-none z-[1] overflow-hidden transition-all duration-700 ease-in-out ${
             isLoaded ? "opacity-100" : "opacity-0"
@@ -113,44 +113,58 @@ const Hero = () => {
           <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 z-10 grid lg:grid-cols-12 gap-8 items-center pt-8 pb-0">
           <div className="lg:col-span-7 z-10 relative space-y-4 text-left pb-0">
             
-            {/* Cursive Greeting */}
-            <div
-              className={`transition-all duration-700 ${
-                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
-            >
-              <p className="font-serif italic text-cyan-500 dark:text-cyan-400 text-3xl sm:text-4xl font-normal tracking-wide">
-                Hello, I'm
-              </p>
-            </div>
+            <div className="flex items-center justify-between gap-6">
+              <div className="space-y-2">
+                {/* Cursive Greeting */}
+                <div
+                  className={`transition-all duration-700 ${
+                    isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                  }`}
+                >
+                  <p className="font-serif italic text-cyan-500 dark:text-cyan-400 text-3xl sm:text-4xl font-normal tracking-wide">
+                    Hello, I'm
+                  </p>
+                </div>
 
-            {/* Name & Title Header */}
-            <div className="space-y-2">
-              <h1
-                className={`text-5xl sm:text-7xl font-bold tracking-tight sour-gummy transition-all duration-1000 ease-out ${
-                  isLoaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
-              >
-                <span className={theme === "dark" ? "text-white" : "text-slate-900"}>
-                  Naveed Afraz
-                </span>
-              </h1>
+                {/* Name & Title Header */}
+                <h1
+                  className={`text-5xl sm:text-7xl font-bold tracking-tight sour-gummy transition-all duration-1000 ease-out ${
+                    isLoaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  }`}
+                >
+                  <span className={theme === "dark" ? "text-white" : "text-slate-900"}>
+                    Naveed Afraz
+                  </span>
+                </h1>
 
-              <h2
-                className={`text-xl sm:text-2xl font-medium tracking-tight text-neutral-600 dark:text-neutral-300 sour-gummy transition-all duration-1000 delay-200 ease-out ${
-                  isLoaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
-              >
-                I build{" "}
-                <span className="font-serif italic text-cyan-500 dark:text-cyan-400 font-normal pr-1">
-                  Web Apps
-                </span>{" "}
-                &{" "}
-                <span className="font-serif italic text-amber-500 dark:text-amber-400 font-normal">
-                  Mobile Apps
-                </span>
-                <span className="animate-pulse text-cyan-500 font-bold ml-0.5">|</span>
-              </h2>
+                <h2
+                  className={`text-xl sm:text-2xl font-medium tracking-tight text-neutral-600 dark:text-neutral-300 sour-gummy transition-all duration-1000 delay-200 ease-out ${
+                    isLoaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  }`}
+                >
+                  I build{" "}
+                  <span className="font-serif italic text-cyan-500 dark:text-cyan-400 font-normal pr-1">
+                    Web Apps
+                  </span>{" "}
+                  &{" "}
+                  <span className="font-serif italic text-amber-500 dark:text-amber-400 font-normal">
+                    Mobile Apps
+                  </span>
+                  <span className="animate-pulse text-cyan-500 font-bold ml-0.5">|</span>
+                </h2>
+              </div>
+
+              {/* Framed Portrait for mobile desktop-site view (hidden on lg+ laptops where overlay shows) */}
+              <div className="block lg:hidden shrink-0">
+                <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-3xl overflow-hidden border-2 border-cyan-500/40 shadow-xl shadow-cyan-500/20 bg-neutral-900/40">
+                  <img
+                    src="/images/naveed-ai-portrait.png"
+                    alt="Naveed Afraz"
+                    className="w-full h-full object-cover object-[center_10%]"
+                  />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl pointer-events-none" />
+                </div>
+              </div>
             </div>
 
             {/* Quote / Bio Paragraph */}
@@ -333,15 +347,30 @@ const Hero = () => {
       >
         <div className="relative z-10 px-4 sm:px-6 pt-24 pb-12 space-y-5">
 
-          {/* Cursive Greeting */}
-          <p className="font-serif italic text-violet-500 dark:text-cyan-400 text-3xl font-normal tracking-wide">
-            Hello, I'm
-          </p>
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              {/* Cursive Greeting */}
+              <p className="font-serif italic text-violet-500 dark:text-cyan-400 text-3xl font-normal tracking-wide">
+                Hello, I'm
+              </p>
 
-          {/* Name */}
-          <h1 className="text-5xl font-bold tracking-tight sour-gummy text-slate-900 dark:text-white leading-tight">
-            Naveed Afraz
-          </h1>
+              {/* Name */}
+              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight sour-gummy text-slate-900 dark:text-white leading-tight">
+                Naveed Afraz
+              </h1>
+            </div>
+
+            {/* Mobile portrait avatar */}
+            <div className="shrink-0">
+              <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-lg shadow-cyan-500/20 bg-neutral-900/40">
+                <img
+                  src="/images/naveed-ai-portrait.png"
+                  alt="Naveed Afraz"
+                  className="w-full h-full object-cover object-[center_10%]"
+                />
+              </div>
+            </div>
+          </div>
 
           {/* Subtitle */}
           <h2 className="text-xl font-medium text-neutral-600 dark:text-neutral-300 sour-gummy">
