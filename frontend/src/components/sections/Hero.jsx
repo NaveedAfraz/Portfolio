@@ -108,10 +108,10 @@ const Hero = () => {
         <div
           id="Home"
           ref={heroRef}
-          className="relative w-full flex items-center justify-center pt-20 pb-4"
+          className="relative w-full flex items-center justify-center pt-16 md:pt-20 pb-4"
         >
-          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 z-10 grid lg:grid-cols-12 gap-8 items-center pt-8 pb-0">
-          <div className="lg:col-span-7 z-10 relative space-y-4 text-left pb-0">
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 z-10 grid xl:grid-cols-12 gap-8 items-center pt-4 md:pt-6 pb-0">
+          <div className="xl:col-span-7 z-10 relative space-y-4 text-left pb-0">
             
             <div className="flex items-center justify-between gap-6">
               <div className="space-y-2">
@@ -156,7 +156,7 @@ const Hero = () => {
 
               {/* Framed Portrait for mobile & tablet desktop-site view (hidden on xl+ laptops where overlay shows) */}
               <div className="block xl:hidden shrink-0">
-                <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-3xl overflow-hidden border-2 border-cyan-500/40 shadow-xl shadow-cyan-500/20 bg-neutral-900/40">
+                <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-3xl overflow-hidden border-2 border-cyan-500/40 shadow-xl shadow-cyan-500/20 bg-neutral-900/40">
                   <img
                     src="/images/naveed-ai-portrait.png"
                     alt="Naveed Afraz"
