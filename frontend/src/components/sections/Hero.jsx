@@ -75,7 +75,7 @@ const Hero = () => {
   return (
     <>
       {/* ── DESKTOP / TABLET Hero: normal flow on mobile/tablet, min-h-screen on laptop ─────── */}
-      <div className="hidden md:block relative min-h-[auto] xl:min-h-screen overflow-hidden py-10 xl:py-0 flex flex-col justify-center">
+      <div id="Home" className="hidden md:block relative min-h-[auto] xl:min-h-screen overflow-hidden pt-24 md:pt-28 pb-10 scroll-mt-32">
 
         {/* Portrait — full-bleed overlay only on wide laptops/desktops (xl+) */}
         <div
@@ -106,12 +106,11 @@ const Hero = () => {
         </div>
 
         <div
-          id="Home"
           ref={heroRef}
-          className="relative w-full flex items-center justify-center pt-16 md:pt-20 pb-4"
+          className="relative w-full flex items-center justify-center"
         >
-          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 z-10 grid xl:grid-cols-12 gap-8 items-center pt-4 md:pt-6 pb-0">
-          <div className="xl:col-span-7 z-10 relative space-y-4 text-left pb-0">
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 z-10 grid grid-cols-1 xl:grid-cols-12 gap-8 items-center">
+          <div className="w-full xl:col-span-7 z-10 relative space-y-4 text-left pb-0">
             
             <div className="flex items-center justify-between gap-6">
               <div className="space-y-2">
@@ -232,7 +231,7 @@ const Hero = () => {
 
             {/* Technologies I Work With - 2 Row Marquee Slider */}
             <div
-              className={`pt-5 border-t border-neutral-200 dark:border-neutral-800/80 transition-all duration-1000 delay-500 ease-out overflow-hidden max-w-full ${
+              className={`pt-5 border-t border-neutral-200 dark:border-neutral-800/80 transition-all duration-1000 delay-500 ease-out overflow-hidden max-w-full min-w-0 ${
                 isLoaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
             >
@@ -240,7 +239,7 @@ const Hero = () => {
                 <Code2 className="w-3.5 h-3.5 text-cyan-500" /> TECHNOLOGIES I WORK WITH
               </p>
 
-              <div className="relative overflow-hidden w-full py-1 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+              <div className="relative overflow-hidden w-full min-w-0 py-1 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
                 {/* Row 1 - Sliding Left */}
                 <motion.div
                   className="flex gap-3 w-max mb-3"
@@ -291,44 +290,44 @@ const Hero = () => {
                 isLoaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
             >
-              <div className={`p-4 rounded-2xl border transition-all hover:scale-102 ${
+              <div className={`p-4 rounded-2xl border transition-all hover:scale-102 min-w-0 overflow-hidden ${
                 theme === "dark" ? "bg-neutral-900/60 border-neutral-800/80" : "bg-white border-neutral-200 shadow-sm"
               }`}>
                 <div className="flex items-center gap-2 text-cyan-500 font-extrabold text-xl sour-gummy">
-                  <Timer className="w-5 h-5" /> 1+ Yr
+                  <Timer className="w-5 h-5 shrink-0" /> <span className="truncate">1+ Yr</span>
                 </div>
-                <p className="text-xs font-bold text-slate-900 dark:text-white mt-1 sour-gummy">Experience</p>
-                <p className="text-[11px] text-neutral-500 dark:text-neutral-400">Full Stack Development</p>
+                <p className="text-xs font-bold text-slate-900 dark:text-white mt-1 sour-gummy truncate">Experience</p>
+                <p className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate">Full Stack Development</p>
               </div>
 
-              <div className={`p-4 rounded-2xl border transition-all hover:scale-102 ${
+              <div className={`p-4 rounded-2xl border transition-all hover:scale-102 min-w-0 overflow-hidden ${
                 theme === "dark" ? "bg-neutral-900/60 border-neutral-800/80" : "bg-white border-neutral-200 shadow-sm"
               }`}>
                 <div className="flex items-center gap-2 text-cyan-500 font-extrabold text-xl sour-gummy">
-                  <FolderGit2 className="w-5 h-5" /> 20+
+                  <FolderGit2 className="w-5 h-5 shrink-0" /> <span className="truncate">20+</span>
                 </div>
-                <p className="text-xs font-bold text-slate-900 dark:text-white mt-1 sour-gummy">Projects Delivered</p>
-                <p className="text-[11px] text-neutral-500 dark:text-neutral-400">7 Clients + 13 Final Year Projects</p>
+                <p className="text-xs font-bold text-slate-900 dark:text-white mt-1 sour-gummy truncate">Projects Delivered</p>
+                <p className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate">7 Clients + 13 Final Year</p>
               </div>
 
-              <div className={`p-4 rounded-2xl border transition-all hover:scale-102 ${
+              <div className={`p-4 rounded-2xl border transition-all hover:scale-102 min-w-0 overflow-hidden ${
                 theme === "dark" ? "bg-neutral-900/60 border-neutral-800/80" : "bg-white border-neutral-200 shadow-sm"
               }`}>
                 <div className="flex items-center gap-2 text-cyan-500 font-extrabold text-xl sour-gummy">
-                  <GraduationCap className="w-5 h-5" /> BCA
+                  <GraduationCap className="w-5 h-5 shrink-0" /> <span className="truncate">BCA</span>
                 </div>
-                <p className="text-xs font-bold text-slate-900 dark:text-white mt-1 sour-gummy">Degree</p>
-                <p className="text-[11px] text-neutral-500 dark:text-neutral-400">St. Joseph Degree College</p>
+                <p className="text-xs font-bold text-slate-900 dark:text-white mt-1 sour-gummy truncate">Degree</p>
+                <p className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate">St. Joseph Degree College</p>
               </div>
 
-              <div className={`p-4 rounded-2xl border transition-all hover:scale-102 ${
+              <div className={`p-4 rounded-2xl border transition-all hover:scale-102 min-w-0 overflow-hidden ${
                 theme === "dark" ? "bg-neutral-900/60 border-neutral-800/80" : "bg-white border-neutral-200 shadow-sm"
               }`}>
                 <div className="flex items-center gap-2 text-cyan-500 font-extrabold text-xl sour-gummy">
-                  <Briefcase className="w-5 h-5" /> 7+
+                  <Briefcase className="w-5 h-5 shrink-0" /> <span className="truncate">7+</span>
                 </div>
-                <p className="text-xs font-bold text-slate-900 dark:text-white mt-1 sour-gummy">Engagements</p>
-                <p className="text-[11px] text-neutral-500 dark:text-neutral-400">Internships &amp; Freelance</p>
+                <p className="text-xs font-bold text-slate-900 dark:text-white mt-1 sour-gummy truncate">Engagements</p>
+                <p className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate">Internships &amp; Freelance</p>
               </div>
             </div>
 
@@ -342,8 +341,8 @@ const Hero = () => {
 
       {/* ── MOBILE Hero: normal flow, no height constraint, no overlap ──── */}
       <section
-        id="Home"
-        className="block md:hidden relative w-full overflow-hidden bg-transparent"
+        id="Home-mobile"
+        className="block md:hidden relative w-full overflow-hidden bg-transparent scroll-mt-32"
       >
         <div className="relative z-10 px-4 sm:px-6 pt-24 pb-12 space-y-5">
 

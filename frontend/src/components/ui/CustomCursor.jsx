@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const CustomCursor = () => {
+  const [isTouchDevice, setIsTouchDevice] = useState(true);
   const dotRef = useRef(null);
   const ringRef = useRef(null);
   const pos = useRef({ x: -100, y: -100 });
@@ -13,6 +14,24 @@ const CustomCursor = () => {
   const [isInputHovered, setIsInputHovered] = useState(false);
 
   useEffect(() => {
+    const checkTouch = () => {
+      const isTouch =
+        window.matchMedia("(pointer: coarse)").matches ||
+        window.matchMedia("(hover: none)").matches ||
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.innerWidth < 1024;
+      setIsTouchDevice(isTouch);
+    };
+
+    checkTouch();
+    window.addEventListener("resize", checkTouch);
+    return () => window.removeEventListener("resize", checkTouch);
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice) return;
+
     const onMove = (e) => {
       pos.current = { x: e.clientX, y: e.clientY };
       setVisible(true);
@@ -89,10 +108,12 @@ const CustomCursor = () => {
       document.removeEventListener("mouseenter", onMouseEnterWindow);
       cancelAnimationFrame(rafRef.current);
     };
-  }, [clicked, hovered]);
+  }, [isTouchDevice, clicked, hovered]);
+
+  if (isTouchDevice) return null;
 
   return (
-    <div className="hidden md:block">
+    <div className="hidden lg:block pointer-events-none">
       {/* Dot — snaps to cursor */}
       <div
         ref={dotRef}

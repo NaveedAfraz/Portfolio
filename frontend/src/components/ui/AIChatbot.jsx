@@ -373,7 +373,10 @@ const AIChatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-4 sm:right-6 z-50 w-[92vw] sm:w-[380px] h-[520px] max-h-[80vh] bg-neutral-900/95 dark:bg-[#0c1017]/95 border border-neutral-800 backdrop-blur-2xl rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+            style={{ overscrollBehavior: "contain" }}
+            className="fixed bottom-24 right-4 sm:right-6 z-50 w-[92vw] sm:w-[380px] h-[520px] max-h-[80vh] bg-neutral-900/95 dark:bg-[#0c1017]/95 border border-neutral-800 backdrop-blur-2xl rounded-3xl shadow-2xl flex flex-col overflow-hidden overscroll-contain"
           >
             {/* Header */}
             <div className="px-4 py-3.5 border-b border-neutral-800 flex items-center justify-between bg-neutral-900/50">
@@ -411,8 +414,12 @@ const AIChatbot = () => {
 
             {/* Messages */}
             <div
-              className="flex-1 overflow-y-auto px-4 py-4 space-y-3"
-              style={{ scrollbarWidth: "thin", scrollbarColor: "#333 transparent" }}
+              className="flex-1 overflow-y-auto px-4 py-4 space-y-3 overscroll-contain"
+              style={{
+                scrollbarWidth: "thin",
+                scrollbarColor: "#333 transparent",
+                overscrollBehavior: "contain",
+              }}
             >
               {messages.map((msg, i) => (
                 <motion.div

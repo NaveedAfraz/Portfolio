@@ -124,8 +124,8 @@
   }
 }
 
-/* ── Custom cursor ──────────────────────────────────────────────── */
-@media (pointer: fine) {
+/* ── Custom cursor: only active on actual desktop mouse screens ── */
+@media (pointer: fine) and (hover: hover) and (min-width: 1024px) {
   * {
     cursor: none !important;
   }
@@ -333,8 +333,8 @@ section:has(.MagicSpotlight):hover .MagicSpotlight {
   }
 }
 
-/* Hide default browser arrow cursor globally on interactive elements, but restore on input fields */
-@media (pointer: fine) {
+/* Hide default browser arrow cursor on desktop mouse devices, restore on text inputs */
+@media (pointer: fine) and (hover: hover) and (min-width: 1024px) {
   *, *::before, *::after, a, button {
     cursor: none !important;
   }

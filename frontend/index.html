@@ -11,48 +11,6 @@
   <body>
     <div id="root"></div>
 
-    <!-- Custom cursor elements -->
-    <div id="custom-cursor"></div>
-    <div id="custom-cursor-ring"></div>
-
-    <script>
-      (function() {
-        var dot  = document.getElementById('custom-cursor');
-        var ring = document.getElementById('custom-cursor-ring');
-        var rx = 0, ry = 0; // ring position (lagged)
-        var mx = 0, my = 0; // mouse position
-
-        document.addEventListener('mousemove', function(e) {
-          mx = e.clientX; my = e.clientY;
-          dot.style.left = mx + 'px';
-          dot.style.top  = my + 'px';
-        });
-
-        // Ring follows with spring lag
-        function animateRing() {
-          rx += (mx - rx) * 0.12;
-          ry += (my - ry) * 0.12;
-          ring.style.left = rx + 'px';
-          ring.style.top  = ry + 'px';
-          requestAnimationFrame(animateRing);
-        }
-        animateRing();
-
-        // Grow on hover over interactive elements
-        document.addEventListener('mouseover', function(e) {
-          var el = e.target;
-          var interactive = el.closest('a, button, input, textarea, select, [role="button"], label');
-          if (interactive) {
-            dot.classList.add('hovering');
-            ring.classList.add('hovering');
-          } else {
-            dot.classList.remove('hovering');
-            ring.classList.remove('hovering');
-          }
-        });
-      })();
-    </script>
-
     <script type="module" src="/src/main.jsx"></script>
     <script>
       window.va =
