@@ -224,11 +224,11 @@ const ProjectsPage = () => {
         className="py-10 md:py-20 bg-transparent relative z-30 pt-16 md:pt-24"
       >
         <div className="w-full px-4 md:px-6 max-w-7xl mx-auto">
-          <div className="flex justify-center mb-12 relative z-30">
-            <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 p-1.5 rounded-full flex gap-2 backdrop-blur-md">
+          <div className="flex justify-center mb-12 relative z-30 px-2">
+            <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 p-1.5 rounded-2xl flex flex-wrap gap-1.5 backdrop-blur-md justify-center">
               <button
                 onClick={() => handleTabChange("production")}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                   activeTab === "production"
                     ? "bg-slate-900 text-white dark:bg-white dark:text-black shadow-lg scale-105"
                     : "text-slate-700 hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
@@ -238,7 +238,7 @@ const ProjectsPage = () => {
               </button>
               <button
                 onClick={() => handleTabChange("academic")}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                   activeTab === "academic"
                     ? "bg-slate-900 text-white dark:bg-white dark:text-black shadow-lg scale-105"
                     : "text-slate-700 hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
@@ -248,7 +248,7 @@ const ProjectsPage = () => {
               </button>
               <button
                 onClick={() => handleTabChange("personal")}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                   activeTab === "personal"
                     ? "bg-slate-900 text-white dark:bg-white dark:text-black shadow-lg scale-105"
                     : "text-slate-700 hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
@@ -365,9 +365,9 @@ const ProjectsPage = () => {
         <section
           key={`${activeTab}-${index}`}
           ref={(el) => (projectRefs.current[index] = el)}
-          className="project-section-bg min-h-screen flex items-center py-20 transition-all duration-1000 relative"
+          className="project-section-bg min-h-[auto] md:min-h-screen flex items-center py-16 md:py-20 transition-all duration-1000 relative"
           style={{
-            clipPath: "polygon(0 0, 100% 5%, 100% 95%, 0 100%)",
+            clipPath: window.innerWidth >= 768 ? "polygon(0 0, 100% 5%, 100% 95%, 0 100%)" : "none",
             background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})`,
           }}
         >
@@ -379,7 +379,7 @@ const ProjectsPage = () => {
 
           <Spotlight className="w-full" spotlightClassName="bg-white/5">
             <div className="w-full max-w-7xl mx-auto px-4 md:px-6 relative z-10 sour-gummy">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div className="transform transition-all duration-1000">
                   <div className="flex items-center gap-3 mb-4 flex-wrap">
                     <h2 className="text-3xl md:text-4xl font-bold text-white">

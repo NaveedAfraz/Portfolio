@@ -23,11 +23,12 @@ export const HeroParallax = ({
   const rotateX = useSpring(useTransform(scrollYProgress, [0, 1], [10, 0]), springConfig);
   const opacity = useSpring(useTransform(scrollYProgress, [0, 1], [0.25, 1]), springConfig);
   const rotateZ = useSpring(useTransform(scrollYProgress, [0, 1], [10, 0]), springConfig);
-  const translateY = useSpring(useTransform(scrollYProgress, [0, 1], [50, 250]), springConfig);
+  // Reduce translateY on mobile so cards don't drift off-screen
+  const translateY = useSpring(useTransform(scrollYProgress, [0, 1], [30, 150]), springConfig);
   return (
     <div
       ref={ref}
-      className="h-[105vh] md:h-[170vh] pt-24 md:pt-36 pb-0 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]">
+      className="h-[85vh] md:h-[160vh] pt-20 md:pt-36 pb-0 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-slate-50 dark:bg-[#07090e]">
       <Header />
       <motion.div
         style={{
@@ -86,7 +87,7 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className="group/product h-40 w-[14rem] md:h-56 md:w-[20rem] relative shrink-0">
+      className="group/product h-28 w-[10rem] sm:h-36 sm:w-[12rem] md:h-56 md:w-[20rem] relative shrink-0">
       <a href={product.link} className="block group-hover/product:shadow-2xl ">
         <img
           src={product.thumbnail}

@@ -135,7 +135,22 @@ export const StickyScroll = ({
         </div>
       )}
 
-      <div className="flex justify-center space-x-4 md:space-x-6 lg:space-x-10 w-full px-4 sm:px-6">
+      {/* ── Mobile layout: simple stacked list, no fixed-height trap ── */}
+      <div className="block lg:hidden px-4 sm:px-6 space-y-6">
+        {content.map((item, index) => (
+          <div
+            key={item.title + index}
+            className="p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/5"
+          >
+            <h2 className="text-2xl font-bold text-foreground mb-2">{item.title}</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed font-light mt-2">{item.description}</p>
+            <div className="mt-4">{item.content}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* ── Desktop layout: sticky scroll with fixed height ── */}
+      <div className="hidden lg:flex justify-center space-x-10 w-full px-6">
         {/* Inner scrollable card list — CSS scroll hidden */}
         <div
           ref={containerRef}
@@ -182,8 +197,6 @@ export const StickyScroll = ({
               >
                 {item.description}
               </motion.p>
-              {/* Mobile: inline card content */}
-              <div className="mt-4 lg:hidden">{item.content}</div>
             </div>
           ))}
 
@@ -192,7 +205,7 @@ export const StickyScroll = ({
         </div>
 
         {/* Desktop: sticky preview card on the right */}
-        <div className="hidden lg:block sticky top-10 self-start flex-shrink-0 w-80 md:w-96 lg:w-[28rem] mr-10">
+        <div className="sticky top-10 self-start flex-shrink-0 w-80 md:w-96 lg:w-[28rem] mr-10">
           <motion.div
             className={cn(
               "h-auto min-h-[22rem] lg:min-h-[25rem] overflow-hidden rounded-2xl bg-neutral-900/90 dark:bg-[#0c1017]/90 border border-neutral-800 backdrop-blur-xl shadow-xl",
