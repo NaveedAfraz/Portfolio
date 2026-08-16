@@ -43,7 +43,7 @@ const Contact = () => {
       id="contact"
       className="py-16 md:py-24 bg-transparent"
     >
-      <div className="container px-4 md:px-6 mx-auto">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold tracking-tighter sour-gummy">
             <GradientText

@@ -113,7 +113,7 @@ const Skills = () => {
       <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/4 rounded-full blur-[160px] pointer-events-none" />
 
-      <div className="container px-4 md:px-6 mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <h2 className="text-3xl font-bold tracking-tighter text-center mb-3 sour-gummy">
           <GradientText gradient="from-cyan-400 to-cyan-200" animate={true} className="text-4xl font-bold">
             My Skills

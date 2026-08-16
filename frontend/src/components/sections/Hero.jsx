@@ -75,7 +75,7 @@ const Hero = () => {
   return (
     <>
       {/* ── DESKTOP Hero: min-h-screen, clean tight padding ─────── */}
-      <div className="hidden lg:block relative min-h-screen overflow-hidden">
+      <div className="hidden md:block relative min-h-screen overflow-hidden">
 
         {/* Portrait — desktop only: touches top and bottom of section */}
         <div
@@ -110,8 +110,8 @@ const Hero = () => {
           ref={heroRef}
           className="relative w-full flex items-center justify-center pt-20 pb-4"
         >
-          <div className="w-full max-w-7xl mx-auto px-6 md:px-12 z-10 grid lg:grid-cols-12 gap-8 items-center pt-8 pb-0">
-          <div className="lg:col-span-7 z-10 relative space-y-4 text-left pb-0">
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 z-10 grid md:grid-cols-12 gap-8 items-center pt-8 pb-0">
+          <div className="md:col-span-7 z-10 relative space-y-4 text-left pb-0">
             
             {/* Cursive Greeting */}
             <div
@@ -329,9 +329,9 @@ const Hero = () => {
       {/* ── MOBILE Hero: normal flow, no height constraint, no overlap ──── */}
       <section
         id="Home"
-        className="block lg:hidden relative w-full overflow-hidden bg-transparent"
+        className="block md:hidden relative w-full overflow-hidden bg-transparent"
       >
-        <div className="relative z-10 px-5 pt-24 pb-12 space-y-5">
+        <div className="relative z-10 px-4 sm:px-6 pt-24 pb-12 space-y-5">
 
           {/* Cursive Greeting */}
           <p className="font-serif italic text-violet-500 dark:text-cyan-400 text-3xl font-normal tracking-wide">

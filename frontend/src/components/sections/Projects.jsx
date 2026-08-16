@@ -43,7 +43,7 @@ const Projects = ({ showOnHomePage = false }) => {
       className={`py-16 md:py-24 ${!showOnHomePage ? "transition-colors duration-700 sour-gummy " : "bg-transparent sour-gummy"
         }`}
     >
-      <div className="container px-4 md:px-6 mx-auto">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 sour-gummy">
           <GradientText
             gradient="from-cyan-600 to-cyan-400 dark:from-cyan-400 dark:to-cyan-200"
