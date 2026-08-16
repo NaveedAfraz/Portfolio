@@ -75,11 +75,11 @@ const Hero = () => {
   return (
     <>
       {/* ── DESKTOP / TABLET Hero: normal flow on mobile/tablet, min-h-screen on laptop ─────── */}
-      <div className="hidden md:block relative min-h-[auto] lg:min-h-screen overflow-hidden py-10 lg:py-0 flex flex-col justify-center">
+      <div className="hidden md:block relative min-h-[auto] xl:min-h-screen overflow-hidden py-10 xl:py-0 flex flex-col justify-center">
 
-        {/* Portrait — full-bleed overlay only on laptops/desktops (lg+) */}
+        {/* Portrait — full-bleed overlay only on wide laptops/desktops (xl+) */}
         <div
-          className={`hidden lg:block absolute top-0 right-0 h-full w-[48%] pointer-events-none z-[1] overflow-hidden transition-all duration-700 ease-in-out ${
+          className={`hidden xl:block absolute top-0 right-0 h-full w-[48%] pointer-events-none z-[1] overflow-hidden transition-all duration-700 ease-in-out ${
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -154,8 +154,8 @@ const Hero = () => {
                 </h2>
               </div>
 
-              {/* Framed Portrait for mobile desktop-site view (hidden on lg+ laptops where overlay shows) */}
-              <div className="block lg:hidden shrink-0">
+              {/* Framed Portrait for mobile & tablet desktop-site view (hidden on xl+ laptops where overlay shows) */}
+              <div className="block xl:hidden shrink-0">
                 <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-3xl overflow-hidden border-2 border-cyan-500/40 shadow-xl shadow-cyan-500/20 bg-neutral-900/40">
                   <img
                     src="/images/naveed-ai-portrait.png"
