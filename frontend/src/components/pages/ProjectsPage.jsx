@@ -365,9 +365,9 @@ const ProjectsPage = () => {
         <section
           key={`${activeTab}-${index}`}
           ref={(el) => (projectRefs.current[index] = el)}
-          className="project-section-bg min-h-[auto] md:min-h-screen flex items-center py-16 md:py-20 transition-all duration-1000 relative"
+          className="project-section-bg flex items-start xl:items-center py-12 md:py-16 xl:py-20 transition-all duration-1000 relative"
           style={{
-            clipPath: window.innerWidth >= 768 ? "polygon(0 0, 100% 5%, 100% 95%, 0 100%)" : "none",
+            clipPath: window.innerWidth >= 1024 ? "polygon(0 0, 100% 5%, 100% 95%, 0 100%)" : "none",
             background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})`,
           }}
         >

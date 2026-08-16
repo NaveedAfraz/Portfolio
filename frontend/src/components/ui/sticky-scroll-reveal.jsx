@@ -136,7 +136,7 @@ export const StickyScroll = ({
       )}
 
       {/* ── Mobile layout: simple stacked list, no fixed-height trap ── */}
-      <div className="block lg:hidden px-4 sm:px-6 space-y-6">
+      <div className="block md:hidden px-4 sm:px-6 space-y-6">
         {content.map((item, index) => (
           <div
             key={item.title + index}
@@ -150,7 +150,7 @@ export const StickyScroll = ({
       </div>
 
       {/* ── Desktop layout: sticky scroll with fixed height ── */}
-      <div className="hidden lg:flex justify-center space-x-10 w-full px-6">
+      <div className="hidden md:flex justify-center space-x-10 w-full px-6">
         {/* Inner scrollable card list — CSS scroll hidden */}
         <div
           ref={containerRef}
