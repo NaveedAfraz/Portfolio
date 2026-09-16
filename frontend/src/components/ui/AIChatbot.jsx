@@ -22,22 +22,25 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 ---
 
 ## Education
-1. BCA – Bachelor of Computer Applications, Computer Science
-   St. Joseph's Degree College (Affiliated with Osmania University) | August 2023 – August 2026
+1. MCA – Master of Computer Applications
+   Nawab Shah Alam Khan College of Engineering & Technology (NSAKCET), Hyderabad | 2026 – 2028 (Expected)
+
+2. BCA – Bachelor of Computer Applications – CGPA: 8.3
+   St. Joseph Degree College, Hyderabad, India | 2023 – 2026
    Courses: Data Structures & Algorithms, Web Development, DBMS, Operating Systems, Computer Networks, Software Engineering
 
-2. High School
-   International Indian School Jeddah | 2011 – 2020
+3. Primary to Higher Secondary Education
+   International Indian School Jeddah, Saudi Arabia | 2011 – 2020
    Courses: Basic Computing, Mathematics, Science, English
 
 ---
 
 ## Work Experience (Accurate — do not modify)
-1. Freelance Full Stack Developer — Klipp (July 2026 – August 2026, 2 months)
-   Built a commercial Adobe After Effects CEP plugin + web platform. Features: AI captions (Whisper.cpp), multilingual translation (IndicTrans2), HWID licensing, Razorpay/Whop billing, admin dashboard.
+1. Freelance Full Stack Developer — Klipp (July 2026 – Present)
+   Built a commercial Adobe After Effects CEP plugin + web platform (fx.klipp.in). Features: AI captions (Whisper.cpp), multilingual translation (IndicTrans2), HWID licensing, Razorpay/Whop billing, admin dashboard.
    Stack: React, TypeScript, Vite, Tailwind CSS, Node.js, Express, Better Auth, MySQL, Drizzle ORM, Whisper.cpp, IndicTrans2, Cloudflare R2, Razorpay, Whop, Adobe CEP, ExtendScript
 
-2. Product Developer — Tech Students, Nizamabad (August 2025 – Present, 1 year)
+2. Product Developer — Tech Students, Nizamabad (August 2025 – Present)
    End-to-end EdTech platform on microservices architecture. 6 role-based dashboards, 13+ features, Docker containerization.
    Stack: React.js, Node.js, Express.js, MySQL, Docker, Tailwind CSS, TanStack Query, JWT Auth, Microservices
 
@@ -67,7 +70,7 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 ## Projects (Complete List — 20 total. ONLY reference these names)
 
 ### Client/Production Platforms (7):
-1. Klipp – AI-Powered After Effects Plugin & Web Platform (klipp.in)
+1. Klipp – AI-Powered After Effects Plugin & Web Platform (fx.klipp.in)
    AI captions (Whisper.cpp), HWID licensing, Razorpay/Whop billing, admin dashboard, multilingual translation.
    Stack: React, TypeScript, Vite, Tailwind CSS, Node.js, Express, Better Auth, MySQL, Drizzle ORM, Whisper.cpp, IndicTrans2, Cloudflare R2, Adobe CEP, ExtendScript
 
@@ -148,13 +151,13 @@ const getFallbackReply = (text) => {
     return "Naveed is a **Full-Stack Software Engineer** skilled in **React, Next.js, React Native, Node.js, Django, and FastAPI**. He builds end-to-end systems with **MySQL (80+ tables), MongoDB, Redis, Docker, and Microservices**!";
   }
   if (lower.includes("project") || lower.includes("work") || lower.includes("system") || lower.includes("klipp")) {
-    return "Naveed has engineered 19+ systems! Key highlights include **Klipp** (AI Adobe After Effects CEP plugin), **Tech Students** (EdTech microservices platform), **MSE Org** (production e-commerce), and 10+ final year engineering systems!";
+    return "Naveed has engineered 19+ systems! Key highlights include **Klipp** (AI Adobe After Effects CEP plugin & platform — fx.klipp.in), **Tech Students** (EdTech microservices platform), **MSE Org** (production e-commerce), and 10+ final year engineering systems!";
   }
   if (lower.includes("hire") || lower.includes("contact") || lower.includes("available") || lower.includes("job") || lower.includes("freelance")) {
     return "Yes! Naveed is currently available for full-time engineering roles, freelance software contracts, and end-to-end app development. Reach out on WhatsApp at **+91 6300375450**!";
   }
-  if (lower.includes("education") || lower.includes("degree") || lower.includes("college") || lower.includes("bca")) {
-    return "Naveed is completing his **BCA (Bachelor of Computer Applications)** at St. Joseph Degree College, Hyderabad (2023-2026).";
+  if (lower.includes("education") || lower.includes("degree") || lower.includes("college") || lower.includes("bca") || lower.includes("mca")) {
+    return "Naveed is pursuing his **MCA (Master of Computer Applications)** at NSAKCET (2026-2028) and completed his **BCA** at St. Joseph Degree College, Hyderabad (2023-2026, CGPA: 8.3).";
   }
   if (lower.includes("hi") || lower.includes("hello") || lower.includes("hey")) {
     return "Hello! I am NavBot. How can I help you learn more about Naveed's full-stack engineering, mobile development, or end-to-end system projects today?";

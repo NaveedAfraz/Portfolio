@@ -203,7 +203,7 @@ const Hero = () => {
                 <Send className="w-4 h-4 text-cyan-600 dark:text-cyan-500" />
               </button>
 
-              <a href={resume} download="NaveedAfrazResume(Latest) (1).pdf">
+              <a href={resume} download="Naveed_Afraz_Resume.pdf">
                 <button
                   className={`cursor-pointer px-4 py-3.5 rounded-xl font-medium text-xs border transition-all flex items-center gap-1.5 ${
                     theme === "dark"
@@ -402,7 +402,7 @@ const Hero = () => {
               >
                 Let's Connect <Send className="w-4 h-4 text-cyan-600 dark:text-cyan-500" />
               </button>
-              <a href={resume} download="NaveedAfrazResume(Latest) (1).pdf" className="flex-1">
+              <a href={resume} download="Naveed_Afraz_Resume.pdf" className="flex-1">
                 <button className="w-full py-3.5 rounded-xl font-medium text-sm border bg-neutral-100 dark:bg-neutral-900/40 border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 flex items-center justify-center gap-1.5">
                   <Download className="w-4 h-4 text-cyan-600 dark:text-cyan-400" /> Resume
                 </button>

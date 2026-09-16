@@ -1,7 +1,7 @@
 export const experienceData = [
   {
     id: "klipp",
-    year: "July 2026 - August 2026 (2 months)",
+    year: "July 2026 - Present",
     degree: "Freelance Full Stack Developer",
     field: "",
     university: "Klipp – AI After Effects Plugin & Web Platform",
@@ -27,13 +27,14 @@ export const experienceData = [
     ],
     category: "Freelance",
     remote: true,
+    link: "https://fx.klipp.in",
     projectsList: [
-      { name: "Klipp Platform", demo: "https://klipp.in", demoLabel: "Live Site" }
+      { name: "Klipp Platform", demo: "https://fx.klipp.in", demoLabel: "Live Site" }
     ],
   },
   {
     id: "techstudents",
-    year: "August 2025 - Present (1 year)",
+    year: "August 2025 - Present",
     degree: "Product Developer",
     field: "",
     university: "Tech Students, Nizamabad, India",
