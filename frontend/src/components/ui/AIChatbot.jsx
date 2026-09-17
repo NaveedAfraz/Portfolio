@@ -313,7 +313,12 @@ const AIChatbot = () => {
   const inputRef = useRef(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const lastMsg = messages[messages.length - 1];
+    // Only scroll down when the user sends a question (to show question + loading spinner).
+    // Do NOT scroll to the bottom when the response arrives, so the user can read naturally from the top!
+    if (lastMsg && lastMsg.role === "user") {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [messages]);
 
   useEffect(() => {

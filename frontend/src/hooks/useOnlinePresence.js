@@ -1,187 +1,239 @@
 import { useState, useEffect } from "react";
 
 const BASE_VISITS = 5000;
-const SLOT_DURATION_MS = 40000; // 40 seconds per presence window
 const API_BASE = "https://countapi.mileshilliard.com/api/v1";
+const NUM_SLOTS = 6;
+const HEARTBEAT_INTERVAL_MS = 8000;
+const STALE_THRESHOLD_SEC = 24;
 
-export function useOnlinePresence() {
-  const [onlineCount, setOnlineCount] = useState(() => {
-    try {
-      const cached = sessionStorage.getItem("portfolio_cached_online");
-      return cached ? Math.max(1, parseInt(cached, 10)) : 1;
-    } catch {
-      return 1;
+// ── 1. WINDOW-WIDE UNIQUE TAB ID ───────────────────────────────────────────
+// Guarantees that components within the SAME window (e.g. NotebookModal and Footer)
+// are NEVER counted as two separate tabs.
+const TAB_ID =
+  typeof window !== "undefined"
+    ? window.__portfolio_tab_id ||
+      (window.__portfolio_tab_id = "tab_" + Math.random().toString(36).substring(2, 9))
+    : "ssr";
+
+// ── 2. MODULE-LEVEL SINGLETON STORE ─────────────────────────────────────────
+// All components in the window share ONE presence loop, ONE network interval,
+// and ONE synchronized state.
+let globalState = {
+  onlineCount: 1,
+  visits: BASE_VISITS + 11,
+};
+const subscribers = new Set();
+
+function emitChange() {
+  subscribers.forEach((callback) => callback(globalState));
+}
+
+let isInitialized = false;
+let mySlotIndex = -1;
+
+function initPresenceService() {
+  if (isInitialized || typeof window === "undefined") return;
+  isInitialized = true;
+
+  // Restore cached visits
+  try {
+    const savedVisits = localStorage.getItem("portfolio_visits_v2");
+    if (savedVisits) {
+      globalState.visits = parseInt(savedVisits, 10);
     }
-  });
+  } catch {}
 
-  const [visits, setVisits] = useState(() => {
-    try {
-      const saved = localStorage.getItem("portfolio_visits_v2");
-      return saved ? parseInt(saved, 10) : BASE_VISITS + 8;
-    } catch {
-      return BASE_VISITS + 8;
-    }
-  });
+  // Local Multi-Tab Tracking (Different tabs in the same browser)
+  const localTabs = new Map();
+  localTabs.set(TAB_ID, Date.now());
+  let channel = null;
 
-  useEffect(() => {
-    let isMounted = true;
-    let localTabs = 1;
+  try {
+    if ("BroadcastChannel" in window) {
+      channel = new BroadcastChannel("portfolio_presence_sync_v4");
+      channel.onmessage = (event) => {
+        if (!event?.data) return;
+        const { type, sender } = event.data;
+        if (sender === TAB_ID) return; // NEVER count self
 
-    // --- 1. LOCAL MULTI-TAB PRESENCE (Instant 0ms sync on same browser/device) ---
-    const tabId = "tab_" + Math.random().toString(36).substring(2, 9);
-    const activeTabs = new Map();
-    activeTabs.set(tabId, Date.now());
-
-    let channel = null;
-    try {
-      if (typeof window !== "undefined" && "BroadcastChannel" in window) {
-        channel = new BroadcastChannel("portfolio_presence_sync");
-        channel.onmessage = (event) => {
-          if (!isMounted || !event?.data) return;
-          const { type, sender } = event.data;
-          if (type === "ping") {
-            activeTabs.set(sender, Date.now());
-            channel.postMessage({ type: "pong", sender: tabId });
-            updateCount();
-          } else if (type === "pong") {
-            activeTabs.set(sender, Date.now());
-            updateCount();
-          } else if (type === "leave") {
-            activeTabs.delete(sender);
-            updateCount();
-          }
-        };
-
-        channel.postMessage({ type: "ping", sender: tabId });
-      }
-    } catch {
-      // BroadcastChannel unavailable
-    }
-
-    const cleanStaleTabs = () => {
-      const now = Date.now();
-      for (const [id, lastSeen] of activeTabs.entries()) {
-        if (id !== tabId && now - lastSeen > 14000) {
-          activeTabs.delete(id);
+        if (type === "ping") {
+          localTabs.set(sender, Date.now());
+          channel.postMessage({ type: "pong", sender: TAB_ID });
+          recalculateLocal();
+        } else if (type === "pong") {
+          localTabs.set(sender, Date.now());
+          recalculateLocal();
+        } else if (type === "leave") {
+          localTabs.delete(sender);
+          recalculateLocal();
         }
+      };
+
+      channel.postMessage({ type: "ping", sender: TAB_ID });
+    }
+  } catch {}
+
+  const recalculateLocal = () => {
+    const now = Date.now();
+    for (const [id, lastSeen] of localTabs.entries()) {
+      if (id !== TAB_ID && now - lastSeen > 18000) {
+        localTabs.delete(id);
       }
-      localTabs = Math.max(1, activeTabs.size);
-    };
+    }
+  };
 
-    // --- 2. REMOTE MULTI-DEVICE PRESENCE (Sync across Phones, Laptops, PCs) ---
-    let latestRemoteCount = 1;
+  // Remote Device Presence (Slots 0..5 with live timestamps)
+  // Retrieve or claim a slot index (persisted per browser session)
+  const savedSlot = sessionStorage.getItem("portfolio_slot_v4");
+  if (savedSlot !== null) {
+    mySlotIndex = parseInt(savedSlot, 10);
+  }
 
-    const updateCount = () => {
-      cleanStaleTabs();
-      const combined = Math.max(localTabs, latestRemoteCount, 1);
-      if (isMounted) {
-        setOnlineCount(combined);
+  const claimOrHeartbeat = async () => {
+    try {
+      const nowSec = Math.floor(Date.now() / 1000);
+
+      // Fetch all slots in parallel to inspect live occupancy
+      const slotPromises = Array.from({ length: NUM_SLOTS }, (_, i) =>
+        fetch(`${API_BASE}/get/nav_presence_v4_slot_${i}`)
+          .then((r) => r.json())
+          .catch(() => ({ value: 0 }))
+      );
+
+      const slotResults = await Promise.all(slotPromises);
+
+      // If we don't have a valid slot yet, find the first available/stale slot
+      if (mySlotIndex < 0 || mySlotIndex >= NUM_SLOTS) {
+        let bestSlot = -1;
+        for (let i = 0; i < NUM_SLOTS; i++) {
+          const ts = slotResults[i]?.value || 0;
+          if (nowSec - ts > STALE_THRESHOLD_SEC || ts === 0) {
+            bestSlot = i;
+            break;
+          }
+        }
+        mySlotIndex = bestSlot >= 0 ? bestSlot : 0;
         try {
-          sessionStorage.setItem("portfolio_cached_online", combined.toString());
-        } catch {
-          // ignore
-        }
-      }
-    };
-
-    const syncRemotePresence = async () => {
-      try {
-        const currentSlot = Math.floor(Date.now() / SLOT_DURATION_MS);
-        const lastHitSlot = sessionStorage.getItem("portfolio_pres_hit_slot");
-
-        let currentVal = 1;
-        let prevVal = 0;
-
-        if (lastHitSlot !== currentSlot.toString()) {
-          // Register heartbeat for new slot
-          const hitRes = await fetch(`${API_BASE}/hit/naveed_pres_v3_${currentSlot}`);
-          const hitData = await hitRes.json();
-          if (hitData && typeof hitData.value === "number") {
-            currentVal = hitData.value;
-            sessionStorage.setItem("portfolio_pres_hit_slot", currentSlot.toString());
-          }
-        } else {
-          // Already registered this slot, read current tally
-          const getRes = await fetch(`${API_BASE}/get/naveed_pres_v3_${currentSlot}`);
-          const getData = await getRes.json();
-          if (getData && typeof getData.value === "number") {
-            currentVal = getData.value;
-          }
-        }
-
-        // Also check previous slot to avoid drop-off during slot boundaries
-        const prevRes = await fetch(`${API_BASE}/get/naveed_pres_v3_${currentSlot - 1}`);
-        const prevData = await prevRes.json();
-        if (prevData && typeof prevData.value === "number") {
-          prevVal = prevData.value;
-        }
-
-        latestRemoteCount = Math.max(currentVal, prevVal, 1);
-        updateCount();
-      } catch {
-        // Fallback to localTabs
-        updateCount();
-      }
-    };
-
-    // --- 3. TOTAL VISITS SYNC ---
-    const syncTotalVisits = () => {
-      try {
-        const hasCountedSession = sessionStorage.getItem("portfolio_visited_session");
-        const endpoint = hasCountedSession
-          ? `${API_BASE}/get/naveedafraz_portfolio_visits`
-          : `${API_BASE}/hit/naveedafraz_portfolio_visits`;
-
-        fetch(endpoint)
-          .then((res) => res.json())
-          .then((data) => {
-            if (isMounted && data && typeof data.value === "number") {
-              const total = BASE_VISITS + data.value;
-              setVisits(total);
-              localStorage.setItem("portfolio_visits_v2", total.toString());
-              sessionStorage.setItem("portfolio_visited_session", "true");
-            }
-          })
-          .catch(() => {});
-      } catch {}
-    };
-
-    // Initial sync
-    syncRemotePresence();
-    syncTotalVisits();
-
-    // Heartbeat every 12 seconds for fast live detection
-    const interval = setInterval(() => {
-      if (channel) {
-        channel.postMessage({ type: "ping", sender: tabId });
-      }
-      syncRemotePresence();
-    }, 12000);
-
-    // Sync immediately on focus or visibility change (e.g. unlocking phone or switching tabs)
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        if (channel) channel.postMessage({ type: "ping", sender: tabId });
-        syncRemotePresence();
-      }
-    };
-
-    window.addEventListener("focus", handleVisibilityChange);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      isMounted = false;
-      clearInterval(interval);
-      window.removeEventListener("focus", handleVisibilityChange);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      if (channel) {
-        try {
-          channel.postMessage({ type: "leave", sender: tabId });
-          channel.close();
+          sessionStorage.setItem("portfolio_slot_v4", mySlotIndex.toString());
         } catch {}
       }
+
+      // Send heartbeat to our slot
+      fetch(`${API_BASE}/set/nav_presence_v4_slot_${mySlotIndex}?value=${nowSec}`).catch(() => {});
+
+      // Calculate how many devices are currently active (< 24s old)
+      let activeRemote = 0;
+      slotResults.forEach((res, i) => {
+        const ts = i === mySlotIndex ? nowSec : res?.value || 0;
+        const diff = nowSec - ts;
+        if (diff >= 0 && diff <= STALE_THRESHOLD_SEC) {
+          activeRemote++;
+        }
+      });
+
+      recalculateLocal();
+      const finalCount = Math.max(localTabs.size, activeRemote, 1);
+
+      if (globalState.onlineCount !== finalCount) {
+        globalState.onlineCount = finalCount;
+        emitChange();
+      }
+    } catch {
+      // Offline fallback
+      recalculateLocal();
+      const finalCount = Math.max(localTabs.size, 1);
+      if (globalState.onlineCount !== finalCount) {
+        globalState.onlineCount = finalCount;
+        emitChange();
+      }
+    }
+  };
+
+  // Sync Total Visits
+  const syncVisits = () => {
+    try {
+      const hasCounted = sessionStorage.getItem("portfolio_visited_session");
+      const endpoint = hasCounted
+        ? `${API_BASE}/get/naveedafraz_portfolio_visits`
+        : `${API_BASE}/hit/naveedafraz_portfolio_visits`;
+
+      fetch(endpoint)
+        .then((r) => r.json())
+        .then((data) => {
+          if (data && typeof data.value === "number") {
+            const total = BASE_VISITS + data.value;
+            globalState.visits = total;
+            emitChange();
+            try {
+              localStorage.setItem("portfolio_visits_v2", total.toString());
+              sessionStorage.setItem("portfolio_visited_session", "true");
+            } catch {}
+          }
+        })
+        .catch(() => {});
+    } catch {}
+  };
+
+  // Run initial sync
+  claimOrHeartbeat();
+  syncVisits();
+
+  // Polling interval
+  const intervalId = setInterval(() => {
+    if (channel) {
+      channel.postMessage({ type: "ping", sender: TAB_ID });
+    }
+    claimOrHeartbeat();
+  }, HEARTBEAT_INTERVAL_MS);
+
+  // Immediate sync on focus / visibility change
+  const onFocus = () => {
+    if (document.visibilityState === "visible") {
+      if (channel) channel.postMessage({ type: "ping", sender: TAB_ID });
+      claimOrHeartbeat();
+    }
+  };
+  window.addEventListener("focus", onFocus);
+  document.addEventListener("visibilitychange", onFocus);
+
+  // Clean release on tab close
+  window.addEventListener("beforeunload", () => {
+    if (channel) {
+      try {
+        channel.postMessage({ type: "leave", sender: TAB_ID });
+        channel.close();
+      } catch {}
+    }
+    if (mySlotIndex >= 0) {
+      try {
+        fetch(`${API_BASE}/set/nav_presence_v4_slot_${mySlotIndex}?value=0`, {
+          keepalive: true,
+          method: "GET",
+        });
+      } catch {}
+    }
+  });
+}
+
+// ── 3. HOOK FOR REACT COMPONENTS ────────────────────────────────────────────
+export function useOnlinePresence() {
+  const [state, setState] = useState(globalState);
+
+  useEffect(() => {
+    initPresenceService();
+
+    const handleUpdate = (newState) => {
+      setState({ ...newState });
+    };
+
+    subscribers.add(handleUpdate);
+    // Sync immediate state upon component mount
+    setState({ ...globalState });
+
+    return () => {
+      subscribers.delete(handleUpdate);
     };
   }, []);
 
-  return { onlineCount, visits };
+  return state;
 }
