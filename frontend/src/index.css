@@ -193,6 +193,20 @@
   animation: gradient 8s ease infinite;
 }
 
+/* Huzaifa Awan style gentle floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
 /* MagicUI Spotlight Effect */
 .group:hover .MagicSpotlight {
   opacity: 1;

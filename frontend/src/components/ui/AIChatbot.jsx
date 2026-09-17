@@ -13,7 +13,7 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 ---
 
 ## About Naveed Afraz
-- Full-Stack Software Engineer (Web, Mobile & End-to-End Systems)
+- Full-Stack Developer (Web, Mobile & End-to-End Systems)
 - Location: Hyderabad, India
 - 1+ year professional experience across 7 engagements (internships + freelance)
 - 20+ production applications delivered
@@ -148,10 +148,10 @@ const getFallbackReply = (text) => {
   const lower = text.toLowerCase();
 
   if (lower.includes("skill") || lower.includes("stack") || lower.includes("tech") || lower.includes("backend") || lower.includes("mobile")) {
-    return "Naveed is a **Full-Stack Software Engineer** skilled in **React, Next.js, React Native, Node.js, Django, and FastAPI**. He builds end-to-end systems with **MySQL (80+ tables), MongoDB, Redis, Docker, and Microservices**!";
+    return "Naveed is a **Full-Stack Developer** skilled in **React, Next.js, React Native, Node.js, Django, and FastAPI**. He builds end-to-end systems with **MySQL (80+ tables), MongoDB, Redis, Docker, and Microservices**!";
   }
   if (lower.includes("project") || lower.includes("work") || lower.includes("system") || lower.includes("klipp")) {
-    return "Naveed has engineered 19+ systems! Key highlights include **Klipp** (AI Adobe After Effects CEP plugin & platform — fx.klipp.in), **Tech Students** (EdTech microservices platform), **MSE Org** (production e-commerce), and 10+ final year engineering systems!";
+    return "Naveed has engineered 20+ systems! Key highlights include **Klipp** (AI Adobe After Effects CEP plugin & platform — fx.klipp.in), **Tech Students** (EdTech microservices platform), **MSE Org** (production e-commerce), and 10+ final year engineering systems!";
   }
   if (lower.includes("hire") || lower.includes("contact") || lower.includes("available") || lower.includes("job") || lower.includes("freelance")) {
     return "Yes! Naveed is currently available for full-time engineering roles, freelance software contracts, and end-to-end app development. Reach out on WhatsApp at **+91 6300375450**!";
@@ -163,7 +163,7 @@ const getFallbackReply = (text) => {
     return "Hello! I am NavBot. How can I help you learn more about Naveed's full-stack engineering, mobile development, or end-to-end system projects today?";
   }
 
-  return "Naveed Afraz is a Full-Stack Engineer specializing in web, mobile apps, microservices, and end-to-end system architecture with 19+ delivered projects. Feel free to connect directly via WhatsApp at **+91 6300375450**!";
+  return "Naveed Afraz is a Full-Stack Engineer specializing in web, mobile apps, microservices, and end-to-end system architecture with 20+ delivered projects. Feel free to connect directly via WhatsApp at **+91 6300375450**!";
 };
 
 const AIChatbot = () => {

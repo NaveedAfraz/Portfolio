@@ -8,10 +8,8 @@ import {
   Navbar,
   NavBody,
   NavItems,
-  MobileNav,
   NavbarLogo,
   NavbarButton,
-  MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
 } from "../components/ui/resizable-navbar";
@@ -121,8 +119,13 @@ const NavBar = () => {
   }, [disableScrollDetection]);
 
   useEffect(() => {
+    let ticking = false;
+    let lastSectionCheck = 0;
+
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      // Cheap scalar check for navbar shadow
+      const scrollY = window.scrollY;
+      if (scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -131,25 +134,35 @@ const NavBar = () => {
       // Skip section detection if temporarily disabled
       if (disableScrollDetection) return;
 
-      // Check which section is currently in view
-      const sections = ["Home", "skills", "experience", "education", "projects", "contact"];
-      const sectionPositions = sections.map((id) => {
-        const element = document.getElementById(id);
-        if (element) {
-          return {
-            id,
-            top: element.getBoundingClientRect().top,
-          };
-        }
-        return { id, top: 9999 };
-      });
+      // Throttle section bounding rect checks to every 120ms to eliminate scroll lag
+      const now = Date.now();
+      if (now - lastSectionCheck < 120) return;
+      lastSectionCheck = now;
 
-      const currentSection = sectionPositions
-        .filter((section) => section.top <= 100)
-        .sort((a, b) => b.top - a.top)[0];
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sections = ["Home", "skills", "experience", "education", "projects", "contact"];
+          const sectionPositions = sections.map((id) => {
+            const element = document.getElementById(id);
+            if (element) {
+              return {
+                id,
+                top: element.getBoundingClientRect().top,
+              };
+            }
+            return { id, top: 9999 };
+          });
 
-      if (currentSection) {
-        setActiveSection(currentSection.id);
+          const currentSection = sectionPositions
+            .filter((section) => section.top <= 100)
+            .sort((a, b) => b.top - a.top)[0];
+
+          if (currentSection) {
+            setActiveSection(currentSection.id);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -224,7 +237,7 @@ const NavBar = () => {
               : "bg-transparent border-transparent shadow-none"
           }`}
         >
-          <div className="container flex h-16 items-center">
+          <div className="container mx-auto px-4 sm:px-6 flex h-16 items-center justify-between">
             <NavbarLogo>
               <Link
                 className="flex items-center space-x-2 transition-all duration-300 hover:scale-105"
@@ -265,20 +278,15 @@ const NavBar = () => {
                   </NavbarButton>
                 )
               )}
-              <ThemeToggle className="hidden md:flex transition-colors duration-300 cursor-pointer hover:scale-110" />
+              {/* <ThemeToggle className="hidden md:flex transition-colors duration-300 cursor-pointer hover:scale-110" /> */}
             </NavItems>
 
-            <MobileNav className="md:hidden flex items-center space-x-2">
-              <MobileNavHeader>
-                <span className={`mx-2 rounded-lg cursor-pointer transition-all duration-300 hover:scale-110 ${theme === "dark" ? "bg-amber-50 text-black" : "bg-black text-white"}`}>
-                  <ThemeToggle className="md:hidden transition-colors duration-300 cursor-pointer" />
-                </span>
-                <MobileNavToggle
-                  isOpen={isMenuOpen}
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={`md:hidden cursor-pointer w-7 h-7 transition-all duration-300 hover:scale-110 ${theme === "dark" ? "text-white" : "text-black"}`}
-                />
-              </MobileNavHeader>
+            <div className="md:hidden flex items-center justify-end ml-auto">
+              <MobileNavToggle
+                isOpen={isMenuOpen}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className={`cursor-pointer w-7 h-7 transition-all duration-300 hover:scale-110 ${theme === "dark" ? "text-white" : "text-black"}`}
+              />
 
               <MobileNavMenu
                 isOpen={isMenuOpen}
@@ -297,12 +305,12 @@ const NavBar = () => {
                     Naveed
                   </span>
                   <div className="flex items-center space-x-2">
-                    <span className={`rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 p-1.5 flex items-center justify-center ${theme === "dark"
+                    {/* <span className={`rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 p-1.5 flex items-center justify-center ${theme === "dark"
                         ? "bg-neutral-800 text-white"
                         : "bg-neutral-200 text-black"
                       }`}>
                       <ThemeToggle className="transition-colors duration-300 cursor-pointer" />
-                    </span>
+                    </span> */}
                     <MobileNavToggle
                       isOpen={true}
                       onClick={() => setIsMenuOpen(false)}
@@ -356,7 +364,7 @@ const NavBar = () => {
                   )}
                 </motion.div>
               </MobileNavMenu>
-            </MobileNav>
+            </div>
           </div>
           <ScrollProgress />
         </NavBody>

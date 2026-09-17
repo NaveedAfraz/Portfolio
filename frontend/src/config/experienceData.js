@@ -2,9 +2,11 @@ export const experienceData = [
   {
     id: "klipp",
     year: "July 2026 - Present",
+    role: "Freelance Full Stack Developer",
     degree: "Freelance Full Stack Developer",
-    field: "",
-    university: "Klipp – AI After Effects Plugin & Web Platform",
+    company: "Klipp",
+    university: "Klipp",
+    location: "Patna, Bihar, India",
     description:
       "Built a commercial Adobe After Effects CEP plugin with a companion web platform for licensing, payments, and user management. Developed AI-powered caption generation using Whisper.cpp, multilingual translation with IndicTrans2, secure native licensing with HWID binding, encrypted model delivery, and an admin dashboard for managing licenses, pricing, releases, and users. Integrated Razorpay and Whop for payments, Better Auth for authentication, and designed a secure licensing engine communicating with the React panel via IPC.",
     courses: [
@@ -35,9 +37,11 @@ export const experienceData = [
   {
     id: "techstudents",
     year: "August 2025 - Present",
+    role: "Product Developer",
     degree: "Product Developer",
-    field: "",
-    university: "Tech Students, Nizamabad, India",
+    company: "Tech Students",
+    university: "Tech Students",
+    location: "Nizamabad, India",
     description:
       "Designed and built an end-to-end EdTech platform using a microservices architecture, covering UI/UX, full-stack development, testing, Docker-based containerization, and deployment. Implemented 6 role-based dashboards with 13+ production-ready features, including authentication, analytics, assessments, and admin controls.",
     courses: [
@@ -52,7 +56,7 @@ export const experienceData = [
       "Microservices",
     ],
     category: "Freelance",
-    remote: false,
+    remote: true,
     projectsList: [
       { name: "Tech Students Platform", demo: "https://techstudents.in", demoLabel: "Live Site" }
     ],
@@ -60,9 +64,11 @@ export const experienceData = [
   {
     id: "freelance",
     year: "March 2026 - May 2026 (3 months)",
+    role: "Freelance Full Stack Developer",
     degree: "Freelance Full Stack Developer",
-    field: "",
-    university: "No-company. (Self-employed.), Hyderabad, India",
+    company: "Self-employed",
+    university: "Self-employed",
+    location: "Hyderabad, India",
     description:
       "Delivered 10+ paid final-year projects for BCA, MCA, and engineering students, covering full-stack web application development from requirement gathering to deployment. Built placement portals, student management systems, attendance systems, learning platforms, dashboards, admin panels, and business workflow applications. Worked mainly with React, Node.js, Tailwind CSS, Express, MySQL, Redux, Socket.IO, and PayPal. Prepared detailed project documentation and implementation files for each project, including 90-page DOCX reports where required.",
     courses: [
@@ -96,9 +102,11 @@ export const experienceData = [
   {
     id: "mshygiene",
     year: "January 2026 - April 2026 (4 months)",
+    role: "Full Stack Developer",
     degree: "Full Stack Developer",
-    field: "",
-    university: "MS Hygiene Industries (IT Division), Mumbai, India",
+    company: "MS Hygiene Industries (IT Division)",
+    university: "MS Hygiene Industries (IT Division)",
+    location: "Mumbai, India",
     description:
       "Selected as a Trainee/Intern – Full-Stack E-commerce Website & Mobile App Development, contributing to multiple production-ready, end-to-end platforms across e-commerce, marketplace, social networking, and healthcare domains. Developed responsive, scalable e-commerce websites with secure payment gateway integration, built marketplace and social networking platforms aligned with real-world workflows, designed/implemented RESTful APIs, developed mobile applications integrated with backend services, and owned the entire project lifecycle from requirement analysis to deployment and optimization.",
     courses: [
@@ -126,9 +134,11 @@ export const experienceData = [
   {
     id: "alprophysio",
     year: "October 2025 - January 2026 (4 months)",
+    role: "Full Stack Web Developer",
     degree: "Full Stack Web Developer",
-    field: "",
-    university: "Alpro Physio Clinic, India",
+    company: "Alpro Physio Clinic",
+    university: "Alpro Physio Clinic",
+    location: "Madhya Pradesh, India",
     description:
       "Developed a modern, responsive physiotherapy website with booking and service management features. Integrated Resend for automated email notifications and inquiries. Focused on SEO optimization, accessibility, and mobile-first design.",
     courses: [
@@ -151,9 +161,11 @@ export const experienceData = [
   {
     id: "infipost",
     year: "May 2025 - November 2025 (7 months)",
+    role: "Full Stack Developer Intern",
     degree: "Full Stack Developer Intern",
-    field: "",
-    university: "Infiposts Private Limited, Bengaluru, India",
+    company: "Infiposts Private Limited",
+    university: "Infiposts Private Limited",
+    location: "Bengaluru, India",
     description:
       "Worked across a microservices-based architecture using Django and FastAPI on the backend and React + TypeScript on the frontend. Built the Utility Space module, contributed to API development, and developed the Task AI frontend, which was later integrated into the main system.",
     courses: [
@@ -175,9 +187,11 @@ export const experienceData = [
   {
     id: "quwwahealth",
     year: "June 2025 - July 2025 (2 months)",
+    role: "Web Developer",
     degree: "Web Developer",
-    field: "",
-    university: "Quwwa Health, India",
+    company: "Quwwa Health",
+    university: "Quwwa Health",
+    location: "Madhya Pradesh, India",
     description:
       "Responsible for the end-to-end development of a healthcare platform, implementing a responsive UI with React and designing a secure, high-performance back-end to manage all data and business logic.",
     courses: [

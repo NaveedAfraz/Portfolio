@@ -25,7 +25,6 @@ export const Timeline = ({
     offset: ["start 10%", "end 50%"],
   });
 
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
@@ -80,10 +79,11 @@ export const Timeline = ({
           className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-muted-foreground/20 to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] ">
           <motion.div
             style={{
-              height: heightTransform,
+              scaleY: scrollYProgress,
+              transformOrigin: "top",
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-cyan-500 via-sky-500 to-blue-600 rounded-full" />
+            className="absolute inset-x-0 top-0 w-[2px] h-full bg-gradient-to-t from-cyan-500 via-sky-500 to-blue-600 rounded-full will-change-transform" />
         </div>
       </div>
     </div>

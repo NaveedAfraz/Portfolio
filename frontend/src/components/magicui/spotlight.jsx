@@ -11,26 +11,52 @@ export function Spotlight({
   const containerRef = useRef(null);
 
   useEffect(() => {
+    let rect = null;
+    let rafId = null;
+
+    const handleMouseEnter = () => {
+      if (containerRef.current) {
+        rect = containerRef.current.getBoundingClientRect();
+      }
+    };
+
     const handleMouseMove = (e) => {
       if (!containerRef.current) return;
-      
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      containerRef.current.style.setProperty('--x', `${x}px`);
-      containerRef.current.style.setProperty('--y', `${y}px`);
+      if (!rect) {
+        rect = containerRef.current.getBoundingClientRect();
+      }
+      const clientX = e.clientX;
+      const clientY = e.clientY;
+
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        if (!containerRef.current || !rect) return;
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+        containerRef.current.style.setProperty('--x', `${x}px`);
+        containerRef.current.style.setProperty('--y', `${y}px`);
+      });
+    };
+
+    const handleMouseLeave = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rect = null;
     };
     
     const container = containerRef.current;
     if (container) {
-      container.addEventListener('mousemove', handleMouseMove);
+      container.addEventListener('mouseenter', handleMouseEnter, { passive: true });
+      container.addEventListener('mousemove', handleMouseMove, { passive: true });
+      container.addEventListener('mouseleave', handleMouseLeave, { passive: true });
     }
     
     return () => {
       if (container) {
+        container.removeEventListener('mouseenter', handleMouseEnter);
         container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener('mouseleave', handleMouseLeave);
       }
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
 

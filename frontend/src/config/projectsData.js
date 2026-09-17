@@ -190,7 +190,7 @@ export const projectsData = [
     gradientFrom: "#0F172A",
     gradientTo: "#0284C7",
     logo: "klipp",
-    image: "",
+    image: "/images/klipp.png",
     link: "https://fx.klipp.in",
   },
   {

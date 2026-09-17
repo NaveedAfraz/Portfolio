@@ -1,43 +1,171 @@
-import { Link } from "react-router-dom";
-import { Heart } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Heart, ArrowUp, ArrowUpRight, Download, Mail } from "lucide-react";
+import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
+import resume from "../assets/Naveed_Resume.pdf";
 
 const Footer = () => {
-  return (
-    <footer className="py-6 md:py-12 border-t">
-      <div className="container px-4 md:px-6 mx-auto">
-        <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
-          {/* <p className="text-center text-sm text-muted-foreground">
-              {new Date().getFullYear()}
-          </p> */}
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
 
-          <div className="text-center">
-            <p className="animated-gradient-text text-center text-sm font-medium">
-              HandCrafted by me
+  const handleNavigation = (sectionId) => {
+    if (isHomePage) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      navigate("/", { state: { activeSection: sectionId } });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const navLinks = [
+    { name: "Home", id: "Home" },
+    { name: "Skills", id: "skills" },
+    { name: "Experience", id: "experience" },
+    { name: "Education", id: "education" },
+    { name: "Projects", id: "projects" },
+    { name: "Contact", id: "contact" },
+  ];
+
+  return (
+    <footer className="relative border-t border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/50 dark:bg-[#07090e] transition-colors duration-300">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12">
+          {/* ── LEFT COLUMN: Brand, Summary, Socials ── */}
+          <div className="md:col-span-6 lg:col-span-6 space-y-4">
+            {/* Brand Logo & Name */}
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-cyan-500/20 select-none">
+                NA
+              </div>
+              <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+                Naveed Afraz
+              </span>
+            </div>
+
+            {/* Value Statement / Short Bio */}
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-md leading-relaxed">
+              Full Stack Developer building scalable web apps, robust backend architectures, and high-impact digital experiences. Available for full-time roles &amp; freelance contracts.
             </p>
-            <span className="text-foreground inline-flex text-xs items-center">
-              (ofc by <Heart className="w-4 h-4 text-red-500 mx-1" />)
+
+            {/* Social Icon Buttons */}
+            <div className="flex items-center gap-2.5 pt-2">
+              <a
+                href="https://github.com/NaveedAfraz"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="w-10 h-10 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/80 text-neutral-600 dark:text-neutral-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-xs"
+              >
+                <SiGithub className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/naveed-afraz-977a46310/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="w-10 h-10 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/80 text-neutral-600 dark:text-neutral-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-xs"
+              >
+                <SiLinkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="https://twitter.com/NaveedAfrazX"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter Profile"
+                className="w-10 h-10 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/80 text-neutral-600 dark:text-neutral-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-xs"
+              >
+                <SiX className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="mailto:naveedafraz2003@gmail.com"
+                aria-label="Send Email"
+                className="w-10 h-10 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/80 text-neutral-600 dark:text-neutral-400 hover:text-cyan-500 dark:hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 shadow-xs"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* ── MIDDLE COLUMN: Navigate ── */}
+          <div className="md:col-span-3 lg:col-span-3">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-500 mb-4">
+              NAVIGATE
+            </p>
+            <ul className="space-y-2.5 text-sm">
+              {navLinks.map((item) => (
+                <li key={item.id}>
+                  <button
+                    onClick={() => handleNavigation(item.id)}
+                    className="text-neutral-600 dark:text-neutral-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors cursor-pointer text-left font-medium"
+                  >
+                    {item.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── RIGHT COLUMN: Get in Touch ── */}
+          <div className="md:col-span-3 lg:col-span-3 space-y-3">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-500 mb-4">
+              GET IN TOUCH
+            </p>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a
+                  href="mailto:naveedafraz2003@gmail.com"
+                  className="text-neutral-700 dark:text-neutral-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5 font-medium group"
+                >
+                  <span className="break-all">naveedafraz2003@gmail.com</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={resume}
+                  download="Naveed_Afraz_Resume.pdf"
+                  className="text-neutral-700 dark:text-neutral-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5 font-medium group cursor-pointer"
+                >
+                  <span>Download CV</span>
+                  <Download className="w-3.5 h-3.5 text-neutral-400 group-hover:text-cyan-400 group-hover:translate-y-0.5 transition-transform shrink-0" />
+                </a>
+              </li>
+              <li className="pt-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                  </span>
+                  Open to Opportunities
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* ── BOTTOM SUB-FOOTER BAR ── */}
+        <div className="border-t border-neutral-200 dark:border-neutral-800/80 pt-8 mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 dark:text-neutral-400">
+          <div className="flex items-center gap-1.5 flex-wrap justify-center sm:justify-start">
+            <span>© {new Date().getFullYear()} Naveed Afraz. Designed &amp; built from scratch.</span>
+            <span className="hidden sm:inline text-neutral-300 dark:text-neutral-700">·</span>
+            <span className="inline-flex items-center">
+              (Handcrafted with <Heart className="w-3 h-3 text-red-500 mx-1 fill-red-500" />)
             </span>
           </div>
-          <div className="flex gap-4">
-            <Link
-              to="https://github.com/NaveedAfraz"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              GitHub
-            </Link>
-            <Link
-              to="https://www.linkedin.com/in/naveed-afraz-977a46310/"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              LinkedIn
-            </Link>
-            <Link
-              to="https://twitter.com/NaveedAfrazX"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              Twitter
-            </Link>
-          </div>
+
+          <button
+            onClick={scrollToTop}
+            className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors group cursor-pointer"
+          >
+            Back to top
+            <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
+          </button>
         </div>
       </div>
     </footer>

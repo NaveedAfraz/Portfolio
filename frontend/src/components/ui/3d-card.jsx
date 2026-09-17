@@ -16,26 +16,41 @@ export const CardContainer = ({
   containerClassName
 }) => {
   const containerRef = useRef(null);
+  const rectRef = useRef(null);
+  const rafRef = useRef(null);
   const [isMouseEntered, setIsMouseEntered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsMouseEntered(true);
+    if (containerRef.current) {
+      rectRef.current = containerRef.current.getBoundingClientRect();
+    }
+  };
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
-    const { left, top, width, height } =
-      containerRef.current.getBoundingClientRect();
+    if (!rectRef.current) {
+      rectRef.current = containerRef.current.getBoundingClientRect();
+    }
+    const { left, top, width, height } = rectRef.current;
     const x = (e.clientX - left - width / 4) / 25;
     const y = (e.clientY - top - height / 4) / 25;
-    containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      if (containerRef.current) {
+        containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+      }
+    });
   };
 
-  const handleMouseEnter = (e) => {
-    setIsMouseEntered(true);
-    if (!containerRef.current) return;
-  };
-
-  const handleMouseLeave = (e) => {
-    if (!containerRef.current) return;
+  const handleMouseLeave = () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rectRef.current = null;
     setIsMouseEntered(false);
-    containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
+    if (containerRef.current) {
+      containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
+    }
   };
   return (
     (<MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
@@ -50,11 +65,13 @@ export const CardContainer = ({
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           className={cn(
-            "flex items-center justify-center relative transition-all duration-200 ease-linear",
+            "flex items-center justify-center relative",
+            !isMouseEntered && "transition-transform duration-300 ease-out",
             className
           )}
           style={{
             transformStyle: "preserve-3d",
+            willChange: isMouseEntered ? "transform" : "auto",
           }}>
           {children}
         </div>

@@ -20,4 +20,16 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "react-router-dom"],
+          framer: ["framer-motion"],
+          three: ["three"],
+          icons: ["lucide-react", "react-icons"],
+        },
+      },
+    },
+  },
 }); 
