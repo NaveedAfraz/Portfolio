@@ -55,13 +55,22 @@ const Hero = () => {
   const { theme } = useTheme();
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
 
+  // Mobile detection helper (< 768px)
+  const isMobile = () => typeof window !== "undefined" && window.innerWidth < 768;
+
   // Hero Intro Animation Phase:
-  // 1 = "Hi." in hero center (below navbar)
-  // 2 = "I AM Naveed Afraz" + stats in hero center
-  // 3 = Final Hero layout revealed
-  const [heroPhase, setHeroPhase] = useState(1);
+  // 1 = "Hi." in hero center (desktop only)
+  // 2 = "I AM Naveed Afraz" + stats in hero center (desktop only)
+  // 3 = Final Hero layout revealed (instant on mobile phones)
+  const [heroPhase, setHeroPhase] = useState(() => (isMobile() ? 3 : 1));
 
   useEffect(() => {
+    // Mobile devices skip intro animations immediately — zero waiting or loading delay
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      if (heroPhase !== 3) setHeroPhase(3);
+      return;
+    }
+
     if (heroPhase === 1) {
       const t1 = setTimeout(() => setHeroPhase(2), 1200); // switch to "I AM"
       return () => clearTimeout(t1);
@@ -72,8 +81,15 @@ const Hero = () => {
     }
   }, [heroPhase]);
 
-  // Freeze scroll until animations are completely completed (heroPhase === 3)
+  // Freeze scroll until animations are completely completed (heroPhase === 3) — desktop only
   useEffect(() => {
+    // Never lock scroll or block touchmove on mobile phones
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      return;
+    }
+
     if (heroPhase < 3) {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
@@ -103,6 +119,17 @@ const Hero = () => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
     }
+  }, [heroPhase]);
+
+  // Immediately transition to phase 3 if resized to mobile
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768 && heroPhase < 3) {
+        setHeroPhase(3);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [heroPhase]);
 
   const skipToHero = () => {

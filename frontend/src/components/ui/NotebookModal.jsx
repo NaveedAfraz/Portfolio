@@ -1,19 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Globe } from "lucide-react";
-
-const BASE_VISITS = 5000;
+import { useOnlinePresence } from "../../hooks/useOnlinePresence";
 
 export const NotebookModal = ({ isOpen, onClose }) => {
-  const [visits, setVisits] = useState(() => {
-    try {
-      const saved = localStorage.getItem("portfolio_visits_v2");
-      return saved ? parseInt(saved, 10) : BASE_VISITS + 3;
-    } catch {
-      return BASE_VISITS + 3;
-    }
-  });
+  const { onlineCount, visits } = useOnlinePresence();
 
   // Listen for Escape key and lock background scroll
   useEffect(() => {
@@ -26,14 +18,6 @@ export const NotebookModal = ({ isOpen, onClose }) => {
     window.addEventListener("keydown", handleKeyDown);
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
-    // Refresh visits
-    try {
-      const saved = localStorage.getItem("portfolio_visits_v2");
-      if (saved) setVisits(parseInt(saved, 10));
-    } catch {
-      // Ignore
-    }
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
@@ -60,9 +44,9 @@ export const NotebookModal = ({ isOpen, onClose }) => {
           {/* Top-right Status Pill & Web Icon Button */}
           <div className="fixed top-3 right-3 sm:top-5 sm:right-6 z-[1010] flex items-center gap-2 sm:gap-3">
             {/* Live Visitors Pill */}
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/90 border border-neutral-700/80 text-[11px] sm:text-xs font-mono text-neutral-200 shadow-2xl backdrop-blur-md">
+            <div className="flex items-center gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/90 border border-neutral-700/80 text-[10px] sm:text-xs font-mono text-neutral-200 shadow-2xl backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block" />
-              <span className="font-semibold">1</span>
+              <span className="font-semibold text-emerald-400">{onlineCount}</span>
               <span className="text-neutral-500">|</span>
               <span className="flex items-center gap-1">
                 <span>👥</span>
@@ -74,11 +58,11 @@ export const NotebookModal = ({ isOpen, onClose }) => {
             <button
               onClick={onClose}
               type="button"
-              className="group flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/90 border border-neutral-700/80 text-neutral-200 hover:text-white hover:border-cyan-500/50 hover:bg-neutral-900 transition-all shadow-2xl backdrop-blur-md cursor-pointer hover:scale-105 active:scale-95"
+              className="group flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/90 border border-neutral-700/80 text-neutral-200 hover:text-white hover:border-cyan-500/50 hover:bg-neutral-900 transition-all shadow-2xl backdrop-blur-md cursor-pointer hover:scale-105 active:scale-95"
               title="Open Real Website"
             >
-              <Globe className="w-4 h-4 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" />
-              <span className="text-xs font-sans font-medium text-neutral-200 group-hover:text-cyan-300">
+              <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-[11px] sm:text-xs font-sans font-medium text-neutral-200 group-hover:text-cyan-300">
                 Web
               </span>
             </button>
@@ -87,10 +71,10 @@ export const NotebookModal = ({ isOpen, onClose }) => {
             <button
               onClick={onClose}
               type="button"
-              className="w-8 h-8 rounded-full bg-neutral-900/90 border border-neutral-700/80 text-neutral-400 hover:text-white hover:bg-neutral-800 transition-all flex items-center justify-center shadow-xl cursor-pointer hover:scale-105 active:scale-95"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-neutral-900/90 border border-neutral-700/80 text-neutral-400 hover:text-white hover:bg-neutral-800 transition-all flex items-center justify-center shadow-xl cursor-pointer hover:scale-105 active:scale-95"
               title="Close Notebook (Esc)"
             >
-              <X className="w-4 h-4" />
+              <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
           </div>
 
@@ -101,13 +85,18 @@ export const NotebookModal = ({ isOpen, onClose }) => {
             exit={{ opacity: 0, scale: 0.94, y: 10 }}
             transition={{ type: "spring", damping: 28, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative my-auto h-[min(94vh,880px)] aspect-[682/1024] shadow-[0_30px_90px_rgba(0,0,0,0.95)] rounded-xl sm:rounded-2xl overflow-hidden z-10"
+            className="relative my-auto shadow-[0_30px_90px_rgba(0,0,0,0.95)] rounded-xl sm:rounded-2xl overflow-hidden z-10 mt-12 sm:mt-0 max-w-full"
+            style={{
+              width: "min(calc(100vw - 1.5rem), calc((100dvh - 4.5rem) * (682 / 1024)), 580px)",
+              height: "auto",
+              aspectRatio: "682 / 1024",
+            }}
           >
             {/* Real Notebook Image */}
             <img
               src="/images/naveed-notebook-note.jpg"
               alt="Naveed Afraz Handwritten Notebook"
-              className="w-full h-full object-cover select-none pointer-events-none"
+              className="w-full h-full object-contain select-none pointer-events-none"
             />
 
             {/*

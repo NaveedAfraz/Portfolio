@@ -1,49 +1,14 @@
-import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Heart, ArrowUp, ArrowUpRight, Download, Mail } from "lucide-react";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
 import resume from "../assets/Naveed_Resume.pdf";
-
-const BASE_VISITS = 5000;
+import { useOnlinePresence } from "../hooks/useOnlinePresence";
 
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/";
-
-  const [visits, setVisits] = useState(() => {
-    try {
-      const saved = localStorage.getItem("portfolio_visits_v2");
-      return saved ? parseInt(saved, 10) : BASE_VISITS + 3;
-    } catch {
-      return BASE_VISITS + 3;
-    }
-  });
-
-  useEffect(() => {
-    try {
-      const hasCountedSession = sessionStorage.getItem("portfolio_visited_session");
-      const endpoint = hasCountedSession
-        ? "https://countapi.mileshilliard.com/api/v1/get/naveedafraz_portfolio_visits"
-        : "https://countapi.mileshilliard.com/api/v1/hit/naveedafraz_portfolio_visits";
-
-      fetch(endpoint)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data && typeof data.value === "number") {
-            const total = BASE_VISITS + data.value;
-            setVisits(total);
-            localStorage.setItem("portfolio_visits_v2", total.toString());
-            sessionStorage.setItem("portfolio_visited_session", "true");
-          }
-        })
-        .catch(() => {
-          // Gracefully keep cached/fallback visits count
-        });
-    } catch {
-      // Browser storage disabled or restricted
-    }
-  }, []);
+  const { onlineCount, visits } = useOnlinePresence();
 
   const handleNavigation = (sectionId) => {
     if (isHomePage) {
@@ -196,14 +161,16 @@ const Footer = () => {
             </span>
           </div>
 
-          {/* ── TOTAL VISITS COUNTER ── */}
+          {/* ── LIVE ONLINE & TOTAL VISITS COUNTER ── */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-200/50 dark:bg-neutral-900/80 border border-neutral-300/60 dark:border-neutral-800/80 font-mono text-xs text-neutral-600 dark:text-neutral-400 shadow-xs backdrop-blur-xs">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
+            <span className="font-semibold text-emerald-600 dark:text-emerald-400">{onlineCount} online</span>
+            <span className="text-neutral-400 dark:text-neutral-600">·</span>
             <span className="font-semibold text-slate-800 dark:text-neutral-200">{visits.toLocaleString()}</span>
-            <span>total visits</span>
+            <span>visits</span>
           </div>
 
           <button
