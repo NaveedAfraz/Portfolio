@@ -1,13 +1,27 @@
 import { useState, useRef, useEffect } from "react";
-import { Bot, X, Send, Loader2, ChevronDown, MessageSquare } from "lucide-react";
+import { Bot, X, Send, Loader2, ChevronDown, MessageSquare, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant embedded on his portfolio website. You are enthusiastic, professional, and always speak highly of Naveed as an exceptional Full-Stack Engineer. Your goal is to help recruiters, clients, and visitors learn about Naveed's expertise and encourage them to hire or collaborate with him.
 
 ## CRITICAL RULES
+- MANDATORY LINK FORMATTING: Whenever mentioning or listing ANY project (Klipp, Tech Students, MSE Org, Auramiingo, CareKov, Alpro Physio Clinic, Quwwa Health, final-year projects, etc.), YOU MUST ALWAYS include its live clickable markdown link right beside or as the project name: [Project Name](https://...). NEVER output a project name as plain text without its live link.
+- ALWAYS use full https:// URLs in markdown links, e.g. [Smart Study](https://smart-study-eta-seven.vercel.app).
+- WHEN ASKED ABOUT "PROJECTS" OR FULL-STACK PROJECTS:
+  Present a clean, beautifully formatted overview:
+  1. Highlight the 7 Client & Production platforms first with live links (1 short line each):
+     1. [Klipp](https://fx.klipp.in) – AI-powered After Effects CEP plugin & platform with Whisper.cpp
+     2. [Tech Students](https://techstudents.in) – EdTech microservices platform with 6 role-based dashboards
+     3. [MSE Org](https://mseorg.com) – Enterprise e-commerce with Stripe & dynamic catalogs
+     4. [Auramiingo](https://auramiingo.com) – Social networking & e-commerce platform with real-time chat
+     5. [CareKov](https://carekov.com) – Digital clinic management portal with appointment scheduling
+     6. [Alpro Physio Clinic](https://alprophysioclinic.com) – Physiotherapy booking & service platform
+     7. [Quwwa Health](https://quwwahealth.com) – Healthcare wellness & diagnostic consultation system
+  2. Mention the 13+ paid student final-year systems, highlighting top picks with live links like [Market Scope](https://market-scope-ten.vercel.app), [Edit Flow Pro](https://edit-flow-pro.vercel.app), and [Secure Net](https://secure-net-tau.vercel.app).
+  Keep descriptions to 1 concise line per project so the output is elegant, fast, and easy to read.
 - ONLY reference the projects, experience, and education listed EXACTLY below. NEVER invent, guess, or mention any project name not in this list.
-- If asked about a project not listed here, say "That project is not in Naveed's portfolio — here's what he has built:" then list from the data below.
-- Keep answers concise (2–4 sentences) unless detailed architecture is requested.
+- If asked about a project not listed here, say "That project is not in Naveed's portfolio — here's what he has built:" then list from the data below with links.
+- Keep answers concise unless detailed architecture is requested.
 - Direct serious hiring/client inquiries to WhatsApp (+91 6300375450).
 
 ---
@@ -36,92 +50,91 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 ---
 
 ## Work Experience (Accurate — do not modify)
-1. Freelance Full Stack Developer — Klipp (July 2026 – Present)
-   Built a commercial Adobe After Effects CEP plugin + web platform (fx.klipp.in). Features: AI captions (Whisper.cpp), multilingual translation (IndicTrans2), HWID licensing, Razorpay/Whop billing, admin dashboard.
+1. Freelance Full Stack Developer — [Klipp](https://fx.klipp.in) (July 2026 – Present)
+   Built a commercial Adobe After Effects CEP plugin + web platform ([fx.klipp.in](https://fx.klipp.in)). Features: AI captions (Whisper.cpp), multilingual translation (IndicTrans2), HWID licensing, Razorpay/Whop billing, admin dashboard.
    Stack: React, TypeScript, Vite, Tailwind CSS, Node.js, Express, Better Auth, MySQL, Drizzle ORM, Whisper.cpp, IndicTrans2, Cloudflare R2, Razorpay, Whop, Adobe CEP, ExtendScript
 
-2. Product Developer — Tech Students, Nizamabad (August 2025 – Present)
-   End-to-end EdTech platform on microservices architecture. 6 role-based dashboards, 13+ features, Docker containerization.
+2. Product Developer — [Tech Students](https://techstudents.in) (August 2025 – Present)
+   End-to-end EdTech platform on microservices architecture ([techstudents.in](https://techstudents.in)). 6 role-based dashboards, 13+ features, Docker containerization.
    Stack: React.js, Node.js, Express.js, MySQL, Docker, Tailwind CSS, TanStack Query, JWT Auth, Microservices
 
 3. Freelance Full Stack Developer — Self-employed (March 2026 – May 2026, 3 months)
-   Delivered 13+ paid final-year academic projects for BCA/MCA/engineering students. Projects: Market Scope, Edit Flow Pro, Secure Net, Smart Study, Income Tracker, Pass Guard, Secure Vault, BookDrop, TournaForge, Tutor Near, Estate Value, Cert Chain, Placement Pro.
+   Delivered 13+ paid final-year academic projects for BCA/MCA/engineering students. Projects: [Market Scope](https://market-scope-ten.vercel.app), [Edit Flow Pro](https://edit-flow-pro.vercel.app), [Secure Net](https://secure-net-tau.vercel.app), [Smart Study](https://smart-study-eta-seven.vercel.app), [Income Tracker](https://income-tracker-gray.vercel.app), [Pass Guard](https://pass-guard-brown.vercel.app), [Secure Vault](https://secure-vault-blond.vercel.app), [BookDrop](https://bookdrop-delta.vercel.app), [TournaForge](https://tourna-forge.vercel.app), [Tutor Near](https://tutor-near.vercel.app), [Estate Value](https://estate-value.vercel.app), [Cert Chain](https://cert-chain-gilt.vercel.app), [Placement Pro](https://placement-pro-alpha.vercel.app).
    Stack: React, Node.js, Tailwind CSS, Express, MySQL, Redux, Socket.IO, PayPal
 
 4. Full Stack Developer — MS Hygiene Industries IT Division, Mumbai (January 2026 – April 2026, 4 months)
    Production-ready platforms across e-commerce, marketplace, social, and healthcare. Full project lifecycle.
-   Projects built: MSE Org (mseorg.com), Auramiingo (auramiingo.com), CareKov (carekov.com)
+   Projects built: [MSE Org](https://mseorg.com), [Auramiingo](https://auramiingo.com), [CareKov](https://carekov.com)
    Stack: PERN Stack, React.js, PostgreSQL, Express.js, Node.js, React Native, REST APIs, AWS, Docker
 
-5. Full Stack Web Developer — Alpro Physio Clinic (October 2025 – January 2026, 4 months)
-   Physiotherapy website with booking/service management, Resend email notifications, SEO, mobile-first design.
+5. Full Stack Web Developer — [Alpro Physio Clinic](https://alprophysioclinic.com) (October 2025 – January 2026, 4 months)
+   Physiotherapy website with booking/service management ([alprophysioclinic.com](https://alprophysioclinic.com)), Resend email notifications, SEO, mobile-first design.
    Stack: React.js, Node.js, Express.js, MySQL, Tailwind CSS, DaisyUI, Resend, Render, Vercel
 
 6. Full Stack Developer Intern — Infiposts Private Limited, Bengaluru (May 2025 – November 2025, 7 months)
    Microservices architecture. Built Utility Space module, API development, Task AI frontend (integrated into main system).
    Stack: React.js, TypeScript, Django, FastAPI, MySQL, Tailwind CSS, Docker, Microservices
 
-7. Web Developer — Quwwa Health (June 2025 – July 2025, 2 months)
-   End-to-end healthcare platform. Responsive UI, secure backend, data/business logic management.
+7. Web Developer — [Quwwa Health](https://quwwahealth.com) (June 2025 – July 2025, 2 months)
+   End-to-end healthcare platform ([quwwahealth.com](https://quwwahealth.com)). Responsive UI, secure backend, data/business logic management.
    Stack: React, Node.js, Express, MongoDB, Tailwind CSS, Resend, Vercel, Render
 
 ---
 
-## Projects (Complete List — 20 total. ONLY reference these names)
+## Projects (Complete List — 20 total. ALWAYS link every project name)
 
 ### Client/Production Platforms (7):
-1. Klipp – AI-Powered After Effects Plugin & Web Platform (fx.klipp.in)
+1. [Klipp](https://fx.klipp.in) – AI-Powered After Effects Plugin & Web Platform ([fx.klipp.in](https://fx.klipp.in))
    AI captions (Whisper.cpp), HWID licensing, Razorpay/Whop billing, admin dashboard, multilingual translation.
    Stack: React, TypeScript, Vite, Tailwind CSS, Node.js, Express, Better Auth, MySQL, Drizzle ORM, Whisper.cpp, IndicTrans2, Cloudflare R2, Adobe CEP, ExtendScript
 
-2. Tech Students (techstudents.in)
+2. [Tech Students](https://techstudents.in) – EdTech Microservices Platform ([techstudents.in](https://techstudents.in))
    Production-grade EdTech microservices platform. 6 role-based dashboards, automated testing, analytics.
    Stack: React, Node.js, Express, MySQL, Docker, JWT Auth, TanStack Query, Tailwind CSS
 
-3. MSE Org (mseorg.com)
+3. [MSE Org](https://mseorg.com) – Enterprise E-Commerce Platform ([mseorg.com](https://mseorg.com))
    Premium enterprise e-commerce for MS Hygiene Industries. Dynamic catalogs, Stripe payments, high-traffic backend.
    Stack: React, Node.js, Express, PostgreSQL, Stripe, Docker, AWS, Tailwind CSS
 
-4. Auramiingo (auramiingo.com)
+4. [Auramiingo](https://auramiingo.com) – Social Networking & Marketplace Platform ([auramiingo.com](https://auramiingo.com))
    Social networking + e-commerce platform. Real-time chat, post sharing, product reviews, purchases.
    Stack: React, Node.js, Express, PostgreSQL, Socket.IO, React Native, Tailwind CSS
 
-5. CareKov (carekov.com)
+5. [CareKov](https://carekov.com) – Digital Healthcare Portal ([carekov.com](https://carekov.com))
    Digital clinic management portal. Patient records, appointment scheduling, digital prescriptions, doctor-patient communication.
    Stack: React, Node.js, Express, PostgreSQL, React Native, Tailwind CSS
 
-6. Alpro Physio Clinic (alprophysioclinic.com)
+6. [Alpro Physio Clinic](https://alprophysioclinic.com) – Physiotherapy Clinic Platform ([alprophysioclinic.com](https://alprophysioclinic.com))
    Patient booking + clinic management. Online scheduling, inquiry pipelines, Resend notifications, SEO optimized.
-   Stack: React, Node.js, Express, MySQL, Tailwind CSS, Resend, Render
+   Stack: React, Node.js, Express, MySQL, Tailwind CSS, DaisyUI, Resend, Render
 
-7. Quwwa Health (quwwahealth.com)
+7. [Quwwa Health](https://quwwahealth.com) – Healthcare Wellness System ([quwwahealth.com](https://quwwahealth.com))
    Medical wellness system. Diagnostic tracking, health inquiries, patient consulting dashboards, email notifications.
    Stack: React, Node.js, Express, MongoDB, Tailwind CSS, Resend, Vercel
 
 ### Academic/Student Final-Year Projects (13):
-10. Market Scope (market-scope-ten.vercel.app) — Market analytics and scanning platform. Stack: React, Node.js, Express, MySQL, Chart.js, Tailwind CSS
-11. Edit Flow Pro (edit-flow-pro.vercel.app) — Collaborative editorial workflow management. Stack: React, Node.js, Express, MongoDB, Redux, Tailwind CSS
-12. Secure Net (secure-net-tau.vercel.app) — Network monitoring dashboard with real-time WebSocket alerts. Stack: React, Node.js, Express, Socket.IO, Tailwind CSS, MySQL
-13. Smart Study (smart-study-eta-seven.vercel.app) — Student portal for assessments, tracking, and resources. Stack: React, Node.js, Express, MySQL, Tailwind CSS, Redux
-14. Income Tracker (income-tracker-gray.vercel.app) — Personal finance tracker. Budgets, expense tags, visual analytics. Stack: React, Node.js, Express, MongoDB, Tailwind CSS, Chart.js
-15. Pass Guard (pass-guard-brown.vercel.app) — Secure local credentials manager with password generation. Stack: React, Node.js, Express, Cryptography, Tailwind CSS, LocalStorage
-16. Secure Vault (secure-vault-blond.vercel.app) — Encrypted file storage and secure sharing. Stack: React, Node.js, Express, MySQL, Cryptography, Tailwind CSS
-17. BookDrop (bookdrop-delta.vercel.app) — Book reservation and library inventory system. Stack: React, Node.js, Express, MongoDB, Tailwind CSS
-18. TournaForge (tourna-forge.vercel.app) — Tournament bracket generator with live match tracking and chat. Stack: React, Node.js, Express, Socket.IO, Tailwind CSS, MySQL
-19. Placement Pro (placement-pro-alpha.vercel.app) — University placement dashboard for job posts and resume submissions. Stack: React, Node.js, Express, MySQL, Tailwind CSS, Redux
+10. [Market Scope](https://market-scope-ten.vercel.app) — Market analytics and scanning platform. Stack: React, Node.js, Express, MySQL, Chart.js, Tailwind CSS
+11. [Edit Flow Pro](https://edit-flow-pro.vercel.app) — Collaborative editorial workflow management. Stack: React, Node.js, Express, MongoDB, Redux, Tailwind CSS
+12. [Secure Net](https://secure-net-tau.vercel.app) — Network monitoring dashboard with real-time WebSocket alerts. Stack: React, Node.js, Express, Socket.IO, Tailwind CSS, MySQL
+13. [Smart Study](https://smart-study-eta-seven.vercel.app) — Student portal for assessments, tracking, and resources. Stack: React, Node.js, Express, MySQL, Tailwind CSS, Redux
+14. [Income Tracker](https://income-tracker-gray.vercel.app) — Personal finance tracker. Budgets, expense tags, visual analytics. Stack: React, Node.js, Express, MongoDB, Tailwind CSS, Chart.js
+15. [Pass Guard](https://pass-guard-brown.vercel.app) — Secure local credentials manager with password generation. Stack: React, Node.js, Express, Cryptography, Tailwind CSS, LocalStorage
+16. [Secure Vault](https://secure-vault-blond.vercel.app) — Encrypted file storage and secure sharing. Stack: React, Node.js, Express, MySQL, Cryptography, Tailwind CSS
+17. [BookDrop](https://bookdrop-delta.vercel.app) — Book reservation and library inventory system. Stack: React, Node.js, Express, MongoDB, Tailwind CSS
+18. [TournaForge](https://tourna-forge.vercel.app) — Tournament bracket generator with live match tracking and chat. Stack: React, Node.js, Express, Socket.IO, Tailwind CSS, MySQL
+19. [Placement Pro](https://placement-pro-alpha.vercel.app) — University placement dashboard for job posts and resume submissions. Stack: React, Node.js, Express, MySQL, Tailwind CSS, Redux
+20. [Tutor Near](https://tutor-near.vercel.app) — Local tutor marketplace with Google Maps.
+21. [Estate Value](https://estate-value.vercel.app) — Real estate pricing estimator.
+22. [Cert Chain](https://cert-chain-gilt.vercel.app) — Cryptographic certificate generator.
 
-20. Tutor Near (tutor-near.vercel.app) — Local tutor marketplace with Google Maps.
-21. Estate Value (estate-value.vercel.app) — Real estate pricing estimator.
-22. Cert Chain (cert-chain-gilt.vercel.app) — Cryptographic certificate generator.
-
-### Other personal/showcase projects (not counted in 20):
-- BiteBox (bite-box-three.vercel.app) — Restaurant platform for online food ordering.
-- EchoMate (echomate-chat.vercel.app) — Real-time messaging platform.
-- Notes (notes-dt72.onrender.com) — Rich text note-taking app.
-- Elite Wardrobe (e-commerce-psi-inky-93.vercel.app) — Fashion e-commerce with Stripe.
-- Athena AI (athena-ai-five.vercel.app) — AI assistant with NLP.
-- DevInsights Blog (blog-theta-three-48.vercel.app) — Technical blogging platform.
-- Social Media Platform (social-media-1-2enj.onrender.com) — Social platform with auth, posts, comments.
+### Other Personal & Showcase Projects:
+- [BiteBox](https://bite-box-three.vercel.app) — Restaurant platform for online food ordering.
+- [EchoMate](https://echomate-chat.vercel.app) — Real-time messaging platform.
+- [Notes](https://notes-dt72.onrender.com) — Rich text note-taking app.
+- [Elite Wardrobe](https://e-commerce-psi-inky-93.vercel.app) — Fashion e-commerce with Stripe.
+- [Athena AI](https://athena-ai-five.vercel.app) — AI assistant with NLP.
+- [DevInsights Blog](https://blog-theta-three-48.vercel.app) — Technical blogging platform.
+- [Social Media Platform](https://social-media-1-2enj.onrender.com) — Social platform with auth, posts, comments.
 
 ---
 
@@ -133,7 +146,6 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 - Auth & Payments: Better Auth, Clerk, JWT, Razorpay, Whop, Stripe
 - AI & Specialised: Whisper.cpp, IndicTrans2, HWID Licensing, Adobe CEP, ExtendScript`;
 
-
 const QUICK_QUESTIONS = [
   "What are his top engineering skills?",
   "Show me his full-stack projects",
@@ -143,15 +155,90 @@ const QUICK_QUESTIONS = [
 
 const WA_LINK = "https://wa.me/916300375450";
 
+// Dictionary of project names and URLs for bullet autolinking and bold recognition
+const PROJECT_URL_MAP = {
+  "klipp": "https://fx.klipp.in",
+  "fx.klipp.in": "https://fx.klipp.in",
+  "tech students": "https://techstudents.in",
+  "techstudents": "https://techstudents.in",
+  "techstudents.in": "https://techstudents.in",
+  "mse org": "https://mseorg.com",
+  "mseorg": "https://mseorg.com",
+  "mseorg.com": "https://mseorg.com",
+  "auramiingo": "https://auramiingo.com",
+  "auramiingo.com": "https://auramiingo.com",
+  "carekov": "https://carekov.com",
+  "carekov.com": "https://carekov.com",
+  "alpro physio clinic": "https://alprophysioclinic.com",
+  "alpro physio": "https://alprophysioclinic.com",
+  "alprophysioclinic": "https://alprophysioclinic.com",
+  "alprophysioclinic.com": "https://alprophysioclinic.com",
+  "quwwa health": "https://quwwahealth.com",
+  "quwwa": "https://quwwahealth.com",
+  "quwwahealth": "https://quwwahealth.com",
+  "quwwahealth.com": "https://quwwahealth.com",
+  "market scope": "https://market-scope-ten.vercel.app",
+  "market-scope-ten.vercel.app": "https://market-scope-ten.vercel.app",
+  "edit flow pro": "https://edit-flow-pro.vercel.app",
+  "edit-flow-pro.vercel.app": "https://edit-flow-pro.vercel.app",
+  "secure net": "https://secure-net-tau.vercel.app",
+  "secure-net-tau.vercel.app": "https://secure-net-tau.vercel.app",
+  "smart study": "https://smart-study-eta-seven.vercel.app",
+  "smart-study-eta-seven.vercel.app": "https://smart-study-eta-seven.vercel.app",
+  "income tracker": "https://income-tracker-gray.vercel.app",
+  "income-tracker-gray.vercel.app": "https://income-tracker-gray.vercel.app",
+  "pass guard": "https://pass-guard-brown.vercel.app",
+  "pass-guard-brown.vercel.app": "https://pass-guard-brown.vercel.app",
+  "secure vault": "https://secure-vault-blond.vercel.app",
+  "secure-vault-blond.vercel.app": "https://secure-vault-blond.vercel.app",
+  "bookdrop": "https://bookdrop-delta.vercel.app",
+  "bookdrop-delta.vercel.app": "https://bookdrop-delta.vercel.app",
+  "tournaforge": "https://tourna-forge.vercel.app",
+  "tourna-forge.vercel.app": "https://tourna-forge.vercel.app",
+  "placement pro": "https://placement-pro-alpha.vercel.app",
+  "placement-pro-alpha.vercel.app": "https://placement-pro-alpha.vercel.app",
+  "tutor near": "https://tutor-near.vercel.app",
+  "tutor-near.vercel.app": "https://tutor-near.vercel.app",
+  "estate value": "https://estate-value.vercel.app",
+  "estate-value.vercel.app": "https://estate-value.vercel.app",
+  "cert chain": "https://cert-chain-gilt.vercel.app",
+  "cert-chain-gilt.vercel.app": "https://cert-chain-gilt.vercel.app",
+  "bitebox": "https://bite-box-three.vercel.app",
+  "bite-box-three.vercel.app": "https://bite-box-three.vercel.app",
+  "echomate": "https://echomate-chat.vercel.app",
+  "echomate-chat.vercel.app": "https://echomate-chat.vercel.app",
+  "notes": "https://notes-dt72.onrender.com",
+  "notes-dt72.onrender.com": "https://notes-dt72.onrender.com",
+  "elite wardrobe": "https://e-commerce-psi-inky-93.vercel.app",
+  "e-commerce-psi-inky-93.vercel.app": "https://e-commerce-psi-inky-93.vercel.app",
+  "athena ai": "https://athena-ai-five.vercel.app",
+  "athena-ai-five.vercel.app": "https://athena-ai-five.vercel.app",
+  "devinsights": "https://blog-theta-three-48.vercel.app",
+  "devinsights blog": "https://blog-theta-three-48.vercel.app",
+  "blog-theta-three-48.vercel.app": "https://blog-theta-three-48.vercel.app",
+  "social media platform": "https://social-media-1-2enj.onrender.com",
+  "social-media-1-2enj.onrender.com": "https://social-media-1-2enj.onrender.com",
+};
+
 // Smart local fallback if all AI APIs hit quota/rate limits
 const getFallbackReply = (text) => {
   const lower = text.toLowerCase();
 
   if (lower.includes("skill") || lower.includes("stack") || lower.includes("tech") || lower.includes("backend") || lower.includes("mobile")) {
-    return "Naveed is a **Full-Stack Developer** skilled in **React, Next.js, React Native, Node.js, Django, and FastAPI**. He builds end-to-end systems with **MySQL (80+ tables), MongoDB, Redis, Docker, and Microservices**!";
+    return "Naveed is a **Full-Stack Developer** skilled in **React, Next.js, React Native, Node.js, Django, and FastAPI**. He builds end-to-end systems with **MySQL (80+ tables), MongoDB, Redis, Docker, and Microservices**! See his production work in [Klipp](https://fx.klipp.in) and [Tech Students](https://techstudents.in).";
   }
-  if (lower.includes("project") || lower.includes("work") || lower.includes("system") || lower.includes("klipp")) {
-    return "Naveed has engineered 20+ systems! Key highlights include **Klipp** (AI Adobe After Effects CEP plugin & platform — fx.klipp.in), **Tech Students** (EdTech microservices platform), **MSE Org** (production e-commerce), and 10+ final year engineering systems!";
+  if (lower.includes("project") || lower.includes("work") || lower.includes("system") || lower.includes("klipp") || lower.includes("full-stack") || lower.includes("fullstack")) {
+    return (
+      "Naveed has engineered 20+ production and client platforms completely end-to-end! Here are his key full-stack projects:\n\n" +
+      "• [Klipp](https://fx.klipp.in): AI After Effects CEP plugin & platform with Whisper.cpp captions, multilingual translation & HWID licensing\n" +
+      "• [Tech Students](https://techstudents.in): EdTech microservices platform with 6 role-based dashboards & Docker containerization\n" +
+      "• [MSE Org](https://mseorg.com): Enterprise e-commerce with dynamic catalogs, Stripe payments & high-traffic architecture\n" +
+      "• [Auramiingo](https://auramiingo.com): Social networking & e-commerce platform with real-time chat & Socket.IO\n" +
+      "• [CareKov](https://carekov.com): Digital clinic management portal with appointments & digital prescriptions\n" +
+      "• [Alpro Physio Clinic](https://alprophysioclinic.com): Patient booking & physiotherapy platform with Resend notifications\n" +
+      "• [Quwwa Health](https://quwwahealth.com): Medical wellness & diagnostic consultation system\n\n" +
+      "He has also engineered 13+ paid student final-year systems like [Market Scope](https://market-scope-ten.vercel.app), [Edit Flow Pro](https://edit-flow-pro.vercel.app), and [Secure Net](https://secure-net-tau.vercel.app)!"
+    );
   }
   if (lower.includes("hire") || lower.includes("contact") || lower.includes("available") || lower.includes("job") || lower.includes("freelance")) {
     return "Yes! Naveed is currently available for full-time engineering roles, freelance software contracts, and end-to-end app development. Reach out on WhatsApp at **+91 6300375450**!";
@@ -164,6 +251,22 @@ const getFallbackReply = (text) => {
   }
 
   return "Naveed Afraz is a Full-Stack Engineer specializing in web, mobile apps, microservices, and end-to-end system architecture with 20+ delivered projects. Feel free to connect directly via WhatsApp at **+91 6300375450**!";
+};
+
+// Autolink bullet points like "* Klipp:" or "1. Klipp:" or "* **Klipp**:" if no markdown link exists
+const linkifyBulletProjects = (line) => {
+  if (!line) return "";
+  return line.replace(
+    /(^|\s)([*•-]\s*|\d+\.\s*)(?:\*\*)?([A-Za-z0-9\s]+?)(?:\*\*)?(:|—|-|\s*\()/g,
+    (fullMatch, lead, bullet, name, trail) => {
+      const cleanName = name.trim();
+      const url = PROJECT_URL_MAP[cleanName.toLowerCase()];
+      if (url && !line.includes(`](${url})`) && !line.includes(`[${cleanName}]`)) {
+        return `${lead}${bullet}[**${cleanName}**](${url})${trail}`;
+      }
+      return fullMatch;
+    }
+  );
 };
 
 const AIChatbot = () => {
@@ -190,15 +293,106 @@ const AIChatbot = () => {
   }, [isOpen]);
 
   const formatText = (text) => {
-    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+    if (!text) return null;
+    // 1. Auto-link bullets like "* Klipp:" or "• Tech Students:" if not already linked
+    let preprocessed = linkifyBulletProjects(text);
+
+    // 2. Repair any trailing unclosed markdown link (e.g. if truncated: "[Smart Study](smart-...")
+    preprocessed = preprocessed.replace(/\[([^\]]+)\]\(([^)\s]+)$/, (match, name, partialUrl) => {
+      const fullUrl = PROJECT_URL_MAP[name.toLowerCase()] || (partialUrl.startsWith("http") ? partialUrl : `https://${partialUrl}`);
+      return `[${name}](${fullUrl})`;
+    });
+
+    // 3. Tokenize markdown links [Label](url-or-domain), bold **text**, raw URLs http/https, and known domains
+    const tokenRegex = /(\[[^\]]+\]\([^)\s]+\)|\*\*[^*]+\*\*|https?:\/\/[^\s)]+|(?:fx\.klipp\.in|techstudents\.in|mseorg\.com|auramiingo\.com|carekov\.com|alprophysioclinic\.com|quwwahealth\.com|[a-z0-9-]+\.vercel\.app|[a-z0-9-]+\.onrender\.com)\b)/g;
+
+    const parts = preprocessed.split(tokenRegex);
+
     return parts.map((part, i) => {
+      if (!part) return null;
+
+      // Markdown Link: [Label](url)
+      if (part.startsWith("[") && part.includes("](") && part.endsWith(")")) {
+        const match = part.match(/^\[([^\]]+)\]\(([^)\s]+)\)$/);
+        if (match) {
+          const label = match[1].replace(/\*\*/g, "").trim();
+          let url = match[2];
+          if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            url = `https://${url}`;
+          }
+          return (
+            <a
+              key={i}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-0.5 font-bold text-cyan-400 hover:text-cyan-300 underline underline-offset-2 hover:underline-offset-4 transition-all"
+            >
+              <span>{label}</span>
+              <ExternalLink className="w-3 h-3 inline-block shrink-0 ml-0.5 opacity-90" />
+            </a>
+          );
+        }
+      }
+
+      // Bold text: **text** (check if it refers to a known project)
       if (part.startsWith("**") && part.endsWith("**")) {
+        const inner = part.slice(2, -2).trim();
+        const projUrl = PROJECT_URL_MAP[inner.toLowerCase()];
+        if (projUrl) {
+          return (
+            <a
+              key={i}
+              href={projUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-0.5 font-bold text-cyan-400 hover:text-cyan-300 underline underline-offset-2 hover:underline-offset-4 transition-all"
+            >
+              <span>{inner}</span>
+              <ExternalLink className="w-3 h-3 inline-block shrink-0 ml-0.5 opacity-90" />
+            </a>
+          );
+        }
         return (
           <strong key={i} className="font-semibold text-cyan-400 dark:text-cyan-300">
-            {part.slice(2, -2)}
+            {inner}
           </strong>
         );
       }
+
+      // Raw URL: https://... or http://...
+      if (part.startsWith("http://") || part.startsWith("https://")) {
+        return (
+          <a
+            key={i}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-0.5 font-medium text-cyan-400 hover:text-cyan-300 underline underline-offset-2 break-all"
+          >
+            <span>{part.replace(/^https?:\/\//, "")}</span>
+            <ExternalLink className="w-3 h-3 inline-block shrink-0 ml-0.5 opacity-90" />
+          </a>
+        );
+      }
+
+      // Bare known domain: fx.klipp.in, techstudents.in, etc.
+      if (PROJECT_URL_MAP[part.toLowerCase()] || part.endsWith(".vercel.app") || part.endsWith(".onrender.com")) {
+        const url = part.startsWith("http") ? part : `https://${part}`;
+        return (
+          <a
+            key={i}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-0.5 font-medium text-cyan-400 hover:text-cyan-300 underline underline-offset-2 break-all"
+          >
+            <span>{part}</span>
+            <ExternalLink className="w-3 h-3 inline-block shrink-0 ml-0.5 opacity-90" />
+          </a>
+        );
+      }
+
       return <span key={i}>{part}</span>;
     });
   };
@@ -224,6 +418,7 @@ const AIChatbot = () => {
         model: modelName,
         messages: apiMessages,
         temperature: 0.7,
+        max_tokens: 1500,
       }),
     });
 
@@ -250,7 +445,7 @@ const AIChatbot = () => {
         body: JSON.stringify({
           system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
           contents,
-          generationConfig: { temperature: 0.7, maxOutputTokens: 350 },
+          generationConfig: { temperature: 0.7, maxOutputTokens: 1500 },
         }),
       }
     );
@@ -262,6 +457,7 @@ const AIChatbot = () => {
 
     return data.candidates?.[0]?.content?.parts?.[0]?.text;
   };
+
 
   const sendMessage = async (textToUse) => {
     const trimmed = (textToUse ?? input).trim();
@@ -444,11 +640,24 @@ const AIChatbot = () => {
                         : "bg-neutral-800/80 border border-neutral-700/60 text-neutral-200 rounded-bl-none"
                     }`}
                   >
-                    {msg.text.split("\n").map((line, li) => (
-                      <p key={li} className={`break-words [overflow-wrap:anywhere] ${li > 0 ? "mt-1.5" : ""}`}>
-                        {formatText(line)}
-                      </p>
-                    ))}
+                    {msg.text.split("\n").map((line, li) => {
+                      const trimmed = line.trim();
+                      if (trimmed.startsWith("###") || trimmed.startsWith("##") || trimmed.startsWith("#")) {
+                        return (
+                          <span
+                            key={li}
+                            className="font-bold text-cyan-300 text-xs uppercase tracking-wider mt-3 mb-1 block"
+                          >
+                            {formatText(trimmed.replace(/^#+\s*/, ""))}
+                          </span>
+                        );
+                      }
+                      return (
+                        <p key={li} className={`break-words [overflow-wrap:anywhere] ${li > 0 ? "mt-1.5" : ""}`}>
+                          {formatText(line)}
+                        </p>
+                      );
+                    })}
                   </div>
                 </motion.div>
               ))}

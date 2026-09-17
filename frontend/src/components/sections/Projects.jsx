@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { GlowButton } from "../magicui/glow-button";
 import { GradientText } from "../magicui/gradient-text";
+import { ExternalLink } from "lucide-react";
 import { projectsData } from "../../config/projectsData";
 import { FocusedCard, FocusedCardContainer } from "../ui/focus-cards";
 
@@ -60,17 +61,33 @@ const Projects = ({ showOnHomePage = false }) => {
           {displayedProjects.map((project, index) => (
               <FocusedCard key={index} className="h-full">
                 <div
-                  className={`rounded-xl p-6 h-full ${showOnHomePage
-                    ? "bg-card backdrop-blur-sm border border-border"
+                  className={`rounded-xl p-6 h-full flex flex-col justify-between ${showOnHomePage
+                    ? "bg-card backdrop-blur-sm border border-border shadow-sm"
                     : "bg-black/5 dark:bg-white/10 backdrop-blur-sm border border-black/10 dark:border-white/20"
                     }`}
                 >
                   <div className="space-y-4">
-                    <h3
-                      className={`text-xl font-bold ${showOnHomePage ? "text-foreground" : "text-foreground dark:text-white"} sour-gummy`}
-                    >
-                      {project.title}
-                    </h3>
+                    <div className="flex items-start justify-between gap-3">
+                      <h3
+                        className={`text-xl font-bold ${showOnHomePage ? "text-foreground" : "text-foreground dark:text-white"} sour-gummy`}
+                      >
+                        {project.title}
+                      </h3>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 text-xs font-semibold transition-all hover:scale-105"
+                          onClick={(e) => e.stopPropagation()}
+                          title={`Open live site: ${project.link}`}
+                        >
+                          <span>Live Site</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
+                    </div>
+
                     <p
                       className={`${showOnHomePage ? "text-muted-foreground" : "text-muted-foreground dark:text-white/70"}`}
                     >
@@ -101,6 +118,24 @@ const Projects = ({ showOnHomePage = false }) => {
                       )}
                     </div>
                   </div>
+
+                  {project.link && (
+                    <div className="pt-4 mt-5 border-t border-black/5 dark:border-white/10 flex justify-between items-center">
+                      <span className="text-xs text-muted-foreground font-mono">
+                        {project.link.replace(/^https?:\/\//, "")}
+                      </span>
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 hover:underline transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Visit Project</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  )}
                 </div>
               </FocusedCard>
             ))}

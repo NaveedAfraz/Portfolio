@@ -13,6 +13,7 @@ import { HeroParallax } from "../ui/hero-parallax";
 import { Button } from "../ui/button";
 import { useTheme } from "../ThemeProvider";
 import { FlickeringGrid } from "../magicui/flickering-grid";
+import { ExternalLink } from "lucide-react";
 import { projectsData } from "../../config/projectsData";
 
 const ProjectsPage = () => {
@@ -328,6 +329,24 @@ const ProjectsPage = () => {
                       </span>
                     )}
                   </div>
+
+                  {project.link && (
+                    <div className="pt-3 mt-3 border-t border-white/10 dark:border-white/10 flex items-center justify-between">
+                      <span className={`text-[11px] font-mono ${theme === "light" ? "text-gray-500" : "text-white/60"}`}>
+                        {project.link.replace(/^https?:\/\//, "")}
+                      </span>
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 hover:underline transition-colors"
+                      >
+                        <span>Visit Site</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  )}
                 </div>
               </CardSpotlight>
             ))}
