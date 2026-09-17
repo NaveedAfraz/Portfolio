@@ -15,6 +15,7 @@ import {
 } from "../components/ui/resizable-navbar";
 import { useTheme } from "../components/ThemeProvider";
 import { GradientText } from "./magicui/gradient-text";
+import { NotebookModal } from "./ui/NotebookModal";
 
 // Create a global variable to store the target section
 let targetSection = null;
@@ -67,6 +68,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNotebookOpen, setIsNotebookOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [bodyOverflow, setBodyOverflow] = useState("auto");
   const [activeSection, setActiveSection] = useState("hero");
@@ -239,9 +241,11 @@ const NavBar = () => {
         >
           <div className="container mx-auto px-4 sm:px-6 flex h-16 items-center justify-between">
             <NavbarLogo>
-              <Link
-                className="flex items-center space-x-2 transition-all duration-300 hover:scale-105"
-                to="/"
+              <button
+                type="button"
+                onClick={() => setIsNotebookOpen(true)}
+                className="flex items-center space-x-2 transition-all duration-300 hover:scale-105 cursor-pointer text-left focus:outline-none group"
+                title="Click to open handwritten notebook"
               >
                 <GradientText
                   gradient={
@@ -250,11 +254,11 @@ const NavBar = () => {
                       : "from-cyan-600 via-sky-600 to-blue-700 font-signature"
                   }
                   animate={true}
-                  className="font-bold font-signature text-2xl tracking-wide transition-all duration-300"
+                  className="font-bold font-signature text-2xl tracking-wide transition-all duration-300 group-hover:brightness-125"
                 >
                   Naveed
                 </GradientText>
-              </Link>
+              </button>
             </NavbarLogo>
 
             <NavItems className="hidden md:flex items-center space-x-4 ml-auto">
@@ -301,9 +305,17 @@ const NavBar = () => {
                     ? "bg-neutral-950/80 border-b-neutral-800"
                     : "bg-neutral-50/80 border-b-neutral-200"
                   }`}>
-                  <span className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setIsNotebookOpen(true);
+                    }}
+                    className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 text-left cursor-pointer"
+                    title="Click to open handwritten notebook"
+                  >
                     Naveed
-                  </span>
+                  </button>
                   <div className="flex items-center space-x-2">
                     {/* <span className={`rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 p-1.5 flex items-center justify-center ${theme === "dark"
                         ? "bg-neutral-800 text-white"
@@ -369,6 +381,10 @@ const NavBar = () => {
           <ScrollProgress />
         </NavBody>
       </Navbar>
+      <NotebookModal
+        isOpen={isNotebookOpen}
+        onClose={() => setIsNotebookOpen(false)}
+      />
     </div>
   );
 };

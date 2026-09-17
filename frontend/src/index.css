@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat:wght@400;500;600;700&family=Gochi+Hand&family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -333,6 +334,29 @@ section:has(.MagicSpotlight):hover .MagicSpotlight {
 
 .font-signature {
   font-family: "Dancing Script", cursive;
+}
+
+.font-handwriting {
+  font-family: "Caveat", cursive;
+}
+
+.font-kalam {
+  font-family: "Kalam", cursive;
+}
+
+.font-patrick {
+  font-family: "Patrick Hand", cursive;
+}
+
+.font-architect {
+  font-family: "Architects Daughter", cursive;
+}
+
+.notebook-ruled-paper {
+  background-color: #fcfbf6;
+  background-image: 
+    linear-gradient(90deg, transparent 58px, rgba(239, 68, 68, 0.45) 58px, rgba(239, 68, 68, 0.45) 59.5px, transparent 59.5px),
+    repeating-linear-gradient(transparent, transparent 31px, rgba(148, 163, 184, 0.35) 31px, rgba(148, 163, 184, 0.35) 32px);
 }
 
 @theme inline {

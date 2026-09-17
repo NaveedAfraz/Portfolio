@@ -4,7 +4,7 @@ import { Heart, ArrowUp, ArrowUpRight, Download, Mail } from "lucide-react";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
 import resume from "../assets/Naveed_Resume.pdf";
 
-const BASE_VISITS = 14682;
+const BASE_VISITS = 5000;
 
 const Footer = () => {
   const location = useLocation();
@@ -13,10 +13,10 @@ const Footer = () => {
 
   const [visits, setVisits] = useState(() => {
     try {
-      const saved = localStorage.getItem("portfolio_visits");
-      return saved ? parseInt(saved, 10) : BASE_VISITS + 1;
+      const saved = localStorage.getItem("portfolio_visits_v2");
+      return saved ? parseInt(saved, 10) : BASE_VISITS + 3;
     } catch {
-      return BASE_VISITS + 1;
+      return BASE_VISITS + 3;
     }
   });
 
@@ -33,7 +33,7 @@ const Footer = () => {
           if (data && typeof data.value === "number") {
             const total = BASE_VISITS + data.value;
             setVisits(total);
-            localStorage.setItem("portfolio_visits", total.toString());
+            localStorage.setItem("portfolio_visits_v2", total.toString());
             sessionStorage.setItem("portfolio_visited_session", "true");
           }
         })
