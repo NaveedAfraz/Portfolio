@@ -51,7 +51,7 @@ export const NotebookModal = ({ isOpen, onClose }) => {
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto select-text">
+        <div className="fixed inset-0 z-[999] flex items-center justify-center p-2 sm:p-3 overflow-hidden select-text">
           {/* Dark backdrop overlay with slight vignette */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -63,8 +63,8 @@ export const NotebookModal = ({ isOpen, onClose }) => {
           />
 
           {/* Top-right Status Pill & Close Icon (Exact replica of reference image) */}
-          <div className="fixed top-3 right-3 sm:top-5 sm:right-6 z-[1010] flex items-center gap-3">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/90 border border-neutral-700/80 text-xs font-mono text-neutral-200 shadow-2xl backdrop-blur-md">
+          <div className="fixed top-2.5 right-2.5 sm:top-4 sm:right-5 z-[1010] flex items-center gap-2.5">
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/90 border border-neutral-700/80 text-[11px] sm:text-xs font-mono text-neutral-200 shadow-2xl backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block" />
               <span className="font-semibold">1</span>
               <span className="text-neutral-500">|</span>
@@ -73,112 +73,112 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                 <span className="font-semibold">{visits.toLocaleString()}</span>
               </span>
               <span className="text-neutral-500">|</span>
-              <span className="text-sm">🌐</span>
+              <span>🌐</span>
             </div>
 
             <button
               onClick={onClose}
               type="button"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all flex items-center justify-center shadow-xl cursor-pointer hover:scale-105 active:scale-95"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all flex items-center justify-center shadow-xl cursor-pointer hover:scale-105 active:scale-95"
               title="Close Notebook (Esc)"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Physical Mat / Fabric Backdrop under the notebook (like in reference photo) */}
+          {/* Physical Mat / Fabric Backdrop under the notebook (fits screen without scrolling) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.94, y: 20 }}
+            initial={{ opacity: 0, scale: 0.94, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.94, y: 15 }}
-            transition={{ type: "spring", damping: 28, stiffness: 280 }}
+            exit={{ opacity: 0, scale: 0.94, y: 10 }}
+            transition={{ type: "spring", damping: 28, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative my-auto w-full max-w-[680px] p-2 sm:p-5 rounded-3xl shadow-[0_30px_90px_rgba(0,0,0,0.9)] z-10"
+            className="relative my-auto w-full max-w-[620px] p-2 sm:p-3.5 rounded-2xl sm:rounded-3xl shadow-[0_30px_90px_rgba(0,0,0,0.9)] z-10 overflow-hidden"
             style={{
               backgroundColor: "#18181b",
               backgroundImage: `
                 radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
                 radial-gradient(rgba(255, 255, 255, 0.04) 1px, #141416 1px)
               `,
-              backgroundSize: "20px 20px, 40px 40px",
-              backgroundPosition: "0 0, 10px 10px",
-              boxShadow: "0 25px 60px -15px rgba(0,0,0,0.8), inset 0 0 40px rgba(0,0,0,0.6)",
+              backgroundSize: "16px 16px, 32px 32px",
+              backgroundPosition: "0 0, 8px 8px",
+              boxShadow: "0 25px 60px -15px rgba(0,0,0,0.8), inset 0 0 35px rgba(0,0,0,0.6)",
             }}
           >
             {/* The Real Spiral Notebook Page */}
             <div
-              className="relative w-full rounded-l-2xl rounded-r-xs shadow-[0_15px_35px_rgba(0,0,0,0.45)] overflow-hidden font-kalam text-[#191c24]"
+              className="relative w-full rounded-l-xl sm:rounded-l-2xl rounded-r-xs shadow-[0_12px_30px_rgba(0,0,0,0.4)] overflow-hidden font-kalam text-[#191c24]"
               style={{
                 backgroundColor: "#fcfbf7",
                 boxShadow:
-                  "-5px 10px 30px rgba(0,0,0,0.25), 0 0 0 1px rgba(160,150,130,0.25), inset -10px 0 20px rgba(0,0,0,0.06)",
+                  "-4px 8px 24px rgba(0,0,0,0.22), 0 0 0 1px rgba(160,150,130,0.25), inset -8px 0 16px rgba(0,0,0,0.05)",
               }}
             >
-              {/* Ruled Blue Lines + Red Left Margin Background */}
+              {/* Ruled Blue Lines (26px spacing) + Red Left Margin Background */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   backgroundImage: `
-                    linear-gradient(90deg, transparent 52px, rgba(239, 68, 68, 0.42) 52px, rgba(239, 68, 68, 0.42) 53.5px, transparent 53.5px),
-                    repeating-linear-gradient(transparent, transparent 31px, rgba(148, 163, 184, 0.38) 31px, rgba(148, 163, 184, 0.38) 32px)
+                    linear-gradient(90deg, transparent 46px, rgba(239, 68, 68, 0.42) 46px, rgba(239, 68, 68, 0.42) 47.5px, transparent 47.5px),
+                    repeating-linear-gradient(transparent, transparent 25px, rgba(148, 163, 184, 0.38) 25px, rgba(148, 163, 184, 0.38) 26px)
                   `,
-                  backgroundPosition: "0 24px",
+                  backgroundPosition: "0 18px",
                 }}
               />
 
-              {/* Right Edge Spiral Wire Binding (Punched holes & metallic silver coils) */}
-              <div className="absolute top-2 bottom-2 right-0 w-7 sm:w-8 flex flex-col justify-between items-end pointer-events-none z-30 select-none">
-                {Array.from({ length: 25 }).map((_, i) => (
+              {/* Right Edge Spiral Wire Binding (24 coils, scaled to fit perfectly without scroll) */}
+              <div className="absolute top-2 bottom-2 right-0 w-6 sm:w-7 flex flex-col justify-between items-end pointer-events-none z-30 select-none">
+                {Array.from({ length: 23 }).map((_, i) => (
                   <div
                     key={i}
-                    className="relative flex items-center justify-end w-full h-3 pr-1.5"
+                    className="relative flex items-center justify-end w-full h-2.5 pr-1 sm:pr-1.5"
                   >
                     {/* Punched oval paper hole */}
-                    <div className="w-2 sm:w-2.5 h-3 rounded-full bg-[#1c1917] shadow-[inset_0_2px_4px_rgba(0,0,0,0.9)] border border-neutral-700/60" />
-                    {/* Metallic wire spiral ring looping around the edge */}
+                    <div className="w-1.5 sm:w-2 h-2.5 rounded-full bg-[#1c1917] shadow-[inset_0_2px_4px_rgba(0,0,0,0.9)] border border-neutral-700/60" />
+                    {/* Metallic wire spiral ring */}
                     <div
-                      className="absolute right-0 w-4 sm:w-5 h-2 rounded-r-full border-t-2 border-r-2 border-b-2 border-neutral-400"
+                      className="absolute right-0 w-3.5 sm:w-4.5 h-1.5 rounded-r-full border-t border-r border-b border-neutral-400"
                       style={{
                         background:
                           "linear-gradient(180deg, #e4e4e7 0%, #a1a1aa 45%, #52525b 100%)",
-                        boxShadow: "0 1px 2px rgba(0,0,0,0.3)",
+                        boxShadow: "0 1px 2px rgba(0,0,0,0.25)",
                       }}
                     />
                   </div>
                 ))}
               </div>
 
-              {/* Notebook Inner Content Area */}
-              <div className="relative z-10 pl-5 sm:pl-9 pr-9 sm:pr-12 pt-3 pb-8 sm:pb-10 leading-[32px]">
+              {/* Notebook Inner Content Area (Compact 26px line height, zero scrolling required) */}
+              <div className="relative z-10 pl-4 sm:pl-8 pr-7 sm:pr-10 pt-2 pb-4 leading-[26px]">
                 
-                {/* Top Header: "today." and date box (just like reference image) */}
-                <div className="flex justify-end items-center h-8 mb-2 pr-2">
-                  <div className="flex items-center gap-1.5 text-right font-bold text-neutral-800">
-                    <span className="font-handwriting text-xl sm:text-2xl text-neutral-900">
+                {/* Top Header: "today." and date box */}
+                <div className="flex justify-end items-center h-6 mb-1 pr-1">
+                  <div className="flex items-center gap-1 text-right font-bold text-neutral-800">
+                    <span className="font-handwriting text-lg sm:text-xl text-neutral-900">
                       today.
                     </span>
                     <div className="flex flex-col items-center">
-                      <span className="text-[11px] sm:text-xs font-mono tracking-widest text-neutral-700 border-b border-neutral-800 px-1">
+                      <span className="text-[10px] sm:text-[11px] font-mono tracking-wider text-neutral-700 border-b border-neutral-800 px-1 leading-tight">
                         {day}
                       </span>
-                      <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-neutral-600">
+                      <span className="text-[9px] sm:text-[10px] font-mono tracking-wider text-neutral-600 leading-tight">
                         {month}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Profile Section: Real Passport Photo + Info */}
-                <div className="flex items-start gap-3 sm:gap-5 mb-3 sm:mb-4">
+                {/* Profile Section: Real Passport Photo + Bio */}
+                <div className="flex items-start gap-2.5 sm:gap-4 mb-2">
                   
-                  {/* Real Passport Photo with white paper border */}
+                  {/* Real Passport Photo */}
                   <div className="relative shrink-0 mt-0.5">
-                    {/* Small Scotch Tape at Top */}
+                    {/* Scotch tape */}
                     <div
-                      className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-8 sm:w-10 h-3 bg-white/60 border border-white/80 backdrop-blur-[1px] rotate-[-2deg] shadow-xs z-20 pointer-events-none"
+                      className="absolute -top-1 left-1/2 -translate-x-1/2 w-7 sm:w-8 h-2.5 bg-white/60 border border-white/80 backdrop-blur-[1px] rotate-[-2deg] shadow-xs z-20 pointer-events-none"
                     />
                     
-                    <div className="w-[84px] h-[106px] sm:w-[96px] sm:h-[120px] bg-white p-1 pb-2 shadow-[0_3px_10px_rgba(0,0,0,0.22)] border border-neutral-300 rotate-[-1deg]">
+                    <div className="w-[70px] h-[90px] sm:w-[80px] sm:h-[102px] bg-white p-1 pb-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.22)] border border-neutral-300 rotate-[-1deg]">
                       <img
                         src="/images/naveed-portrait.png"
                         alt="Naveed Afraz"
@@ -192,36 +192,34 @@ export const NotebookModal = ({ isOpen, onClose }) => {
 
                   {/* Name, Location, Website & Tagline */}
                   <div className="flex-1 min-w-0 pt-0">
-                    <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 leading-[32px]">
+                    <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 leading-[26px]">
                       Naveed Afraz
                     </h2>
-                    <p className="text-base sm:text-lg text-neutral-800 font-medium leading-[30px]">
+                    <p className="text-sm sm:text-base text-neutral-800 font-medium leading-[26px]">
                       Hyderabad, India
                     </p>
                     <a
                       href="https://naveedafraz.com"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm sm:text-base text-neutral-800 underline decoration-neutral-600 underline-offset-2 hover:text-cyan-800 leading-[28px] inline-block font-semibold"
+                      className="text-xs sm:text-sm text-neutral-800 underline decoration-neutral-600 underline-offset-2 hover:text-cyan-800 leading-[24px] inline-block font-semibold"
                     >
                       naveedafraz.com
                     </a>
 
-                    {/* Tagline: I ~~imagine~~ build [products] into existence */}
-                    <div className="mt-1 text-base sm:text-lg text-neutral-900 font-semibold leading-[32px]">
+                    {/* Tagline */}
+                    <div className="mt-0.5 text-sm sm:text-base text-neutral-900 font-semibold leading-[26px]">
                       <span>I </span>
-                      <span className="relative inline-block mx-1">
-                        {/* "build" written right above crossed out "imagine" */}
-                        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 font-handwriting text-sm sm:text-base text-neutral-900 font-bold tracking-tight rotate-[-3deg]">
+                      <span className="relative inline-block mx-0.5">
+                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 font-handwriting text-xs sm:text-sm text-neutral-900 font-bold tracking-tight rotate-[-3deg]">
                           build
                         </span>
                         <span className="line-through decoration-neutral-900 decoration-[1.5px] text-neutral-600">
                           imagine
                         </span>
                       </span>
-                      {/* [products] inside hand-drawn pen box */}
                       <span
-                        className="inline-block px-1.5 py-0 border border-neutral-900 font-bold"
+                        className="inline-block px-1 py-0 border border-neutral-900 font-bold"
                         style={{
                           borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
                         }}
@@ -233,15 +231,15 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                   </div>
                 </div>
 
-                {/* Projects Section (Exact replica of reference image style) */}
-                <div className="mb-4">
-                  <div className="flex items-center gap-2 text-lg sm:text-xl font-bold text-neutral-900 leading-[32px]">
+                {/* Projects Section */}
+                <div className="mb-2">
+                  <div className="flex items-center gap-1.5 text-base sm:text-lg font-bold text-neutral-900 leading-[26px]">
                     <span className="underline decoration-neutral-800 underline-offset-2">
                       Projects
                     </span>
                     <span className="text-neutral-700">──&gt;</span>
                     <span
-                      className="px-2 py-0 border border-neutral-900 text-sm sm:text-base font-bold"
+                      className="px-1.5 py-0 border border-neutral-900 text-xs sm:text-sm font-bold"
                       style={{
                         borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
                       }}
@@ -250,41 +248,41 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                     </span>
                   </div>
 
-                  <div className="space-y-1 text-sm sm:text-base text-neutral-900 font-medium pt-1">
+                  <div className="space-y-0.5 text-xs sm:text-sm text-neutral-900 font-medium">
                     {/* Project 1: Klipp */}
-                    <div className="flex flex-wrap items-baseline gap-x-2 leading-[30px]">
+                    <div className="flex flex-wrap items-baseline gap-x-1.5 leading-[26px]">
                       <a
                         href="https://klipp-web.vercel.app"
                         target="_blank"
                         rel="noreferrer"
-                        className="px-1.5 py-0 border border-neutral-900 font-bold hover:bg-neutral-200/50 transition-colors inline-flex items-center gap-1"
+                        className="px-1 py-0 border border-neutral-900 font-bold hover:bg-neutral-200/50 transition-colors inline-flex items-center gap-0.5"
                         style={{
                           borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
                         }}
                       >
                         <span>Klipp</span>
-                        <ExternalLink className="w-2.5 h-2.5 opacity-50" />
+                        <ExternalLink className="w-2 h-2 opacity-50" />
                       </a>
                       <span className="text-neutral-600">─</span>
                       <span>
-                        For creators. AI highlight clipping, captions &amp; stuff that helps{" "}
+                        For creators. AI highlight clipping &amp; stuff that helps{" "}
                         <span className="underline decoration-neutral-900">build faster</span>.
                       </span>
                     </div>
 
                     {/* Project 2: Tech Students */}
-                    <div className="flex flex-wrap items-baseline gap-x-2 leading-[30px]">
+                    <div className="flex flex-wrap items-baseline gap-x-1.5 leading-[26px]">
                       <a
                         href="https://techstudents.in"
                         target="_blank"
                         rel="noreferrer"
-                        className="px-1.5 py-0 border border-neutral-900 font-bold hover:bg-neutral-200/50 transition-colors inline-flex items-center gap-1"
+                        className="px-1 py-0 border border-neutral-900 font-bold hover:bg-neutral-200/50 transition-colors inline-flex items-center gap-0.5"
                         style={{
                           borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
                         }}
                       >
                         <span>techstudents.in</span>
-                        <ExternalLink className="w-2.5 h-2.5 opacity-50" />
+                        <ExternalLink className="w-2 h-2 opacity-50" />
                       </a>
                       <span className="text-neutral-600">─</span>
                       <span>
@@ -294,18 +292,18 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                     </div>
 
                     {/* Project 3: MSE Org */}
-                    <div className="flex flex-wrap items-baseline gap-x-2 leading-[30px]">
+                    <div className="flex flex-wrap items-baseline gap-x-1.5 leading-[26px]">
                       <a
                         href="https://mseorg.com"
                         target="_blank"
                         rel="noreferrer"
-                        className="px-1.5 py-0 border border-neutral-900 font-bold hover:bg-neutral-200/50 transition-colors inline-flex items-center gap-1"
+                        className="px-1 py-0 border border-neutral-900 font-bold hover:bg-neutral-200/50 transition-colors inline-flex items-center gap-0.5"
                         style={{
                           borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
                         }}
                       >
                         <span>mseorg.com</span>
-                        <ExternalLink className="w-2.5 h-2.5 opacity-50" />
+                        <ExternalLink className="w-2 h-2 opacity-50" />
                       </a>
                       <span className="text-neutral-600">─</span>
                       <span>
@@ -313,11 +311,11 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                       </span>
                     </div>
 
-                    {/* More projects note with handwritten correction */}
-                    <div className="text-xs sm:text-sm text-neutral-700 italic pt-1 pl-4 leading-[28px]">
+                    {/* More projects note */}
+                    <div className="text-[11px] sm:text-xs text-neutral-700 italic pl-3 leading-[24px]">
                       (More{" "}
                       <span className="relative inline-block mx-0.5">
-                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 font-handwriting text-xs text-neutral-900 font-bold">
+                        <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 font-handwriting text-[11px] text-neutral-900 font-bold">
                           products
                         </span>
                         <span className="line-through decoration-neutral-800">projects</span>
@@ -340,21 +338,21 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Currently Section */}
-                <div className="mb-4">
-                  <div className="text-lg sm:text-xl font-bold text-neutral-900 leading-[32px]">
+                <div className="mb-2">
+                  <div className="text-base sm:text-lg font-bold text-neutral-900 leading-[26px]">
                     <span>Currently ──</span>
                   </div>
-                  <div className="space-y-0.5 text-sm sm:text-base text-neutral-800 font-medium pl-3">
-                    <div className="leading-[30px]">
-                      <span className="text-neutral-600 mr-2">─</span>
+                  <div className="space-y-0 text-xs sm:text-sm text-neutral-800 font-medium pl-2.5">
+                    <div className="leading-[26px]">
+                      <span className="text-neutral-600 mr-1.5">─</span>
                       <span>Building products people love ❤️</span>
                     </div>
-                    <div className="leading-[30px]">
-                      <span className="text-neutral-600 mr-2">─</span>
+                    <div className="leading-[26px]">
+                      <span className="text-neutral-600 mr-1.5">─</span>
                       <span>Exploring AI, startups &amp; opportunities</span>
                     </div>
-                    <div className="leading-[30px]">
-                      <span className="text-neutral-600 mr-2">─</span>
+                    <div className="leading-[26px]">
+                      <span className="text-neutral-600 mr-1.5">─</span>
                       <span>Connecting with builders &amp; creators</span>
                     </div>
                   </div>
@@ -362,12 +360,12 @@ export const NotebookModal = ({ isOpen, onClose }) => {
 
                 {/* Connect Section */}
                 <div>
-                  <div className="text-lg sm:text-xl font-bold text-neutral-900 leading-[32px]">
+                  <div className="text-base sm:text-lg font-bold text-neutral-900 leading-[26px]">
                     <span>Connect ──</span>
                   </div>
-                  <div className="space-y-0.5 text-sm sm:text-base text-neutral-800 font-medium pl-3">
-                    <div className="leading-[30px]">
-                      <span className="text-neutral-600 mr-2">─</span>
+                  <div className="space-y-0 text-xs sm:text-sm text-neutral-800 font-medium pl-2.5">
+                    <div className="leading-[26px]">
+                      <span className="text-neutral-600 mr-1.5">─</span>
                       <span className="font-bold">Email : </span>
                       <a
                         href="mailto:naveedafraz2003@gmail.com"
@@ -376,8 +374,8 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                         naveedafraz2003@gmail.com
                       </a>
                     </div>
-                    <div className="leading-[30px]">
-                      <span className="text-neutral-600 mr-2">─</span>
+                    <div className="leading-[26px]">
+                      <span className="text-neutral-600 mr-1.5">─</span>
                       <span className="font-bold">X : </span>
                       <a
                         href="https://twitter.com/NaveedAfrazX"
@@ -388,8 +386,8 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                         @NaveedAfrazX
                       </a>
                     </div>
-                    <div className="leading-[30px]">
-                      <span className="text-neutral-600 mr-2">─</span>
+                    <div className="leading-[26px]">
+                      <span className="text-neutral-600 mr-1.5">─</span>
                       <span className="font-bold">Github : </span>
                       <a
                         href="https://github.com/NaveedAfraz"
@@ -400,8 +398,8 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                         @NaveedAfraz
                       </a>
                     </div>
-                    <div className="leading-[30px]">
-                      <span className="text-neutral-600 mr-2">─</span>
+                    <div className="leading-[26px]">
+                      <span className="text-neutral-600 mr-1.5">─</span>
                       <span className="font-bold">LinkedIn : </span>
                       <a
                         href="https://www.linkedin.com/in/naveed-afraz-977a46310/"
@@ -412,8 +410,8 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                         @naveed-afraz
                       </a>
                     </div>
-                    <div className="leading-[30px]">
-                      <span className="text-neutral-600 mr-2">─</span>
+                    <div className="leading-[26px]">
+                      <span className="text-neutral-600 mr-1.5">─</span>
                       <span className="font-bold">WhatsApp : </span>
                       <a
                         href="https://wa.me/918328233497"
