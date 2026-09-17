@@ -1,12 +1,49 @@
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Heart, ArrowUp, ArrowUpRight, Download, Mail } from "lucide-react";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
 import resume from "../assets/Naveed_Resume.pdf";
 
+const BASE_VISITS = 14682;
+
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/";
+
+  const [visits, setVisits] = useState(() => {
+    try {
+      const saved = localStorage.getItem("portfolio_visits");
+      return saved ? parseInt(saved, 10) : BASE_VISITS + 1;
+    } catch {
+      return BASE_VISITS + 1;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      const hasCountedSession = sessionStorage.getItem("portfolio_visited_session");
+      const endpoint = hasCountedSession
+        ? "https://countapi.mileshilliard.com/api/v1/get/naveedafraz_portfolio_visits"
+        : "https://countapi.mileshilliard.com/api/v1/hit/naveedafraz_portfolio_visits";
+
+      fetch(endpoint)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && typeof data.value === "number") {
+            const total = BASE_VISITS + data.value;
+            setVisits(total);
+            localStorage.setItem("portfolio_visits", total.toString());
+            sessionStorage.setItem("portfolio_visited_session", "true");
+          }
+        })
+        .catch(() => {
+          // Gracefully keep cached/fallback visits count
+        });
+    } catch {
+      // Browser storage disabled or restricted
+    }
+  }, []);
 
   const handleNavigation = (sectionId) => {
     if (isHomePage) {
@@ -150,13 +187,23 @@ const Footer = () => {
         </div>
 
         {/* ── BOTTOM SUB-FOOTER BAR ── */}
-        <div className="border-t border-neutral-200 dark:border-neutral-800/80 pt-8 mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 dark:text-neutral-400">
-          <div className="flex items-center gap-1.5 flex-wrap justify-center sm:justify-start">
+        <div className="border-t border-neutral-200 dark:border-neutral-800/80 pt-8 mt-12 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-500 dark:text-neutral-400">
+          <div className="flex items-center gap-1.5 flex-wrap justify-center md:justify-start">
             <span>© {new Date().getFullYear()} Naveed Afraz. Designed &amp; built from scratch.</span>
             <span className="hidden sm:inline text-neutral-300 dark:text-neutral-700">·</span>
             <span className="inline-flex items-center">
               (Handcrafted with <Heart className="w-3 h-3 text-red-500 mx-1 fill-red-500" />)
             </span>
+          </div>
+
+          {/* ── TOTAL VISITS COUNTER ── */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-200/50 dark:bg-neutral-900/80 border border-neutral-300/60 dark:border-neutral-800/80 font-mono text-xs text-neutral-600 dark:text-neutral-400 shadow-xs backdrop-blur-xs">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="font-semibold text-slate-800 dark:text-neutral-200">{visits.toLocaleString()}</span>
+            <span>total visits</span>
           </div>
 
           <button
