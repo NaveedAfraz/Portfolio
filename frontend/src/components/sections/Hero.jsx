@@ -1,7 +1,6 @@
 import { useTheme } from "../ThemeProvider";
 import { useEffect, useRef, useState } from "react";
 import QuickViewModal from "../ui/quick-view-modal";
-import IntroLoader from "../ui/IntroLoader";
 import resume from "../../assets/Naveed_Resume.pdf";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -54,20 +53,13 @@ function MaskedText({ children, delay = 0, duration = 0.85, className = "" }) {
 
 const Hero = () => {
   const { theme } = useTheme();
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
 
   // Hero Intro Animation Phase:
-  // 0 = Waiting for initial quote loader to complete
   // 1 = "Hi." in hero center (below navbar)
-  // 2 = "I AM Naveed Afraz" + stats in hero center (below navbar, matching Image 2!)
-  // 3 = Final Hero layout revealed (matching Image 1!)
-  const [heroPhase, setHeroPhase] = useState(0);
-
-  const startHeroSequence = () => {
-    setIsInitialLoading(false);
-    setHeroPhase(1); // "Hi."
-  };
+  // 2 = "I AM Naveed Afraz" + stats in hero center
+  // 3 = Final Hero layout revealed
+  const [heroPhase, setHeroPhase] = useState(1);
 
   useEffect(() => {
     if (heroPhase === 1) {
@@ -75,7 +67,7 @@ const Hero = () => {
       return () => clearTimeout(t1);
     }
     if (heroPhase === 2) {
-      const t2 = setTimeout(() => setHeroPhase(3), 4200); // switch to full Hero
+      const t2 = setTimeout(() => setHeroPhase(3), 3600); // switch to full Hero
       return () => clearTimeout(t2);
     }
   }, [heroPhase]);
@@ -114,7 +106,6 @@ const Hero = () => {
   }, [heroPhase]);
 
   const skipToHero = () => {
-    setIsInitialLoading(false);
     setHeroPhase(3);
   };
 
@@ -151,9 +142,6 @@ const Hero = () => {
 
   return (
     <>
-      {/* ── 1ST: INITIAL QUOTE & PROGRESS LOADER (Full Screen Overlay) ── */}
-      {isInitialLoading && <IntroLoader onComplete={startHeroSequence} />}
-
       {/* ── DESKTOP / TABLET HERO CONTAINER (Below Navbar, Navbar is fully visible!) ── */}
       {/* ── DESKTOP / TABLET HERO CONTAINER (Strictly 100vh, fits fully without scrolling) ── */}
       <section
@@ -188,7 +176,7 @@ const Hero = () => {
           )}
         </AnimatePresence>
 
-        {/* ── STEP 2 OF HERO INTRO: "I AM Naveed Afraz" + Stats (Inside Hero, matching Image 2!) ── */}
+        {/* ── STEP 2 OF HERO INTRO: "I AM Naveed Afraz" + Stats (Inside Hero) ── */}
         <AnimatePresence>
           {heroPhase === 2 && (
             <motion.div

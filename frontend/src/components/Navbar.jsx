@@ -15,7 +15,6 @@ import {
 } from "../components/ui/resizable-navbar";
 import { useTheme } from "../components/ThemeProvider";
 import { GradientText } from "./magicui/gradient-text";
-import { NotebookModal } from "./ui/NotebookModal";
 
 // Create a global variable to store the target section
 let targetSection = null;
@@ -63,12 +62,11 @@ const getSectionIcon = (section) => {
   }
 };
 
-const NavBar = () => {
+const NavBar = ({ onOpenNotebook }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isNotebookOpen, setIsNotebookOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [bodyOverflow, setBodyOverflow] = useState("auto");
   const [activeSection, setActiveSection] = useState("hero");
@@ -243,7 +241,7 @@ const NavBar = () => {
             <NavbarLogo>
               <button
                 type="button"
-                onClick={() => setIsNotebookOpen(true)}
+                onClick={() => onOpenNotebook?.()}
                 className="flex items-center space-x-2 transition-all duration-300 hover:scale-105 cursor-pointer text-left focus:outline-none group"
                 title="Click to open handwritten notebook"
               >
@@ -309,7 +307,7 @@ const NavBar = () => {
                     type="button"
                     onClick={() => {
                       setIsMenuOpen(false);
-                      setIsNotebookOpen(true);
+                      onOpenNotebook?.();
                     }}
                     className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 text-left cursor-pointer"
                     title="Click to open handwritten notebook"
@@ -381,10 +379,6 @@ const NavBar = () => {
           <ScrollProgress />
         </NavBody>
       </Navbar>
-      <NotebookModal
-        isOpen={isNotebookOpen}
-        onClose={() => setIsNotebookOpen(false)}
-      />
     </div>
   );
 };
