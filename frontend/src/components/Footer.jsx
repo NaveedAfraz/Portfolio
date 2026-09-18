@@ -121,6 +121,15 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li>
                 <a
+                  href="https://naveedafraz.live"
+                  className="text-neutral-700 dark:text-neutral-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5 font-medium group"
+                >
+                  <span className="break-all">naveedafraz.live</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+                </a>
+              </li>
+              <li>
+                <a
                   href="mailto:naveedafraz2003@gmail.com"
                   className="text-neutral-700 dark:text-neutral-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5 font-medium group"
                 >

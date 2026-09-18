@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Bot, X, Send, Loader2, ChevronDown, MessageSquare, ExternalLink } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence } from "motion/react";
 
 const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant embedded on his portfolio website. You are enthusiastic, professional, and always speak highly of Naveed as an exceptional Full-Stack Engineer. Your goal is to help recruiters, clients, and visitors learn about Naveed's expertise and encourage them to hire or collaborate with him.
 
@@ -29,6 +29,7 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 ## About Naveed Afraz
 - Full-Stack Developer (Web, Mobile & End-to-End Systems)
 - Location: Hyderabad, India
+- Official Portfolio Website: Deployed live at [naveedafraz.live](https://naveedafraz.live). If asked for his portfolio, live site, or website link, always share [naveedafraz.live](https://naveedafraz.live).
 - 1+ year professional experience across 7 engagements (internships + freelance)
 - 20+ production applications delivered
 - Every single project listed in this portfolio (except the Infiposts internship) was built completely end-to-end solely by Naveed.
@@ -157,6 +158,11 @@ const WA_LINK = "https://wa.me/916300375450";
 
 // Dictionary of project names and URLs for bullet autolinking and bold recognition
 const PROJECT_URL_MAP = {
+  "naveedafraz.live": "https://naveedafraz.live",
+  "www.naveedafraz.live": "https://naveedafraz.live",
+  "portfolio": "https://naveedafraz.live",
+  "naveed afraz": "https://naveedafraz.live",
+  "website": "https://naveedafraz.live",
   "klipp": "https://fx.klipp.in",
   "fx.klipp.in": "https://fx.klipp.in",
   "tech students": "https://techstudents.in",
@@ -223,6 +229,11 @@ const PROJECT_URL_MAP = {
 // Smart local fallback if all AI APIs hit quota/rate limits
 const getFallbackReply = (text) => {
   const lower = text.toLowerCase().trim();
+
+  // 0. Live Portfolio / Domain link inquiry
+  if (lower.includes("naveedafraz.live") || lower.includes("portfolio link") || lower.includes("website link") || lower.includes("live link") || lower.includes("portfolio site") || (lower.includes("portfolio") && (lower.includes("link") || lower.includes("url") || lower.includes("site") || lower.includes("live")))) {
+    return "Naveed's official personal portfolio is deployed live at [naveedafraz.live](https://naveedafraz.live)! You can explore all his featured systems, client platforms, and contact links right here.";
+  }
 
   // 1. Casual acknowledgments (cool, ok, got it, nice, awesome, etc.)
   if (/^(cool|ok|okay|got it|nice|awesome|great|perfect|good|alright|yep|yes|sure|roger|done|sounds good|sweet)[!.]*$/i.test(lower)) {
@@ -339,7 +350,7 @@ const AIChatbot = () => {
     });
 
     // 3. Tokenize markdown links [Label](url-or-domain), bold **text**, raw URLs http/https, and known domains
-    const tokenRegex = /(\[[^\]]+\]\([^)\s]+\)|\*\*[^*]+\*\*|https?:\/\/[^\s)]+|(?:fx\.klipp\.in|techstudents\.in|mseorg\.com|auramiingo\.com|carekov\.com|alprophysioclinic\.com|quwwahealth\.com|[a-z0-9-]+\.vercel\.app|[a-z0-9-]+\.onrender\.com)\b)/g;
+    const tokenRegex = /(\[[^\]]+\]\([^)\s]+\)|\*\*[^*]+\*\*|https?:\/\/[^\s)]+|(?:naveedafraz\.live|www\.naveedafraz\.live|fx\.klipp\.in|techstudents\.in|mseorg\.com|auramiingo\.com|carekov\.com|alprophysioclinic\.com|quwwahealth\.com|[a-z0-9-]+\.vercel\.app|[a-z0-9-]+\.onrender\.com)\b)/g;
 
     const parts = preprocessed.split(tokenRegex);
 

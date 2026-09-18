@@ -8,9 +8,10 @@
 [![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Three.js](https://img.shields.io/badge/Three.js-3D-black?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org/)
+[![Live Site](https://img.shields.io/badge/Live_Site-naveedafraz.live-06B6D4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://naveedafraz.live/)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
-[**Explore Projects**](#-featured-projects) • [**Tech Stack**](#-tech-stack) • [**Getting Started**](#-getting-started) • [**Connect**](#-connect--contact)
+[**🌐 Live Portfolio**](https://naveedafraz.live/) • [**Explore Projects**](#-featured-projects) • [**Tech Stack**](#-tech-stack) • [**Getting Started**](#-getting-started) • [**Connect**](#-connect--contact)
 
 </div>
 
@@ -18,7 +19,7 @@
 
 ## 🌟 Overview
 
-Welcome to the repository for my personal portfolio!  
+Welcome to the repository for my personal portfolio — live at [**naveedafraz.live**](https://naveedafraz.live/)!  
 This project showcases my **skills**, **industry experience**, and **featured projects** as a full-stack developer. Built with a modern, high-performance stack, it delivers an immersive user experience featuring 3D interactive graphics, fluid animations, and a responsive layout.
 
 > *"I enjoy building things that didn't exist yesterday. Every project begins with an idea and ends with something people can use."*
@@ -143,7 +144,8 @@ npm run preview
 
 Feel free to connect, collaborate, or reach out:
 
-- **Portfolio**: [Naveed Afraz](https://github.com/NaveedAfraz)
+- **Portfolio**: [naveedafraz.live](https://naveedafraz.live)
+- **GitHub**: [NaveedAfraz](https://github.com/NaveedAfraz)
 - **LinkedIn**: [linkedin.com/in/naveed-afraz-977a46310](https://www.linkedin.com/in/naveed-afraz-977a46310/)
 - **X (Twitter)**: [@NaveedAfrazX](https://twitter.com/NaveedAfrazX)
 - **Email**: [naveedafraz2003@gmail.com](mailto:naveedafraz2003@gmail.com)
