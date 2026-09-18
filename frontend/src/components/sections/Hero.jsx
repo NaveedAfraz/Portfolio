@@ -585,9 +585,8 @@ const Hero = () => {
             AVAILABLE FOR FULL-TIME ROLES &amp; FREELANCE CONTRACTS
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
-            <span className="block">Naveed</span>
-            <span className="block">Afraz</span>
+          <h1 className="text-3xl min-[360px]:text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight whitespace-nowrap">
+            Naveed Afraz
           </h1>
 
           <p className="flex items-center gap-2 text-base font-semibold text-cyan-500 dark:text-cyan-400">
