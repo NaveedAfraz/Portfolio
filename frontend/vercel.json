@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/api/grok/:path*", "destination": "https://api.x.ai/:path*" },
+    { "source": "/api/countapi/:path*", "destination": "https://countapi.mileshilliard.com/api/v1/:path*" },
     { "source": "/(.*)", "destination": "/" }
   ]
 }

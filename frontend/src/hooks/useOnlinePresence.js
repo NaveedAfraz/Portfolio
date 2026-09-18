@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const BASE_VISITS = 5000;
-const API_BASE = "https://countapi.mileshilliard.com/api/v1";
+const API_BASE = "/api/countapi";
 const NUM_SLOTS = 6;
 const HEARTBEAT_INTERVAL_MS = 8000;
 const STALE_THRESHOLD_SEC = 24;

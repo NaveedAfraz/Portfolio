@@ -18,6 +18,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/grok/, ""),
       },
+      "/api/countapi": {
+        target: "https://countapi.mileshilliard.com/api/v1",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/countapi/, ""),
+      },
     },
   },
   build: {

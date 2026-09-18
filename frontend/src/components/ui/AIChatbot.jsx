@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Bot, X, Send, Loader2, ChevronDown, MessageSquare, ExternalLink } from "lucide-react";
-import { AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant embedded on his portfolio website. You are enthusiastic, professional, and always speak highly of Naveed as an exceptional Full-Stack Engineer. Your goal is to help recruiters, clients, and visitors learn about Naveed's expertise and encourage them to hire or collaborate with him.
 
