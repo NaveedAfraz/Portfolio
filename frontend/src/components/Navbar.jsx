@@ -15,6 +15,7 @@ import {
 } from "../components/ui/resizable-navbar";
 import { useTheme } from "../components/ThemeProvider";
 import { GradientText } from "./magicui/gradient-text";
+import { useOnlinePresence } from "../hooks/useOnlinePresence";
 
 // Create a global variable to store the target section
 let targetSection = null;
@@ -32,13 +33,13 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, x: 12 },
-  show: { 
-    opacity: 1, 
+  show: {
+    opacity: 1,
     x: 0,
-    transition: { 
-      duration: 0.2, 
-      ease: "easeOut" 
-    } 
+    transition: {
+      duration: 0.2,
+      ease: "easeOut"
+    }
   },
 };
 
@@ -71,6 +72,7 @@ const NavBar = ({ onOpenNotebook }) => {
   const [bodyOverflow, setBodyOverflow] = useState("auto");
   const [activeSection, setActiveSection] = useState("hero");
   const { theme } = useTheme();
+  const { onlineCount, visits } = useOnlinePresence();
 
   // Disable scroll detection for a short period after navigation
   const [disableScrollDetection, setDisableScrollDetection] = useState(false);
@@ -231,18 +233,17 @@ const NavBar = ({ onOpenNotebook }) => {
     <div className="w-full fixed z-50">
       <Navbar>
         <NavBody
-          className={`sticky top-0 z-50 w-full transition-all duration-500 ease-in-out ${
-            scrolled
+          className={`sticky top-0 z-50 w-full transition-all duration-500 ease-in-out ${scrolled
               ? "bg-background/90 backdrop-blur-md border-b border-neutral-200/50 dark:border-neutral-800/50 shadow-lg"
               : "bg-transparent border-transparent shadow-none"
-          }`}
+            }`}
         >
-          <div className="container mx-auto px-4 sm:px-6 flex h-16 items-center justify-between">
+          <div className="w-full px-4 sm:px-6 flex h-16 items-center justify-between">
             <NavbarLogo>
               <button
                 type="button"
                 onClick={() => onOpenNotebook?.()}
-                className="flex items-center space-x-2 transition-all duration-300 hover:scale-105 cursor-pointer text-left focus:outline-none group"
+                className="flex items-center space-x-2 transition-all duration-300 hover:scale-105 cursor-pointer text-left focus:outline-none group z-30"
                 title="Click to open handwritten notebook"
               >
                 <GradientText
@@ -259,19 +260,20 @@ const NavBar = ({ onOpenNotebook }) => {
               </button>
             </NavbarLogo>
 
-            <NavItems className="hidden md:flex items-center space-x-4 ml-auto">
+            {/* Middle Nav Items — centered in the middle */}
+            <NavItems className="hidden md:flex items-center space-x-2 pointer-events-none">
               {["Home", "skills", "experience", "education", "projects", "contact"].map(
                 (section) => (
                   <NavbarButton
                     key={section}
                     onClick={() => handleNavigation(section)}
-                    className={`cursor-pointer z-30 px-4 py-2 transition-all duration-300 transform rounded-lg 
+                    className={`cursor-pointer z-30 px-3 py-1.5 transition-all duration-300 transform rounded-lg pointer-events-auto
                     ${activeSection === section
                         ? "bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 text-white scale-105 shadow-md"
                         : `bg-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-sky-500 hover:to-blue-500 hover:text-white border border-transparent hover:border-cyan-300 hover:scale-105 hover:shadow-md ${theme === "dark" ? "text-gray-200" : "text-gray-700"
                         }`
                       }
-                    relative overflow-hidden group font-medium`}
+                    relative overflow-hidden group font-medium text-sm`}
                   >
                     <span className="relative z-10">
                       {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -280,40 +282,85 @@ const NavBar = ({ onOpenNotebook }) => {
                   </NavbarButton>
                 )
               )}
-              {/* <ThemeToggle className="hidden md:flex transition-colors duration-300 cursor-pointer hover:scale-110" /> */}
             </NavItems>
+            {/* Desktop Right Side: Live Online Users & Total Visits Badge */}
+            <div className="hidden md:flex items-center justify-end z-30 shrink-0">
+              <div
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono border border-emerald-500/30 bg-emerald-500/10 dark:bg-neutral-900/80 text-neutral-800 dark:text-neutral-200 shadow-[0_0_12px_rgba(16,185,129,0.15)] backdrop-blur-md select-none transition-all duration-300 hover:scale-105 hover:border-emerald-400/60 cursor-default"
+                title={`${onlineCount} active visitor${onlineCount === 1 ? "" : "s"} online · ${visits ? visits.toLocaleString() : "5,000+"} total visits`}
+              >
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span className="font-bold text-emerald-600 dark:text-emerald-400 text-xs">{onlineCount}</span>
+                <span className="text-[11px] font-sans font-medium text-neutral-500 dark:text-neutral-400">online</span>
+                <span className="text-neutral-400 dark:text-neutral-600">·</span>
+                <span className="font-bold text-slate-800 dark:text-neutral-200">{visits ? visits.toLocaleString() : "5,000+"}</span>
+                <span className="text-[11px] font-sans font-medium text-neutral-500 dark:text-neutral-400">visits</span>
+              </div>
+            </div>
 
-            <div className="md:hidden flex items-center justify-end ml-auto">
+            {/* Mobile Nav Toggle & Online Badge */}
+            <div className="md:hidden flex items-center gap-2 justify-end ml-auto z-30">
+              <div
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono border border-emerald-500/30 bg-emerald-500/10 dark:bg-neutral-900/80 text-neutral-800 dark:text-neutral-200 shadow-xs backdrop-blur-md select-none"
+                title={`${onlineCount} online · ${visits ? visits.toLocaleString() : "5,000+"} total visits`}
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="font-bold text-emerald-600 dark:text-emerald-400">{onlineCount}</span>
+                <span className="text-[10px] font-sans text-neutral-500 dark:text-neutral-400">online</span>
+                <span className="text-neutral-400 dark:text-neutral-600">·</span>
+                <span className="font-bold text-slate-800 dark:text-neutral-200">{visits ? visits.toLocaleString() : "5k+"}</span>
+              </div>
+
               <MobileNavToggle
                 isOpen={isMenuOpen}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className={`cursor-pointer w-7 h-7 transition-all duration-300 hover:scale-110 ${theme === "dark" ? "text-white" : "text-black"}`}
               />
+            </div>
 
-              <MobileNavMenu
-                isOpen={isMenuOpen}
-                onClose={() => setIsMenuOpen(false)}
-                className={`shadow-2xl overflow-y-auto rounded-l-3xl border-l ${theme === "dark"
-                    ? "bg-neutral-950 border-l border-cyan-500/20 shadow-cyan-950/30 text-white"
-                    : "bg-neutral-50 border-l border-cyan-300/30 shadow-cyan-300/10 text-black"
-                  }`}
-              >
+            <MobileNavMenu
+              isOpen={isMenuOpen}
+              onClose={() => setIsMenuOpen(false)}
+              className={`shadow-2xl overflow-y-auto rounded-l-3xl border-l ${theme === "dark"
+                ? "bg-neutral-950 border-l border-cyan-500/20 shadow-cyan-950/30 text-white"
+                : "bg-neutral-50 border-l border-cyan-300/30 shadow-cyan-300/10 text-black"
+                }`}
+            >
                 {/* Header Section */}
                 <div className={`flex items-center h-20 justify-between px-6 border-b sticky top-0 backdrop-blur-2xl transition-all duration-300 ${theme === "dark"
-                    ? "bg-neutral-950/80 border-b-neutral-800"
-                    : "bg-neutral-50/80 border-b-neutral-200"
+                  ? "bg-neutral-950/80 border-b-neutral-800"
+                  : "bg-neutral-50/80 border-b-neutral-200"
                   }`}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      onOpenNotebook?.();
-                    }}
-                    className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 text-left cursor-pointer"
-                    title="Click to open handwritten notebook"
-                  >
-                    Naveed
-                  </button>
+                  <div className="flex items-center gap-2.5">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        onOpenNotebook?.();
+                      }}
+                      className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 text-left cursor-pointer"
+                      title="Click to open handwritten notebook"
+                    >
+                      Naveed
+                    </button>
+                    <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono border bg-neutral-900/80 border-neutral-800 text-neutral-300">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                      </span>
+                      <span className="font-bold text-emerald-400">{onlineCount}</span>
+                      <span className="text-neutral-400">online</span>
+                      <span className="text-neutral-600">·</span>
+                      <span className="font-bold text-neutral-200">{visits ? visits.toLocaleString() : "5,000+"}</span>
+                      <span className="text-neutral-400">visits</span>
+                    </div>
+                  </div>
                   <div className="flex items-center space-x-2">
                     {/* <span className={`rounded-xl cursor-pointer transition-all duration-300 hover:scale-110 p-1.5 flex items-center justify-center ${theme === "dark"
                         ? "bg-neutral-800 text-white"
@@ -343,11 +390,11 @@ const NavBar = ({ onOpenNotebook }) => {
                         <NavbarButton
                           onClick={() => handleNavigation(section)}
                           className={`w-full justify-start px-6 py-4 rounded-2xl transition-colors duration-200 flex items-center gap-3 group relative overflow-hidden font-semibold border ${activeSection === section
-                              ? "bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 text-white shadow-xl shadow-cyan-500/30 border-transparent"
-                              : `${theme === "dark"
-                                ? "text-gray-300 bg-neutral-900/80 border-neutral-800/80 hover:border-cyan-500/30 hover:bg-neutral-800/50 hover:text-white"
-                                : "text-gray-700 bg-white border-neutral-200 hover:border-cyan-300/30 hover:bg-neutral-50 hover:text-black"
-                              }`
+                            ? "bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 text-white shadow-xl shadow-cyan-500/30 border-transparent"
+                            : `${theme === "dark"
+                              ? "text-gray-300 bg-neutral-900/80 border-neutral-800/80 hover:border-cyan-500/30 hover:bg-neutral-800/50 hover:text-white"
+                              : "text-gray-700 bg-white border-neutral-200 hover:border-cyan-300/30 hover:bg-neutral-50 hover:text-black"
+                            }`
                             }
                           `}
                           mobile
@@ -374,7 +421,6 @@ const NavBar = ({ onOpenNotebook }) => {
                   )}
                 </motion.div>
               </MobileNavMenu>
-            </div>
           </div>
           <ScrollProgress />
         </NavBody>
