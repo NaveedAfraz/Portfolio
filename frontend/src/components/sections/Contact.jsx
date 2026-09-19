@@ -61,7 +61,7 @@ const Contact = () => {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Main Glassmorphic Contact Card */}
-        <div className="relative rounded-3xl border border-neutral-200 dark:border-neutral-800/80 bg-white/80 dark:bg-[#0b0f17]/90 backdrop-blur-xl p-8 sm:p-12 lg:p-16 shadow-2xl shadow-cyan-500/5 text-center">
+        <div className="relative rounded-3xl border border-neutral-200 dark:border-neutral-800/80 bg-white/80 dark:bg-[#0b0f17]/90 backdrop-blur-xl p-5 sm:p-10 lg:p-14 shadow-2xl shadow-cyan-500/5 text-center">
           
           {/* Section Tag Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.18em] border border-cyan-500/30 bg-cyan-500/10 text-cyan-500 dark:text-cyan-400 mb-6">
@@ -76,50 +76,68 @@ const Contact = () => {
 
           {/* Sub-headline */}
           <p className="mt-4 text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
-            Have a product in mind, a system to modernize, or need a full stack developer? Reach me directly — I usually reply within a few hours.
+            Have a product in mind, a system to modernize, or need a full stack developer? Reach me directly, I usually reply within a few hours.
           </p>
 
           {/* ── PRIMARY EMAIL CALL-TO-ACTION CARD ── */}
-          <div className="mt-10 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/70 dark:bg-neutral-900/60 max-w-2xl mx-auto text-left flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xs">
-            <div className="flex items-center gap-4 min-w-0 w-full sm:w-auto">
-              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center shrink-0">
-                <Mail className="w-6 h-6" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-[11px] uppercase tracking-wider font-semibold text-neutral-400 dark:text-neutral-500">
+          <div className="mt-8 sm:mt-10 p-5 sm:p-7 rounded-2xl border border-cyan-500/30 dark:border-cyan-500/35 bg-neutral-50/90 dark:bg-[#0c121d]/90 backdrop-blur-xl max-w-2xl mx-auto text-left shadow-xl shadow-cyan-500/5 relative overflow-hidden group">
+            {/* Top subtle cyan glow line */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-80" />
+
+            {/* Top row: Label + Live Status */}
+            <div className="flex items-center justify-between gap-3 mb-2.5">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/25 text-cyan-500 flex items-center justify-center shrink-0">
+                  <Mail className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-[11px] uppercase tracking-wider font-semibold text-neutral-500 dark:text-neutral-400">
                   Primary Email
-                </p>
-                <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white truncate">
-                  naveedafraz2003@gmail.com
-                </p>
+                </span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Available for work</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5 w-full sm:w-auto shrink-0">
+            {/* Email Address - Centered and Fully Visible */}
+            <div className="my-2.5 text-center">
+              <a
+                href="mailto:naveedafraz2003@gmail.com"
+                className="text-base sm:text-xl md:text-2xl font-bold font-mono text-slate-900 dark:text-white hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors select-all break-all block tracking-tight text-center"
+                title="Click to compose email"
+              >
+                naveedafraz2003@gmail.com
+              </a>
+            </div>
+
+            {/* Action Buttons Row - Centered horizontally */}
+            <div className="mt-4 pt-4 border-t border-neutral-200/70 dark:border-neutral-800/80 grid grid-cols-2 gap-2.5 sm:flex sm:items-center sm:justify-center sm:gap-3.5">
               <button
+                type="button"
                 onClick={copyEmail}
-                className="cursor-pointer flex-1 sm:flex-initial px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-xs font-semibold text-slate-800 dark:text-neutral-200 hover:text-cyan-500 dark:hover:text-cyan-400 hover:border-cyan-500/40 transition-all flex items-center justify-center gap-2"
+                className="cursor-pointer px-4 py-2.5 sm:py-3 sm:min-w-[140px] rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800/80 text-xs sm:text-sm font-semibold text-slate-800 dark:text-neutral-200 hover:text-cyan-500 dark:hover:text-cyan-400 hover:border-cyan-500/40 transition-all flex items-center justify-center gap-2 active:scale-95 shadow-xs whitespace-nowrap"
                 title="Copy email address"
               >
                 {copied ? (
                   <>
-                    <Check className="w-4 h-4 text-emerald-500" />
-                    <span className="text-emerald-500">Copied</span>
+                    <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <span className="text-emerald-500 font-medium">Copied!</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4" />
+                    <Copy className="w-4 h-4 text-neutral-500 dark:text-neutral-400 shrink-0" />
                     <span>Copy</span>
                   </>
                 )}
               </button>
 
               <a
-                href="mailto:naveedafraz2003@gmail.com"
-                className="cursor-pointer flex-1 sm:flex-initial px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-white text-xs font-semibold shadow-md shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
+                href="mailto:naveedafraz2003@gmail.com?subject=Project%20Inquiry%20-%20Naveed%20Afraz"
+                className="cursor-pointer px-4 py-2.5 sm:py-3 sm:min-w-[150px] rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 hover:from-cyan-400 hover:via-sky-400 hover:to-blue-500 text-white text-xs sm:text-sm font-semibold shadow-md shadow-cyan-500/20 hover:shadow-cyan-500/35 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 <span>Send Email</span>
-                <Send className="w-3.5 h-3.5" />
+                <Send className="w-3.5 h-3.5 shrink-0" />
               </a>
             </div>
           </div>
@@ -157,14 +175,17 @@ const Contact = () => {
           </div>
 
           {/* ── BOTTOM INFO PILLS: Location & Status ── */}
-          <div className="mt-8 pt-8 border-t border-neutral-200 dark:border-neutral-800/80 flex flex-wrap items-center justify-center gap-4 text-xs text-neutral-600 dark:text-neutral-400">
-            <div className="inline-flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-cyan-500" />
-              <span>Bengaluru / Hyderabad, India · Available Worldwide (Remote)</span>
+          <div className="mt-8 pt-6 border-t border-neutral-200/80 dark:border-neutral-800/80 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100/90 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 shadow-2xs whitespace-nowrap">
+              <MapPin className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
+              <span>Hyderabad, India</span>
             </div>
-            <span className="hidden sm:inline text-neutral-300 dark:text-neutral-700">•</span>
-            <div className="inline-flex items-center gap-2">
-              <Clock className="w-4 h-4 text-cyan-500" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100/90 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 shadow-2xs whitespace-nowrap">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+              <span>Available Worldwide (Remote)</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100/90 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 shadow-2xs whitespace-nowrap">
+              <Clock className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
               <span>Response Time: Within a few hours</span>
             </div>
           </div>

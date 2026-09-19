@@ -41,13 +41,20 @@ const Footer = () => {
           {/* ── LEFT COLUMN: Brand, Summary, Socials ── */}
           <div className="md:col-span-6 lg:col-span-6 space-y-4">
             {/* Brand Logo & Name */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-cyan-500/20 select-none">
-                NA
+            <div className="flex items-center gap-3.5 group">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-500/15 via-sky-500/10 to-blue-600/20 dark:from-cyan-500/20 dark:via-sky-500/15 dark:to-blue-600/25 border border-cyan-500/30 dark:border-cyan-500/40 flex items-center justify-center shadow-lg shadow-cyan-500/10 backdrop-blur-md select-none group-hover:border-cyan-400/60 group-hover:scale-105 transition-all duration-300">
+                <span className="font-signature font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500">
+                  NA
+                </span>
               </div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
-                Naveed Afraz
-              </span>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
+                  Naveed Afraz
+                </span>
+                <span className="text-xs font-mono text-cyan-600 dark:text-cyan-400 font-medium">
+                  Full Stack Developer
+                </span>
+              </div>
             </div>
 
             {/* Value Statement / Short Bio */}
