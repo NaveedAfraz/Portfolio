@@ -71,12 +71,12 @@ const Contact = () => {
 
           {/* Main Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.15] max-w-2xl mx-auto">
-            Let's build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-500">worth shipping.</span>
+            Let's build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-500">great.</span>
           </h2>
 
           {/* Sub-headline */}
           <p className="mt-4 text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
-            Have a product in mind, a system to modernize, or need a full stack developer? Reach me directly, I usually reply within a few hours.
+            Looking for a full-stack developer or have a project you'd like to discuss? Reach me directly, I usually reply within a few hours.
           </p>
 
           {/* ── PRIMARY EMAIL CALL-TO-ACTION CARD ── */}

@@ -75,10 +75,10 @@ export const Header = () => {
     <div
       className="max-w-7xl relative mx-auto pt-6 pb-4 md:pt-10 md:pb-6 px-4 w-full left-0 top-0 z-20">
       <h1 className="text-2xl md:text-5xl xl:text-7xl font-bold dark:text-white text-slate-900">
-        Crafting Premium <br /> Web & Mobile Apps
+        Featured Work &amp; <br /> Real Projects
       </h1>
       <p className="max-w-2xl text-sm md:text-base xl:text-xl mt-3 dark:text-neutral-300 text-neutral-700">
-        A comprehensive showcase of my work. As a web and mobile developer, I specialize in building scalable microservices, native mobile applications, premium client platforms, and high-converting e-commerce systems with real-world impact.
+        A showcase of web and mobile applications I've built, ranging from client platforms and online stores to AI tools and full-stack systems.
       </p>
     </div>
   );

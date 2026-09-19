@@ -235,7 +235,7 @@ const ProjectsPage = () => {
                     : "text-slate-700 hover:text-slate-900 dark:text-white/60 dark:hover:text-white"
                 }`}
               >
-                Client & Production ({productionProjects.length})
+                Client Projects ({productionProjects.length})
               </button>
               <button
                 onClick={() => handleTabChange("academic")}

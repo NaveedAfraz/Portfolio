@@ -108,9 +108,9 @@ export function Experience() {
             "Engineered secure native HWID licensing engine, encrypted model delivery, and admin dashboard with Razorpay and Whop billing."
         ],
         techstudents: [
-            "Designed and built an end-to-end EdTech platform on microservices architecture, spanning UI/UX, full-stack APIs, and Docker containers.",
-            "Delivered 6 role-based dashboards with 13+ production modules covering student authentication, real-time analytics, and assessments.",
-            "Architected scalable backend services using Node.js, Express, and MySQL with TanStack Query state hydration and JWT authentication."
+            "Designed and built an EdTech platform covering UI/UX, full-stack APIs, and Docker containers.",
+            "Delivered 6 role-based dashboards with 13+ features covering student authentication, real-time analytics, and assessments.",
+            "Built backend services using Node.js, Express, and MySQL with TanStack Query and JWT authentication."
         ]
     };
 

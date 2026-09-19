@@ -13,8 +13,8 @@ const QuickViewModal = ({ isOpen, onClose }) => {
   // Extract important skills from Skills component
   const importantSkills = [
     "React", "Next.js", "React Native", "TypeScript", "JavaScript", "Tailwind CSS",
-    "Python", "Django", "Node.js", "Express", "MongoDB", "SQL", "Redis", "Docker",
-    "scikit-learn", "NumPy", "Pandas", "Git", "Jest", "Cypress", "Postman", "GitHub Actions"
+    "Node.js", "Express", "PostgreSQL", "SQL", "MongoDB", "Redis", "REST APIs",
+    "Git", "Jest", "Cypress", "Postman", "TanStack Query", "GitHub Actions"
   ];
 
   return (
@@ -33,7 +33,7 @@ const QuickViewModal = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold mb-4 text-primary">Profile Overview</h3>
             <div className="bg-muted/30 rounded-lg p-4">
               <p className="text-muted-foreground leading-relaxed">
-                Full-Stack Developer with 1+ year of hands-on experience across web, mobile apps, microservices, and end-to-end system architecture. Delivered 20+ production applications, including Klipp (AI AE Plugin), Tech Students EdTech platform, and custom client solutions. Proficient in React, Next.js, React Native, Node.js, Express, Python, Django, FastAPI, Docker, and MySQL (complex 80+ table schema architecture).
+                Full-Stack Developer with 1+ year of experience building web and mobile applications. Has built 20+ projects across freelance and client work, including Klipp (AI plugin &amp; web platform) and Tech Students (EdTech platform). Proficient in React, Next.js, React Native, Node.js, Express, PostgreSQL, MySQL, and MongoDB.
               </p>
             </div>
           </section>

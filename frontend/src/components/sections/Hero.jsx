@@ -24,9 +24,8 @@ import {
   SiExpress,
   SiMysql,
   SiMongodb,
-  SiDocker,
-  SiDjango,
-  SiFastapi,
+  SiPostgresql,
+  SiSocketdotio,
   SiTailwindcss,
   SiRedux,
   SiRazorpay,
@@ -155,9 +154,8 @@ const Hero = () => {
   ];
 
   const techRow2 = [
-    { name: "Docker", icon: <SiDocker className="w-4 h-4 text-[#2496ED]" /> },
-    { name: "Django", icon: <SiDjango className="w-4 h-4" /> },
-    { name: "FastAPI", icon: <SiFastapi className="w-4 h-4 text-[#009688]" /> },
+    { name: "PostgreSQL", icon: <SiPostgresql className="w-4 h-4 text-[#4169E1]" /> },
+    { name: "Socket.io", icon: <SiSocketdotio className="w-4 h-4" /> },
     { name: "Tailwind CSS", icon: <SiTailwindcss className="w-4 h-4 text-[#06B6D4]" /> },
     { name: "Redux", icon: <SiRedux className="w-4 h-4 text-[#764ABC]" /> },
     { name: "Razorpay", icon: <SiRazorpay className="w-4 h-4 text-[#3395FF]" /> },
@@ -264,7 +262,7 @@ const Hero = () => {
               <dl className="mt-6 grid grid-cols-2 gap-y-5 sm:mt-8 sm:flex sm:items-start sm:gap-0">
                 {[
                   { value: "1+ Yr", label: "Experience" },
-                  { value: "20+", label: "Systems Shipped" },
+                  { value: "20+", label: "Projects Built" },
                   { value: "BCA", label: "Degree" },
                   { value: "7+", label: "Engagements" },
                 ].map((stat, idx) => (
@@ -362,7 +360,7 @@ const Hero = () => {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
                 </span>
-                AVAILABLE FOR FULL-TIME ROLES &amp; FREELANCE CONTRACTS
+                Available for full-time roles &amp; freelance projects
               </div>
 
               {/* Big Name Header */}
@@ -582,7 +580,7 @@ const Hero = () => {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
             </span>
-            AVAILABLE FOR FULL-TIME ROLES &amp; FREELANCE CONTRACTS
+            Available for full-time roles &amp; freelance projects
           </div>
 
           <h1 className="text-3xl min-[360px]:text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight whitespace-nowrap">

@@ -43,7 +43,7 @@ export const experienceData = [
     university: "Tech Students",
     location: "Nizamabad, India",
     description:
-      "Designed and built an end-to-end EdTech platform using a microservices architecture, covering UI/UX, full-stack development, testing, Docker-based containerization, and deployment. Implemented 6 role-based dashboards with 13+ production-ready features, including authentication, analytics, assessments, and admin controls.",
+      "Built an EdTech platform covering UI/UX, full-stack development, testing, Docker containerization, and deployment. Created 6 role-based dashboards with 13+ features including authentication, analytics, assessments, and admin controls.",
     courses: [
       "React.js",
       "Node.js",
@@ -108,7 +108,7 @@ export const experienceData = [
     university: "MS Hygiene Industries (IT Division)",
     location: "Mumbai, India",
     description:
-      "Selected as a Trainee/Intern – Full-Stack E-commerce Website & Mobile App Development, contributing to multiple production-ready, end-to-end platforms across e-commerce, marketplace, social networking, and healthcare domains. Developed responsive, scalable e-commerce websites with secure payment gateway integration, built marketplace and social networking platforms aligned with real-world workflows, designed/implemented RESTful APIs, developed mobile applications integrated with backend services, and owned the entire project lifecycle from requirement analysis to deployment and optimization.",
+      "Full-stack web and mobile developer across e-commerce, marketplace, social, and healthcare projects. Built responsive online stores with payment gateways, developed RESTful APIs in Node.js/Express, built mobile screens with React Native, and handled projects from requirements through deployment.",
     courses: [
       "PERN Stack",
       "React.js",

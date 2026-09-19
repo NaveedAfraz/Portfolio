@@ -9,7 +9,7 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 - ALWAYS use full https:// URLs in markdown links, e.g. [Smart Study](https://smart-study-eta-seven.vercel.app).
 - WHEN ASKED ABOUT "PROJECTS" OR FULL-STACK PROJECTS:
   Present a clean, beautifully formatted overview:
-  1. Highlight the 7 Client & Production platforms first with live links (1 short line each):
+  1. Highlight the 7 Client platforms first with live links (1 short line each):
      1. [Klipp](https://fx.klipp.in) – AI-powered After Effects CEP plugin & platform with Whisper.cpp
      2. [Tech Students](https://techstudents.in) – EdTech microservices platform with 6 role-based dashboards
      3. [MSE Org](https://mseorg.com) – Enterprise e-commerce with Stripe & dynamic catalogs
@@ -31,7 +31,7 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 - Location: Hyderabad, India
 - Official Portfolio Website: Deployed live at [naveedafraz.live](https://naveedafraz.live). If asked for his portfolio, live site, or website link, always share [naveedafraz.live](https://naveedafraz.live).
 - 1+ year professional experience across 7 engagements (internships + freelance)
-- 20+ production applications delivered
+- 20+ web and mobile applications delivered
 - Every single project listed in this portfolio (except the Infiposts internship) was built completely end-to-end solely by Naveed.
 
 ---
@@ -64,7 +64,7 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
    Stack: React, Node.js, Tailwind CSS, Express, MySQL, Redux, Socket.IO, PayPal
 
 4. Full Stack Developer — MS Hygiene Industries IT Division, Mumbai (January 2026 – April 2026, 4 months)
-   Production-ready platforms across e-commerce, marketplace, social, and healthcare. Full project lifecycle.
+   Web and mobile platforms across e-commerce, marketplace, social, and healthcare.
    Projects built: [MSE Org](https://mseorg.com), [Auramiingo](https://auramiingo.com), [CareKov](https://carekov.com)
    Stack: PERN Stack, React.js, PostgreSQL, Express.js, Node.js, React Native, REST APIs, AWS, Docker
 
@@ -84,17 +84,17 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 
 ## Projects (Complete List — 20 total. ALWAYS link every project name)
 
-### Client/Production Platforms (7):
+### Client Platforms (7):
 1. [Klipp](https://fx.klipp.in) – AI-Powered After Effects Plugin & Web Platform ([fx.klipp.in](https://fx.klipp.in))
    AI captions (Whisper.cpp), HWID licensing, Razorpay/Whop billing, admin dashboard, multilingual translation.
    Stack: React, TypeScript, Vite, Tailwind CSS, Node.js, Express, Better Auth, MySQL, Drizzle ORM, Whisper.cpp, IndicTrans2, Cloudflare R2, Adobe CEP, ExtendScript
 
-2. [Tech Students](https://techstudents.in) – EdTech Microservices Platform ([techstudents.in](https://techstudents.in))
-   Production-grade EdTech microservices platform. 6 role-based dashboards, automated testing, analytics.
+2. [Tech Students](https://techstudents.in) – EdTech Platform ([techstudents.in](https://techstudents.in))
+   EdTech platform with 6 role-based dashboards, automated testing, and student analytics.
    Stack: React, Node.js, Express, MySQL, Docker, JWT Auth, TanStack Query, Tailwind CSS
 
-3. [MSE Org](https://mseorg.com) – Enterprise E-Commerce Platform ([mseorg.com](https://mseorg.com))
-   Premium enterprise e-commerce for MS Hygiene Industries. Dynamic catalogs, Stripe payments, high-traffic backend.
+3. [MSE Org](https://mseorg.com) – E-Commerce Platform ([mseorg.com](https://mseorg.com))
+   E-commerce store for MS Hygiene Industries with dynamic catalogs and Stripe payments.
    Stack: React, Node.js, Express, PostgreSQL, Stripe, Docker, AWS, Tailwind CSS
 
 4. [Auramiingo](https://auramiingo.com) – Social Networking & Marketplace Platform ([auramiingo.com](https://auramiingo.com))
@@ -141,9 +141,9 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 
 ## Core Tech Stack
 - Frontend & Mobile: React.js, Next.js, React Native, TypeScript, Tailwind CSS, Redux, Vite
-- Backend: Node.js, Express.js, Django, FastAPI, Socket.IO, REST APIs
-- Databases: MySQL (complex 80+ table architecture), MongoDB, PostgreSQL, Redis
-- DevOps: Docker, Git/GitHub, Microservices Architecture, AWS, Cloudflare R2
+- Backend: Node.js, Express.js, Socket.IO, REST APIs
+- Databases: PostgreSQL, MySQL, MongoDB, Redis
+- Tools & Cloud: Git/GitHub, Microservices Architecture, AWS, Cloudflare R2
 - Auth & Payments: Better Auth, Clerk, JWT, Razorpay, Whop, Stripe
 - AI & Specialised: Whisper.cpp, IndicTrans2, HWID Licensing, Adobe CEP, ExtendScript`;
 
@@ -253,21 +253,21 @@ const getFallbackReply = (text) => {
 
   // 3. Technical Skills & Stack
   if (lower.includes("skill") || lower.includes("stack") || lower.includes("tech") || lower.includes("backend") || lower.includes("mobile") || lower.includes("frontend") || lower.includes("database")) {
-    return "Naveed is a **Full-Stack Developer** skilled in **React, Next.js, React Native, Node.js, Django, and FastAPI**. He builds end-to-end systems with **MySQL (80+ tables), MongoDB, Redis, Docker, and Microservices**! See his production work in [Klipp](https://fx.klipp.in) and [Tech Students](https://techstudents.in).";
+    return "Naveed is a **Full-Stack Developer** skilled in **React, Next.js, React Native, Node.js, and Express**. He builds web and mobile apps with **PostgreSQL, MySQL, MongoDB, and Redis**! See his live work in [Klipp](https://fx.klipp.in) and [Tech Students](https://techstudents.in).";
   }
 
   // 4. Projects & Work
   if (lower.includes("project") || lower.includes("work") || lower.includes("system") || lower.includes("klipp") || lower.includes("full-stack") || lower.includes("fullstack") || lower.includes("built") || lower.includes("portfolio")) {
     return (
-      "Naveed has engineered 20+ production and client platforms completely end-to-end! Here are his key full-stack projects:\n\n" +
+      "Naveed has built 20+ client and full-stack projects! Here are his key projects:\n\n" +
       "• [Klipp](https://fx.klipp.in): AI After Effects CEP plugin & platform with Whisper.cpp captions, multilingual translation & HWID licensing\n" +
-      "• [Tech Students](https://techstudents.in): EdTech microservices platform with 6 role-based dashboards & Docker containerization\n" +
-      "• [MSE Org](https://mseorg.com): Enterprise e-commerce with dynamic catalogs, Stripe payments & high-traffic architecture\n" +
-      "• [Auramiingo](https://auramiingo.com): Social networking & e-commerce platform with real-time chat & Socket.IO\n" +
-      "• [CareKov](https://carekov.com): Digital clinic management portal with appointments & digital prescriptions\n" +
+      "• [Tech Students](https://techstudents.in): EdTech platform with 6 role-based dashboards & Docker containerization\n" +
+      "• [MSE Org](https://mseorg.com): E-commerce store with product catalogs and Stripe payment checkout\n" +
+      "• [Auramiingo](https://auramiingo.com): Social networking & e-commerce platform with real-time chat\n" +
+      "• [CareKov](https://carekov.com): Clinic management portal with appointment scheduling & digital prescriptions\n" +
       "• [Alpro Physio Clinic](https://alprophysioclinic.com): Patient booking & physiotherapy platform with Resend notifications\n" +
-      "• [Quwwa Health](https://quwwahealth.com): Medical wellness & diagnostic consultation system\n\n" +
-      "He has also engineered 13+ paid student final-year systems like [Market Scope](https://market-scope-ten.vercel.app), [Edit Flow Pro](https://edit-flow-pro.vercel.app), and [Secure Net](https://secure-net-tau.vercel.app)!"
+      "• [Quwwa Health](https://quwwahealth.com): Healthcare consultation and appointment platform\n\n" +
+      "He has also built 13+ paid student final-year projects like [Market Scope](https://market-scope-ten.vercel.app), [Edit Flow Pro](https://edit-flow-pro.vercel.app), and [Secure Net](https://secure-net-tau.vercel.app)!"
     );
   }
 
@@ -283,15 +283,15 @@ const getFallbackReply = (text) => {
 
   // 7. Experience & Background
   if (lower.includes("experience") || lower.includes("intern") || lower.includes("company") || lower.includes("infiposts") || lower.includes("ms hygiene") || lower.includes("background") || lower.includes("who is")) {
-    return "Naveed has 1+ year professional experience across 7 production engagements, including developing [Klipp](https://fx.klipp.in), [Tech Students](https://techstudents.in), full-stack roles at MS Hygiene Industries, and an internship at Infiposts Private Limited.";
+    return "Naveed has 1+ year professional experience across 7 client engagements and internships, including developing [Klipp](https://fx.klipp.in), [Tech Students](https://techstudents.in), full-stack roles at MS Hygiene Industries, and an internship at Infiposts Private Limited.";
   }
 
   // 8. Greetings
   if (lower.includes("hi") || lower.includes("hello") || lower.includes("hey") || lower.includes("greetings")) {
-    return "Hello! I am NavBot. How can I help you learn more about Naveed's full-stack engineering, mobile development, or end-to-end system projects today?";
+    return "Hello! I am NavBot. How can I help you learn more about Naveed's web and mobile development work today?";
   }
 
-  return "Naveed Afraz is a Full-Stack Engineer specializing in web, mobile apps, microservices, and end-to-end system architecture with 20+ delivered projects. Feel free to ask about his specific platforms, tech stack, or connect on WhatsApp at **+91 6300375450**!";
+  return "Naveed Afraz is a Full-Stack Developer specializing in web and mobile applications with 20+ delivered projects. Feel free to ask about his specific projects, tech stack, or connect on WhatsApp at **+91 6300375450**!";
 };
 
 // Autolink bullet points like "* Klipp:" or "1. Klipp:" or "* **Klipp**:" if no markdown link exists

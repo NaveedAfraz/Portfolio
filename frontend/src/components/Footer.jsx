@@ -59,7 +59,7 @@ const Footer = () => {
 
             {/* Value Statement / Short Bio */}
             <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-md leading-relaxed">
-              Full Stack Developer building scalable web apps, robust backend architectures, and high-impact digital experiences. Available for full-time roles &amp; freelance contracts.
+              Full Stack Developer building web and mobile applications with clean code and thoughtful design. Open to full-time roles and freelance projects.
             </p>
 
             {/* Social Icon Buttons */}

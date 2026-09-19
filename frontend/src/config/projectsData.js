@@ -5,9 +5,9 @@ export const projectsData = [
     category: "Personal & Mini",
     title: "BiteBox",
     description:
-      "A modern restaurant platform for seamless online food ordering",
+      "Online food ordering platform with menu browsing and checkout",
     detailedDescription:
-      "BiteBox is a comprehensive restaurant platform that revolutionizes the online food ordering experience. It features an intuitive user interface for browsing menus, customizing orders, and secure checkout through Stripe integration. The admin dashboard provides restaurant owners with real-time order tracking, inventory management, and sales analytics. Built with a modern tech stack including React.js for the frontend, Express and Node.js for the backend, and MySQL for database management. Real-time order updates are handled through Socket.io, while user authentication is secured with Clerk.",
+      "BiteBox is a food ordering app where customers can browse menus, customize orders, and checkout securely via Stripe. Restaurant owners get real-time order tracking with Socket.io, plus inventory and sales dashboards. Built with React, Node.js, Express, and MySQL.",
     technologies: [
       "ReactJS",
       "Shadcn",
@@ -32,9 +32,9 @@ export const projectsData = [
     category: "Personal & Mini",
     title: "Notes",
     description:
-      "A sleek, minimalist note-taking application with rich text editing",
+      "Minimalist note-taking application with rich text editing",
     detailedDescription:
-      "Notes is a powerful yet intuitive note-taking application designed for productivity and organization. It features rich text editing capabilities, allowing users to format notes with headings, lists, code blocks, and more. The app includes categorization through tags and folders, search functionality, and automatic saving. The clean, minimalist interface ensures a distraction-free writing experience, while the responsive design makes it accessible across all devices. Built with React.js and styled with Tailwind CSS for a modern look and feel, with a Node.js/Express backend for secure data storage.",
+      "A clean note-taking application with rich text formatting, tags, search, and autosave. Built with React, Tailwind CSS, and a Node.js/Express backend.",
     technologies: [
       "ReactJS",
       "Tailwind CSS",
@@ -55,9 +55,9 @@ export const projectsData = [
     id: "elite-wardrobe",
     category: "Personal & Mini",
     title: "Elite Wardrobe",
-    description: "A premium e-commerce platform for fashion and accessories",
+    description: "Clothing and accessories store with product filtering and checkout",
     detailedDescription:
-      "Elite Wardrobe is a sophisticated e-commerce platform designed for fashion enthusiasts. The application features a visually stunning product showcase with detailed views, size guides, and related item suggestions. Users can easily filter products by category, price range, and popularity, while the wishlist functionality allows them to save favorites for later. The checkout process is streamlined with Stripe integration for secure payments. The admin panel provides comprehensive inventory management, sales analytics, and customer insights. Built with React.js for the frontend, Express and Node.js for the backend, with MySQL handling the database operations.",
+      "Elite Wardrobe is an e-commerce store featuring product filtering, size guides, wishlists, and Stripe checkout. Includes an admin panel for tracking orders and stock. Built with React, Node.js, Express, and MySQL.",
     technologies: [
       "ReactJS",
       "Shadcn",
@@ -81,9 +81,9 @@ export const projectsData = [
     category: "Personal & Mini",
     title: "Athena AI",
     description:
-      "An intelligent AI assistant with natural language processing capabilities",
+      "AI chat assistant with voice, text, and translation capabilities",
     detailedDescription:
-      "Athena AI is a sophisticated artificial intelligence assistant that leverages advanced natural language processing to provide intelligent responses and solutions. The platform offers conversational AI capabilities, allowing users to interact naturally through text or voice. Features include smart content generation, language translation, data analysis, and personalized recommendations. The application is built with a focus on accessibility and user experience, with a clean interface that makes complex AI interactions simple and intuitive. The technology stack includes React.js for the frontend, with a robust backend powered by Node.js and Express, integrated with various AI and machine learning services.",
+      "Athena AI is a conversational assistant built to answer questions, generate content, and translate languages via text or voice. Includes custom prompt tools and data export. Built with React for the frontend and Node.js/Express on the backend.",
     technologies: [
       "ReactJS",
       "Shadcn",
@@ -135,7 +135,7 @@ export const projectsData = [
     description:
       "A real-time messaging platform with voice and video capabilities",
     detailedDescription:
-      "EchoMate is a feature-rich communication platform designed for seamless real-time messaging and collaboration. The application offers instant messaging with read receipts, file sharing, and emoji reactions. Users can create group chats, direct messages, and channels for organized communication. The platform also supports voice and video calls with screen sharing capabilities, making it perfect for remote teams and friends. The intuitive interface prioritizes user experience with customizable themes and notification settings. Built with React.js for the frontend and leveraging Socket.io for real-time communication, with a secure backend powered by Node.js, Express, and MySQL.",
+      "EchoMate is a real-time messaging application with instant chat, read receipts, file sharing, and emoji reactions. Supports group channels, direct messages, and audio/video calls. Built with React, Socket.io, Node.js, Express, and MySQL.",
     technologies: [
       "ReactJS",
       "Shadcn",
@@ -182,7 +182,7 @@ export const projectsData = [
   },
   {
     id: "klipp",
-    category: "Client & Production",
+    category: "Client Projects",
     title: "Klipp – AI-Powered After Effects Plugin & Web Platform",
     description: "Built a commercial Adobe After Effects CEP plugin with a companion web platform for licensing, payments, and user management.",
     detailedDescription: "Built a commercial Adobe After Effects CEP plugin with a companion web platform for licensing, payments, and user management. Developed AI-powered caption generation using Whisper.cpp, multilingual translation with IndicTrans2, secure native licensing with HWID binding, encrypted model delivery, and an admin dashboard for managing licenses, pricing, releases, and users. Integrated Razorpay and Whop for payments, Better Auth for authentication, and designed a secure licensing engine communicating with the React panel via IPC.",
@@ -195,10 +195,10 @@ export const projectsData = [
   },
   {
     id: "techstudents",
-    category: "Client & Production",
+    category: "Client Projects",
     title: "Tech Students",
-    description: "A production-grade microservices EdTech platform with 6 role-based dashboards, secure assessments, analytics, and admin controls.",
-    detailedDescription: "Tech Students is a production-grade educational platform built on a scalable microservices architecture. It includes 6 distinct role-based dashboards and over 13 advanced features including secure authentication, real-time analytics, assessment modules, and administrative controls, containerized using Docker.",
+    description: "EdTech platform with 6 role-based dashboards, quizzes and assessments, student analytics, and admin management.",
+    detailedDescription: "Tech Students is an educational platform built with React, Node.js, and MySQL. It includes 6 role-based dashboards and 13+ features including user authentication, real-time analytics, assessment modules, and admin controls, containerized using Docker.",
     technologies: ["React", "Node.js", "Express", "MySQL", "Docker", "JWT Auth", "TanStack Query", "Tailwind CSS"],
     gradientFrom: "#1E293B",
     gradientTo: "#475569",
@@ -208,10 +208,10 @@ export const projectsData = [
   },
   {
     id: "mseorg",
-    category: "Client & Production",
+    category: "Client Projects",
     title: "MSE Org",
-    description: "A premium enterprise e-commerce platform for MS Hygiene featuring dynamic catalogs, search systems, shopping carts, and Stripe payment integration.",
-    detailedDescription: "MSE Org is a premium, high-traffic e-commerce platform developed for MS Hygiene Industries. It features complete product catalogs, advanced sorting and search mechanisms, secure shopping carts, and a robust Stripe payment gateway integration. The back-end is optimized to handle high concurrent user traffic and manage inventory updates seamlessly.",
+    description: "E-commerce platform built for MS Hygiene with product catalogs, search, shopping cart, and Stripe payment checkout.",
+    detailedDescription: "E-commerce platform developed for MS Hygiene Industries. Features include product catalogs, filtering and search, shopping cart, and Stripe payment checkout. The backend handles inventory management and customer order processing.",
     technologies: ["React", "Node.js", "Express", "PostgreSQL", "Stripe", "Docker", "AWS", "Tailwind CSS"],
     gradientFrom: "#1E3A8A",
     gradientTo: "#3B82F6",
@@ -221,10 +221,10 @@ export const projectsData = [
   },
   {
     id: "auramiingo",
-    category: "Client & Production",
+    category: "Client Projects",
     title: "Auramiingo",
-    description: "A social networking platform merged with modern e-commerce, enabling real-time user chat, post sharing, product reviews, and online purchases.",
-    detailedDescription: "Auramiingo merges social networking with modern e-commerce. Users can interact in real-time, share posts, leave reviews, and purchase products from integrated online storefronts. Built using React and Node.js with PostgreSQL database management to ensure consistent performance under heavy data loads.",
+    description: "Social networking and marketplace platform with real-time chat, post sharing, product reviews, and online purchases.",
+    detailedDescription: "Combines social networking with an online store. Users can chat in real time, share posts, leave reviews, and purchase products. Built with React, Node.js, and PostgreSQL.",
     technologies: ["React", "Node.js", "Express", "PostgreSQL", "Socket.IO", "React Native", "Tailwind CSS"],
     gradientFrom: "#5F370E",
     gradientTo: "#854D0E",
@@ -234,10 +234,10 @@ export const projectsData = [
   },
   {
     id: "alprophysio",
-    category: "Client & Production",
+    category: "Client Projects",
     title: "Alpro Physio Clinic",
-    description: "A modern patient booking and clinic management portal featuring automated online scheduling, inquiry pipelines, and notifications via Resend.",
-    detailedDescription: "Developed for Alpro Physio Clinic, this platform features patient service listings, automated online scheduling, inquiry channels, and integrated notifications via Resend. Fully optimized for search engines (SEO) and mobile accessibility.",
+    description: "Clinic management website with automated appointment scheduling, service listings, and email notifications via Resend.",
+    detailedDescription: "Developed for Alpro Physio Clinic, this platform features patient service listings, automated online scheduling, inquiry channels, and integrated notifications via Resend. Built with React, Node.js, and MySQL.",
     technologies: ["React", "Node.js", "Express", "MySQL", "Tailwind CSS", "Resend", "Render"],
     gradientFrom: "#065F46",
     gradientTo: "#0F766E",
@@ -247,10 +247,10 @@ export const projectsData = [
   },
   {
     id: "quwwahealth",
-    category: "Client & Production",
+    category: "Client Projects",
     title: "Quwwa Health",
-    description: "An end-to-end medical wellness system equipped with diagnostic tracking trackers, health inquiries, and patient consulting dashboards.",
-    detailedDescription: "Quwwa Health is a modern web application dedicated to medical wellness. It features a secure database to track patient diagnostics, health inquiries, and interactive patient consulting boards, integrated with email notifications.",
+    description: "Healthcare website with appointment booking, health inquiry forms, and patient consultation dashboards.",
+    detailedDescription: "Quwwa Health is a web application for healthcare consultations, featuring patient inquiry tracking, consulting dashboards, and automated email notifications.",
     technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Resend", "Vercel"],
     gradientFrom: "#451A03",
     gradientTo: "#78350F",
@@ -260,10 +260,10 @@ export const projectsData = [
   },
   {
     id: "carekov",
-    category: "Client & Production",
+    category: "Client Projects",
     title: "CareKov",
-    description: "A comprehensive digital clinic management portal facilitating doctor-patient communication, digital prescriptions, and scheduling.",
-    detailedDescription: "CareKov is a full-featured clinical management and digital healthcare portal. It facilitates patient record management, online appointment scheduling, digital prescriptions, and doctor-patient communication workflows, adhering to real-world healthcare security standards.",
+    description: "Clinic management portal for patient records, online appointment scheduling, and doctor-patient messaging.",
+    detailedDescription: "CareKov is a digital healthcare portal for managing patient records, scheduling appointments, writing digital prescriptions, and doctor-patient communication.",
     technologies: ["React", "Node.js", "Express", "PostgreSQL", "React Native", "Tailwind CSS"],
     gradientFrom: "#1C3D5A",
     gradientTo: "#006677",
@@ -292,7 +292,7 @@ export const projectsData = [
     description:
       "A collaborative team workflow management system for content editors",
     detailedDescription:
-      "Edit Flow Pro streamlines content and editorial pipelines. It features article submission trackers, assignment boards, editorial feedback comments, status indicators, and role-based permissions to ensure seamless collaboration among creators and publishers.",
+      "Edit Flow Pro streamlines content and editorial pipelines. It features article submission trackers, assignment boards, editorial feedback comments, and role-based permissions to organize workflow between writers and editors.",
     technologies: ["React", "Node.js", "Express", "MongoDB", "Redux", "Tailwind CSS"],
     gradientFrom: "#111827",
     gradientTo: "#3B82F6",
