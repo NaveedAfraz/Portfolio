@@ -29,11 +29,11 @@ import {
   SiRabbitmq,
   SiReact,
   SiNextdotjs,
+  SiPython,
   SiJest,
   SiCypress,
   SiPostgresql
 } from "react-icons/si";
-import { TbApi } from "react-icons/tb";
 import { VscCode } from "react-icons/vsc";
 import { Cpu } from "lucide-react";
 
@@ -60,7 +60,7 @@ const getSkillsData = (theme) => [
       { name: "SQL", icon: SiMysql, color: "#00758F" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "Redis", icon: SiRedis, color: "#D82C20" },
-      { name: "REST APIs", icon: TbApi, color: "#009688" },
+      { name: "Python", icon: SiPython, color: "#3776AB" },
       { name: "MicroServices", icon: Cpu, color: "#d22121" }
     ],
   },

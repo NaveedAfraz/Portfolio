@@ -13,7 +13,7 @@ const QuickViewModal = ({ isOpen, onClose }) => {
   // Extract important skills from Skills component
   const importantSkills = [
     "React", "Next.js", "React Native", "TypeScript", "JavaScript", "Tailwind CSS",
-    "Node.js", "Express", "PostgreSQL", "SQL", "MongoDB", "Redis", "REST APIs",
+    "Node.js", "Express", "PostgreSQL", "SQL", "MongoDB", "Redis", "Python",
     "Git", "Jest", "Cypress", "Postman", "TanStack Query", "GitHub Actions"
   ];
 
