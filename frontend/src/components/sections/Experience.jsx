@@ -5,8 +5,8 @@ import { GitBranch, GitMerge, Calendar, MapPin, ExternalLink, Briefcase } from "
 import { experienceData } from "../../config/experienceData";
 
 export function Experience() {
-    // Separate present concurrent roles from past merged history
-    const presentRoles = experienceData.filter((exp) =>
+    // Keep latest concurrent roles shown side-by-side (do not put into history)
+    const latestConcurrentRoles = experienceData.filter((exp) =>
         ["klipp", "techstudents"].includes(exp.id)
     );
 
@@ -64,7 +64,7 @@ export function Experience() {
                         <h5 className="font-semibold mb-3 text-foreground sour-gummy text-base">Delivered Projects & Live Links</h5>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {exp.projectsList.map((proj, pIdx) => (
-                                <div key={pIdx} className="flex justify-between items-center bg-black/5 dark:bg-white/5 px-3 py-2 rounded border border-black/10 dark:border-white/5 text-sm">
+                                <div key={pIdx} className="flex justify-between items-center bg-black/5 dark:bg-white/5 px-3 py-2 rounded border border-black/10 dark:border-white/10 text-sm">
                                     <span className="font-medium text-foreground">{proj.name}</span>
                                     <div className="flex gap-2 text-xs">
                                         {proj.demo && (
@@ -73,7 +73,7 @@ export function Experience() {
                                             </a>
                                         )}
                                         {proj.demo && proj.github && (
-                                            <span className="text-muted-foreground">|</span>
+                                             <span className="text-muted-foreground">|</span>
                                         )}
                                         {proj.github && (
                                             <a href={proj.github} target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-400 hover:underline">
@@ -100,17 +100,17 @@ export function Experience() {
         ),
     }));
 
-    // Bullet points for the 2 concurrent present roles
-    const presentBullets = {
+    // Bullet points for the 2 concurrent roles (matching updated resume)
+    const concurrentBullets = {
         klipp: [
-            "Built commercial Adobe After Effects CEP plugin with companion web platform (fx.klipp.in) for licensing, automated payments, and user provisioning.",
-            "Integrated Whisper.cpp for offline AI audio transcription and IndicTrans2 for accurate multilingual subtitle generation.",
-            "Engineered secure native HWID licensing engine, encrypted model delivery, and admin dashboard with Razorpay and Whop billing."
+            "Built an Adobe After Effects CEP plugin with offline AI transcription and multi-language translation, secured by machine/device fingerprinting and license validation.",
+            "Engineered fx.klipp.in — a Next.js site with full admin panel (licenses, orders, analytics, pricing) and Node.js backend with dual payment providers (Razorpay + Whop); taken through beta testing.",
+            "Designed a secure licensing engine communicating with the React panel via IPC, validating licenses and blocking unauthorized machines."
         ],
         techstudents: [
-            "Designed and built an EdTech platform covering UI/UX, full-stack APIs, and Docker containers.",
-            "Delivered 6 role-based dashboards with 13+ features covering student authentication, real-time analytics, and assessments.",
-            "Built backend services using Node.js, Express, and MySQL with TanStack Query and JWT authentication."
+            "Built a full-stack EdTech platform with 6+ role-based dashboards, a MySQL database of 80+ tables, and 15+ modules (LMS, hackathons, cohorts, internships, certifications, gamification, payments).",
+            "Delivered real-time features with Socket.IO powering the live class module (sessions, chat, notifications) and assessment engine with auto-grading and XP/badge gamification.",
+            "Built a coding ecosystem (Playground & Practice) with a browser-based IDE, contests, and context-aware AI assistance integrated across the platform."
         ]
     };
 
@@ -137,16 +137,13 @@ export function Experience() {
                     </p>
                 </h2>
 
-                {/* ── GIT-STYLE CONCURRENT ACTIVE BRANCHES (PRESENT ROLES) ── */}
+                {/* ── GIT-STYLE CONCURRENT BRANCHES (LATEST CONCURRENT ROLES) ── */}
                 <div className="mt-12 mb-6">
-                    {/* Top Pill: HEAD · Present */}
+                    {/* Top Pill: Latest Concurrent Roles */}
                     <div className="flex flex-col items-center justify-center">
                         <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-cyan-500/40 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-mono font-semibold shadow-lg shadow-cyan-500/10 backdrop-blur-md">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-                            </span>
-                            <span>HEAD · Present</span>
+                            <GitBranch className="w-3.5 h-3.5 text-cyan-400" />
+                            <span>Latest Concurrent Roles</span>
                             <span className="text-cyan-500/40 dark:text-cyan-400/40">·</span>
                             <span className="text-neutral-500 dark:text-neutral-300 font-normal">2 concurrent roles</span>
                         </div>
@@ -185,8 +182,8 @@ export function Experience() {
 
                     {/* Concurrent Role Cards Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                        {presentRoles.map((role) => {
-                            const bullets = presentBullets[role.id] || [];
+                        {latestConcurrentRoles.map((role) => {
+                            const bullets = concurrentBullets[role.id] || [];
 
                             return (
                                 <div
@@ -197,11 +194,10 @@ export function Experience() {
                                     <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-cyan-500/10 via-cyan-500/5 to-transparent rounded-tr-3xl rounded-bl-full pointer-events-none group-hover:from-cyan-500/20 transition-all duration-500" />
 
                                     <div>
-                                        {/* Active Branch Tag */}
+                                        {/* Latest Concurrent Role Tag */}
                                         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 text-xs font-mono font-semibold w-fit mb-4">
                                             <GitBranch className="w-3.5 h-3.5" />
-                                            <span>Active branch</span>
-                                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                                            <span>Latest Concurrent Role</span>
                                         </div>
 
                                         {/* Header: Title + Company + Metadata */}

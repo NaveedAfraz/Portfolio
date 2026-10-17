@@ -1,7 +1,7 @@
 export const experienceData = [
   {
     id: "klipp",
-    year: "July 2026 - Present",
+    year: "July 2026 - September 2026",
     role: "Freelance Full Stack Developer",
     degree: "Freelance Full Stack Developer",
     company: "Klipp",
@@ -36,14 +36,14 @@ export const experienceData = [
   },
   {
     id: "techstudents",
-    year: "August 2025 - Present",
+    year: "August 2025 - August 2026",
     role: "Product Developer",
     degree: "Product Developer",
     company: "Tech Students",
     university: "Tech Students",
     location: "Nizamabad, India",
     description:
-      "Built an EdTech platform covering UI/UX, full-stack development, testing, Docker containerization, and deployment. Created 6 role-based dashboards with 13+ features including authentication, analytics, assessments, and admin controls.",
+      "Built a full-stack EdTech platform covering UI/UX, full-stack development, Docker containerization, and deployment. Created 6 role-based dashboards, a MySQL database of 80+ tables, and 15+ modules (LMS, hackathons, cohorts, internships, certifications, gamification, payments) with Socket.IO real-time features and a browser-based coding ecosystem with AI assistance.",
     courses: [
       "React.js",
       "Node.js",
@@ -52,6 +52,7 @@ export const experienceData = [
       "Docker",
       "Tailwind CSS",
       "TanStack Query",
+      "Socket.IO",
       "JWT Auth",
       "Microservices",
     ],

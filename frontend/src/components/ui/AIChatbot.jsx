@@ -51,11 +51,11 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 ---
 
 ## Work Experience (Accurate — do not modify)
-1. Freelance Full Stack Developer — [Klipp](https://fx.klipp.in) (July 2026 – Present)
+1. Freelance Full Stack Developer — [Klipp](https://fx.klipp.in) (July 2026 – September 2026)
    Built a commercial Adobe After Effects CEP plugin + web platform ([fx.klipp.in](https://fx.klipp.in)). Features: AI captions (Whisper.cpp), multilingual translation (IndicTrans2), HWID licensing, Razorpay/Whop billing, admin dashboard.
    Stack: React, TypeScript, Vite, Tailwind CSS, Node.js, Express, Better Auth, MySQL, Drizzle ORM, Whisper.cpp, IndicTrans2, Cloudflare R2, Razorpay, Whop, Adobe CEP, ExtendScript
 
-2. Product Developer — [Tech Students](https://techstudents.in) (August 2025 – Present)
+2. Product Developer — [Tech Students](https://techstudents.in) (August 2025 – August 2026)
    End-to-end EdTech platform on microservices architecture ([techstudents.in](https://techstudents.in)). 6 role-based dashboards, 13+ features, Docker containerization.
    Stack: React.js, Node.js, Express.js, MySQL, Docker, Tailwind CSS, TanStack Query, JWT Auth, Microservices
 
