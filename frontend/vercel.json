@@ -1,4 +1,17 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "portfolio-six-psi-26.vercel.app"
+        }
+      ],
+      "destination": "https://naveedafraz.live/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/api/grok/:path*", "destination": "https://api.x.ai/:path*" },
     { "source": "/api/countapi/:path*", "destination": "https://countapi.mileshilliard.com/api/v1/:path*" },
