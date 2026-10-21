@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Globe } from "lucide-react";
@@ -6,6 +6,29 @@ import { useOnlinePresence } from "../../hooks/useOnlinePresence";
 
 export const NotebookModal = ({ isOpen, onClose }) => {
   const { onlineCount, visits } = useOnlinePresence();
+  const [progress, setProgress] = useState(100);
+
+  // 10-second countdown timer to auto-show home page
+  useEffect(() => {
+    if (!isOpen) return;
+
+    setProgress(100);
+    const duration = 10000; // 10 seconds
+    const startTime = Date.now();
+
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const remainingPercent = Math.max(0, (1 - elapsed / duration) * 100);
+      setProgress(remainingPercent);
+
+      if (elapsed >= duration) {
+        clearInterval(interval);
+        onClose();
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [isOpen, onClose]);
 
   // Listen for Escape key and lock background scroll
   useEffect(() => {
@@ -31,6 +54,16 @@ export const NotebookModal = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[999] flex items-center justify-center p-2 sm:p-4 overflow-hidden select-none">
+          {/* Top 10-Second Progress Line (Smooth gradient, no timer pill in UI) */}
+          <div className="fixed top-0 left-0 right-0 h-1 bg-black/40 z-[1020] overflow-hidden pointer-events-none">
+            <div
+              className="h-full bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400 transition-all duration-75 ease-linear"
+              style={{
+                width: `${Math.max(0, Math.min(100, progress))}%`,
+              }}
+            />
+          </div>
+
           {/* Dark backdrop overlay with vignette */}
           <motion.div
             initial={{ opacity: 0 }}

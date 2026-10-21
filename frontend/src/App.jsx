@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Hero from "./components/sections/Hero";
@@ -10,17 +10,34 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import ProjectDetail from "./components/sections/ProjectDetail";
 import ProjectsPage from "./components/pages/ProjectsPage";
+import AnalyticsPage from "./components/pages/AnalyticsPage";
 import AIChatbot from "./components/ui/AIChatbot";
 import CustomCursor from "./components/ui/CustomCursor";
 import { NotebookModal } from "./components/ui/NotebookModal";
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isAnalytics =
+    location.pathname === "/analytics" ||
+    location.pathname === "/analytics-nav" ||
+    location.pathname.startsWith("/analytics");
+
   const isInitialHome =
     typeof window !== "undefined" &&
     (window.location.pathname === "/" || window.location.pathname === "");
 
-  const [isNotebookOpen, setIsNotebookOpen] = useState(() => isInitialHome);
-  const [hasLoadedSite, setHasLoadedSite] = useState(() => !isInitialHome);
+  const [isNotebookOpen, setIsNotebookOpen] = useState(() => isInitialHome && !isAnalytics);
+  const [hasLoadedSite, setHasLoadedSite] = useState(() => !isInitialHome || isAnalytics);
+
+  // Silently preload site in background after 1.2s so transition to home is instant
+  useEffect(() => {
+    if (!hasLoadedSite && !isAnalytics) {
+      const preloadTimer = setTimeout(() => {
+        setHasLoadedSite(true);
+      }, 1200);
+      return () => clearTimeout(preloadTimer);
+    }
+  }, [hasLoadedSite, isAnalytics]);
 
   const handleCloseNotebook = () => {
     setIsNotebookOpen(false);
@@ -28,7 +45,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <>
       {/* Custom animated cursor — hides default arrow */}
       <CustomCursor />
 
@@ -65,39 +82,63 @@ function App() {
           />
         </div>
 
-        {/* Website Content — Loads after closing notebook on first visit (or immediately on sub-routes) */}
-        {hasLoadedSite && (
-          <div className="relative z-10 transition-opacity duration-500 ease-out">
-            <NavBar onOpenNotebook={() => setIsNotebookOpen(true)} />
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <Hero />
-                    <Skills />
-                    <Experience />
-                    <Education />
-                    <Projects showOnHomePage={true} />
-                    <Contact />
-                  </>
-                }
-              />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/project/:id" element={<ProjectDetail />} />
-            </Routes>
-            <Footer />
-            {/* AI Chatbot — global, floats above all content */}
-            <AIChatbot />
-          </div>
-        )}
+        {/* Dedicated Protected Analytics Dashboard Route */}
+        {isAnalytics ? (
+          <Routes>
+            <Route
+              path="/analytics"
+              element={<AnalyticsPage onOpenNotebook={() => setIsNotebookOpen(true)} />}
+            />
+            <Route
+              path="/analytics-nav"
+              element={<AnalyticsPage onOpenNotebook={() => setIsNotebookOpen(true)} />}
+            />
+          </Routes>
+        ) : (
+          <>
+            {/* Website Content — Loads after closing notebook on first visit (or immediately on sub-routes) */}
+            {hasLoadedSite && (
+              <div className="relative z-10 transition-opacity duration-500 ease-out">
+                <NavBar onOpenNotebook={() => setIsNotebookOpen(true)} />
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <>
+                        <Hero />
+                        <Skills />
+                        <Experience />
+                        <Education />
+                        <Projects showOnHomePage={true} />
+                        <Contact />
+                      </>
+                    }
+                  />
+                  <Route path="/projects" element={<ProjectsPage />} />
+                  <Route path="/project/:id" element={<ProjectDetail />} />
+                </Routes>
+                <Footer />
+                {/* AI Chatbot — global, floats above all content */}
+                <AIChatbot />
+              </div>
+            )}
 
-        {/* Notebook modal — displays handwritten notebook on first open, or when opened from navbar */}
-        <NotebookModal
-          isOpen={isNotebookOpen}
-          onClose={handleCloseNotebook}
-        />
+            {/* Notebook modal — displays handwritten notebook on first open, or when opened from navbar */}
+            <NotebookModal
+              isOpen={isNotebookOpen}
+              onClose={handleCloseNotebook}
+            />
+          </>
+        )}
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

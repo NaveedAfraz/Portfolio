@@ -3,6 +3,7 @@ import { Heart, ArrowUp, ArrowUpRight, Download, Mail } from "lucide-react";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
 import resume from "../assets/Naveed_Resume.pdf";
 import { useOnlinePresence } from "../hooks/useOnlinePresence";
+import { trackResumeDownload } from "../utils/resumeTracker";
 
 const Footer = () => {
   const location = useLocation();
@@ -148,6 +149,7 @@ const Footer = () => {
                 <a
                   href={resume}
                   download="Naveed_Afraz_Resume.pdf"
+                  onClick={() => trackResumeDownload()}
                   className="text-neutral-700 dark:text-neutral-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5 font-medium group cursor-pointer"
                 >
                   <span>Download CV</span>

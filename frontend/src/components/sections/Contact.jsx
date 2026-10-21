@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Mail, MapPin, Send, ArrowUpRight, Copy, Check, Download, Sparkles, Clock, MessageSquare } from "lucide-react";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
 import resume from "../../assets/Naveed_Resume.pdf";
+import { trackResumeDownload } from "../../utils/resumeTracker";
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -153,6 +154,9 @@ const Contact = () => {
                   target={method.isDownload ? undefined : "_blank"}
                   rel={method.isDownload ? undefined : "noopener noreferrer"}
                   download={method.isDownload ? "Naveed_Afraz_Resume.pdf" : undefined}
+                  onClick={() => {
+                    if (method.isDownload) trackResumeDownload();
+                  }}
                   className="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all flex items-center justify-between gap-3 text-left group cursor-pointer hover:scale-[1.02]"
                 >
                   <div className="flex items-center gap-3 min-w-0">
