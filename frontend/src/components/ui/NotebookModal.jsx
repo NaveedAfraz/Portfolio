@@ -30,21 +30,35 @@ export const NotebookModal = ({ isOpen, onClose }) => {
     return () => clearInterval(interval);
   }, [isOpen, onClose]);
 
-  // Listen for Escape key and lock background scroll
+  // Listen for Escape key and manage background scroll locking
   useEffect(() => {
-    if (!isOpen) return;
+    const restoreScroll = () => {
+      if (typeof document !== "undefined") {
+        document.body.style.overflow = "";
+        document.body.style.overflowY = "auto";
+        document.documentElement.style.overflow = "";
+        document.documentElement.style.overflowY = "auto";
+      }
+    };
+
+    if (isOpen) {
+      if (typeof document !== "undefined") {
+        document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden";
+      }
+    } else {
+      restoreScroll();
+    }
 
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = originalOverflow;
+      restoreScroll();
     };
   }, [isOpen, onClose]);
 
@@ -134,11 +148,36 @@ export const NotebookModal = ({ isOpen, onClose }) => {
 
             {/*
               ========================================================================
-              INTERACTIVE CLICKABLE HOTSPOTS (Mapped with sub-millimeter precision)
+              INTERACTIVE CLICKABLE HOTSPOTS (Mapped with high precision & generous hitboxes)
               ========================================================================
             */}
-            <div className="absolute inset-0 z-20">
-              {/* 1. Header: [ Products ] (Closes modal & scrolls to projects) */}
+            <div className="absolute inset-0 z-20 pointer-events-auto">
+              {/* 1a. Intro Tag: "build [ products ] into existence" */}
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  const tryScroll = (attempts = 0) => {
+                    const elem = document.getElementById("projects");
+                    if (elem) {
+                      elem.scrollIntoView({ behavior: "smooth" });
+                    } else if (attempts < 15) {
+                      setTimeout(() => tryScroll(attempts + 1), 60);
+                    }
+                  };
+                  setTimeout(() => tryScroll(), 80);
+                }}
+                title="View Projects on Website"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
+                style={{
+                  left: "45.0%",
+                  top: "23.2%",
+                  width: "17.0%",
+                  height: "3.8%",
+                }}
+              />
+
+              {/* 1b. Header: Projects -> [ Products ] (Closes modal & scrolls to projects) */}
               <button
                 type="button"
                 onClick={() => {
@@ -154,11 +193,11 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                   setTimeout(() => tryScroll(), 80);
                 }}
                 title="View Products on Website"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
                 style={{
-                  left: "41.5%",
-                  top: "31.8%",
-                  width: "18.5%",
+                  left: "41.0%",
+                  top: "30.8%",
+                  width: "19.0%",
                   height: "3.8%",
                 }}
               />
@@ -167,13 +206,14 @@ export const NotebookModal = ({ isOpen, onClose }) => {
               <a
                 href="https://fx.klipp.in"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 title="Open Klipp (fx.klipp.in)"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
                 style={{
-                  left: "17.5%",
-                  top: "35.5%",
-                  width: "16.5%",
+                  left: "17.0%",
+                  top: "35.2%",
+                  width: "17.0%",
                   height: "4.4%",
                 }}
               />
@@ -182,14 +222,15 @@ export const NotebookModal = ({ isOpen, onClose }) => {
               <a
                 href="https://fx.klipp.in"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 title="Klipp - edit faster (fx.klipp.in)"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
                 style={{
-                  left: "74.8%",
-                  top: "38.6%",
-                  width: "17.2%",
-                  height: "3.2%",
+                  left: "74.5%",
+                  top: "38.4%",
+                  width: "18.0%",
+                  height: "3.4%",
                 }}
               />
 
@@ -197,14 +238,15 @@ export const NotebookModal = ({ isOpen, onClose }) => {
               <a
                 href="https://techstudents.in"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 title="Open techstudents.in"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
                 style={{
-                  left: "18.0%",
-                  top: "43.0%",
-                  width: "22.5%",
-                  height: "4.3%",
+                  left: "17.5%",
+                  top: "42.8%",
+                  width: "23.5%",
+                  height: "4.4%",
                 }}
               />
 
@@ -212,13 +254,14 @@ export const NotebookModal = ({ isOpen, onClose }) => {
               <a
                 href="https://alprophysioclinic.com"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 title="Open alprophysioclinic.com"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
                 style={{
-                  left: "18.2%",
-                  top: "49.9%",
-                  width: "29.3%",
+                  left: "17.8%",
+                  top: "49.8%",
+                  width: "30.0%",
                   height: "4.4%",
                 }}
               />
@@ -239,85 +282,90 @@ export const NotebookModal = ({ isOpen, onClose }) => {
                   setTimeout(() => tryScroll(), 80);
                 }}
                 title="Go to full website projects section"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95 text-left"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95 text-left"
                 style={{
-                  left: "65.0%",
-                  top: "57.5%",
-                  width: "22.0%",
+                  left: "67.0%",
+                  top: "57.3%",
+                  width: "20.0%",
                   height: "3.8%",
                 }}
               />
 
-              {/* 7. Email: naveedafraz2003@gmail.com */}
+              {/* 7. Email: naveedafraz2003@gmail.com (Generous hitbox covering full row) */}
               <a
                 href="mailto:naveedafraz2003@gmail.com"
+                onClick={(e) => e.stopPropagation()}
                 title="Send Email (naveedafraz2003@gmail.com)"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
                 style={{
-                  left: "34.5%",
+                  left: "21.0%",
                   top: "80.4%",
-                  width: "38.5%",
-                  height: "2.9%",
-                }}
-              />
-
-              {/* 8. X: @NaveedAfrazX */}
-              <a
-                href="https://twitter.com/NaveedAfrazX"
-                target="_blank"
-                rel="noreferrer"
-                title="Visit Twitter / X (@NaveedAfrazX)"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95"
-                style={{
-                  left: "36.5%",
-                  top: "83.3%",
-                  width: "26.0%",
-                  height: "2.9%",
-                }}
-              />
-
-              {/* 9. Github: @NaveedAfraz */}
-              <a
-                href="https://github.com/NaveedAfraz"
-                target="_blank"
-                rel="noreferrer"
-                title="Visit GitHub (@NaveedAfraz)"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95"
-                style={{
-                  left: "37.5%",
-                  top: "86.2%",
-                  width: "22.5%",
-                  height: "2.9%",
-                }}
-              />
-
-              {/* 10. LinkedIn: @naveed-afraz */}
-              <a
-                href="https://www.linkedin.com/in/naveed-afraz-977a46310/"
-                target="_blank"
-                rel="noreferrer"
-                title="Visit LinkedIn (@naveed-afraz)"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95"
-                style={{
-                  left: "40.0%",
-                  top: "89.1%",
-                  width: "24.5%",
+                  width: "53.0%",
                   height: "3.1%",
                 }}
               />
 
-              {/* 11. WhatsApp: +91 6300 375 450 */}
+              {/* 8. Twitter / X: @NaveedAfrazX (Generous hitbox covering full row) */}
+              <a
+                href="https://x.com/NaveedAfrazX"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                title="Visit Twitter / X (@NaveedAfrazX)"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
+                style={{
+                  left: "21.0%",
+                  top: "83.3%",
+                  width: "44.0%",
+                  height: "3.2%",
+                }}
+              />
+
+              {/* 9. Github: @NaveedAfraz (Generous hitbox covering full row) */}
+              <a
+                href="https://github.com/NaveedAfraz"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                title="Visit GitHub (@NaveedAfraz)"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
+                style={{
+                  left: "21.0%",
+                  top: "86.1%",
+                  width: "41.0%",
+                  height: "3.2%",
+                }}
+              />
+
+              {/* 10. LinkedIn: @naveed-afraz (Generous hitbox covering full row) */}
+              <a
+                href="https://www.linkedin.com/in/naveed-afraz-977a46310/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                title="Visit LinkedIn (@naveed-afraz)"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
+                style={{
+                  left: "21.0%",
+                  top: "89.0%",
+                  width: "45.0%",
+                  height: "3.2%",
+                }}
+              />
+
+              {/* 11. WhatsApp: +91 6300 375 450 (Generous hitbox covering full row) */}
               <a
                 href="https://wa.me/916300375450"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 title="Chat on WhatsApp (+91 6300375450)"
-                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-blue-600/15 hover:ring-1 hover:ring-blue-500/40 active:scale-95"
+                className="absolute rounded-sm transition-all duration-150 cursor-pointer hover:bg-cyan-500/15 hover:ring-1 hover:ring-cyan-500/50 active:scale-95"
                 style={{
-                  left: "40.0%",
-                  top: "92.2%",
-                  width: "27.5%",
-                  height: "3.2%",
+                  left: "21.0%",
+                  top: "91.9%",
+                  width: "48.0%",
+                  height: "3.3%",
                 }}
               />
             </div>

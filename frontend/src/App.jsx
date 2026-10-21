@@ -39,9 +39,25 @@ function AppContent() {
     }
   }, [hasLoadedSite, isAnalytics]);
 
+  // Unconditionally restore document scrolling whenever notebook is not open
+  useEffect(() => {
+    if (!isNotebookOpen && typeof document !== "undefined") {
+      document.body.style.overflow = "";
+      document.body.style.overflowY = "auto";
+      document.documentElement.style.overflow = "";
+      document.documentElement.style.overflowY = "auto";
+    }
+  }, [isNotebookOpen]);
+
   const handleCloseNotebook = () => {
     setIsNotebookOpen(false);
     setHasLoadedSite(true);
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "";
+      document.body.style.overflowY = "auto";
+      document.documentElement.style.overflow = "";
+      document.documentElement.style.overflowY = "auto";
+    }
   };
 
   return (
