@@ -103,14 +103,14 @@ export function Experience() {
     // Bullet points for the 2 concurrent roles (matching updated resume)
     const concurrentBullets = {
         klipp: [
-            "Built an Adobe After Effects CEP plugin with offline AI transcription and multi-language translation, secured by machine/device fingerprinting and license validation.",
-            "Engineered fx.klipp.in — a Next.js site with full admin panel (licenses, orders, analytics, pricing) and Node.js backend with dual payment providers (Razorpay + Whop); taken through beta testing.",
-            "Designed a secure licensing engine communicating with the React panel via IPC, validating licenses and blocking unauthorized machines."
+            "Architected an Adobe After Effects plugin integrating Whisper and IndicTrans2 models for offline AI transcription and subtitle translation, with 20+ licenses activated by creators using it.",
+            "Built a Next.js licensing portal and Node.js backend; integrated Razorpay and Whop webhooks to automate license key delivery and validate activations."
         ],
         techstudents: [
-            "Built a full-stack EdTech platform with 6+ role-based dashboards, a MySQL database of 80+ tables, and 15+ modules (LMS, hackathons, cohorts, internships, certifications, gamification, payments).",
-            "Delivered real-time features with Socket.IO powering the live class module (sessions, chat, notifications) and assessment engine with auto-grading and XP/badge gamification.",
-            "Built a coding ecosystem (Playground & Practice) with a browser-based IDE, contests, and context-aware AI assistance integrated across the platform."
+            "Designed a relational MySQL database across 15+ modules, with shared authentication and separate role-specific profiles.",
+            "Engineered a multi-track LMS with 5 course tracks, cohorts, hackathons, and a dynamic template engine generating QR-verifiable certificates and PDF admit cards.",
+            "Implemented Razorpay checkout workflows and webhook handlers across multiple product categories to reliably provision course and subscription access upon payment.",
+            "Created 6+ role-based dashboards and integrated real-time video classrooms with Socket.IO chat, deployed on Hostinger VPS."
         ]
     };
 

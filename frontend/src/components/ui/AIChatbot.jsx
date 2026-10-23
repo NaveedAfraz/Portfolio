@@ -27,12 +27,13 @@ const SYSTEM_PROMPT = `You are "NavBot" — Naveed Afraz's personal AI assistant
 ---
 
 ## About Naveed Afraz
-- Full-Stack Developer (Web, Mobile & End-to-End Systems)
+- Full-Stack Developer with over 1 year of hands-on experience building and deploying web and mobile applications across EdTech, healthcare, and e-commerce.
+- Summary: Delivered relational MySQL schemas, Razorpay/Whop webhook payment pipelines, an active clinic CRM, and a creator plugin with 20+ activated licenses running local AI models (Whisper, IndicTrans2). Maintained a 500+ day GitHub streak and solved 200+ LeetCode problems.
 - Location: Hyderabad, India
-- Official Portfolio Website: Deployed live at [naveedafraz.live](https://naveedafraz.live). If asked for his portfolio, live site, or website link, always share [naveedafraz.live](https://naveedafraz.live).
+- Phone: +91 6300375450 | Email: naveedafraz2003@gmail.com
+- Official Portfolio Website: Deployed live at [naveedafraz.live](https://naveedafraz.live).
 - 1+ year professional experience across 7 engagements (internships + freelance)
-- 20+ web and mobile applications delivered
-- Every single project listed in this portfolio (except the Infiposts internship) was built completely end-to-end solely by Naveed.
+- 20+ web and mobile applications delivered.
 
 ---
 

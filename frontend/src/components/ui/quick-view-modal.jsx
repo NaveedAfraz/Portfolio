@@ -33,7 +33,7 @@ const QuickViewModal = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold mb-4 text-primary">Profile Overview</h3>
             <div className="bg-muted/30 rounded-lg p-4">
               <p className="text-muted-foreground leading-relaxed">
-                Full-Stack Developer with 1+ year of experience building web and mobile applications. Has built 20+ projects across freelance and client work, including Klipp (AI plugin &amp; web platform) and Tech Students (EdTech platform). Proficient in React, Next.js, React Native, Node.js, Express, PostgreSQL, MySQL, and MongoDB.
+                Full-Stack Developer with over 1 year of hands-on experience building and deploying web and mobile applications across EdTech, healthcare, and e-commerce. Delivered relational MySQL schemas, Razorpay/Whop webhook payment pipelines, an active clinic CRM, and a creator plugin with 20+ activated licenses running local AI models (Whisper, IndicTrans2). Maintained a 500+ day GitHub streak and solved 200+ LeetCode problems.
               </p>
             </div>
           </section>
